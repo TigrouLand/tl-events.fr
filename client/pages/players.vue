@@ -28,6 +28,9 @@ export default {
       search: undefined
     };
   },
+  head: {
+    title: 'Joueurs'
+  },
   mounted() {
     this.fetchPlayers();
   },
