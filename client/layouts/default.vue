@@ -8,12 +8,12 @@
               <img class="block h-16 w-auto" src="/icon.png" alt="Workflow">
             </div>
             <div class="hidden sm:-my-px sm:ml-6 sm:flex sm:space-x-8">
-              <a href="#" class="border-white text-white inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium" aria-current="page">
+              <nuxt-link to="/" :class="getDeskNavClass($route.path === '/')" aria-current="page">
                 Accueil
-              </a>
-              <a href="#" class="border-transparent text-white hover:border-white inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+              </nuxt-link>
+              <nuxt-link to="players" :class="getDeskNavClass($route.path === '/players')">
                 Joueurs
-              </a>
+              </nuxt-link>
             </div>
           </div>
 <!--          <div class="hidden sm:ml-6 sm:flex sm:items-center">-->
@@ -33,13 +33,12 @@
       </div>
       <div class="sm:hidden" id="mobile-menu" v-if="dropdown">
         <div class="pt-2 pb-3 space-y-1">
-          <!-- Current: "bg-indigo-50 border-indigo-500 text-indigo-700", Default: "border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800" -->
-          <a href="#" class="bg-gray-100 border-tigrouland text-tigrouland block pl-3 pr-4 py-2 border-l-4 text-base font-medium" aria-current="page">
+          <nuxt-link to="/" :class="getMobileNavClass($route.path === '/')">
             Accueil
-          </a>
-          <a href="#" class="border-transparent text-gray-100 bg-tigrouland hover:bg-gray-100 hover:border-tigrouland hover:text-tigrouland block pl-3 pr-4 py-2 border-l-4 text-base font-medium">
+          </nuxt-link>
+          <nuxt-link to="players" :class="getMobileNavClass($route.path === '/players')">
             Joueurs
-          </a>
+          </nuxt-link>
         </div>
 <!--        <div class="pt-4 pb-3 border-t border-gray-200">-->
 <!--        </div>-->
@@ -61,9 +60,21 @@
 export default {
   data() {
     return {
-      dropdown: false,
+      dropdown: false
+    };
+  },
+  methods: {
+    getDeskNavClass(active: boolean): string {
+      return active
+        ? 'border-white text-white inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium'
+        : 'border-transparent text-white hover:border-white inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium';
+    },
+    getMobileNavClass(active: boolean): string {
+      return active
+        ? 'bg-gray-100 border-tigrouland text-tigrouland block pl-3 pr-4 py-2 border-l-4 text-base font-medium'
+        : 'border-transparent text-gray-100 bg-tigrouland hover:bg-gray-100 hover:border-tigrouland hover:text-tigrouland block pl-3 pr-4 py-2 border-l-4 text-base font-medium';
     }
   }
-}
+};
 
 </script>
