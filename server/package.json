@@ -3,7 +3,7 @@
     "clean": "rm -rf dist",
     "build": "tsc",
     "exec": "node dist",
-    "run": "yarn run clean && yarn run build && yarn run exec"
+    "start": "yarn run clean && yarn run build && yarn run exec"
   },
   "dependencies": {
     "dotenv": "^9.0.2",

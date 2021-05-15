@@ -3,5 +3,11 @@
   "version": "1.0.0",
   "repository": "https://github.com/TigrouLand/EventsStats.git",
   "author": "Romitou <romitou@protonmail.com>",
-  "license": "GPL-3.0-only"
+  "license": "GPL-3.0-only",
+  "scripts": {
+    "c:i": "cd client && yarn install",
+    "c:g": "cd client && yarn run generate",
+    "s:i": "cd server && yarn install",
+    "s:s": "cd server && yarn start"
+  }
 }
