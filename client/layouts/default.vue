@@ -8,10 +8,10 @@
               <img class="block h-16 w-auto" src="/icon.png" alt="Workflow">
             </div>
             <div class="hidden sm:-my-px sm:ml-6 sm:flex sm:space-x-8">
-              <nuxt-link to="/" :class="getDeskNavClass($route.path === '/')" aria-current="page">
+              <nuxt-link to="/" :class="getDeskNavClass($route.name === 'index')" aria-current="page">
                 Accueil
               </nuxt-link>
-              <nuxt-link to="players" :class="getDeskNavClass($route.path === '/players')">
+              <nuxt-link to="/players" :class="getDeskNavClass($route.name === 'players')">
                 Joueurs
               </nuxt-link>
             </div>
@@ -52,10 +52,10 @@
       </div>
       <div v-if="dropdown" id="mobile-menu" class="sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-          <nuxt-link to="/" :class="getMobileNavClass($route.path === '/')">
+          <nuxt-link to="/" :class="getMobileNavClass($route.name === 'index')">
             Accueil
           </nuxt-link>
-          <nuxt-link to="players" :class="getMobileNavClass($route.path === '/players')">
+          <nuxt-link to="players" :class="getMobileNavClass($route.name === 'players')">
             Joueurs
           </nuxt-link>
         </div>
