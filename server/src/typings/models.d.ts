@@ -7,3 +7,10 @@ export interface PlayerDocument extends Document {
   deaths: number;
   wins: number;
 }
+
+export interface ModifierDocument extends Document {
+  name: string;
+  material: string;
+  description: string[];
+  enabled: boolean;
+}
