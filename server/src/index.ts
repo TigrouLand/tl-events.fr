@@ -1,4 +1,5 @@
 import 'dotenv/config';
+import fastifyCors from 'fastify-cors';
 import fastify from 'fastify';
 import mongoose from 'mongoose';
 import Player from './models/player';
@@ -6,6 +7,10 @@ import type { FastifyInstance } from 'fastify';
 
 const server: FastifyInstance = fastify({
   logger: true,
+});
+
+void server.register(fastifyCors, {
+  origin: '*',
 });
 
 server.get('/players', async (req, reply) => {
