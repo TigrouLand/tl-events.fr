@@ -20,12 +20,12 @@ server.get('/', async (_req: FastifyRequest, reply: FastifyReply) => reply.send(
 }));
 
 server.get('/players', async (_req: FastifyRequest, reply: FastifyReply) => {
-  const players = await Player.find({}, ['name', 'rank', 'kills', 'deaths', 'wins']);
+  const players = await Player.find({}, ['name', 'rank', 'kills', 'deaths', 'wins']).sort([['wins', -1]]);
   return reply.send({ players });
 });
 
 server.get('/modifiers', async (_req: FastifyRequest, reply: FastifyReply) => {
-  const modifiers = await Modifier.find({}, ['name', 'material', 'description', 'enabled']);
+  const modifiers = await Modifier.find({}, ['name', 'material', 'description', 'enabled']).sort([['name', 1]]);
   return reply.send({ modifiers });
 });
 
