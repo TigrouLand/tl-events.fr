@@ -55,7 +55,7 @@
           <nuxt-link to="/" :class="getMobileNavClass($route.name === 'index')">
             Accueil
           </nuxt-link>
-          <nuxt-link to="players" :class="getMobileNavClass($route.name === 'players')">
+          <nuxt-link to="/players" :class="getMobileNavClass($route.name === 'players')">
             Joueurs
           </nuxt-link>
         </div>
