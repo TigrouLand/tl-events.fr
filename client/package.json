@@ -14,6 +14,7 @@
     "@nuxtjs/fontawesome": "^1.1.2",
     "@nuxtjs/pwa": "^3.3.5",
     "core-js": "^3.9.1",
+    "levenshtein": "^1.0.5",
     "nuxt": "^2.15.3"
   },
   "devDependencies": {
@@ -22,6 +23,7 @@
     "@nuxtjs/eslint-config-typescript": "^6.0.0",
     "@nuxtjs/eslint-module": "^3.0.2",
     "@nuxtjs/tailwindcss": "^4.0.1",
+    "@types/levenshtein": "^1.0.1",
     "babel-eslint": "^10.1.0",
     "eslint": "^7.22.0",
     "eslint-plugin-nuxt": "^2.0.0",
