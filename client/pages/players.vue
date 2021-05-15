@@ -21,9 +21,13 @@ export default {
     this.fetchPlayers();
   },
   methods: {
-    async fetchPlayers() {
-      const { players } = await this.$axios.$get('/players');
-      this.players = players;
+    fetchPlayers() {
+      this.$nuxt.$nextTick(async () => {
+        this.$nuxt.$loading.start();
+        const { players } = await this.$axios.$get('/players');
+        this.players = players;
+        this.$nuxt.$loading.finish();
+      });
     }
   }
 };
