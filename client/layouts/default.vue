@@ -16,22 +16,41 @@
               </nuxt-link>
             </div>
           </div>
-<!--          <div class="hidden sm:ml-6 sm:flex sm:items-center">-->
-<!--          </div>-->
+          <div class="hidden sm:ml-6 sm:flex sm:items-center">
+            <a href="https://discord.gg/qV5TYGx" type="button" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blurple hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+              <font-awesome-icon :icon="faDiscord" class="mr-2 fa-lg" /> Nous rejoindre
+            </a>
+          </div>
           <div class="flex items-center sm:hidden">
             <button type="button" class="bg-gray-100 inline-flex items-center justify-center p-2 rounded-md text-tigrouland hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-700" aria-controls="mobile-menu" aria-expanded="false" @click="dropdown = !dropdown">
               <span class="sr-only">Open main menu</span>
-              <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true" v-if="!dropdown">
+              <svg
+                class="h-6 w-6"
+                v-if="!dropdown"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                aria-hidden="true"
+              >
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
               </svg>
-              <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true" v-if="dropdown">
+              <svg
+                v-if="dropdown"
+                class="h-6 w-6"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                aria-hidden="true"
+              >
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
           </div>
         </div>
       </div>
-      <div class="sm:hidden" id="mobile-menu" v-if="dropdown">
+      <div v-if="dropdown" id="mobile-menu" class="sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
           <nuxt-link to="/" :class="getMobileNavClass($route.path === '/')">
             Accueil
@@ -40,28 +59,29 @@
             Joueurs
           </nuxt-link>
         </div>
-<!--        <div class="pt-4 pb-3 border-t border-gray-200">-->
-<!--        </div>-->
+        <!--        <div class="pt-4 pb-3 border-t border-gray-200">-->
+        <!--        </div>-->
       </div>
     </nav>
-
-    <div class="py-10">
-      <main>
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-          <Nuxt />
-        </div>
-      </main>
-    </div>
+    <main>
+      <Nuxt />
+    </main>
   </div>
 </template>
 
 <script lang="ts">
+import { faDiscord } from '@fortawesome/free-brands-svg-icons';
 
 export default {
   data() {
     return {
       dropdown: false
     };
+  },
+  computed: {
+    faDiscord() {
+      return faDiscord;
+    }
   },
   methods: {
     getDeskNavClass(active: boolean): string {

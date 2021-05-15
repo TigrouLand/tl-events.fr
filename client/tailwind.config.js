@@ -3,12 +3,13 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'tigrouland': '#b23734',
-      },
-    },
+        tigrouland: '#b23734',
+        blurple: '#5865f2'
+      }
+    }
   },
   variants: {
-    extend: {},
+    extend: {}
   },
-  plugins: [],
-}
+  plugins: []
+};
