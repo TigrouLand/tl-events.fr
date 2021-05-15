@@ -14,6 +14,9 @@
               <nuxt-link to="/players" :class="getDeskNavClass($route.name === 'players')">
                 Joueurs
               </nuxt-link>
+              <nuxt-link to="/modifiers" :class="getDeskNavClass($route.name === 'modifiers')">
+                Scénarios
+              </nuxt-link>
             </div>
           </div>
           <div class="hidden sm:ml-6 sm:flex sm:items-center">
@@ -58,9 +61,15 @@
           <nuxt-link to="/players" :class="getMobileNavClass($route.name === 'players')">
             Joueurs
           </nuxt-link>
+          <nuxt-link to="/modifiers" :class="getMobileNavClass($route.name === 'modifiers')">
+            Scénarios
+          </nuxt-link>
         </div>
-        <!--        <div class="pt-4 pb-3 border-t border-gray-200">-->
-        <!--        </div>-->
+        <div class="pt-4 pb-3 ml-2">
+          <a href="https://discord.gg/qV5TYGx" type="button" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blurple hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+            <font-awesome-icon :icon="faDiscord" class="mr-2 fa-lg" /> Nous rejoindre
+          </a>
+        </div>
       </div>
     </nav>
     <main>
