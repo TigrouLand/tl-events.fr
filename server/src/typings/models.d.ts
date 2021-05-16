@@ -12,5 +12,6 @@ export interface ModifierDocument extends Document {
   name: string;
   material: string;
   description: string[];
+  web: string[];
   enabled: boolean;
 }
