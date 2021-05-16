@@ -1,7 +1,6 @@
 <template>
   <div class="flex flex-col object-cover h-full w-full">
     <video
-      loop
       muted
       autoplay
       playsinline
