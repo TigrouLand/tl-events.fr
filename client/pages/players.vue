@@ -38,7 +38,7 @@ export default {
     fetchPlayers() {
       this.$nuxt.$nextTick(async () => {
         this.$nuxt.$loading.start();
-        const { players } = await this.$axios.$get('/players');
+        const { players } = await this.$axios.$get('/players').catch(this.$nuxt.$loading.fail);
         this.players = this.displayedPlayers = players;
         this.$nuxt.$loading.finish();
       });

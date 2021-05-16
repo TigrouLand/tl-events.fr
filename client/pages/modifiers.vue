@@ -38,7 +38,7 @@ export default {
     fetchModifiers() {
       this.$nuxt.$nextTick(async () => {
         this.$nuxt.$loading.start();
-        const { modifiers } = await this.$axios.$get('/modifiers');
+        const { modifiers } = await this.$axios.$get('/modifiers').catch(this.$nuxt.$loading.fail);
         this.modifiers = this.displayedModifiers = modifiers;
         this.$nuxt.$loading.finish();
       });

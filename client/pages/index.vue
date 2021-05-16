@@ -124,7 +124,7 @@ export default {
     fetchStats() {
       this.$nuxt.$nextTick(async () => {
         this.$nuxt.$loading.start();
-        const { players, modifiers, games } = await this.$axios.$get('/stats');
+        const { players, modifiers, games } = await this.$axios.$get('/stats').catch(this.$nuxt.$loading.fail);
         this.players = players;
         this.modifiers = modifiers;
         this.games = games;
