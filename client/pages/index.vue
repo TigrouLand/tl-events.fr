@@ -1,6 +1,7 @@
 <template>
   <div class="flex flex-col object-cover h-full w-full">
     <video
+      id="video"
       muted
       autoplay
       playsinline
@@ -12,7 +13,7 @@
     <div class="absolute w-full">
       <div class="max-w-7xl mx-auto py-10">
         <div class="flex justify-center items-center py-10">
-          <p id="typewriting" class="text-white text-4xl lg:text-7xl font-bold" />
+          <p id="typewriting" class="text-white text-4xl lg:text-7xl font-bold drop-shadow" style="text-shadow: 6px 6px 0 rgba(178, 55, 52, 0.8);" />
         </div>
         <div class="p-5 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           <div class="relative bg-tigrouland pt-5 px-4 pb-12 sm:pt-6 sm:px-6 shadow rounded-lg overflow-hidden">
@@ -117,10 +118,14 @@ export default {
     }
   },
   mounted() {
+    this.slowVideo();
     this.fetchStats();
     this.typeWriting();
   },
   methods: {
+    slowVideo() {
+      document.querySelector('video').playbackRate = 0.7;
+    },
     fetchStats() {
       this.$nuxt.$nextTick(async () => {
         this.$nuxt.$loading.start();
