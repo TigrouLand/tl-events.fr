@@ -18,7 +18,7 @@
         <div class="p-5 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           <div class="relative bg-tigrouland pt-5 px-4 pb-12 sm:pt-6 sm:px-6 shadow rounded-lg overflow-hidden">
             <div>
-              <div class="absolute bg-white rounded-md h-12 w-12 px-4 py-3">
+              <div class="absolute bg-gray-700 rounded-md h-12 w-12 px-4 py-3">
                 <font-awesome-icon :icon="faUser" class="text-tigrouland" />
               </div>
               <p class="ml-16 text-2xl font-semibold text-white">
@@ -29,9 +29,9 @@
               <p class="text-sm font-medium text-white">
                 Joueurs uniques
               </p>
-              <div class="absolute bottom-0 inset-x-0 bg-gray-50 px-4 py-4 sm:px-6">
+              <div class="absolute bottom-0 inset-x-0 bg-gray-700 px-4 py-4 sm:px-6">
                 <div class="text-sm">
-                  <nuxt-link to="/players" class="font-medium text-tigrouland hover:text-red-500">
+                  <nuxt-link to="/players" class="font-medium text-white hover:text-gray-200">
                     Voir tout <font-awesome-icon :icon="faArrowRight" />
                   </nuxt-link>
                 </div>
@@ -40,7 +40,7 @@
           </div>
           <div class="relative bg-tigrouland pt-5 px-4 pb-12 sm:pt-6 sm:px-6 shadow rounded-lg overflow-hidden">
             <div>
-              <div class="absolute bg-white rounded-md h-12 w-12 px-4 py-3">
+              <div class="absolute bg-gray-700 rounded-md h-12 w-12 px-4 py-3">
                 <font-awesome-icon :icon="faDice" class="text-tigrouland" />
               </div>
               <p class="ml-16 text-2xl font-semibold text-white">
@@ -51,9 +51,9 @@
               <p class="text-sm font-medium text-white">
                 Scénarios disponibles
               </p>
-              <div class="absolute bottom-0 inset-x-0 bg-gray-50 px-4 py-4 sm:px-6">
+              <div class="absolute bottom-0 inset-x-0 bg-gray-700 px-4 py-4 sm:px-6">
                 <div class="text-sm">
-                  <nuxt-link to="/modifiers" class="font-medium text-tigrouland hover:text-red-500">
+                  <nuxt-link to="/modifiers" class="font-medium text-white hover:text-gray-200">
                     Voir tout <font-awesome-icon :icon="faArrowRight" />
                   </nuxt-link>
                 </div>
@@ -62,7 +62,7 @@
           </div>
           <div class="relative bg-tigrouland pt-5 px-4 pb-12 sm:pt-6 sm:px-6 shadow rounded-lg overflow-hidden">
             <div>
-              <div class="absolute bg-white rounded-md h-12 w-12 px-4 py-3">
+              <div class="absolute bg-gray-700 rounded-md h-12 w-12 px-4 py-3">
                 <font-awesome-icon :icon="faGamePad" class="text-tigrouland" />
               </div>
               <p class="ml-16 text-2xl font-semibold text-white">
@@ -73,9 +73,9 @@
               <p class="text-sm font-medium text-white">
                 Parties jouées
               </p>
-              <div class="absolute bottom-0 inset-x-0 bg-gray-50 px-4 py-4 sm:px-6">
+              <div class="absolute bottom-0 inset-x-0 bg-gray-700 px-4 py-4 sm:px-6">
                 <div class="text-sm">
-                  <nuxt-link to="/games" class="font-medium text-tigrouland hover:text-red-500">
+                  <nuxt-link to="/games" class="font-medium text-white hover:text-gray-200">
                     Voir tout <font-awesome-icon :icon="faArrowRight" />
                   </nuxt-link>
                 </div>
