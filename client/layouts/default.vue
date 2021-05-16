@@ -28,8 +28,8 @@
             <button type="button" class="bg-gray-100 inline-flex items-center justify-center p-2 rounded-md text-tigrouland hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-700" aria-controls="mobile-menu" aria-expanded="false" @click="dropdown = !dropdown">
               <span class="sr-only">Open main menu</span>
               <svg
-                class="h-6 w-6"
                 v-if="!dropdown"
+                class="h-6 w-6"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
@@ -78,7 +78,7 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
 import { faDiscord } from '@fortawesome/free-brands-svg-icons';
 
 export default {
@@ -92,13 +92,18 @@ export default {
       return faDiscord;
     }
   },
+  watch: {
+    $route() {
+      this.dropdown = false;
+    }
+  },
   methods: {
-    getDeskNavClass(active: boolean): string {
+    getDeskNavClass(active) {
       return active
         ? 'border-white text-white inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium'
         : 'border-transparent text-white hover:border-white inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium';
     },
-    getMobileNavClass(active: boolean): string {
+    getMobileNavClass(active) {
       return active
         ? 'bg-gray-100 border-tigrouland text-tigrouland block pl-3 pr-4 py-2 border-l-4 text-base font-medium'
         : 'border-transparent text-gray-100 bg-tigrouland hover:bg-gray-100 hover:border-tigrouland hover:text-tigrouland block pl-3 pr-4 py-2 border-l-4 text-base font-medium';
