@@ -1,8 +1,8 @@
 <template>
-  <div class="min-h-screen bg-gray-800">
-    <nav class="bg-tigrouland">
+  <div class="flex flex-col h-screen bg-gray-800">
+    <nav class="bg-tigrouland sticky top-0 z-50">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between h-16">
+        <div class="flex justify-between">
           <div class="flex">
             <div class="flex-shrink-0 flex items-center">
               <img class="block h-16 w-auto" src="/icon.png" alt="Workflow">
@@ -19,7 +19,7 @@
               </nuxt-link>
             </div>
           </div>
-          <div class="hidden sm:ml-6 sm:flex sm:items-center">
+          <div class="hidden sticky sm:ml-6 sm:flex sm:items-center">
             <a href="https://discord.gg/qV5TYGx" type="button" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blurple hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
               <font-awesome-icon :icon="faDiscord" class="mr-2 fa-lg" /> Nous rejoindre
             </a>
@@ -72,7 +72,7 @@
         </div>
       </div>
     </nav>
-    <main>
+    <main class="flex-1 overflow-y-auto">
       <Nuxt />
     </main>
   </div>
