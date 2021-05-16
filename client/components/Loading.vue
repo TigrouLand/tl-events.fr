@@ -5,7 +5,7 @@
       <h2 class="text-center text-white text-xl font-semibold">
         Chargement ...
       </h2>
-      <p class="w-1/3 text-center text-white">
+      <p class="w-2/3 text-center text-white">
         Cela peut prendre quelques secondes, ne fermez pas cette page.
       </p>
     </div>

@@ -17,6 +17,7 @@ void server.register(fastifyCors, {
 server.get('/', async (_req: FastifyRequest, reply: FastifyReply) => reply.send({
   players: '/players',
   modifiers: '/modifiers',
+  stats: '/stats',
 }));
 
 server.get('/players', async (_req: FastifyRequest, reply: FastifyReply) => {
@@ -27,6 +28,12 @@ server.get('/players', async (_req: FastifyRequest, reply: FastifyReply) => {
 server.get('/modifiers', async (_req: FastifyRequest, reply: FastifyReply) => {
   const modifiers = await Modifier.find({}, ['name', 'material', 'description', 'web', 'enabled']).sort([['name', 1]]);
   return reply.send({ modifiers });
+});
+
+server.get('/stats', async (_req: FastifyRequest, reply: FastifyReply) => {
+  const players = await Player.estimatedDocumentCount();
+  const modifiers = await Modifier.estimatedDocumentCount();
+  return reply.send({ players, modifiers, games: 0 });
 });
 
 async function start(): Promise<void> {

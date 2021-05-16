@@ -65,8 +65,8 @@
             Scénarios
           </nuxt-link>
         </div>
-        <div class="pt-4 pb-3 ml-2">
-          <a href="https://discord.gg/qV5TYGx" type="button" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blurple hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+        <div class="p-4">
+          <a href="https://discord.gg/qV5TYGx" type="button" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blurple hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 w-full">
             <font-awesome-icon :icon="faDiscord" class="mr-2 fa-lg" /> Nous rejoindre
           </a>
         </div>
