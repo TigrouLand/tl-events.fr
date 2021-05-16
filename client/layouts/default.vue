@@ -19,9 +19,12 @@
               </nuxt-link>
             </div>
           </div>
-          <div class="hidden sticky sm:ml-6 sm:flex sm:items-center">
-            <a href="https://discord.gg/qV5TYGx" type="button" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blurple hover:bg-indigo-500 focus:outline-none ring ring-indigo-600 ring-offset-1 ring-offset-tigrouland">
-              <font-awesome-icon :icon="faDiscord" class="mr-2 fa-lg" /> Nous rejoindre
+          <div class="hidden sticky sm:ml-6 sm:flex sm:items-center space-x-4">
+            <a href="https://twitter.com/EventsTLV2" type="button" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-twitter hover:bg-blue-400 focus:outline-none">
+              <font-awesome-icon :icon="faTwitter" class="mr-2 fa-lg" /> Twitter
+            </a>
+            <a href="https://discord.gg/qV5TYGx" type="button" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blurple hover:bg-indigo-500 focus:outline-none">
+              <font-awesome-icon :icon="faDiscord" class="mr-2 fa-lg" /> Nous rejoindre sur Discord
             </a>
           </div>
           <div class="flex items-center sm:hidden">
@@ -65,10 +68,17 @@
             Scénarios
           </nuxt-link>
         </div>
-        <div class="p-4">
-          <a href="https://discord.gg/qV5TYGx" type="button" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blurple hover:bg-indigo-500 focus:outline-none ring ring-indigo-600 ring-offset-1 ring-offset-tigrouland w-full">
-            <font-awesome-icon :icon="faDiscord" class="mr-2 fa-lg" /> Nous rejoindre
-          </a>
+        <div class="flex">
+          <div class="flex-1 p-4">
+            <a href="https://twitter.com/EventsTLV2" type="button" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-twitter hover:bg-blue-400 focus:outline-none w-full">
+              <font-awesome-icon :icon="faTwitter" class="mr-2 fa-lg" /> Twitter
+            </a>
+          </div>
+          <div class="flex-1 p-4">
+            <a href="https://discord.gg/qV5TYGx" type="button" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blurple hover:bg-indigo-500 focus:outline-none w-full">
+              <font-awesome-icon :icon="faDiscord" class="mr-2 fa-lg" /> Discord
+            </a>
+          </div>
         </div>
       </div>
     </nav>
@@ -79,7 +89,7 @@
 </template>
 
 <script>
-import { faDiscord } from '@fortawesome/free-brands-svg-icons';
+import { faDiscord, faTwitter } from '@fortawesome/free-brands-svg-icons';
 
 export default {
   data() {
@@ -90,6 +100,9 @@ export default {
   computed: {
     faDiscord() {
       return faDiscord;
+    },
+    faTwitter() {
+      return faTwitter;
     }
   },
   watch: {
