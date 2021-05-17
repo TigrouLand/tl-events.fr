@@ -6,9 +6,86 @@ export default {
   head: {
     titleTemplate: 'Events - %s',
     meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' }
+      {
+        charset: 'utf-8'
+      },
+      {
+        name: 'viewport',
+        content: 'width=device-width, initial-scale=1'
+      },
+      {
+        hid: 'description',
+        name: 'description',
+        content: 'Des parties privées diverses et variées de type UHC sur Minecraft 1.8 ! ' +
+          'Modes de jeux : Switch, SkyDefender, TaupeGun... et bien plus encore !'
+      },
+      {
+        hid: 'twitter:card',
+        name: 'twitter:card',
+        content: 'summary_large_image'
+      },
+      {
+        hid: 'twitter:site',
+        name: 'twitter:site',
+        content: '@EventsTLV2'
+      },
+      {
+        hid: 'twitter:url',
+        name: 'twitter:url',
+        content: 'https://events.romitou.fr'
+      },
+      {
+        hid: 'twitter:title',
+        name: 'twitter:title',
+        content: 'TL - Events'
+      },
+      {
+        hid: 'twitter:description',
+        name: 'twitter:description',
+        content: 'Des parties privées diverses et variées de type UHC sur Minecraft 1.8 ! ' +
+          'Modes de jeux : Switch, SkyDefender, TaupeGun... et bien plus encore !'
+      },
+      {
+        hid: 'twitter:image',
+        name: 'twitter:image',
+        content: 'https://events.romitou.fr/icon.png'
+      },
+      {
+        hid: 'og:site_name',
+        property: 'og:site_name',
+        content: 'TL - Events'
+      },
+      {
+        hid: 'og:type',
+        property: 'og:type',
+        content: 'website'
+      },
+      {
+        hid: 'og:url',
+        property: 'og:url',
+        content: 'https://events.romitou.fr'
+      },
+      {
+        hid: 'og:title',
+        property: 'og:title',
+        content: 'TL - Events'
+      },
+      {
+        hid: 'og:description',
+        property: 'og:description',
+        content: 'Des parties privées diverses et variées de type UHC sur Minecraft 1.8 ! ' +
+          'Modes de jeux : Switch, SkyDefender, TaupeGun... et bien plus encore !'
+      },
+      {
+        hid: 'og:image',
+        property: 'og:image',
+        content: 'https://events.romitou.fr/icon.png'
+      },
+      {
+        hid: 'og:image:secure_url',
+        property: 'og:image:secure_url',
+        content: 'https://events.romitou.fr/icon.png'
+      }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
