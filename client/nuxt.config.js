@@ -22,7 +22,7 @@ export default {
       {
         hid: 'twitter:card',
         name: 'twitter:card',
-        content: 'summary_large_image'
+        content: 'summary'
       },
       {
         hid: 'twitter:site',
