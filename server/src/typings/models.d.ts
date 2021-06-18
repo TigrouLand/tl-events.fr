@@ -15,3 +15,21 @@ export interface ModifierDocument extends Document {
   web: string[];
   enabled: boolean;
 }
+
+export interface GameDocument extends Document {
+  name: string;
+  type: string;
+  id: number;
+  logs: string[];
+  states: string[];
+  duration: string;
+  seconds: number;
+  minutes: number;
+  hours: number;
+  archiveDate: number;
+  scheduleDate: number;
+  startDate: number;
+  players: any[];
+  baseTeamsSize: number;
+  baseTeams: number;
+}
