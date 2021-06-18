@@ -33,4 +33,14 @@ export interface GameDocument extends Document {
   alive: any[];
   baseTeamsSize: number;
   baseTeams: number;
+  teams: TeamDocument[];
+}
+
+export interface TeamDocument extends Document {
+  name: string;
+  adjective: string;
+  id: number;
+  color: string;
+  colors: number[];
+  channel: string;
 }
