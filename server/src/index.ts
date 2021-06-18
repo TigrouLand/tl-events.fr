@@ -39,8 +39,10 @@ server.get('/games', async (_req: FastifyRequest, reply: FastifyReply) => {
   // Don't leak some data when the game is not archived yet
   const games: GameDocument[] = await Game.find({ archiveDate: -1 }, ['-logs', '-states', '-status', '-duration']);
   const archivedGames: GameDocument[] = await Game.find({ archiveDate: { $ne: -1 } });
-  for (const game of [...games, ...archivedGames])
+  for (const game of [...games, ...archivedGames]) {
     game.players = game.players.map(p => MUUID.from(p).toString());
+    game.alive = game.alive.map(p => MUUID.from(p).toString());
+  }
   return reply.send({ games, archivedGames });
 });
 

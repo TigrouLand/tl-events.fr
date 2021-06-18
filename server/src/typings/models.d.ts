@@ -30,6 +30,7 @@ export interface GameDocument extends Document {
   scheduleDate: number;
   startDate: number;
   players: any[];
+  alive: any[];
   baseTeamsSize: number;
   baseTeams: number;
 }
