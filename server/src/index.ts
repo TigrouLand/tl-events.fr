@@ -41,7 +41,8 @@ server.get('/games', async (_req: FastifyRequest, reply: FastifyReply) => {
   const archivedGames: GameDocument[] = await Game.find({ archiveDate: { $ne: -1 } });
   for (const game of [...games, ...archivedGames]) {
     game.players = game.players.map(p => MUUID.from(p).toString());
-    game.alive = game.alive.map(p => MUUID.from(p).toString());
+    if (game.alive)
+      game.alive = game.alive.map(p => MUUID.from(p).toString());
   }
   return reply.send({ games, archivedGames });
 });
