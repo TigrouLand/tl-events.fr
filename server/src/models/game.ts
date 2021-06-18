@@ -22,7 +22,7 @@ const gameSchema = new Schema<GameDocument>({
   seconds: Number,
   baseTeamsSize: Number,
   baseTeams: Number,
-  teams: teamSchema,
+  teams: [teamSchema],
 });
 
 export default model<GameDocument>('Game', gameSchema, 'games');
