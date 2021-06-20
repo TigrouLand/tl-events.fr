@@ -2,7 +2,7 @@ import type { Document } from 'mongoose';
 
 export interface PlayerDocument extends Document {
   name: string;
-  uuid: any[];
+  uuid: any;
   rank: string;
   kills: number;
   deaths: number;
