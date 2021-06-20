@@ -11,9 +11,9 @@ jobs:
       uses: actions/setup-node@v2
       with:
         node-version: 16
-    - name: Go to working directory
-      run: cd client
     - name: Install dependencies
+      working-directory: ./client
       run: yarn
     - name: Run lint
+      working-directory: ./client
       run: yarn lint
