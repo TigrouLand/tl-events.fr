@@ -21,7 +21,7 @@ import ModifierCard from '../components/ModifierCard';
 export default {
   name: 'Modifiers',
   components: { ModifierCard },
-  data() {
+  data: () => {
     return {
       modifiers: undefined,
       displayedModifiers: undefined,

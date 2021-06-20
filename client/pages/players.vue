@@ -21,7 +21,7 @@ import PlayerCard from '../components/PlayerCard';
 export default {
   name: 'Players',
   components: { PlayerCard },
-  data() {
+  data: () => {
     return {
       players: undefined,
       displayedPlayers: undefined,

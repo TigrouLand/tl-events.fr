@@ -92,18 +92,10 @@ export default {
     title: 'Accueil'
   },
   computed: {
-    faUser() {
-      return faUser;
-    },
-    faArrowRight() {
-      return faArrowRight;
-    },
-    faDice() {
-      return faDice;
-    },
-    faGamePad() {
-      return faGamepad;
-    }
+    faUser: () => faUser,
+    faArrowRight: () => faArrowRight,
+    faDice: () => faDice,
+    faGamepad: () => faGamepad
   },
   mounted() {
     this.fetchStats();
