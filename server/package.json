@@ -10,7 +10,7 @@
     "fastify": "^3.15.1",
     "fastify-cors": "^6.0.1",
     "mongoose": "^5.12.9",
-    "typescript": "^4.2.4",
+    "typescript": "^4.3.4",
     "uuid-mongodb": "^2.4.4"
   },
   "devDependencies": {
