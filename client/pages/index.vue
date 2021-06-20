@@ -1,84 +1,72 @@
 <template>
-  <div class="flex flex-col object-cover h-full w-full">
-    <video
-      id="video"
-      muted
-      autoplay
-      playsinline
-      preload="none"
-      class="object-cover h-full w-full"
-    >
-      <source src="~/assets/showcase.mp4" type="video/mp4">
-    </video>
-    <div class="absolute w-full">
-      <div class="max-w-7xl mx-auto py-10">
-        <div class="flex justify-center items-center py-10">
-          <p id="typewriting" class="text-white text-4xl lg:text-7xl font-bold drop-shadow" style="text-shadow: 6px 6px 0 rgba(178, 55, 52, 0.8);" />
+  <div class="h-full w-full background">
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 py-10">
+      <div class="flex justify-center items-center py-10">
+        <p id="typewriting" class="text-white text-4xl lg:text-7xl font-bold drop-shadow" style="text-shadow: 6px 6px 0 rgba(178, 55, 52, 0.8);" />
+      </div>
+      <div class="p-5 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div class="relative bg-tigrouland pt-5 px-4 pb-12 sm:pt-6 sm:px-6 shadow rounded-lg overflow-hidden">
+          <div>
+            <div class="absolute bg-gray-700 rounded-md h-12 w-12 px-4 py-3">
+              <font-awesome-icon :icon="faUser" class="text-tigrouland" />
+            </div>
+            <p class="ml-16 text-2xl font-semibold text-white">
+              {{ players || '--' }}
+            </p>
+          </div>
+          <div class="ml-16 pb-6 flex items-baseline sm:pb-7">
+            <p class="text-sm font-medium text-white">
+              Joueurs uniques
+            </p>
+            <div class="absolute bottom-0 inset-x-0 bg-gray-700 px-4 py-4 sm:px-6">
+              <div class="text-sm">
+                <nuxt-link to="/players" class="font-medium text-white hover:text-gray-200">
+                  Voir tout <font-awesome-icon :icon="faArrowRight" />
+                </nuxt-link>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="p-5 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          <div class="relative bg-tigrouland pt-5 px-4 pb-12 sm:pt-6 sm:px-6 shadow rounded-lg overflow-hidden">
-            <div>
-              <div class="absolute bg-gray-700 rounded-md h-12 w-12 px-4 py-3">
-                <font-awesome-icon :icon="faUser" class="text-tigrouland" />
-              </div>
-              <p class="ml-16 text-2xl font-semibold text-white">
-                {{ players || '--' }}
-              </p>
+        <div class="relative bg-tigrouland pt-5 px-4 pb-12 sm:pt-6 sm:px-6 shadow rounded-lg overflow-hidden">
+          <div>
+            <div class="absolute bg-gray-700 rounded-md h-12 w-12 px-4 py-3">
+              <font-awesome-icon :icon="faDice" class="text-tigrouland" />
             </div>
-            <div class="ml-16 pb-6 flex items-baseline sm:pb-7">
-              <p class="text-sm font-medium text-white">
-                Joueurs uniques
-              </p>
-              <div class="absolute bottom-0 inset-x-0 bg-gray-700 px-4 py-4 sm:px-6">
-                <div class="text-sm">
-                  <nuxt-link to="/players" class="font-medium text-white hover:text-gray-200">
-                    Voir tout <font-awesome-icon :icon="faArrowRight" />
-                  </nuxt-link>
-                </div>
+            <p class="ml-16 text-2xl font-semibold text-white">
+              {{ modifiers || '--' }}
+            </p>
+          </div>
+          <div class="ml-16 pb-6 flex items-baseline sm:pb-7">
+            <p class="text-sm font-medium text-white">
+              Scénarios disponibles
+            </p>
+            <div class="absolute bottom-0 inset-x-0 bg-gray-700 px-4 py-4 sm:px-6">
+              <div class="text-sm">
+                <nuxt-link to="/modifiers" class="font-medium text-white hover:text-gray-200">
+                  Voir tout <font-awesome-icon :icon="faArrowRight" />
+                </nuxt-link>
               </div>
             </div>
           </div>
-          <div class="relative bg-tigrouland pt-5 px-4 pb-12 sm:pt-6 sm:px-6 shadow rounded-lg overflow-hidden">
-            <div>
-              <div class="absolute bg-gray-700 rounded-md h-12 w-12 px-4 py-3">
-                <font-awesome-icon :icon="faDice" class="text-tigrouland" />
-              </div>
-              <p class="ml-16 text-2xl font-semibold text-white">
-                {{ modifiers || '--' }}
-              </p>
+        </div>
+        <div class="relative bg-tigrouland pt-5 px-4 pb-12 sm:pt-6 sm:px-6 shadow rounded-lg overflow-hidden">
+          <div>
+            <div class="absolute bg-gray-700 rounded-md h-12 w-12 px-4 py-3">
+              <font-awesome-icon :icon="faGamepad" class="text-tigrouland" />
             </div>
-            <div class="ml-16 pb-6 flex items-baseline sm:pb-7">
-              <p class="text-sm font-medium text-white">
-                Scénarios disponibles
-              </p>
-              <div class="absolute bottom-0 inset-x-0 bg-gray-700 px-4 py-4 sm:px-6">
-                <div class="text-sm">
-                  <nuxt-link to="/modifiers" class="font-medium text-white hover:text-gray-200">
-                    Voir tout <font-awesome-icon :icon="faArrowRight" />
-                  </nuxt-link>
-                </div>
-              </div>
-            </div>
+            <p class="ml-16 text-2xl font-semibold text-white">
+              {{ games || '--' }}
+            </p>
           </div>
-          <div class="relative bg-tigrouland pt-5 px-4 pb-12 sm:pt-6 sm:px-6 shadow rounded-lg overflow-hidden">
-            <div>
-              <div class="absolute bg-gray-700 rounded-md h-12 w-12 px-4 py-3">
-                <font-awesome-icon :icon="faGamePad" class="text-tigrouland" />
-              </div>
-              <p class="ml-16 text-2xl font-semibold text-white">
-                {{ games || '--' }}
-              </p>
-            </div>
-            <div class="ml-16 pb-6 flex items-baseline sm:pb-7">
-              <p class="text-sm font-medium text-white">
-                Parties jouées
-              </p>
-              <div class="absolute bottom-0 inset-x-0 bg-gray-700 px-4 py-4 sm:px-6">
-                <div class="text-sm">
-                  <nuxt-link to="/games" class="font-medium text-white hover:text-gray-200">
-                    Voir tout <font-awesome-icon :icon="faArrowRight" />
-                  </nuxt-link>
-                </div>
+          <div class="ml-16 pb-6 flex items-baseline sm:pb-7">
+            <p class="text-sm font-medium text-white">
+              Parties jouées
+            </p>
+            <div class="absolute bottom-0 inset-x-0 bg-gray-700 px-4 py-4 sm:px-6">
+              <div class="text-sm">
+                <nuxt-link to="/games" class="font-medium text-white hover:text-gray-200">
+                  Voir tout <font-awesome-icon :icon="faArrowRight" />
+                </nuxt-link>
               </div>
             </div>
           </div>
@@ -118,14 +106,10 @@ export default {
     }
   },
   mounted() {
-    this.slowVideo();
     this.fetchStats();
     this.typeWriting();
   },
   methods: {
-    slowVideo() {
-      document.querySelector('video').playbackRate = 0.7;
-    },
     fetchStats() {
       this.$nuxt.$nextTick(async () => {
         this.$nuxt.$loading.start();
@@ -153,3 +137,9 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.background {
+  background: url("~/assets/background.png");
+}
+</style>
