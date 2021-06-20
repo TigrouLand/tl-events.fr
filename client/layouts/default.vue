@@ -17,6 +17,9 @@
               <nuxt-link to="/modifiers" :class="getDeskNavClass($route.name === 'modifiers')">
                 Scénarios
               </nuxt-link>
+              <nuxt-link to="/games" :class="getDeskNavClass($route.name === 'games')">
+                Parties
+              </nuxt-link>
             </div>
           </div>
           <div class="hidden sticky sm:ml-6 sm:flex sm:items-center space-x-4">
@@ -66,6 +69,9 @@
           </nuxt-link>
           <nuxt-link to="/modifiers" :class="getMobileNavClass($route.name === 'modifiers')">
             Scénarios
+          </nuxt-link>
+          <nuxt-link to="/games" :class="getMobileNavClass($route.name === 'games')">
+            Parties
           </nuxt-link>
         </div>
         <div class="flex">
