@@ -2,7 +2,9 @@
   <div class="bg-gray-800 border border-gray-500 rounded shadow">
     <div class="w-full p-2">
       <div class="flex">
-        <div class="flex text-white font-medium">
+        <div class="text-white font-medium">
+          <font-awesome-icon v-if="isArchived(game)" :icon="faArchive" class="text-gray-400" />
+          <font-awesome-icon v-else :icon="faGamepad" class="text-green-500" />
           {{ game.name }}
         </div>
         <div class="flex px-2 -space-x-1 overflow-hidden">
@@ -17,7 +19,7 @@
 </template>
 
 <script>
-import { faClock } from '@fortawesome/free-solid-svg-icons';
+import { faArchive, faClock, faGamepad } from '@fortawesome/free-solid-svg-icons';
 import moment from 'moment';
 
 moment.locale('fr');
@@ -26,9 +28,14 @@ export default {
   name: 'GameCard',
   props: ['game'],
   computed: {
-    faClock: () => faClock
+    faClock: () => faClock,
+    faGamepad: () => faGamepad,
+    faArchive: () => faArchive,
   },
   methods: {
+    isArchived(game) {
+      return game.archiveDate !== -1;
+    },
     format: (timestamp) => {
       return moment.duration(Date.now() - timestamp).humanize();
     }

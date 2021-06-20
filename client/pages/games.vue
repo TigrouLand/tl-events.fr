@@ -8,6 +8,9 @@
               Liste des parties
             </h2>
           </div>
+          <div v-for="game in games" :key="game._id" class="px-4 py-3 bg-gray-900" @click="selectedGame = game;">
+            <GameCard :game="game" />
+          </div>
           <div v-for="game in archivedGames" :key="game._id" class="px-4 py-3 bg-gray-900" @click="selectedGame = game;">
             <GameCard :game="game" />
           </div>
@@ -31,7 +34,7 @@
                 <div class="font-bold text-lg text-center">
                   {{ selectedGame.name }}
                 </div>
-                <div v-if="isArchived" class="font-bold text-lg text-center mb-4 text-gray-400">
+                <div v-if="isArchived(selectedGame)" class="font-bold text-lg text-center mb-4 text-gray-400">
                   <font-awesome-icon :icon="faArchive" class="text-gray-400" />
                   Partie archivée
                 </div>
@@ -47,7 +50,7 @@
                   <font-awesome-icon :icon="faUsers" class="text-white" />
                   <span class="font-medium">Participants :</span> {{ selectedGame.players.length }}
                 </div>
-                <div v-if="isArchived">
+                <div v-if="isArchived(selectedGame)">
                   <font-awesome-icon :icon="faClock" class="text-white" />
                   <span class="font-medium">Temps de jeu :</span> {{ formatTime() }}
                 </div>
@@ -152,10 +155,8 @@ export default {
         return this.selectedGame.alive.includes(player);
       return false;
     },
-    isArchived() {
-      if (this.selectedGame && this.selectedGame.archiveDate)
-        return this.selectedGame.archiveDate === -1;
-      return true;
+    isArchived(game) {
+      return game.archiveDate !== -1;
     },
     formatTime() {
       let { hours, minutes, seconds } = this.selectedGame;
