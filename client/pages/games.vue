@@ -31,7 +31,7 @@
                 <div class="font-bold text-lg text-center">
                   {{ selectedGame.name }}
                 </div>
-                <div v-if="isArchived()" class="font-bold text-lg text-center mb-4 text-gray-400">
+                <div v-if="isArchived" class="font-bold text-lg text-center mb-4 text-gray-400">
                   <font-awesome-icon :icon="faArchive" class="text-gray-400" />
                   Partie archivée
                 </div>
@@ -47,7 +47,7 @@
                   <font-awesome-icon :icon="faUsers" class="text-white" />
                   <span class="font-medium">Participants :</span> {{ selectedGame.players.length }}
                 </div>
-                <div>
+                <div v-if="isArchived">
                   <font-awesome-icon :icon="faClock" class="text-white" />
                   <span class="font-medium">Temps de jeu :</span> {{ formatTime() }}
                 </div>
@@ -113,8 +113,7 @@ export default {
       games: null,
       archivedGames: null,
       selectedGame: null,
-      timeInterval: null,
-      refreshInterval: null
+      interval: null
     };
   },
   head: {
@@ -127,29 +126,14 @@ export default {
     faClock: () => faClock
   },
   mounted() {
-    this.firstFetch();
-    this.timeInterval = setInterval(this.intervalUpdate, 1000);
-    this.refreshInterval = setInterval(this.refreshGames, 10000);
+    this.fetchGames();
+    this.interval = setInterval(this.refreshGames, 1000);
   },
   destroyed() {
     clearInterval(this.interval);
-    clearInterval(this.refreshInterval);
   },
   methods: {
-    intervalUpdate() {
-      if (this.selectedGame && !this.isArchived()) {
-        this.selectedGame.seconds++;
-        if (this.selectedGame.seconds >= 60) {
-          this.selectedGame.seconds = 0;
-          this.selectedGame.minutes++;
-        }
-        if (this.selectedGame.minutes >= 60) {
-          this.selectedGame.minutes = 0;
-          this.selectedGame.hours++;
-        }
-      }
-    },
-    firstFetch() {
+    fetchGames() {
       this.$nuxt.$nextTick(async () => {
         this.$nuxt.$loading.start();
         const { games, archivedGames } = await this.$axios.$get('/games').catch(this.$nuxt.$loading.fail);
