@@ -1,5 +1,6 @@
 module.exports = {
   root: true,
+  ignorePatterns: ['.nuxt/*', '**/sw.js'],
   env: {
     browser: true,
     node: true
