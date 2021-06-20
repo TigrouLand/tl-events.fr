@@ -70,7 +70,7 @@
                     </td>
                     <td>
                       <div class="flex">
-                        {{ player }}
+                        {{ getUsernameByUuid(player) }}
                       </div>
                       <div v-if="isAlive(player)">
                         <div class="text-green-500 font-bold">
@@ -113,8 +113,9 @@ export default {
   components: { GameCard },
   data() {
     return {
-      games: null,
-      archivedGames: null,
+      games: [],
+      players: [],
+      archivedGames: [],
       selectedGame: null,
       interval: null
     };
@@ -129,21 +130,26 @@ export default {
     faClock: () => faClock
   },
   mounted() {
-    this.fetchGames();
-    this.interval = setInterval(this.refreshGames, 1000);
+    this.fetch();
+    this.interval = setInterval(this.refreshGames, 10000);
   },
   destroyed() {
     clearInterval(this.interval);
   },
   methods: {
-    fetchGames() {
+    fetch() {
       this.$nuxt.$nextTick(async () => {
         this.$nuxt.$loading.start();
         const { games, archivedGames } = await this.$axios.$get('/games').catch(this.$nuxt.$loading.fail);
         this.games = games;
         this.archivedGames = archivedGames;
+        const { players } = await this.$axios.$get('/players').catch(this.$nuxt.$loading.fail);
+        this.players = this.displayedPlayers = players;
         this.$nuxt.$loading.finish();
       });
+    },
+    getUsernameByUuid(uuid) {
+      return this.players.find(p => p.uuid === uuid)?.name;
     },
     async refreshGames() {
       const { games, archivedGames } = await this.$axios.$get('/games').catch(this.$nuxt.$loading.fail);
