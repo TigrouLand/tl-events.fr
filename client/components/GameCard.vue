@@ -30,7 +30,7 @@ export default {
   computed: {
     faClock: () => faClock,
     faGamepad: () => faGamepad,
-    faArchive: () => faArchive,
+    faArchive: () => faArchive
   },
   methods: {
     isArchived(game) {
