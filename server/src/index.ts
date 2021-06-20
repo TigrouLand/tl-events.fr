@@ -26,8 +26,9 @@ server.get('/', async (_req: FastifyRequest, reply: FastifyReply) => reply.send(
 }));
 
 server.get('/players', async (_req: FastifyRequest, reply: FastifyReply) => {
-  const players = await Player.find({}, ['name', 'rank', 'kills', 'deaths', 'wins']).sort([['wins', -1]]);
-  return reply.send({ players });
+  const players = await Player.find({}, ['name', 'uuid', 'rank', 'kills', 'deaths', 'wins']).sort([['wins', -1]]);
+  const r = players.map(p => MUUID.from(p.uuid).toString());
+  return reply.send({ players: r });
 });
 
 server.get('/modifiers', async (_req: FastifyRequest, reply: FastifyReply) => {

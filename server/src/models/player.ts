@@ -3,6 +3,7 @@ import type { PlayerDocument } from '../typings/models';
 
 const playerSchema = new Schema<PlayerDocument>({
   name: String,
+  uuid: [Schema.Types.Mixed],
   rank: String,
   kills: Number,
   deaths: Number,
