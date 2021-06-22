@@ -8,7 +8,13 @@ updates:
     directory: "/client"
     schedule:
       interval: "daily"
+    allowed_updates:
+      - match:
+          update_type: "security"
   - package-ecosystem: "npm"
     directory: "/server"
     schedule:
       interval: "daily"
+    allowed_updates:
+      - match:
+          update_type: "security"
