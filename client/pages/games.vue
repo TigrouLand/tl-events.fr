@@ -34,7 +34,11 @@
                 <div class="font-bold text-lg text-center">
                   {{ selectedGame.name }}
                 </div>
-                <div v-if="isArchived(selectedGame)" class="font-bold text-lg text-center mb-4 text-gray-400">
+                <div v-if="isScheduled(selectedGame)" class="font-bold text-lg text-center mb-4 text-gray-400">
+                  <font-awesome-icon :icon="faClock" class="text-gray-400" />
+                  Partie programmée
+                </div>
+                <div v-else-if="isArchived(selectedGame)" class="font-bold text-lg text-center mb-4 text-gray-400">
                   <font-awesome-icon :icon="faArchive" class="text-gray-400" />
                   Partie archivée
                 </div>
@@ -163,6 +167,9 @@ export default {
     },
     isArchived(game) {
       return game.archiveDate !== -1;
+    },
+    isScheduled(game) {
+      return game.startDate === -1 && game.scheduleDate !== -1;
     },
     formatTime() {
       let { hours, minutes, seconds } = this.selectedGame;
