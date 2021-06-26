@@ -70,11 +70,16 @@
                 <tbody>
                   <tr v-for="player in selectedGame.players" :key="player">
                     <td>
-                      <img :class="`m-4 h-10 w-10 rounded-full ring-2 ring-offset-2 ring-offset-gray-900 ring-${isAlive(player) ? 'green' : 'red'}-500`" :src="'https://cravatar.eu/helmavatar/' + player + '/96'" alt="">
+                      <img :class="`m-4 h-10 w-10 rounded-full ring-2 ring-offset-2 ring-offset-gray-900 ring-${isScheduled(selectedGame) ? 'grey' : isAlive(player) ? 'green' : 'red'}-500`" :src="'https://cravatar.eu/helmavatar/' + player + '/96'" alt="">
                     </td>
                     <td>
                       <div class="flex">
                         {{ getUsernameByUuid(player) }}
+                      </div>
+                      <div v-if="isScheduled(selectedGame)">
+                        <div class="text-grey-500 font-bold">
+                          Participant
+                        </div>
                       </div>
                       <div v-if="isAlive(player)">
                         <div class="text-green-500 font-bold">
