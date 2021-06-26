@@ -9,7 +9,7 @@
     "dotenv": "^10.0.0",
     "fastify": "^3.18.0",
     "fastify-cors": "^6.0.1",
-    "mongoose": "^5.12.9",
+    "mongoose": "^5.12.15",
     "typescript": "^4.3.4",
     "uuid-mongodb": "^2.4.4"
   },
