@@ -81,7 +81,7 @@
                           Participant
                         </div>
                       </div>
-                      <div v-if="isAlive(player)">
+                      <div v-else-if="isAlive(player)">
                         <div class="text-green-500 font-bold">
                           Joueur en vie
                         </div>
