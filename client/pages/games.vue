@@ -27,8 +27,8 @@
         </div>
       </div>
       <div class="py-6 max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
-        <div v-if="selectedGame" class="md:grid md:grid-rows-3 md:grid-flow-col gap-4">
-          <div class="row-span-3 mb-4 md:mb-0">
+        <div v-if="selectedGame" class="md:grid md:grid-flow-col gap-4">
+          <div class="col-span-4 mb-4 md:mb-0">
             <div class="bg-gray-900 border border-gray-500 rounded shadow text-white">
               <div class="w-full p-4">
                 <div class="font-bold text-lg text-center">
@@ -61,12 +61,12 @@
               </div>
             </div>
           </div>
-          <div class="col-span-2 mb-4 md:mb-0">
-            <div class="border border-gray-500 rounded bg-gray-900 text-white h-full">
+          <div class="col-span-4 mb-4 md:mb-0">
+            <div class="border border-gray-500 rounded bg-gray-900 text-white h-full p-3">
               <div class="flex font-bold text-lg justify-center p-4">
                 Joueurs
               </div>
-              <table class="table-auto mb-3">
+              <table class="table-auto">
                 <tbody>
                   <tr v-for="player in selectedGame.players" :key="player">
                     <td>
