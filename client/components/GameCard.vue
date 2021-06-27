@@ -13,10 +13,10 @@
         <img v-for="player in game.players.slice(0, 7)" :key="player" class="inline-block h-6 w-6 rounded-full ring-2 ring-gray-800" :src="'https://cravatar.eu/helmavatar/' + player + '/96'" alt="">
       </div>
       <div v-if="isScheduled(game)" class="text-gray-300 font-light text-sm">
-        <font-awesome-icon :icon="faClock" /> dans {{ format(game.scheduleDate) }}
+        <font-awesome-icon :icon="faClock" /> {{ format(game.scheduleDate) }}
       </div>
       <div v-else class="text-gray-300 font-light text-sm">
-        <font-awesome-icon :icon="faClock" /> il y a {{ format(game.archiveDate) }}
+        <font-awesome-icon :icon="faClock" /> {{ format(game.archiveDate) }}
       </div>
     </div>
   </div>
@@ -41,7 +41,7 @@ export default {
       return game.archiveDate !== -1;
     },
     format: (timestamp) => {
-      return moment.duration(Date.now() - timestamp).humanize();
+      return moment(timestamp).fromNow();
     },
     isScheduled(game) {
       return game.startDate === -1 && game.scheduleDate !== -1;
