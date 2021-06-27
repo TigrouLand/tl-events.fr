@@ -8,9 +8,9 @@
           <font-awesome-icon v-else :icon="faGamepad" class="text-green-500" />
           {{ game.name }} [#{{ game.id }}]
         </div>
-        <div class="flex px-2 -space-x-1 overflow-hidden">
-          <img v-for="player in game.players.slice(0, 5)" :key="player" class="inline-block h-6 w-6 rounded-full ring-2 ring-gray-800" :src="'https://cravatar.eu/helmavatar/' + player + '/96'" alt="">
-        </div>
+      </div>
+      <div class="py-1 -space-x-1 overflow-hidden">
+        <img v-for="player in game.players.slice(0, 7)" :key="player" class="inline-block h-6 w-6 rounded-full ring-2 ring-gray-800" :src="'https://cravatar.eu/helmavatar/' + player + '/96'" alt="">
       </div>
       <div v-if="isScheduled(game)" class="text-gray-300 font-light text-sm">
         <font-awesome-icon :icon="faClock" /> dans {{ format(game.scheduleDate) }}
