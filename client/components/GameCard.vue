@@ -6,7 +6,7 @@
           <font-awesome-icon v-if="isScheduled(game)" :icon="faClock" class="text-gray-400" />
           <font-awesome-icon v-else-if="isArchived(game)" :icon="faArchive" class="text-gray-400" />
           <font-awesome-icon v-else :icon="faGamepad" class="text-green-500" />
-          {{ game.name }}
+          {{ game.name }} [#{{ game.id }}]
         </div>
         <div class="flex px-2 -space-x-1 overflow-hidden">
           <img v-for="player in game.players.slice(0, 5)" :key="player" class="inline-block h-6 w-6 rounded-full ring-2 ring-gray-800" :src="'https://cravatar.eu/helmavatar/' + player + '/96'" alt="">
