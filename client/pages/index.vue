@@ -132,6 +132,6 @@ export default {
 
 <style scoped>
 .background {
-  background: url("~/assets/background.png");
+  background: url("~/assets/background.png") center no-repeat;
 }
 </style>
