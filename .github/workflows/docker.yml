@@ -3,7 +3,7 @@ name: Docker
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   push:
@@ -14,6 +14,7 @@ jobs:
 
       - name: Build image
         run: docker build -t romitou/eventsstats:latest .
+        working-directory: ./server
 
       - name: Log in to registry
         run: echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u romitou --password-stdin
