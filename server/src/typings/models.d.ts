@@ -19,7 +19,6 @@ export interface ModifierDocument extends Document {
 
 export interface GameDocument extends Document {
   name: string;
-  type: string;
   id: number;
   logs: string[];
   states: string[];

@@ -12,7 +12,6 @@ const teamSchema = new Schema<TeamDocument>({
 
 const gameSchema = new Schema<GameDocument>({
   id: Number,
-  type: String,
   players: [Schema.Types.Mixed],
   alive: [Schema.Types.Mixed],
   startDate: Number,
