@@ -181,7 +181,7 @@ export default {
       if (seconds < 9)
         seconds = `0${seconds}`;
       return `${hours}:${minutes}:${seconds}`;
-    },
+    }
   }
 };
 </script>
