@@ -47,10 +47,6 @@
                   Partie en cours
                 </div>
                 <div>
-                  <font-awesome-icon :icon="faGamepad" class="text-white" />
-                  <span class="font-medium">Type de jeu :</span> {{ formatType() }}
-                </div>
-                <div>
                   <font-awesome-icon :icon="faUsers" class="text-white" />
                   <span class="font-medium">Participants :</span> {{ selectedGame.players.length }}
                 </div>
@@ -186,20 +182,6 @@ export default {
         seconds = `0${seconds}`;
       return `${hours}:${minutes}:${seconds}`;
     },
-    formatType() {
-      if (this.selectedGame && this.selectedGame.type) {
-        const { type } = this.selectedGame;
-        if (type === 'UHC_RUN')
-          return 'UHC-Run';
-        // String to PascalCase: https://stackoverflow.com/a/53952925
-        return type
-          .replace(/[-_]+/g, ' ')
-          .replace(/[^\w\s]/g, '')
-          .replace(/\s+(.)(\w+)/g, (_$1, $2, $3) => `${$2.toUpperCase() + $3.toLowerCase()}`)
-          .replace(/\s/g, '')
-          .replace(/\w/, s => s.toUpperCase());
-      }
-    }
   }
 };
 </script>
