@@ -1,0 +1,22 @@
+name: Docker
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Build image
+        run: docker build -t romitou/eventsstats:latest .
+
+      - name: Log in to registry
+        run: echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u romitou --password-stdin
+
+      - name: Push image
+        run: docker push romitou/eventsstats:latest
