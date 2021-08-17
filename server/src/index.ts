@@ -64,7 +64,7 @@ async function start(): Promise<void> {
     useUnifiedTopology: true,
     useFindAndModify: false,
   });
-  await server.listen(process.env.APP_PORT ?? 7070);
+  await server.listen(process.env.APP_PORT ?? 7070, process.env.APP_ADDRESS ?? '0.0.0.0');
 }
 
 void start();
