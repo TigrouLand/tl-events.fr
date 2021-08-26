@@ -11,8 +11,8 @@
               <nuxt-link to="/" :class="getDeskNavClass($route.name === 'index')" aria-current="page">
                 Accueil
               </nuxt-link>
-              <nuxt-link to="/players" :class="getDeskNavClass($route.name === 'players')">
-                Joueurs
+              <nuxt-link to="/members" :class="getDeskNavClass($route.name === 'members')">
+                Membres
               </nuxt-link>
               <nuxt-link to="/modifiers" :class="getDeskNavClass($route.name === 'modifiers')">
                 Scénarios
@@ -67,8 +67,8 @@
           <nuxt-link to="/" :class="getMobileNavClass($route.name === 'index')">
             Accueil
           </nuxt-link>
-          <nuxt-link to="/players" :class="getMobileNavClass($route.name === 'players')">
-            Joueurs
+          <nuxt-link to="/members" :class="getMobileNavClass($route.name === 'members')">
+            Membres
           </nuxt-link>
           <nuxt-link to="/modifiers" :class="getMobileNavClass($route.name === 'modifiers')">
             Scénarios

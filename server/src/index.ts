@@ -25,7 +25,7 @@ server.get('/', async (_req: FastifyRequest, reply: FastifyReply) => reply.send(
   stats: '/stats',
 }));
 
-server.get('/players', async (_req: FastifyRequest, reply: FastifyReply) => {
+server.get('/members', async (_req: FastifyRequest, reply: FastifyReply) => {
   const players = await Player.find({}, ['name', 'uuid', 'rank', 'kills', 'deaths', 'wins']).sort([['wins', -1]]);
   for (const player of players) {
     if (player.uuid)
@@ -52,10 +52,10 @@ server.get('/games', async (_req: FastifyRequest, reply: FastifyReply) => {
 });
 
 server.get('/stats', async (_req: FastifyRequest, reply: FastifyReply) => {
-  const players = await Player.estimatedDocumentCount();
+  const members = await Player.estimatedDocumentCount();
   const modifiers = await Modifier.estimatedDocumentCount();
   const games = await Game.estimatedDocumentCount();
-  return reply.send({ players, modifiers, games });
+  return reply.send({ members, modifiers, games });
 });
 
 async function start(): Promise<void> {

@@ -9,7 +9,7 @@
       >
     </div>
     <ul class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 mx-5 lg:mx-0">
-      <PlayerCard v-for="player in displayedPlayers" :key="player._id" :player="player" />
+      <PlayerCard v-for="member in displayedMembers" :key="member._id" :player="member" />
     </ul>
   </div>
 </template>
@@ -19,17 +19,17 @@ import Levenshtein from 'levenshtein';
 import PlayerCard from '../components/PlayerCard';
 
 export default {
-  name: 'Players',
+  name: 'Members',
   components: { PlayerCard },
   data: () => {
     return {
-      players: undefined,
-      displayedPlayers: undefined,
+      members: undefined,
+      displayedMembers: undefined,
       search: undefined
     };
   },
   head: {
-    title: 'Joueurs'
+    title: 'Membres'
   },
   mounted() {
     this.fetchPlayers();
@@ -38,18 +38,18 @@ export default {
     fetchPlayers() {
       this.$nuxt.$nextTick(async () => {
         this.$nuxt.$loading.start();
-        const { players } = await this.$axios.$get('/players').catch(this.$nuxt.$loading.fail);
-        this.players = this.displayedPlayers = players;
+        const { members } = await this.$axios.$get('/members').catch(this.$nuxt.$loading.fail);
+        this.members = this.displayedMembers = members;
         this.$nuxt.$loading.finish();
       });
     },
     searchPlayers() {
       if (!this.search) {
-        this.displayedPlayers = this.players;
+        this.displayedMembers = this.members;
         return;
       }
       const search = this.search.toLowerCase();
-      this.displayedPlayers = this.players.filter(player => player.name.toLowerCase().startsWith(search) || new Levenshtein(player.name.toLowerCase(), search).distance < 5);
+      this.displayedMembers = this.members.filter(member => member.name.toLowerCase().startsWith(search) || new Levenshtein(member.name.toLowerCase(), search).distance < 5);
     }
   }
 };

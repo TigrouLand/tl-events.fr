@@ -16,12 +16,12 @@
           </div>
           <div class="ml-16 pb-6 flex items-baseline sm:pb-7">
             <p class="text-sm font-medium text-white">
-              Joueurs uniques
+              Membres uniques
             </p>
             <div class="absolute bottom-0 inset-x-0 bg-gray-700 px-4 py-4 sm:px-6">
               <div class="text-sm">
-                <nuxt-link to="/players" class="font-medium text-white hover:text-gray-200">
-                  Voir tout <font-awesome-icon :icon="faArrowRight" />
+                <nuxt-link to="/members" class="font-medium text-white hover:text-gray-200">
+                  Voir leurs statistiques <font-awesome-icon :icon="faArrowRight" />
                 </nuxt-link>
               </div>
             </div>
@@ -43,7 +43,7 @@
             <div class="absolute bottom-0 inset-x-0 bg-gray-700 px-4 py-4 sm:px-6">
               <div class="text-sm">
                 <nuxt-link to="/modifiers" class="font-medium text-white hover:text-gray-200">
-                  Voir tout <font-awesome-icon :icon="faArrowRight" />
+                  Voir la liste complète <font-awesome-icon :icon="faArrowRight" />
                 </nuxt-link>
               </div>
             </div>
@@ -65,7 +65,7 @@
             <div class="absolute bottom-0 inset-x-0 bg-gray-700 px-4 py-4 sm:px-6">
               <div class="text-sm">
                 <nuxt-link to="/games" class="font-medium text-white hover:text-gray-200">
-                  Voir tout <font-awesome-icon :icon="faArrowRight" />
+                  Voir les résumés détaillés <font-awesome-icon :icon="faArrowRight" />
                 </nuxt-link>
               </div>
             </div>
