@@ -119,7 +119,7 @@ export default {
   data() {
     return {
       games: [],
-      players: [],
+      members: [],
       archivedGames: [],
       selectedGame: null,
       interval: null
@@ -148,13 +148,13 @@ export default {
         const { games, archivedGames } = await this.$axios.$get('/games').catch(this.$nuxt.$loading.fail);
         this.games = games;
         this.archivedGames = archivedGames;
-        const { players } = await this.$axios.$get('/players').catch(this.$nuxt.$loading.fail);
-        this.players = this.displayedPlayers = players;
+        const { members } = await this.$axios.$get('/members').catch(this.$nuxt.$loading.fail);
+        this.members = members;
         this.$nuxt.$loading.finish();
       });
     },
     getUsernameByUuid(uuid) {
-      return this.players.find(p => p.uuid === uuid)?.name;
+      return this.members.find(p => p.uuid === uuid)?.name;
     },
     async refreshGames() {
       const { games, archivedGames } = await this.$axios.$get('/games').catch(this.$nuxt.$loading.fail);

@@ -19,19 +19,19 @@ void server.register(fastifyCors, {
 });
 
 server.get('/', async (_req: FastifyRequest, reply: FastifyReply) => reply.send({
-  players: '/players',
+  members: '/members',
   modifiers: '/modifiers',
   games: '/games',
   stats: '/stats',
 }));
 
 server.get('/members', async (_req: FastifyRequest, reply: FastifyReply) => {
-  const players = await Player.find({}, ['name', 'uuid', 'rank', 'kills', 'deaths', 'wins']).sort([['wins', -1]]);
-  for (const player of players) {
-    if (player.uuid)
-      player.uuid = MUUID.from(player.uuid).toString();
+  const members = await Player.find({}, ['name', 'uuid', 'rank', 'kills', 'deaths', 'wins']).sort([['wins', -1]]);
+  for (const member of members) {
+    if (member.uuid)
+      member.uuid = MUUID.from(member.uuid).toString();
   }
-  return reply.send({ players });
+  return reply.send({ members });
 });
 
 server.get('/modifiers', async (_req: FastifyRequest, reply: FastifyReply) => {
