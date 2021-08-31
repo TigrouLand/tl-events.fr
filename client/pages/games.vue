@@ -26,10 +26,10 @@
           <GameCard :game="game" />
         </div>
       </div>
-      <div class="py-6 max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
-        <div v-if="selectedGame" class="md:grid md:grid-flow-col gap-4">
+      <div v-if="selectedGame" class="py-6 max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
+        <div class="md:grid md:grid-flow-col gap-4 mb-4">
           <div class="col-span-4 mb-4 md:mb-0">
-            <div class="bg-gray-900 border border-gray-500 rounded shadow text-white">
+            <div class="bg-gray-900 border border-gray-500 rounded shadow h-full text-white">
               <div class="w-full p-4">
                 <div class="font-bold text-lg text-center">
                   {{ selectedGame.name }}
@@ -46,13 +46,17 @@
                   <font-awesome-icon :icon="faGamepad" class="text-green-500" />
                   Partie en cours
                 </div>
-                <div>
+                <div class="mb-1">
                   <font-awesome-icon :icon="faUsers" class="text-white" />
                   <span class="font-medium">Participants :</span> {{ selectedGame.players.length }}
                 </div>
-                <div v-if="isArchived(selectedGame)">
+                <div class="mb-1" v-if="isArchived(selectedGame)">
                   <font-awesome-icon :icon="faClock" class="text-white" />
                   <span class="font-medium">Temps de jeu :</span> {{ formatTime() }}
+                </div>
+                <div class="mb-1">
+                  <font-awesome-icon :icon="faPlug" class="text-white" />
+                  <span class="font-medium">Scénarios :</span> {{ selectedGame.modifiers.length }}
                 </div>
               </div>
             </div>
@@ -104,13 +108,23 @@
             </div>
           </div>
         </div>
+        <div class="bg-gray-900 border border-gray-500 rounded shadow h-full text-white">
+          <div class="w-full p-4">
+            <div class="font-bold text-lg text-center mb-4">
+              Scénarios
+            </div>
+            <ul class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 mx-5 lg:mx-0">
+              <ModifierCard v-for="modifier in selectedGame.modifiers" :key="modifier._id" :modifier="modifier" />
+            </ul>
+          </div>
+        </div>
       </div>
     </main>
   </div>
 </template>
 
 <script>
-import { faArchive, faClock, faGamepad, faUsers } from '@fortawesome/free-solid-svg-icons';
+import { faArchive, faClock, faGamepad, faUsers, faPlug } from '@fortawesome/free-solid-svg-icons';
 import GameCard from '../components/GameCard';
 
 export default {
@@ -132,7 +146,8 @@ export default {
     faUsers: () => faUsers,
     faGamepad: () => faGamepad,
     faArchive: () => faArchive,
-    faClock: () => faClock
+    faClock: () => faClock,
+    faPlug: () => faPlug
   },
   mounted() {
     this.fetch();
