@@ -10,6 +10,7 @@ const teamSchema = new Schema<TeamDocument>({
   channel: String,
 });
 
+// @ts-expect-error TS2589: Type instantiation is excessively deep and possibly infinite.
 const gameSchema = new Schema<GameDocument>({
   id: Number,
   players: [Schema.Types.Mixed],
