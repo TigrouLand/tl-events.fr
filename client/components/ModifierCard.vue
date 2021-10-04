@@ -7,7 +7,7 @@
           <h3 class="text-white font-medium truncate mr-2">
             {{ modifier.name }}
           </h3>
-          <ActiveBadge :active="modifier.enabled" />
+          <ActiveBadge v-if="showStatus" :active="modifier.enabled" />
         </div>
         <p class="mt-1 text-white text-sm truncate" v-html="getDescription(modifier)" />
       </div>
@@ -21,7 +21,7 @@ import ActiveBadge from './ActiveBadge';
 export default {
   name: 'ModifierCard',
   components: { ActiveBadge },
-  props: ['modifier'],
+  props: ['modifier', 'showStatus'],
   methods: {
     getDescription(modifier) {
       const desc = modifier.web || modifier.description;

@@ -9,7 +9,7 @@
       >
     </div>
     <ul class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 mx-5 lg:mx-0">
-      <ModifierCard v-for="modifier in displayedModifiers" :key="modifier._id" :modifier="modifier" />
+      <ModifierCard v-for="modifier in displayedModifiers" :key="modifier._id" :modifier="modifier" :show-status="false" />
     </ul>
   </div>
 </template>
