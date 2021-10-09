@@ -3,6 +3,7 @@ import fastify from 'fastify';
 import type { FastifyInstance, FastifyReply, FastifyRequest } from 'fastify';
 import fastifyCors from 'fastify-cors';
 import mongoose from 'mongoose';
+import { nanoid } from 'nanoid';
 import MUUID from 'uuid-mongodb';
 import Game from './models/game';
 import Modifier from './models/modifier';
@@ -11,11 +12,16 @@ import type { GameDocument } from './typings/models';
 
 const server: FastifyInstance = fastify({
   logger: true,
-  requestIdHeader: 'X-Request-Id',
+  genReqId: () => nanoid(),
 });
 
 void server.register(fastifyCors, {
   origin: '*',
+});
+
+server.addHook('onSend', async (req: FastifyRequest, reply: FastifyReply, payload) => {
+  await reply.header('x-request-id', req.id);
+  return payload;
 });
 
 server.get('/', async (_req: FastifyRequest, reply: FastifyReply) => reply.send({
