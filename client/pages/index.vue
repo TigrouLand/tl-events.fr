@@ -11,7 +11,7 @@
               <font-awesome-icon :icon="faUser" class="text-tigrouland" />
             </div>
             <p class="ml-16 text-2xl font-semibold text-white">
-              {{ players || '--' }}
+              {{ members || '--' }}
             </p>
           </div>
           <div class="ml-16 pb-6 flex items-baseline sm:pb-7">
@@ -83,7 +83,7 @@ export default {
   data: () => {
     return {
       interval: undefined,
-      players: undefined,
+      members: undefined,
       modifiers: undefined,
       games: undefined
     };
@@ -105,8 +105,8 @@ export default {
     fetchStats() {
       this.$nuxt.$nextTick(async () => {
         this.$nuxt.$loading.start();
-        const { players, modifiers, games } = await this.$axios.$get('/stats').catch(this.$nuxt.$loading.fail);
-        this.players = players;
+        const { members, modifiers, games } = await this.$axios.$get('/stats').catch(this.$nuxt.$loading.fail);
+        this.members = members;
         this.modifiers = modifiers;
         this.games = games;
         this.$nuxt.$loading.finish();
