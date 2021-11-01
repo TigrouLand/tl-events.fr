@@ -47,6 +47,10 @@
                   Partie en cours
                 </div>
                 <div class="mb-1">
+                  <font-awesome-icon :icon="faGamepad" class="text-white" />
+                  <span class="font-medium">Type de jeu :</span> {{ selectedGame._t }}
+                </div>
+                <div class="mb-1">
                   <font-awesome-icon :icon="faUsers" class="text-white" />
                   <span class="font-medium">Participants :</span> {{ selectedGame.players.length }}
                 </div>
