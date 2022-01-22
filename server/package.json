@@ -6,23 +6,23 @@
     "start": "yarn run clean && yarn run build && yarn run exec"
   },
   "dependencies": {
-    "dotenv": "^10.0.0",
-    "fastify": "^3.20.2",
-    "fastify-cors": "^6.0.2",
-    "mongoose": "^6.0.3",
-    "nanoid": "^3.1.31",
-    "typescript": "^4.4.2",
-    "uuid-mongodb": "^2.4.4"
+    "dotenv": "10.0.0",
+    "fastify": "3.22.1",
+    "fastify-cors": "6.0.2",
+    "mongoose": "6.0.12",
+    "nanoid": "3.1.31",
+    "typescript": "4.4.4",
+    "uuid-mongodb": "2.4.4"
   },
   "devDependencies": {
-    "@types/mongoose": "^5.11.97",
-    "@types/node": "^16.7.9",
-    "@typescript-eslint/eslint-plugin": "^4.30.0",
-    "@typescript-eslint/parser": "^4.30.0",
-    "eslint": "^7.32.0",
-    "eslint-config-noftalint": "^1.26.0",
-    "eslint-plugin-import": "^2.24.2",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-unicorn": "^35.0.0"
+    "@types/mongoose": "5.11.97",
+    "@types/node": "16.11.6",
+    "@typescript-eslint/eslint-plugin": "4.33.0",
+    "@typescript-eslint/parser": "4.33.0",
+    "eslint": "7.32.0",
+    "eslint-config-noftalint": "1.26.0",
+    "eslint-plugin-import": "2.25.2",
+    "eslint-plugin-node": "11.1.0",
+    "eslint-plugin-unicorn": "35.0.0"
   }
 }
