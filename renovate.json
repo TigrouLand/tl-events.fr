@@ -2,17 +2,16 @@
   "extends": [
     "config:base"
   ],
+  "groupName": "all dependencies",
+  "separateMajorMinor": false,
+  "groupSlug": "all",
   "packageRules": [
     {
       "matchPackagePatterns": [
         "*"
       ],
-      "matchUpdateTypes": [
-        "minor",
-        "patch"
-      ],
-      "groupName": "all non-major dependencies",
-      "groupSlug": "all-minor-patch"
+      "groupName": "all dependencies",
+      "groupSlug": "all"
     }
-  ]
+  ],
 }
