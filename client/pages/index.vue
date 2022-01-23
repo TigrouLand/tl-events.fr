@@ -80,6 +80,7 @@
 import { faUser, faArrowRight, faDice, faGamepad } from '@fortawesome/free-solid-svg-icons';
 
 export default {
+  name: 'IndexPage',
   data: () => {
     return {
       interval: undefined,

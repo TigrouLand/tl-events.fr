@@ -6,6 +6,9 @@
     "generate": "nuxt generate",
     "lint": "eslint --ext \".js,.vue\" ."
   },
+  "engines": {
+    "node": ">=16.0.0"
+  },
   "dependencies": {
     "@fortawesome/free-brands-svg-icons": "5.15.4",
     "@fortawesome/free-solid-svg-icons": "5.15.4",

@@ -106,6 +106,7 @@
 import { faDiscord, faTwitter, faGithub } from '@fortawesome/free-brands-svg-icons';
 
 export default {
+  name: 'DefaultLayout',
   data() {
     return {
       dropdown: false

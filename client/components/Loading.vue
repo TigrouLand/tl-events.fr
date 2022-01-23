@@ -28,6 +28,7 @@
 <script>
 
 export default {
+  name: 'LoadingPage',
   data: () => ({
     loading: false,
     error: false

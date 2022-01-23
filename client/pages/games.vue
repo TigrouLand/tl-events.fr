@@ -54,7 +54,7 @@
                   <font-awesome-icon :icon="faUsers" class="text-white" />
                   <span class="font-medium">Participants :</span> {{ selectedGame.players.length }}
                 </div>
-                <div class="mb-1" v-if="isArchived(selectedGame)">
+                <div v-if="isArchived(selectedGame)" class="mb-1">
                   <font-awesome-icon :icon="faClock" class="text-white" />
                   <span class="font-medium">Temps de jeu :</span> {{ formatTime() }}
                 </div>
@@ -132,7 +132,7 @@ import { faArchive, faClock, faGamepad, faUsers, faPlug } from '@fortawesome/fre
 import GameCard from '../components/GameCard';
 
 export default {
-  name: 'Games',
+  name: 'GamesPage',
   components: { GameCard },
   data() {
     return {

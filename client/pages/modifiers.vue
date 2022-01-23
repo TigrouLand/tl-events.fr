@@ -19,7 +19,7 @@ import Levenshtein from 'levenshtein';
 import ModifierCard from '../components/ModifierCard';
 
 export default {
-  name: 'Modifiers',
+  name: 'ModifierPage',
   components: { ModifierCard },
   data: () => {
     return {

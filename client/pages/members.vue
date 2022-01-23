@@ -19,7 +19,7 @@ import Levenshtein from 'levenshtein';
 import PlayerCard from '../components/PlayerCard';
 
 export default {
-  name: 'Members',
+  name: 'MembersPage',
   components: { PlayerCard },
   data: () => {
     return {
