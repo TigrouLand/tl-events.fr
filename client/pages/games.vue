@@ -198,7 +198,7 @@ export default {
       return game.startDate === -1 && game.scheduleDate !== -1;
     },
     formatDate(date) {
-      return unix(date / 1000).format('DD/MM/YYYY HH:mm');
+      return unix(date / 1000).format('DD/MM/YYYY à HH:mm');
     },
     formatTime() {
       let { hours, minutes, seconds } = this.selectedGame;
