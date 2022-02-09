@@ -48,7 +48,7 @@
                 </div>
                 <div class="mb-1">
                   <font-awesome-icon :icon="faGamepad" class="text-white" />
-                  <span class="font-medium">Type de jeu :</span> {{ selectedGame._t }}
+                  <span class="font-medium">Type de jeu :</span> {{ selectedGame._t === "UHCRun" ? "UHC-Run" : selectedGame._t }}
                 </div>
                 <div class="mb-1">
                   <font-awesome-icon :icon="faUsers" class="text-white" />
@@ -57,6 +57,10 @@
                 <div v-if="isArchived(selectedGame)" class="mb-1">
                   <font-awesome-icon :icon="faClock" class="text-white" />
                   <span class="font-medium">Temps de jeu :</span> {{ formatTime() }}
+                </div>
+                <div class="mb-1">
+                  <font-awesome-icon :icon="faCalendar" class="text-white" />
+                  <span class="font-medium">Date de début :</span> {{ formatDate(selectedGame.startDate) }}
                 </div>
                 <div class="mb-1">
                   <font-awesome-icon :icon="faPlug" class="text-white" />
@@ -128,7 +132,8 @@
 </template>
 
 <script>
-import { faArchive, faClock, faGamepad, faUsers, faPlug } from '@fortawesome/free-solid-svg-icons';
+import { faArchive, faClock, faGamepad, faUsers, faPlug, faCalendar } from '@fortawesome/free-solid-svg-icons';
+import { unix } from 'moment';
 import GameCard from '../components/GameCard';
 
 export default {
@@ -151,7 +156,8 @@ export default {
     faGamepad: () => faGamepad,
     faArchive: () => faArchive,
     faClock: () => faClock,
-    faPlug: () => faPlug
+    faPlug: () => faPlug,
+    faCalendar: () => faCalendar
   },
   mounted() {
     this.fetch();
@@ -190,6 +196,9 @@ export default {
     },
     isScheduled(game) {
       return game.startDate === -1 && game.scheduleDate !== -1;
+    },
+    formatDate(date) {
+      return unix(date / 1000).format('DD/MM/YYYY HH:mm');
     },
     formatTime() {
       let { hours, minutes, seconds } = this.selectedGame;
