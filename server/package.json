@@ -7,7 +7,7 @@
   },
   "dependencies": {
     "dotenv": "16.0.0",
-    "fastify": "3.27.4",
+    "fastify": "3.28.0",
     "fastify-cors": "6.0.3",
     "mongoose": "6.2.10",
     "nanoid": "3.3.2",
