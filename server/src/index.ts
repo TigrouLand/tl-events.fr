@@ -1,7 +1,7 @@
 import 'dotenv/config';
+import fastifyCors from '@fastify/cors';
 import fastify from 'fastify';
 import type { FastifyInstance, FastifyReply, FastifyRequest } from 'fastify';
-import fastifyCors from 'fastify-cors';
 import mongoose from 'mongoose';
 import { nanoid } from 'nanoid';
 import MUUID from 'uuid-mongodb';

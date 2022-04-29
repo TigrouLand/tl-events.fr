@@ -6,9 +6,9 @@
     "start": "yarn run clean && yarn run build && yarn run exec"
   },
   "dependencies": {
+    "@fastify/cors": "^7.0.0",
     "dotenv": "16.0.0",
     "fastify": "3.29.0",
-    "fastify-cors": "6.1.0",
     "mongoose": "6.3.1",
     "nanoid": "3.3.3",
     "typescript": "4.6.4",
