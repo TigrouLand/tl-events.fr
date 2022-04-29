@@ -6,7 +6,7 @@
     "start": "yarn run clean && yarn run build && yarn run exec"
   },
   "dependencies": {
-    "@fastify/cors": "^7.0.0",
+    "@fastify/cors": "7.0.0",
     "dotenv": "16.0.0",
     "fastify": "3.29.0",
     "mongoose": "6.3.1",
