@@ -9,7 +9,7 @@
     "@fastify/cors": "7.0.0",
     "dotenv": "16.0.0",
     "fastify": "3.29.0",
-    "mongoose": "6.3.1",
+    "mongoose": "6.3.2",
     "nanoid": "3.3.3",
     "typescript": "4.6.4",
     "uuid-mongodb": "2.5.1"
