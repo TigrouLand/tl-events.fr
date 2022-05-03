@@ -10,7 +10,7 @@
     "dotenv": "16.0.0",
     "fastify": "3.29.0",
     "mongoose": "6.3.2",
-    "nanoid": "3.3.3",
+    "nanoid": "3.3.4",
     "typescript": "4.6.4",
     "uuid-mongodb": "2.5.1"
   },
