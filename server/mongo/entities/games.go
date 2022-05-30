@@ -6,6 +6,9 @@ import (
 )
 
 type ArchivedGame struct {
+	ID   int8   `bson:"id" json:"id"`
+	Name string `bson:"name" json:"name"`
+
 	Type   string `bson:"type" json:"type"`
 	Status string `bson:"status" json:"status"`
 
@@ -29,6 +32,9 @@ type ArchivedGame struct {
 }
 
 type Game struct {
+	ID   int8   `bson:"id" json:"id"`
+	Name string `bson:"name" json:"name"`
+
 	Type   string `bson:"type" json:"type"`
 	Status string `bson:"status" json:"status"`
 

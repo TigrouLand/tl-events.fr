@@ -48,7 +48,7 @@
                 </div>
                 <div class="mb-1">
                   <font-awesome-icon :icon="faGamepad" class="text-white" />
-                  <span class="font-medium">Type de jeu :</span> {{ selectedGame._t === "UHCRun" ? "UHC-Run" : selectedGame._t }}
+                  <span class="font-medium">Type de jeu :</span> {{ selectedGame.type }}
                 </div>
                 <div class="mb-1">
                   <font-awesome-icon :icon="faUsers" class="text-white" />
@@ -173,8 +173,7 @@ export default {
         const { games, archivedGames } = await this.$axios.$get('/games').catch(this.$nuxt.$loading.fail);
         this.games = games;
         this.archivedGames = archivedGames;
-        const { members } = await this.$axios.$get('/members').catch(this.$nuxt.$loading.fail);
-        this.members = members;
+        this.members = await this.$axios.$get('/members').catch(this.$nuxt.$loading.fail);
         this.$nuxt.$loading.finish();
       });
     },

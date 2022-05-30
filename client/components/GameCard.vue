@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-gray-800 border border-gray-500 rounded shadow">
+  <button class="bg-gray-800 border border-gray-500 rounded shadow w-full justify-start text-left">
     <div class="w-full p-2">
       <div class="flex">
         <div class="text-white font-medium">
@@ -9,17 +9,17 @@
           {{ game.name }} [#{{ game.id }}]
         </div>
       </div>
-      <div class="py-1 -space-x-1 overflow-hidden">
+      <div class="py-1 -space-x-1 overflow-hidden justify-start text-left">
         <img v-for="player in game.players.slice(0, 7)" :key="player" class="inline-block h-6 w-6 rounded-full ring-2 ring-gray-800" :src="'https://cravatar.eu/helmavatar/' + player + '/96'" alt="">
       </div>
-      <div v-if="isScheduled(game)" class="text-gray-300 font-light text-sm">
+      <div v-if="isScheduled(game)" class="text-gray-300 font-light text-sm justify-start text-left">
         <font-awesome-icon :icon="faClock" /> {{ format(game.scheduleDate) }}
       </div>
-      <div v-else class="text-gray-300 font-light text-sm">
+      <div v-else class="text-gray-300 font-light text-sm justify-start text-left">
         <font-awesome-icon :icon="faClock" /> {{ format(game.archiveDate) }}
       </div>
     </div>
-  </div>
+  </button>
 </template>
 
 <script>
