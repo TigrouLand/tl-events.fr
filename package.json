@@ -7,7 +7,7 @@
   "scripts": {
     "c:i": "cd client && yarn install",
     "c:g": "cd client && yarn run generate",
-    "s:i": "cd server && yarn install",
-    "s:s": "cd server && yarn start"
+    "s:i": "cd server_old && yarn install",
+    "s:s": "cd server_old && yarn start"
   }
 }

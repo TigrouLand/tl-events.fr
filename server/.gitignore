@@ -1,8 +1,0 @@
-# Exclude dist builded folder
-dist
-
-# Exclude .env file
-.env
-
-# Exclude node modules
-node_modules
