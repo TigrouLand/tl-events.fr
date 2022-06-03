@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"github.com/tigrouland/eventsstats/server/mongo"
 	"github.com/tigrouland/eventsstats/server/routes"
@@ -13,6 +14,9 @@ func main() {
 
 	// setup web server
 	r := gin.Default()
+
+	r.Use(cors.Default())
+
 	r.GET("/", routes.Main)
 	r.GET("/members", routes.Members)
 	r.GET("/modifiers", routes.Modifiers)
