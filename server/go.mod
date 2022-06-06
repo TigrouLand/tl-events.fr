@@ -4,7 +4,7 @@ go 1.16
 
 require (
 	github.com/gin-contrib/cors v1.3.1
-	github.com/gin-gonic/gin v1.8.0
+	github.com/gin-gonic/gin v1.8.1
 	github.com/golang/protobuf v1.5.2 // indirect
 	github.com/google/uuid v1.3.0
 	github.com/json-iterator/go v1.1.12 // indirect
