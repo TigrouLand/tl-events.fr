@@ -7,6 +7,7 @@ import (
 
 type Player struct {
 	Name        string           `bson:"name" json:"name"`
+	Rank        string           `bson:"rank" json:"rank"`
 	UUID        primitive.Binary `bson:"uuid" json:"-"`
 	DecodedUUID uuid.UUID        `json:"uuid"`
 	Kills       int16            `bson:"kills" json:"kills"`
