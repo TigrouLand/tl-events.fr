@@ -7,6 +7,7 @@ import (
 	"github.com/tigrouland/eventsstats/server/mongo"
 	"github.com/tigrouland/eventsstats/server/mongo/entities"
 	"go.mongodb.org/mongo-driver/bson"
+	"go.mongodb.org/mongo-driver/mongo/options"
 	"log"
 	"time"
 )
@@ -14,7 +15,7 @@ import (
 func Members(c *gin.Context) {
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	defer cancel()
-	cursor, err := mongo.Get().Collection("players").Find(ctx, bson.D{})
+	cursor, err := mongo.Get().Collection("players").Find(ctx, bson.D{}, options.Find().SetSort(bson.D{{"wins", -1}, {"kills", -1}}))
 	if err != nil {
 		log.Fatal("an error occurred while retrieving the players' data: ", err)
 	}
