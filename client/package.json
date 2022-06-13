@@ -15,7 +15,7 @@
     "@nuxtjs/axios": "5.13.6",
     "@nuxtjs/fontawesome": "1.1.2",
     "@nuxtjs/pwa": "3.3.5",
-    "core-js": "3.22.8",
+    "core-js": "3.23.0",
     "levenshtein": "1.0.5",
     "moment": "2.29.3",
     "nuxt": "2.15.8"
