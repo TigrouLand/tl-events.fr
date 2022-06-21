@@ -32,7 +32,7 @@ export default {
       {
         hid: 'twitter:url',
         name: 'twitter:url',
-        content: 'https://events.romitou.fr'
+        content: 'https://tl-events.fr'
       },
       {
         hid: 'twitter:title',
@@ -48,7 +48,7 @@ export default {
       {
         hid: 'twitter:image',
         name: 'twitter:image',
-        content: 'https://events.romitou.fr/icon.png'
+        content: 'https://tl-events.fr/icon.png'
       },
       {
         hid: 'og:site_name',
@@ -63,7 +63,7 @@ export default {
       {
         hid: 'og:url',
         property: 'og:url',
-        content: 'https://events.romitou.fr'
+        content: 'https://tl-events.fr'
       },
       {
         hid: 'og:title',
@@ -79,12 +79,12 @@ export default {
       {
         hid: 'og:image',
         property: 'og:image',
-        content: 'https://events.romitou.fr/icon.png'
+        content: 'https://tl-events.fr/icon.png'
       },
       {
         hid: 'og:image:secure_url',
         property: 'og:image:secure_url',
-        content: 'https://events.romitou.fr/icon.png'
+        content: 'https://tl-events.fr/icon.png'
       }
     ],
     link: [
@@ -123,7 +123,7 @@ export default {
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    baseURL: 'https://api-events.romitou.fr'
+    baseURL: 'https://api.tl-events.fr'
   },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa

@@ -117,7 +117,7 @@ export default {
       const writingArea = document.getElementById('typewriting');
       if (!writingArea)
         return;
-      const letters = 'events.romitou.fr'.split('');
+      const letters = 'tl-events.fr'.split('');
       this.interval = setInterval(() => {
         const letter = letters.shift();
         if (!letter) {
