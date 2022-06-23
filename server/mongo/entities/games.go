@@ -9,7 +9,7 @@ type ArchivedGame struct {
 	ID   int8   `bson:"id" json:"id"`
 	Name string `bson:"name" json:"name"`
 
-	Type   string `bson:"type" json:"type"`
+	Type   string `bson:"_t" json:"type"`
 	Status string `bson:"status" json:"status"`
 
 	Alive     []primitive.Binary `bson:"alive" json:"-"`
