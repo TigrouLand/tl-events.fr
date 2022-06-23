@@ -21,8 +21,11 @@
       </div>
     </div>
     <main class="flex-1 relative overflow-y-auto focus:outline-none bg-gray-800">
-      <div class="md:hidden items-center flex overflow-visible overflow-x-scroll bg-gray-900">
-        <div v-for="game in archivedGames" :key="game._id" class="px-4 py-3 bg-gray-900" @click="selectedGame = game;">
+      <div class="md:hidden items-center flex bg-gray-900 overflow-x-auto">
+        <div v-for="game in games" :key="game._id" class="flex flex-shrink-0 px-4 py-3 bg-gray-900" @click="selectedGame = game;">
+          <GameCard :game="game" />
+        </div>
+        <div v-for="game in archivedGames" :key="game._id" class="flex flex-shrink-0 px-4 py-3 bg-gray-900" @click="selectedGame = game;">
           <GameCard :game="game" />
         </div>
       </div>
@@ -48,11 +51,11 @@
                 </div>
                 <div class="mb-1">
                   <font-awesome-icon :icon="faGamepad" class="text-white" />
-                  <span class="font-medium">Type de jeu :</span> {{ selectedGame.type }}
+                  <span class="font-medium">Type de jeu :</span> {{ formatEventType(selectedGame.type) }}
                 </div>
                 <div class="mb-1">
                   <font-awesome-icon :icon="faUsers" class="text-white" />
-                  <span class="font-medium">Participants :</span> {{ selectedGame.players.length }}
+                  <span class="font-medium">Participants :</span> {{ selectedGame.players ? selectedGame.players.length : 0 }}
                 </div>
                 <div v-if="isArchived(selectedGame)" class="mb-1">
                   <font-awesome-icon :icon="faClock" class="text-white" />
@@ -64,7 +67,7 @@
                 </div>
                 <div class="mb-1">
                   <font-awesome-icon :icon="faPlug" class="text-white" />
-                  <span class="font-medium">Scénarios :</span> {{ selectedGame.modifiers.length }}
+                  <span class="font-medium">Scénarios :</span> {{ selectedGame.modifiers ? selectedGame.modifiers.length : 0 }}
                 </div>
               </div>
             </div>
@@ -208,6 +211,14 @@ export default {
       if (seconds < 9)
         seconds = `0${seconds}`;
       return `${hours}:${minutes}:${seconds}`;
+    },
+    formatEventType(type) {
+      switch (type) {
+        case 'UHC_RUN':
+          return 'UHC Run';
+        default:
+          return type || 'Inconnu';
+      }
     }
   }
 };
