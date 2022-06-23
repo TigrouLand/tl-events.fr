@@ -215,7 +215,7 @@ export default {
     formatEventType(type) {
       switch (type) {
         case 'UHC_RUN':
-          return 'UHC Run';
+          return 'UHC-Run';
         default:
           return type || 'Inconnu';
       }
