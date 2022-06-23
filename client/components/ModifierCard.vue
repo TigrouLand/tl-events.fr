@@ -9,7 +9,7 @@
           </h3>
           <ActiveBadge v-if="showStatus" :active="modifier.enabled" />
         </div>
-        <p class="mt-1 text-white text-sm truncate" v-html="getDescription(modifier)" />
+        <p class="mt-1 text-white text-sm" v-html="getDescription(modifier)" />
       </div>
     </div>
   </li>
@@ -25,10 +25,9 @@ export default {
   methods: {
     getDescription(modifier) {
       const desc = modifier.web || modifier.description;
-      let computed = desc.slice(0, 3).join('<br>');
+      let computed = desc.join('<br>');
       computed = computed.replace(/§./g, '');
-      computed = computed.replace(/\(.+\)/g, '');
-      return computed + (desc.length > 3 ? computed.endsWith('.') ? '..' : '...' : '');
+      return computed.replace(/\(.+\)/g, '');
     }
   }
 };
