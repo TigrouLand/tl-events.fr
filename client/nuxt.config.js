@@ -17,7 +17,7 @@ export default {
         hid: 'description',
         name: 'description',
         content: 'Des parties privées de type UHC sur Minecraft ! ' +
-          'Modes de jeux : LG-UHC, Switch, TaupeGun, et bien plus encore !'
+          'Modes de jeu : LG-UHC, Switch, TaupeGun, et bien plus encore !'
       },
       {
         hid: 'twitter:card',
@@ -43,7 +43,7 @@ export default {
         hid: 'twitter:description',
         name: 'twitter:description',
         content: 'Des parties privées de type UHC sur Minecraft ! ' +
-          'Modes de jeux : LG-UHC, Switch, TaupeGun, et bien plus encore !'
+          'Modes de jeu : LG-UHC, Switch, TaupeGun, et bien plus encore !'
       },
       {
         hid: 'twitter:image',
@@ -74,7 +74,7 @@ export default {
         hid: 'og:description',
         property: 'og:description',
         content: 'Des parties privées de type UHC sur Minecraft ! ' +
-          'Modes de jeux : LG-UHC, Switch, TaupeGun, et bien plus encore !'
+          'Modes de jeu : LG-UHC, Switch, TaupeGun, et bien plus encore !'
       },
       {
         hid: 'og:image',
