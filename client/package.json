@@ -17,7 +17,7 @@
     "@nuxtjs/pwa": "3.3.5",
     "core-js": "3.23.3",
     "levenshtein": "1.0.5",
-    "moment": "2.29.3",
+    "moment": "2.29.4",
     "nuxt": "2.15.8"
   },
   "devDependencies": {
