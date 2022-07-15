@@ -137,5 +137,9 @@ export default {
   build: {
   },
 
+  tailwindcss: {
+    configPath: '~/tailwind.config.js'
+  },
+
   loading: '~/components/Loading.vue'
 };
