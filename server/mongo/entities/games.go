@@ -18,7 +18,7 @@ type ArchivedGame struct {
 	Players     []primitive.Binary `bson:"players" json:"-"`
 	PlayersUUID []uuid.UUID        `json:"players"`
 
-	Modifiers []Modifier `bson:"modifiers" json:"modifiers"`
+	Modifiers []string `bson:"modifiers" json:"modifiers"`
 
 	Logs []string `bson:"logs" json:"logs"`
 
