@@ -4,15 +4,15 @@
       <div class="flex flex-col w-64">
         <div class="flex flex-col h-0 flex-1">
           <div class="flex justify-center items-center h-20 bg-gray-900">
-            <h2 class="text-white text-xl font-medium">
+            <h2 class="text-white text-xl font-medium mt-2">
               Liste des parties
             </h2>
           </div>
-          <div v-for="game in games" :key="game._id" class="px-4 py-3 bg-gray-900" @click="selectedGame = game;">
-            <GameCard :game="game" />
+          <div v-for="game in games" :key="game._id" class="px-4 py-3 bg-gray-900">
+            <GameCard :game="game" :selected="selectedGame === game" />
           </div>
           <div v-for="game in archivedGames" :key="game._id" class="px-4 py-3 bg-gray-900" @click="selectedGame = game;">
-            <GameCard :game="game" />
+            <GameCard :game="game" :selected="selectedGame === game" />
           </div>
           <div class="flex-1 flex flex-col overflow-y-auto">
             <nav class="flex-1 px-2 py-4 bg-gray-900 space-y-1" />
@@ -22,11 +22,11 @@
     </div>
     <main class="flex-1 relative overflow-y-auto focus:outline-none bg-gray-800">
       <div class="md:hidden items-center flex bg-gray-900 overflow-x-auto">
-        <div v-for="game in games" :key="game._id" class="flex flex-shrink-0 px-4 py-3 bg-gray-900" @click="selectedGame = game;">
-          <GameCard :game="game" />
+        <div v-for="game in games" :key="game._id" class="flex flex-shrink-0 px-4 py-3 bg-gray-900">
+          <GameCard :game="game" :selected="selectedGame === game" />
         </div>
         <div v-for="game in archivedGames" :key="game._id" class="flex flex-shrink-0 px-4 py-3 bg-gray-900" @click="selectedGame = game;">
-          <GameCard :game="game" />
+          <GameCard :game="game" :selected="selectedGame === game" />
         </div>
       </div>
       <div v-if="selectedGame" class="py-6 max-w-7xl mx-auto px-4 sm:px-6 md:px-8">

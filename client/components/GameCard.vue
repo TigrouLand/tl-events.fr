@@ -1,5 +1,5 @@
 <template>
-  <button class="bg-gray-800 border border-gray-500 rounded shadow w-full justify-start text-left">
+  <component :is="isUpcoming(game) ? 'div': 'button'" :class="'bg-gray-800 border ' + (selected ? 'border-red-500 ' : 'border-gray-500 ') + 'rounded shadow w-full justify-start text-left'">
     <div class="w-full p-2">
       <div class="flex">
         <div class="text-white font-medium">
