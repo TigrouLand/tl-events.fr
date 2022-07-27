@@ -66,7 +66,7 @@
               </div>
               <div class="mb-1">
                 <font-awesome-icon :icon="faPlug" class="text-white" />
-                <span class="font-medium">Scénarios :</span> {{ selectedGame.modifiers ? selectedGame.modifiers.length : 0 }}
+                <span class="font-medium">Scénarios :</span> {{ selectedGame.modifiers ? selectedGame.modifiers.join(', '): '' }}
               </div>
             </div>
           </div>
