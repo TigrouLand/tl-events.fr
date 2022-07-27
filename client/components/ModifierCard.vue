@@ -4,7 +4,7 @@
       <img class="h-24 p-2 m-4 w-auto" :src="require(`~/assets/${modifier.material.toLowerCase()}.png`)" :alt="modifier.material">
       <div class="flex-1 truncate py-6">
         <div class="flex items-center space-x-1">
-          <h3 class="text-white font-medium truncate mr-2">
+          <h3 class="text-white font-medium mr-2">
             {{ modifier.name }}
           </h3>
           <ActiveBadge v-if="showStatus" :active="modifier.enabled" />
