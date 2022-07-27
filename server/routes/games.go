@@ -27,17 +27,7 @@ func GetGames() []entities.Game {
 			log.Fatal(err)
 		}
 
-		for i := range game.Players {
-			var playerUUID uuid.UUID
-			if !game.Players[i].IsZero() {
-				playerUUID, err = uuid.FromBytes(game.Players[i].Data)
-				if err != nil {
-					log.Fatal(err)
-				}
-				game.PlayersUUID = append(game.PlayersUUID, playerUUID)
-			}
-		}
-
+		DecodeGame(&game, ctx)
 		games = append(games, game)
 	}
 	return games
@@ -58,28 +48,7 @@ func GetArchivedGames() []entities.ArchivedGame {
 			log.Fatal(err)
 		}
 
-		for i := range game.Players {
-			var playerUUID uuid.UUID
-			if !game.Players[i].IsZero() {
-				playerUUID, err = uuid.FromBytes(game.Players[i].Data)
-				if err != nil {
-					log.Fatal(err)
-				}
-				game.PlayersUUID = append(game.PlayersUUID, playerUUID)
-			}
-		}
-
-		for i := range game.Alive {
-			var playerUUID uuid.UUID
-			if !game.Alive[i].IsZero() {
-				playerUUID, err = uuid.FromBytes(game.Alive[i].Data)
-				if err != nil {
-					log.Fatal(err)
-				}
-				game.AliveUUID = append(game.AliveUUID, playerUUID)
-			}
-		}
-
+		DecodeArchivedGame(&game, ctx)
 		games = append(games, game)
 	}
 	return games
@@ -87,4 +56,86 @@ func GetArchivedGames() []entities.ArchivedGame {
 
 func Games(c *gin.Context) {
 	c.JSON(200, bson.M{"games": GetGames(), "archivedGames": GetArchivedGames()})
+}
+
+func DecodeGame(game *entities.Game, ctx context.Context) {
+	if len(game.Players) > 0 {
+		for i := range game.Players {
+			var player entities.Player
+			var playerUUID uuid.UUID
+			if !(game.Players[i] == mongo.DBRef{}) {
+				result := mongo.Get().Collection("players").FindOne(ctx, bson.M{"_id": game.Players[i].ID})
+				if result.Err() != nil {
+					log.Fatal(result.Err())
+				}
+				err := result.Decode(&player)
+				if err != nil {
+					log.Fatal(err)
+				}
+
+				if !player.UUID.IsZero() {
+					playerUUID, err = uuid.FromBytes(player.UUID.Data)
+					if err != nil {
+						log.Fatal(err)
+					}
+
+					game.PlayersUUID = append(game.PlayersUUID, playerUUID)
+				}
+			}
+		}
+	}
+}
+
+func DecodeArchivedGame(game *entities.ArchivedGame, ctx context.Context) {
+	if len(game.Players) > 0 {
+		for i := range game.Players {
+			var player entities.Player
+			var playerUUID uuid.UUID
+			if !(game.Players[i] == mongo.DBRef{}) {
+				result := mongo.Get().Collection("players").FindOne(ctx, bson.M{"_id": game.Players[i].ID})
+				if result.Err() != nil {
+					log.Fatal(result.Err())
+				}
+				err := result.Decode(&player)
+				if err != nil {
+					log.Fatal(err)
+				}
+
+				if !player.UUID.IsZero() {
+					playerUUID, err = uuid.FromBytes(player.UUID.Data)
+					if err != nil {
+						log.Fatal(err)
+					}
+
+					game.PlayersUUID = append(game.PlayersUUID, playerUUID)
+				}
+			}
+		}
+	}
+
+	if len(game.Alive) > 0 {
+		for i := range game.Alive {
+			var player entities.Player
+			var playerUUID uuid.UUID
+			if !(game.Alive[i] == mongo.DBRef{}) {
+				result := mongo.Get().Collection("players").FindOne(ctx, bson.M{"_id": game.Alive[i].ID})
+				if result.Err() != nil {
+					log.Fatal(result.Err())
+				}
+				err := result.Decode(&player)
+				if err != nil {
+					log.Fatal(err)
+				}
+
+				if !player.UUID.IsZero() {
+					playerUUID, err = uuid.FromBytes(player.UUID.Data)
+					if err != nil {
+						log.Fatal(err)
+					}
+
+					game.AliveUUID = append(game.AliveUUID, playerUUID)
+				}
+			}
+		}
+	}
 }

@@ -2,7 +2,7 @@ package entities
 
 import (
 	"github.com/google/uuid"
-	"go.mongodb.org/mongo-driver/bson/primitive"
+	"github.com/tigrouland/eventsstats/server/mongo"
 )
 
 type ArchivedGame struct {
@@ -12,11 +12,11 @@ type ArchivedGame struct {
 	Type   string `bson:"_t" json:"type"`
 	Status string `bson:"status" json:"status"`
 
-	Alive     []primitive.Binary `bson:"alive" json:"-"`
-	AliveUUID []uuid.UUID        `json:"alive"`
+	Alive     []mongo.DBRef `bson:"alive" json:"-"`
+	AliveUUID []uuid.UUID   `json:"alive"`
 
-	Players     []primitive.Binary `bson:"players" json:"-"`
-	PlayersUUID []uuid.UUID        `json:"players"`
+	Players     []mongo.DBRef `bson:"players" json:"-"`
+	PlayersUUID []uuid.UUID   `json:"players"`
 
 	Modifiers []string `bson:"modifiers" json:"modifiers"`
 
@@ -41,8 +41,8 @@ type Game struct {
 	// Alive     []primitive.Binary `bson:"alive" json:"-"`
 	// AliveUUID []uuid.UUID        `json:"alive"`
 
-	Players     []primitive.Binary `bson:"players" json:"-"`
-	PlayersUUID []uuid.UUID        `json:"players"`
+	Players     []mongo.DBRef `bson:"players" json:"-"`
+	PlayersUUID []uuid.UUID   `json:"players"`
 
 	Modifiers []Modifier `bson:"modifiers" json:"modifiers"`
 
