@@ -4,7 +4,7 @@
       <div class="flex flex-col w-64">
         <div class="flex flex-col h-0 flex-1">
           <div class="flex justify-center items-center h-20 bg-gray-900">
-            <h2 class="text-white text-xl font-medium mt-2">
+            <h2 class="text-white text-xl font-medium mt-3 p-3">
               Liste des parties
             </h2>
           </div>
@@ -29,87 +29,85 @@
           <GameCard :game="game" :selected="selectedGame === game" />
         </div>
       </div>
-      <div v-if="selectedGame" class="py-6 max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
-        <div class="md:grid md:grid-flow-col gap-4 mb-4">
-          <div class="col-span-4 mb-4 md:mb-0">
-            <div class="bg-gray-900 border border-gray-500 rounded shadow h-full text-white">
-              <div class="w-full p-4">
-                <div class="font-bold text-lg text-center">
-                  {{ selectedGame.name }}
-                </div>
-                <div v-if="isScheduled(selectedGame)" class="font-bold text-lg text-center mb-4 text-gray-400">
-                  <font-awesome-icon :icon="faClock" class="text-gray-400" />
-                  Partie programmée
-                </div>
-                <div v-else-if="isArchived(selectedGame)" class="font-bold text-lg text-center mb-4 text-gray-400">
-                  <font-awesome-icon :icon="faArchive" class="text-gray-400" />
-                  Partie archivée
-                </div>
-                <div v-else class="font-bold text-lg text-center mb-4 text-green-500">
-                  <font-awesome-icon :icon="faGamepad" class="text-green-500" />
-                  Partie en cours
-                </div>
-                <div class="mb-1">
-                  <font-awesome-icon :icon="faGamepad" class="text-white" />
-                  <span class="font-medium">Type de jeu :</span> {{ formatEventType(selectedGame.type) }}
-                </div>
-                <div class="mb-1">
-                  <font-awesome-icon :icon="faUsers" class="text-white" />
-                  <span class="font-medium">Participants :</span> {{ selectedGame.players ? selectedGame.players.length : 0 }}
-                </div>
-                <div v-if="isArchived(selectedGame)" class="mb-1">
-                  <font-awesome-icon :icon="faClock" class="text-white" />
-                  <span class="font-medium">Temps de jeu :</span> {{ formatTime() }}
-                </div>
-                <div class="mb-1">
-                  <font-awesome-icon :icon="faCalendar" class="text-white" />
-                  <span class="font-medium">Date de début :</span> {{ formatDate(selectedGame.startDate) }}
-                </div>
-                <div class="mb-1">
-                  <font-awesome-icon :icon="faPlug" class="text-white" />
-                  <span class="font-medium">Scénarios :</span> {{ selectedGame.modifiers ? selectedGame.modifiers.length : 0 }}
-                </div>
+      <div v-if="selectedGame" class="flex flex-col sm:flex-row w-full px-4 sm:px-0">
+        <div class="flex flex-col flex-shrink-0 flex-grow-0 sm:w-1/2 h-full sm:py-6 sm:mx-auto sm:px-6 md:px-8">
+          <div class="bg-gray-900 border border-gray-500 rounded shadow text-white w-full my-4">
+            <div class="w-full p-7">
+              <div class="font-bold text-lg text-center">
+                {{ selectedGame.name }}
+              </div>
+              <div v-if="isScheduled(selectedGame)" class="font-bold text-lg text-center mb-4 text-gray-400">
+                <font-awesome-icon :icon="faClock" class="text-gray-400" />
+                Partie programmée
+              </div>
+              <div v-else-if="isArchived(selectedGame)" class="font-bold text-lg text-center mb-4 text-gray-400">
+                <font-awesome-icon :icon="faArchive" class="text-gray-400" />
+                Partie archivée
+              </div>
+              <div v-else class="font-bold text-lg text-center mb-4 text-green-500">
+                <font-awesome-icon :icon="faGamepad" class="text-green-500" />
+                Partie en cours
+              </div>
+              <div class="mb-1">
+                <font-awesome-icon :icon="faGamepad" class="text-white" />
+                <span class="font-medium">Type de jeu :</span> {{ formatEventType(selectedGame.type) }}
+              </div>
+              <div class="mb-1">
+                <font-awesome-icon :icon="faUsers" class="text-white" />
+                <span class="font-medium">Participants :</span> {{ selectedGame.players ? selectedGame.players.length : 0 }}
+              </div>
+              <div v-if="isArchived(selectedGame)" class="mb-1">
+                <font-awesome-icon :icon="faClock" class="text-white" />
+                <span class="font-medium">Temps de jeu :</span> {{ formatTime() }}
+              </div>
+              <div class="mb-1">
+                <font-awesome-icon :icon="faCalendar" class="text-white" />
+                <span class="font-medium">Date de début :</span> {{ formatDate(selectedGame.startDate) }}
+              </div>
+              <div class="mb-1">
+                <font-awesome-icon :icon="faPlug" class="text-white" />
+                <span class="font-medium">Scénarios :</span> {{ selectedGame.modifiers ? selectedGame.modifiers.length : 0 }}
               </div>
             </div>
           </div>
-          <div class="col-span-4 mb-4 md:mb-0">
-            <div class="border border-gray-500 rounded bg-gray-900 text-white h-full p-3">
-              <div class="flex font-bold text-lg justify-center p-4">
-                Joueurs
-              </div>
-              <table class="table-auto">
-                <tbody>
-                  <tr v-for="player in selectedGame.players" :key="player">
-                    <td>
-                      <img :class="`m-4 h-10 w-10 rounded-full ring-2 ring-offset-2 ring-offset-gray-900 ring-${isScheduled(selectedGame) ? 'grey' : isAlive(player) ? 'green' : 'red'}-500`" :src="'https://cravatar.eu/helmavatar/' + player + '/96'" alt="">
-                    </td>
-                    <td>
-                      <div class="flex">
-                        {{ getUsernameByUuid(player) }}
-                      </div>
-                      <div v-if="isScheduled(selectedGame)">
-                        <div class="text-grey-500 font-bold">
-                          Participant
-                        </div>
-                      </div>
-                      <div v-else-if="isAlive(player)">
-                        <div class="text-green-500 font-bold">
-                          Joueur en vie
-                        </div>
-                      </div>
-                      <div v-else>
-                        <div class="text-red-500 font-bold">
-                          Joueur mort
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+          <div class="bg-gray-900 border border-gray-500 rounded shadow text-white w-full my-4 p-7">
+            <div class="flex font-bold text-lg justify-center mb-2">
+              Joueurs
             </div>
+            <table class="table-auto">
+              <tbody>
+                <tr v-for="player in selectedGame.players" :key="player">
+                  <td>
+                    <img :class="`m-4 h-10 w-10 rounded-full ring-2 ring-offset-2 ring-offset-gray-900 ${isScheduled(selectedGame) ? 'ring-grey-500' : isAlive(player) ? 'ring-green-500' : 'ring-red-500'}`" :src="'https://cravatar.eu/helmavatar/' + player + '/96'" alt="">
+                  </td>
+                  <td>
+                    <div class="flex">
+                      {{ getUsernameByUuid(player) }}
+                    </div>
+                    <div v-if="isScheduled(selectedGame)">
+                      <div class="text-grey-500 font-bold">
+                        Participant
+                      </div>
+                    </div>
+                    <div v-else-if="isAlive(player)">
+                      <div class="text-green-500 font-bold">
+                        Joueur en vie
+                      </div>
+                    </div>
+                    <div v-else>
+                      <div class="text-red-500 font-bold">
+                        Joueur mort
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
-          <div class="row-span-2 col-span-2 mb-4 md:mb-0">
-            <div class="border border-gray-500 rounded bg-gray-900 text-white p-6">
+        </div>
+        <div class="flex flex-col flex-shrink-0 flex-grow-0 sm:w-1/2 h-full sm:py-6 sm:mx-auto sm:px-6 md:px-8">
+          <div class="bg-gray-900 border border-gray-500 rounded shadow text-white w-full my-4">
+            <div class="w-full p-7">
               <div class="flex font-bold text-lg justify-center mb-2">
                 Événements de la partie
               </div>
@@ -117,16 +115,6 @@
                 <GameLog :log="log" :last="i === selectedGame.logs.length - 1" />
               </div>
             </div>
-          </div>
-        </div>
-        <div class="bg-gray-900 border border-gray-500 rounded shadow h-full text-white">
-          <div class="w-full p-4">
-            <div class="font-bold text-lg text-center mb-4">
-              Scénarios
-            </div>
-            <ul class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 mx-5 lg:mx-0">
-              <ModifierCard v-for="modifier in selectedGame.modifiers" :key="modifier._id" :modifier="modifier" :show-status="false" />
-            </ul>
           </div>
         </div>
       </div>
