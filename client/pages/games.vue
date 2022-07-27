@@ -1,6 +1,6 @@
 <template>
-  <div class="h-full flex bg-gray-100">
-    <div class="hidden md:flex md:flex-shrink-0">
+  <div class="h-full flex bg-gray-100 overflow-y-hidden">
+    <div class="overflow-x-auto hidden md:flex md:flex-shrink-0">
       <div class="flex flex-col w-64">
         <div class="flex flex-col h-0 flex-1">
           <div class="flex justify-center items-center h-20 bg-gray-900">
