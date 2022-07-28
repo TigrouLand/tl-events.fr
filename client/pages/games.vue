@@ -202,6 +202,8 @@ export default {
     },
     formatEventType(type) {
       switch (type) {
+        case 'LGUHC':
+          return 'LG-UHC';
         case 'UHCRun':
           return 'UHC-Run';
         default:
