@@ -86,7 +86,7 @@
                       <div v-if="isAlive(playerTeam)" class="flex">
                         {{ playerTeam }}
                       </div>
-                      <div v-else class="flex items-center text-gray-600">
+                      <div v-else class="flex items-center text-gray-400">
                         {{ playerTeam }}
                         <font-awesome-icon class="ml-1" :icon="faSkull" />
                       </div>
@@ -99,12 +99,22 @@
                   <img class="m-4 h-10 w-10 rounded-full" :src="'https://cravatar.eu/helmavatar/' + player + '/96'" alt="">
                 </td>
                 <td>
-                  <div v-if="isAlive(player)" class="flex">
-                    {{ getUsernameByUuid(player) }}
+                  <div v-if="isAlive(player)" class="flex flex-col">
+                    <div class="flex-row items-center font-bold">
+                      {{ getUsernameByUuid(player) }}
+                    </div>
+                    <div class="text-gray-200" v-if="selectedGame.type === 'LGUHC'">
+                      {{ getRoleForPlayer(player) }}
+                    </div>
                   </div>
-                  <div v-else class="flex items-center text-gray-600">
-                    {{ getUsernameByUuid(player) }}
-                    <font-awesome-icon class="ml-1" :icon="faSkull" />
+                  <div v-else class="flex flex-col">
+                    <div class="flex-row items-center text-gray-400">
+                      {{ getUsernameByUuid(player) }}
+                      <font-awesome-icon class="ml-1" :icon="faSkull" />
+                    </div>
+                    <div class="text-gray-200" v-if="selectedGame.type === 'LGUHC'">
+                      {{ getRoleForPlayer(player) }}
+                    </div>
                   </div>
                 </td>
               </tr>
@@ -174,6 +184,12 @@ export default {
         this.members = await this.$axios.$get('/members').catch(this.$nuxt.$loading.fail);
         this.$nuxt.$loading.finish();
       });
+    },
+    getRoleForPlayer(uuid) {
+      if (!this.selectedGame && this.selectedGame.playerRoles)
+        return;
+      const username = this.getUsernameByUuid(uuid);
+      return this.selectedGame.playerRoles[username];
     },
     getPlayersInTeam(name) {
       if (this.selectedGame && this.selectedGame.playerTeams)
