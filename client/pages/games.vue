@@ -74,35 +74,41 @@
             <div class="flex font-bold text-lg justify-center mb-2">
               Joueurs
             </div>
-            <table class="table-auto">
-              <tbody>
-                <tr v-for="player in selectedGame.players" :key="player">
-                  <td>
-                    <img :class="`m-4 h-10 w-10 rounded-full ring-2 ring-offset-2 ring-offset-gray-900 ${isScheduled(selectedGame) ? 'ring-grey-500' : isAlive(player) ? 'ring-green-500' : 'ring-red-500'}`" :src="'https://cravatar.eu/helmavatar/' + player + '/96'" alt="">
-                  </td>
-                  <td>
-                    <div class="flex">
-                      {{ getUsernameByUuid(player) }}
-                    </div>
-                    <div v-if="isScheduled(selectedGame)">
-                      <div class="text-grey-500 font-bold">
-                        Participant
+            <div class="table-auto">
+              <template v-if="selectedGame.teams">
+                <template v-for="team in selectedGame.teams.filter(t => t.name !== '')">
+                  <div class="text-lg font-semibold mt-3" :style="`color: rgb(${team.colors.join(', ')};`">Équipe {{ team.name }}</div>
+                  <tr v-for="playerTeam in getPlayersInTeam(team.name)" :key="playerTeam" class="flex items-center">
+                    <td>
+                      <img class="m-4 h-10 w-10 rounded-full" :src="'https://cravatar.eu/helmavatar/' + playerTeam + '/96'" alt="">
+                    </td>
+                    <td>
+                      <div v-if="isAlive(playerTeam)" class="flex">
+                        {{ playerTeam }}
                       </div>
-                    </div>
-                    <div v-else-if="isAlive(player)">
-                      <div class="text-green-500 font-bold">
-                        Joueur en vie
+                      <div v-else class="flex items-center text-gray-600">
+                        {{ playerTeam }}
+                        <font-awesome-icon class="ml-1" :icon="faSkull" />
                       </div>
-                    </div>
-                    <div v-else>
-                      <div class="text-red-500 font-bold">
-                        Joueur mort
-                      </div>
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+                    </td>
+                  </tr>
+                </template>
+              </template>
+              <tr v-for="player in selectedGame.players" v-else :key="player" class="flex items-center">
+                <td>
+                  <img class="m-4 h-10 w-10 rounded-full" :src="'https://cravatar.eu/helmavatar/' + player + '/96'" alt="">
+                </td>
+                <td>
+                  <div v-if="isAlive(player)" class="flex">
+                    {{ getUsernameByUuid(player) }}
+                  </div>
+                  <div v-else class="flex items-center text-gray-600">
+                    {{ getUsernameByUuid(player) }}
+                    <font-awesome-icon class="ml-1" :icon="faSkull" />
+                  </div>
+                </td>
+              </tr>
+            </div>
           </div>
         </div>
         <div class="flex flex-col flex-shrink-0 flex-grow-0 sm:w-1/2 h-full sm:py-6 sm:mx-auto sm:px-6 md:px-8">
@@ -123,7 +129,7 @@
 </template>
 
 <script>
-import { faArchive, faClock, faGamepad, faUsers, faPlug, faCalendar } from '@fortawesome/free-solid-svg-icons';
+import { faArchive, faClock, faGamepad, faUsers, faPlug, faCalendar, faSkull } from '@fortawesome/free-solid-svg-icons';
 import { unix } from 'moment';
 import GameCard from '../components/GameCard';
 
@@ -148,7 +154,8 @@ export default {
     faArchive: () => faArchive,
     faClock: () => faClock,
     faPlug: () => faPlug,
-    faCalendar: () => faCalendar
+    faCalendar: () => faCalendar,
+    faSkull: () => faSkull
   },
   mounted() {
     this.fetch();
@@ -167,6 +174,10 @@ export default {
         this.members = await this.$axios.$get('/members').catch(this.$nuxt.$loading.fail);
         this.$nuxt.$loading.finish();
       });
+    },
+    getPlayersInTeam(name) {
+      if (this.selectedGame && this.selectedGame.playerTeams)
+        return Object.keys(this.selectedGame.playerTeams).filter(k => this.selectedGame.playerTeams[k] === name);
     },
     getUsernameByUuid(uuid) {
       return this.members.find(p => p.uuid === uuid)?.name;
