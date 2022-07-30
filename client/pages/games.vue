@@ -90,18 +90,15 @@
                           {{ username }}
                         </div>
                         <div v-if="selectedGame.type === 'TaupeGun' && selectedGame.moles.includes(uuid)" class="flex items-center text-red-300">
-                          Taupe
-                          <font-awesome-icon class="ml-1" :icon="faHandshakeSlash" />
+                          Taupe<font-awesome-icon class="ml-2" :icon="faHandshakeSlash" />
                         </div>
                       </div>
                       <div v-else class="flex flex-col">
                         <div class="flex-row items-center text-gray-400">
-                          {{ username }}
-                          <font-awesome-icon class="ml-1" :icon="faSkull" />
+                          {{ username }}<font-awesome-icon class="ml-2" :icon="faSkull" />
                         </div>
                         <div v-if="selectedGame.type === 'TaupeGun' && selectedGame.moles.includes(uuid)" class="flex items-center text-red-300">
-                          Taupe
-                          <font-awesome-icon class="ml-1" :icon="faHandshakeSlash" />
+                          Taupe<font-awesome-icon class="ml-2" :icon="faHandshakeSlash" />
                         </div>
                       </div>
                     </td>
@@ -123,8 +120,7 @@
                   </div>
                   <div v-else class="flex flex-col">
                     <div class="flex-row items-center text-gray-400">
-                      {{ getUsernameByUuid(player) }}
-                      <font-awesome-icon class="ml-1" :icon="faSkull" />
+                      {{ getUsernameByUuid(player) }}<font-awesome-icon class="ml-2" :icon="faSkull" />
                     </div>
                     <div v-if="selectedGame.type === 'LGUHC'" class="text-gray-200">
                       {{ getRoleForPlayer(player) }}
