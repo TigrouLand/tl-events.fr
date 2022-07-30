@@ -9,10 +9,10 @@
             </h2>
           </div>
           <div v-for="game in games" :key="game._id" class="px-4 py-3 bg-gray-900">
-            <GameCard :game="game" :selected="selectedGame === game" />
+            <GameCard :game="game" :selected="selected(game)" />
           </div>
           <div v-for="game in archivedGames" :key="game._id" class="px-4 py-3 bg-gray-900" @click="selectedGame = game;">
-            <GameCard :game="game" :selected="selectedGame === game" />
+            <GameCard :game="game" :selected="selected(game)" />
           </div>
           <div class="flex-1 flex flex-col overflow-y-auto">
             <nav class="flex-1 px-2 py-4 bg-gray-900 space-y-1" />
@@ -23,10 +23,10 @@
     <main class="flex-1 relative overflow-y-auto focus:outline-none bg-gray-800">
       <div class="md:hidden items-center flex bg-gray-900 overflow-x-auto">
         <div v-for="game in games" :key="game._id" class="flex flex-shrink-0 px-4 py-3 bg-gray-900">
-          <GameCard :game="game" :selected="selectedGame === game" />
+          <GameCard :game="game" :selected="selected(game)" />
         </div>
         <div v-for="game in archivedGames" :key="game._id" class="flex flex-shrink-0 px-4 py-3 bg-gray-900" @click="selectedGame = game;">
-          <GameCard :game="game" :selected="selectedGame === game" />
+          <GameCard :game="game" :selected="selected(game)" />
         </div>
       </div>
       <div v-if="selectedGame" class="flex flex-col sm:flex-row w-full px-4 sm:px-0">
@@ -184,6 +184,11 @@ export default {
         this.members = await this.$axios.$get('/members').catch(this.$nuxt.$loading.fail);
         this.$nuxt.$loading.finish();
       });
+    },
+    selected(game) {
+      if (!this.selectedGame)
+        return false;
+      return this.selectedGame.id === game.id;
     },
     getRoleForPlayer(uuid) {
       if (!this.selectedGame && this.selectedGame.playerRoles)
