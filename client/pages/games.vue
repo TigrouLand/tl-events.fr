@@ -263,11 +263,9 @@ export default {
     },
     formatTime() {
       let { hours, minutes, seconds } = this.selectedGame;
-      if (hours < 9)
-        hours = `0${hours}`;
-      if (minutes < 9)
+      if (minutes < 10)
         minutes = `0${minutes}`;
-      if (seconds < 9)
+      if (seconds < 10)
         seconds = `0${seconds}`;
       return `${hours}:${minutes}:${seconds}`;
     },
