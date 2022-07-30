@@ -77,7 +77,7 @@
             <div class="table-auto">
               <template v-if="selectedGame.teams">
                 <template v-for="team in selectedGame.teams.filter(t => t.name !== '')">
-                  <div class="text-lg font-semibold mt-3" :style="`color: rgb(${team.colors.join(', ')};`">Équipe {{ team.name }}</div>
+                  <div :key="team.name" class="text-lg font-semibold mt-3" :style="`color: rgb(${team.colors.join(', ')};`">Équipe {{ team.name }}</div>
                   <tr v-for="playerTeam in getPlayersInTeam(team.name)" :key="playerTeam" class="flex items-center">
                     <td>
                       <img class="m-4 h-10 w-10 rounded-full" :src="'https://cravatar.eu/helmavatar/' + playerTeam + '/96'" alt="">
