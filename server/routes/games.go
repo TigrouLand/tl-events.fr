@@ -157,6 +157,32 @@ func DecodeArchivedGame(game *entities.ArchivedGame, ctx context.Context) {
 		}
 	}
 
+	if len(game.Moles) > 0 {
+		for i := range game.Moles {
+			var player entities.Player
+			var playerUUID uuid.UUID
+			if !(game.Moles[i] == mongo.DBRef{}) {
+				result := mongo.Get().Collection("players").FindOne(ctx, bson.M{"_id": game.Moles[i].ID})
+				if result.Err() != nil {
+					log.Fatal(result.Err())
+				}
+				err := result.Decode(&player)
+				if err != nil {
+					log.Fatal(err)
+				}
+
+				if !player.UUID.IsZero() {
+					playerUUID, err = uuid.FromBytes(player.UUID.Data)
+					if err != nil {
+						log.Fatal(err)
+					}
+
+					game.MolesUUID = append(game.MolesUUID, playerUUID)
+				}
+			}
+		}
+	}
+
 	if len(game.TeamRefs) > 0 {
 		for i := range game.TeamRefs {
 			if !(game.TeamRefs[i] == mongo.DBRef{}) {

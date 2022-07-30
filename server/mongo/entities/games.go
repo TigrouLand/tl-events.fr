@@ -18,6 +18,9 @@ type ArchivedGame struct {
 	Players     []mongo.DBRef `bson:"players" json:"-"`
 	PlayersUUID []uuid.UUID   `json:"players"`
 
+	Moles     []mongo.DBRef `bson:"baseMoles" json:"-"`
+	MolesUUID []uuid.UUID   `json:"moles,omitempty"`
+
 	Modifiers []string `bson:"modifiers" json:"modifiers"`
 
 	Logs []string `bson:"logs" json:"logs"`
@@ -50,6 +53,9 @@ type Game struct {
 	Players     []mongo.DBRef `bson:"players" json:"-"`
 	PlayersUUID []uuid.UUID   `json:"players"`
 
+	// Moles []mongo.DBRef `bson:"baseMoles" json:"-"`
+	// MolesUUID []uuid.UUID `json:"moles,omitempty"`
+
 	Modifiers []string `bson:"modifiers" json:"modifiers"`
 
 	// Logs []string `bson:"logs" json:"logs"`
@@ -58,7 +64,7 @@ type Game struct {
 	Teams    []Team        `json:"teams,omitempty"`
 
 	// PlayerTeams map[string]string `bson:"playerTeams" json:"playerTeams,omitempty"`
-	// 	PlayerRoles map[string]string `bson:"playerRoles" json:"playerRoles,omitempty"`
+	// PlayerRoles map[string]string `bson:"playerRoles" json:"playerRoles,omitempty"`
 
 	Hours   int8 `bson:"hours" json:"hours"`
 	Minutes int8 `bson:"minutes" json:"minutes"`
