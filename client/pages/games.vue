@@ -258,7 +258,9 @@ export default {
       return unix(date / 1000).format('DD/MM/YYYY à HH:mm');
     },
     formatTime() {
-      let { hours, minutes, seconds } = this.selectedGame;
+      let { minutes, seconds } = this.selectedGame;
+      const hours = this.selectedGame.hours;
+
       if (minutes < 10)
         minutes = `0${minutes}`;
       if (seconds < 10)
