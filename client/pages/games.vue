@@ -77,18 +77,32 @@
             <div class="table-auto">
               <template v-if="selectedGame.teams">
                 <template v-for="team in selectedGame.teams.filter(t => t.name !== '')">
-                  <div :key="team.name" class="text-lg font-semibold mt-3" :style="`color: rgb(${team.colors.join(', ')};`">Équipe {{ team.name }}</div>
-                  <tr v-for="playerTeam in getPlayersInTeam(team.name)" :key="playerTeam" class="flex items-center">
+                  <div :key="team.name" class="text-lg font-semibold mt-3" :style="`color: rgb(${team.colors.join(', ')};`">
+                    Équipe {{ team.name }}
+                  </div>
+                  <tr v-for="{ username, uuid } in getPlayersInTeam(team.name)" :key="uuid" class="flex items-center">
                     <td>
-                      <img class="m-4 h-10 w-10 rounded-full" :src="'https://cravatar.eu/helmavatar/' + playerTeam + '/96'" alt="">
+                      <img class="m-4 h-10 w-10 rounded-full" :src="'https://cravatar.eu/helmavatar/' + uuid + '/96'" alt="">
                     </td>
                     <td>
-                      <div v-if="isAlive(playerTeam)" class="flex">
-                        {{ playerTeam }}
+                      <div v-if="isAlive(uuid)" class="flex flex-col">
+                        <div class="flex-row items-center font-bold">
+                          {{ username }}
+                        </div>
+                        <div v-if="selectedGame.type === 'TaupeGun' && selectedGame.moles.includes(uuid)" class="flex items-center text-red-300">
+                          Taupe
+                          <font-awesome-icon class="ml-1" :icon="faHandshakeSlash" />
+                        </div>
                       </div>
-                      <div v-else class="flex items-center text-gray-400">
-                        {{ playerTeam }}
-                        <font-awesome-icon class="ml-1" :icon="faSkull" />
+                      <div v-else class="flex flex-col">
+                        <div class="flex-row items-center text-gray-400">
+                          {{ username }}
+                          <font-awesome-icon class="ml-1" :icon="faSkull" />
+                        </div>
+                        <div v-if="selectedGame.type === 'TaupeGun' && selectedGame.moles.includes(uuid)" class="flex items-center text-red-300">
+                          Taupe
+                          <font-awesome-icon class="ml-1" :icon="faHandshakeSlash" />
+                        </div>
                       </div>
                     </td>
                   </tr>
@@ -103,7 +117,7 @@
                     <div class="flex-row items-center font-bold">
                       {{ getUsernameByUuid(player) }}
                     </div>
-                    <div class="text-gray-200" v-if="selectedGame.type === 'LGUHC'">
+                    <div v-if="selectedGame.type === 'LGUHC'" class="text-gray-200">
                       {{ getRoleForPlayer(player) }}
                     </div>
                   </div>
@@ -112,7 +126,7 @@
                       {{ getUsernameByUuid(player) }}
                       <font-awesome-icon class="ml-1" :icon="faSkull" />
                     </div>
-                    <div class="text-gray-200" v-if="selectedGame.type === 'LGUHC'">
+                    <div v-if="selectedGame.type === 'LGUHC'" class="text-gray-200">
                       {{ getRoleForPlayer(player) }}
                     </div>
                   </div>
@@ -139,7 +153,16 @@
 </template>
 
 <script>
-import { faArchive, faClock, faGamepad, faUsers, faPlug, faCalendar, faSkull } from '@fortawesome/free-solid-svg-icons';
+import {
+  faArchive,
+  faClock,
+  faGamepad,
+  faUsers,
+  faPlug,
+  faCalendar,
+  faSkull,
+  faHandshakeSimpleSlash
+} from '@fortawesome/free-solid-svg-icons';
 import { unix } from 'moment';
 import GameCard from '../components/GameCard';
 
@@ -165,7 +188,8 @@ export default {
     faClock: () => faClock,
     faPlug: () => faPlug,
     faCalendar: () => faCalendar,
-    faSkull: () => faSkull
+    faSkull: () => faSkull,
+    faHandshakeSlash: () => faHandshakeSimpleSlash
   },
   mounted() {
     this.fetch();
@@ -190,6 +214,11 @@ export default {
         return false;
       return this.selectedGame.id === game.id;
     },
+    isMole(uuid) {
+      if (!this.selectedGame && this.selectedGame.moles)
+        return Boolean(this.selectedGame.moles.includes(uuid));
+      return false;
+    },
     getRoleForPlayer(uuid) {
       if (!this.selectedGame && this.selectedGame.playerRoles)
         return;
@@ -198,7 +227,17 @@ export default {
     },
     getPlayersInTeam(name) {
       if (this.selectedGame && this.selectedGame.playerTeams)
-        return Object.keys(this.selectedGame.playerTeams).filter(k => this.selectedGame.playerTeams[k] === name);
+        return Object.entries(this.selectedGame.playerTeams)
+          .filter(([_, v]) => v === name)
+          .map(([k, _]) => {
+            return {
+              username: k,
+              uuid: this.getUuidByUsername(k)
+            };
+          });
+    },
+    getUuidByUsername(name) {
+      return this.members.find(p => p.name === name)?.uuid;
     },
     getUsernameByUuid(uuid) {
       return this.members.find(p => p.uuid === uuid)?.name;
