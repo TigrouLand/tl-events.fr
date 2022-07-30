@@ -68,6 +68,10 @@
                 <font-awesome-icon :icon="faPlug" class="text-white" />
                 <span class="font-medium">Scénarios :</span> {{ selectedGame.modifiers ? selectedGame.modifiers.join(', '): '' }}
               </div>
+              <div v-if="selectedGame.events" class="mb-1">
+                <font-awesome-icon :icon="faBolt" class="text-white" />
+                <span class="font-medium">Événements aléatoires :</span> {{ selectedGame.events.join(', ') }}
+              </div>
             </div>
           </div>
           <div class="bg-gray-900 border border-gray-500 rounded shadow text-white w-full my-4 p-7">
@@ -157,7 +161,7 @@ import {
   faPlug,
   faCalendar,
   faSkull,
-  faHandshakeSimpleSlash
+  faHandshakeSimpleSlash, faBolt
 } from '@fortawesome/free-solid-svg-icons';
 import { unix } from 'moment';
 import GameCard from '../components/GameCard';
@@ -185,7 +189,8 @@ export default {
     faPlug: () => faPlug,
     faCalendar: () => faCalendar,
     faSkull: () => faSkull,
-    faHandshakeSlash: () => faHandshakeSimpleSlash
+    faHandshakeSlash: () => faHandshakeSimpleSlash,
+    faBolt: () => faBolt
   },
   mounted() {
     this.fetch();

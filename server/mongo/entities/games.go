@@ -22,6 +22,7 @@ type ArchivedGame struct {
 	MolesUUID []uuid.UUID   `json:"moles,omitempty"`
 
 	Modifiers []string `bson:"modifiers" json:"modifiers"`
+	Events    []string `bson:"events" json:"events,omitempty"`
 
 	Logs []string `bson:"logs" json:"logs"`
 
@@ -57,6 +58,7 @@ type Game struct {
 	// MolesUUID []uuid.UUID `json:"moles,omitempty"`
 
 	Modifiers []string `bson:"modifiers" json:"modifiers"`
+	// Events    []string `bson:"events" json:"events,omitempty"`
 
 	// Logs []string `bson:"logs" json:"logs"`
 
