@@ -1,42 +1,45 @@
-# Nuxt 3 Minimal Starter
+# tl-events.fr
 
-Look at the [nuxt 3 documentation](https://v3.nuxtjs.org) to learn more.
+An application created with Vue through NuxtJS with the goal of building a site to view various information and statistics of TL events.
 
-## Setup
 
-Make sure to install the dependencies:
+## Used technologies
 
-```bash
-# yarn
-yarn install
+The application is developed with [Vue](https://vuejs.org/), a powerful Javascript framework for building user interfaces through the [NuxtJS 3](https://v3.nuxtjs.org/) framework which facilitates development by providing many powerful tools. We thus take advantage of the use of NuxtJS to integrate [Nitropack](https://nitro.unjs.io/) allowing to build serverless applications. The advantages of creating a serverless application and thus server-side rendered are mainly to improve the performance on the user side and SEO. To deploy this serverless application, we use [Cloudflare Workers](https://workers.cloudflare.com/), an excellent platform to deliver and serve content anywhere in the world with low latency.
+## Contributing
 
-# npm
-npm install
-
-# pnpm
-pnpm install --shamefully-hoist
-```
-
-## Development Server
-
-Start the development server on http://localhost:3000
+To facilitate development, maintainability and thus use the same code standards, we use ESLint as linter. Please check that no rules are violated before committing a change with the `yarn run lint` command. If you need or have any questions about the contribution, don't hesitate to open an issue.
+## Run locally
 
 ```bash
-npm run dev
+  # First, clone this repository on your machine:
+  git clone https://github.com/TigrouLand/tl-events.fr.git
+
+  # Go to the project directory:
+  cd tl-events.fr
+
+  # Install dependencies:
+  yarn
+
+  # Start the development server on http://127.0.0.1:3000:
+  yarn dev
+
 ```
 
-## Production
 
-Build the application for production:
+## Deployment
+
+To deploy this project on a Cloudflare worker, please follow [their documentation](https://developers.cloudflare.com/workers/wrangler/get-started/) to get started and install Wrangler.
 
 ```bash
-npm run build
+  # Then build the application with the Cloudflare preset:
+  NITRO_PRESET=cloudflare yarn build
+
+  # And finally, publish to Cloudflare Workers:
+  wrangler publish
 ```
 
-Locally preview production build:
 
-```bash
-npm run preview
-```
+## License
+This project is licensed under the [GNU GPL 3](https://github.com/TigrouLand/tl-events.fr/blob/main/LICENCE).
 
-Checkout the [deployment documentation](https://v3.nuxtjs.org/guide/deploy/presets) for more information.
