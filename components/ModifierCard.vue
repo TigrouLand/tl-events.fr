@@ -4,9 +4,9 @@
       <img class="h-24 p-2 m-4 w-auto" :src="`/${modifier.material.toLowerCase()}.png`" :alt="modifier.material">
       <div class="flex-1 truncate py-6">
         <div class="flex items-center space-x-1">
-          <h3 class="text-white font-medium mr-2">
+          <h1 class="text-white font-medium mr-2">
             {{ modifier.name }}
-          </h3>
+          </h1>
         </div>
         <p class="mt-1 text-white text-sm" v-html="getDescription(modifier)" />
       </div>

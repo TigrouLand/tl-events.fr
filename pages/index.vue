@@ -2,7 +2,9 @@
   <div class="h-full w-full background">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 py-10">
       <div class="flex justify-center items-center py-10">
-        <p id="typewriting" class="text-white text-4xl lg:text-7xl font-bold drop-shadow" style="text-shadow: 6px 6px 0 rgba(178, 55, 52, 0.8);" />
+        <h1 class="text-white text-4xl lg:text-7xl font-bold drop-shadow" style="text-shadow: 6px 6px 0 rgba(178, 55, 52, 0.8);">
+          tl-events.fr
+        </h1>
       </div>
       <div class="p-5 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
         <div class="relative bg-tigrouland pt-5 px-4 pb-12 sm:pt-6 sm:px-6 shadow rounded-lg overflow-hidden">

@@ -2,12 +2,12 @@
   <component :is="isUpcoming(game) ? 'div': 'button'" :class="'bg-gray-800 border ' + (selected ? 'border-red-500 ' : 'border-gray-500 ') + 'rounded shadow w-full justify-start text-left'">
     <div class="w-full p-2">
       <div class="flex">
-        <div class="text-white font-medium">
+        <h1 class="text-white font-medium">
           <font-awesome-icon v-if="isUpcoming(game)" icon="fa-solid fa-clock" class="text-gray-400" />
           <font-awesome-icon v-else-if="isArchived(game)" icon="fa-solid fa-archive" class="text-gray-400" />
           <font-awesome-icon v-else icon="fa-solid fa-gamepad" class="text-green-500" />
           {{ game.name }} [#{{ game.id }}]
-        </div>
+        </h1>
       </div>
       <div v-if="game.players" class="mt-2 -space-x-1 overflow-hidden justify-start text-left">
         <img v-for="player in game.players.slice(0, 7)" :key="player" class="inline-block h-6 w-6 rounded-full ring-2 ring-gray-800" :src="'https://cravatar.eu/helmavatar/' + player + '/96'" alt="">

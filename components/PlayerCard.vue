@@ -5,9 +5,9 @@
       <div class="flex-1 truncate p-6">
         <div class="flex items-center space-x-1">
           <RankBadge :rank="player.rank" />
-          <h3 class="text-white font-medium truncate">
+          <h1 class="text-white font-medium truncate">
             {{ player.name }}
-          </h3>
+          </h1>
         </div>
         <p class="mt-1 text-white text-sm truncate">
           {{ player.kills }}
