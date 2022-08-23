@@ -1,7 +1,42 @@
-# Events - Stats
-Site permettant aux joueurs de voir différentes statistiques des events.
+# Nuxt 3 Minimal Starter
 
-## 🚀 Déploiement
+Look at the [nuxt 3 documentation](https://v3.nuxtjs.org) to learn more.
 
-- **Client** : le client est construit et déployé de manière autonome à chaque commit par le biais de [CloudFlare Pages](https://pages.cloudflare.com/) qui nous permet de bénéficier d'une très haute disponibilité et stabilité ainsi que d'une faible latence.
-- **Serveur** : le serveur est construit via les GitHub Actions qui publient à chaque commit une nouvelle image Docker, disponible sur [Docker Hub](https://hub.docker.com/r/romitou/eventsstats/tags?page=1&ordering=last_updated). Cette image est automatiquement déployée toutes les heures sur notre serveur si une nouvelle image existe.
+## Setup
+
+Make sure to install the dependencies:
+
+```bash
+# yarn
+yarn install
+
+# npm
+npm install
+
+# pnpm
+pnpm install --shamefully-hoist
+```
+
+## Development Server
+
+Start the development server on http://localhost:3000
+
+```bash
+npm run dev
+```
+
+## Production
+
+Build the application for production:
+
+```bash
+npm run build
+```
+
+Locally preview production build:
+
+```bash
+npm run preview
+```
+
+Checkout the [deployment documentation](https://v3.nuxtjs.org/guide/deploy/presets) for more information.

@@ -12,8 +12,6 @@ jobs:
       with:
         node-version: 16
     - name: Install dependencies
-      working-directory: ./client
       run: yarn
     - name: Run lint
-      working-directory: ./client
       run: yarn lint
