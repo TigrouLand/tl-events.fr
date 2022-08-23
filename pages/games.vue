@@ -157,6 +157,9 @@ import moment from 'moment';
 import { defineComponent } from 'vue';
 export default defineComponent({
   async setup () {
+    useHead({
+      title: 'Parties - TL Events'
+    });
     const [{ data: gamesData }, { data: members }] = await Promise.all([
       useFetch('https://api.tl-events.fr/games'),
       useFetch('https://api.tl-events.fr/members')

@@ -18,6 +18,9 @@
 import Levenshtein from 'levenshtein';
 export default defineComponent({
   async setup () {
+    useHead({
+      title: 'Scénarios - TL Events'
+    });
     const { data: modifiers } = await useFetch('https://api.tl-events.fr/modifiers');
     return { modifiers };
   },
