@@ -1,0 +1,13 @@
+name = "tl-events"
+type = "javascript"
+account_id = "74c084e1f74e7f2ad7dc2687d3ada85b"
+workers_dev = true
+route = ""
+zone_id = ""
+compatibility_date = "2022-04-07"
+[site]
+bucket = ".output/public"
+entry-point = ".output"
+[build]
+command = ""
+upload.format = "service-worker"
