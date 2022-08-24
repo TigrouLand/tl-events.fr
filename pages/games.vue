@@ -81,7 +81,7 @@
             <div class="table-auto">
               <div v-if="selectedGame.teams">
                 <div v-for="team in selectedGame.teams.filter(t => t.name !== '')" :key="team.name">
-                  <div :key="team.name" class="text-lg font-semibold mt-3" :style="`color: rgb(${team.colors.join(', ')};`">
+                  <div :key="team.name" class="text-lg font-semibold mt-3" :style="getStyleForTeam(team)">
                     Équipe {{ team.name }}
                   </div>
                   <tr v-for="{ username, uuid } in getPlayersInTeam(team.name)" :key="uuid" class="flex items-center">
@@ -187,6 +187,9 @@ export default defineComponent({
     clearInterval(this.interval);
   },
   methods: {
+    getStyleForTeam (team) {
+      return `color: rgba(${team.colors.join(', ')});`;
+    },
     selected (game) {
       if (!this.selectedGame) { return false; }
       return this.selectedGame.id === game.id;
