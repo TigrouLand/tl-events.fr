@@ -79,4 +79,4 @@ export const metaTags: Array<Record<string, string>> = [
         property: 'og:image:secure_url',
         content: 'https://tl-events.fr/icon.png'
       }
-    ],
+    ];
