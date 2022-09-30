@@ -9,10 +9,10 @@
             </h2>
           </div>
           <div v-for="game in games" :key="game._id" class="px-4 py-3 bg-gray-900">
-            <GameCard :game="game" :selected="selected(game)" />
+            <GameCard :game="gameWithUsernames(game)" :selected="selected(game)" />
           </div>
           <div v-for="game in archivedGames" :key="game._id" class="px-4 py-3 bg-gray-900" @click="selectedGame = game;">
-            <GameCard :game="game" :selected="selected(game)" />
+            <GameCard :game="gameWithUsernames(game)" :selected="selected(game)" />
           </div>
           <div class="flex-1 flex flex-col overflow-y-auto">
             <nav class="flex-1 px-2 py-4 bg-gray-900 space-y-1" />
@@ -23,10 +23,10 @@
     <main class="flex-1 relative overflow-y-auto focus:outline-none bg-gray-800">
       <div class="md:hidden items-center flex bg-gray-900 overflow-x-auto">
         <div v-for="game in games" :key="game._id" class="flex flex-shrink-0 px-4 py-3 bg-gray-900">
-          <GameCard :game="game" :selected="selected(game)" />
+          <GameCard :game="gameWithUsernames(game)" :selected="selected(game)" />
         </div>
         <div v-for="game in archivedGames" :key="game._id" class="flex flex-shrink-0 px-4 py-3 bg-gray-900" @click="selectedGame = game;">
-          <GameCard :game="game" :selected="selected(game)" />
+          <GameCard :game="gameWithUsernames(game)" :selected="selected(game)" />
         </div>
       </div>
       <div v-if="selectedGame" class="flex flex-col sm:flex-row w-full px-4 sm:px-0">
@@ -111,7 +111,7 @@
               </div>
               <tr v-for="player in selectedGame.players" v-else :key="player" class="flex items-center">
                 <td>
-                  <img class="m-4 h-10 w-10 rounded-full" :src="'https://avatars.tl-events.fr/helms/' + player + '.png'" alt="">
+                  <img class="m-4 h-10 w-10 rounded-full" :src="'https://avatars.tl-events.fr/helms/' + getUsernameByUuid(player) + '.png'" alt="">
                 </td>
                 <td>
                   <div v-if="isAlive(player)" class="flex flex-col">
@@ -190,6 +190,15 @@ export default defineComponent({
     getStyleForTeam (team) {
       return `color: rgba(${team.colors.join(', ')});`;
     },
+    gameWithUsernames (game) {
+      return {
+        ...game,
+        players: game.players.map((player) => {
+          const member = this.members.find(m => m.uuid === player);
+          return member ? member.name : player;
+        })
+      };
+    },
     selected (game) {
       if (!this.selectedGame) { return false; }
       return this.selectedGame.id === game.id;
@@ -206,13 +215,13 @@ export default defineComponent({
     getPlayersInTeam (name) {
       if (this.selectedGame && this.selectedGame.playerTeams) {
         return Object.entries(this.selectedGame.playerTeams)
-          .filter(([_, v]) => v === name)
-          .map(([k, _]) => {
-            return {
-              username: k,
-              uuid: this.getUuidByUsername(k)
-            };
-          });
+            .filter(([_, v]) => v === name)
+            .map(([k, _]) => {
+              return {
+                username: k,
+                uuid: this.getUuidByUsername(k)
+              };
+            });
       }
     },
     getUuidByUsername (name) {
@@ -249,12 +258,12 @@ export default defineComponent({
     },
     formatEventType (type) {
       switch (type) {
-      case 'LGUHC':
-        return 'LG-UHC';
-      case 'UHCRun':
-        return 'UHC-Run';
-      default:
-        return type || 'Inconnu';
+        case 'LGUHC':
+          return 'LG-UHC';
+        case 'UHCRun':
+          return 'UHC-Run';
+        default:
+          return type || 'Inconnu';
       }
     }
   }
