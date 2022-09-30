@@ -5,7 +5,7 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "lint": "eslint --ext \".js,.vue\" --fix ."
+    "lint": "nuxt prepare && eslint --ext \".js,.vue\" --fix ."
   },
   "devDependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.1.2",
