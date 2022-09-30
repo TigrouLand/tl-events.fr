@@ -26,9 +26,12 @@
 </template>
 
 <script>
-import moment from 'moment';
+import dayjs from 'dayjs';
+import relativeTime from 'dayjs/plugin/relativeTime.js';
+import 'dayjs/locale/fr.js';
 
-moment.locale('fr');
+dayjs.locale('fr');
+dayjs.extend(relativeTime);
 
 export default {
   name: 'GameCard',
@@ -39,7 +42,7 @@ export default {
     },
     format: (timestamp) => {
       if (!timestamp || timestamp === -1) { return 'À venir'; }
-      const formatted = moment(timestamp).fromNow();
+      const formatted = dayjs(timestamp).fromNow();
       return formatted.charAt(0).toUpperCase() + formatted.slice(1);
     },
     isReset (game) {

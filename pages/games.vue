@@ -153,7 +153,7 @@
 </template>
 
 <script>
-import moment from 'moment';
+import dayjs from 'dayjs';
 import { defineComponent } from 'vue';
 export default defineComponent({
   async setup () {
@@ -237,7 +237,7 @@ export default defineComponent({
       return game.startDate === -1 && game.scheduleDate !== -1;
     },
     formatDate (date) {
-      return moment.unix(date / 1000).format('DD/MM/YYYY à HH:mm');
+      return dayjs(date).format('DD/MM/YYYY à HH:mm');
     },
     formatTime () {
       let { minutes, seconds } = this.selectedGame;
