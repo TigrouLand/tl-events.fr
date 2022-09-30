@@ -215,13 +215,13 @@ export default defineComponent({
     getPlayersInTeam (name) {
       if (this.selectedGame && this.selectedGame.playerTeams) {
         return Object.entries(this.selectedGame.playerTeams)
-            .filter(([_, v]) => v === name)
-            .map(([k, _]) => {
-              return {
-                username: k,
-                uuid: this.getUuidByUsername(k)
-              };
-            });
+          .filter(([_, v]) => v === name)
+          .map(([k, _]) => {
+            return {
+              username: k,
+              uuid: this.getUuidByUsername(k)
+            };
+          });
       }
     },
     getUuidByUsername (name) {
@@ -258,12 +258,12 @@ export default defineComponent({
     },
     formatEventType (type) {
       switch (type) {
-        case 'LGUHC':
-          return 'LG-UHC';
-        case 'UHCRun':
-          return 'UHC-Run';
-        default:
-          return type || 'Inconnu';
+      case 'LGUHC':
+        return 'LG-UHC';
+      case 'UHCRun':
+        return 'UHC-Run';
+      default:
+        return type || 'Inconnu';
       }
     }
   }
