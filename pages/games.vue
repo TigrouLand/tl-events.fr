@@ -86,7 +86,7 @@
                   </div>
                   <tr v-for="{ username, uuid } in getPlayersInTeam(team.name)" :key="uuid" class="flex items-center">
                     <td>
-                      <img class="m-4 h-10 w-10 rounded-full" :src="'https://cravatar.eu/helmavatar/' + uuid + '/96'" alt="">
+                      <img class="m-4 h-10 w-10 rounded-full" :src="'https://avatars.tl-events.fr/helms/' + username + '.png'" alt="">
                     </td>
                     <td>
                       <div v-if="isAlive(uuid)" class="flex flex-col">
@@ -111,7 +111,7 @@
               </div>
               <tr v-for="player in selectedGame.players" v-else :key="player" class="flex items-center">
                 <td>
-                  <img class="m-4 h-10 w-10 rounded-full" :src="'https://cravatar.eu/helmavatar/' + player + '/96'" alt="">
+                  <img class="m-4 h-10 w-10 rounded-full" :src="'https://avatars.tl-events.fr/helms/' + player + '.png'" alt="">
                 </td>
                 <td>
                   <div v-if="isAlive(player)" class="flex flex-col">

@@ -1,7 +1,7 @@
 <template>
   <li class="col-span-1 bg-gray-700 border border-gray-500 rounded shadow divide-y divide-gray-200">
     <div class="w-full flex items-center justify-between">
-      <img class="h-24 w-auto bg-gray-300 rounded rounded-r-none" :src="'https://cravatar.eu/helmavatar/' + player.name + '/96'" alt="">
+      <img class="h-24 w-auto bg-gray-700 rounded rounded-r-none px-3 pt-3" :src="'https://avatars.tl-events.fr/busts/' + player.name + '.png'" alt="">
       <div class="flex-1 truncate p-6">
         <div class="flex items-center space-x-1">
           <RankBadge :rank="player.rank" />

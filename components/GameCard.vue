@@ -10,7 +10,7 @@
         </h1>
       </div>
       <div v-if="game.players" class="mt-2 -space-x-1 overflow-hidden justify-start text-left">
-        <img v-for="player in game.players.slice(0, 7)" :key="player" class="inline-block h-6 w-6 rounded-full ring-2 ring-gray-800" :src="'https://cravatar.eu/helmavatar/' + player + '/96'" alt="">
+        <img v-for="player in game.players.slice(0, 7)" :key="player" class="inline-block h-6 w-6 rounded-full ring-2 ring-gray-800" :src="'https://avatars.tl-events.fr/helms/' + player + '.png'" alt="">
       </div>
       <div v-if="isArchived(game)" class="mt-2 text-gray-300 font-light text-sm justify-start text-left">
         <font-awesome-icon icon="fa-solid fa-clock" /> {{ format(game.scheduleDate) }}
