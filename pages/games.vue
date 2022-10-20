@@ -191,6 +191,9 @@ export default defineComponent({
       return `color: rgba(${team.colors.join(', ')});`;
     },
     gameWithUsernames (game) {
+      if (!game.players) {
+        return game;
+      }
       return {
         ...game,
         players: game.players.map((player) => {
