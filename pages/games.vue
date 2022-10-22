@@ -79,7 +79,35 @@
               Joueurs
             </div>
             <div class="table-auto">
-              <div v-if="selectedGame.teams">
+              <div v-if="selectedGame.playerTeams && selectedGame.finalTeams">
+                <tr v-for="player in selectedGame.players" :key="player" class="flex items-center">
+                  <td>
+                    <img class="m-4 h-10 w-10 rounded-full" :src="'https://avatars.tl-events.fr/helms/' + getUsernameByUuid(player) + '.png'" alt="">
+                  </td>
+                  <td>
+                    <div class="flex flex-col">
+                      <div v-if="isAlive(player)" class="flex-row items-center font-bold">
+                        {{ getUsernameByUuid(player) }}
+                      </div>
+                      <div v-else class="flex-row items-center text-gray-400">
+                        {{ getUsernameByUuid(player) }}<font-awesome-icon class="ml-2" icon="fa-solid fa-skull" />
+                      </div>
+                      <div class="flex flex-row items-center space-x-2">
+                        <div :style="getStyleForTeam(getTeamOfPlayer(player))">
+                          {{ getTeamOfPlayer(player).name }}
+                        </div>
+                        <div class="text-gray-300">
+                          <font-awesome-icon icon="fa-solid fa-caret-right" />
+                        </div>
+                        <div :style="getStyleForTeam(getFinalTeamOfPlayer(player))">
+                          {{ getFinalTeamOfPlayer(player).name }}
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </div>
+              <div v-else-if="selectedGame.teams">
                 <div v-for="team in selectedGame.teams.filter(t => t.name !== '')" :key="team.name">
                   <div :key="team.name" class="text-lg font-semibold mt-3" :style="getStyleForTeam(team)">
                     Équipe {{ team.name }}
@@ -225,6 +253,25 @@ export default defineComponent({
               uuid: this.getUuidByUsername(k)
             };
           });
+      }
+    },
+    getTeamOfPlayer (uuid) {
+      if (this.selectedGame && this.selectedGame.playerTeams) {
+        const username = this.getUsernameByUuid(uuid);
+        const teamName = this.selectedGame.playerTeams[username];
+        return this.getTeamByName(teamName) ?? { name: 'Inconnue', colors: [255, 255, 255] };
+      }
+    },
+    getFinalTeamOfPlayer (uuid) {
+      if (this.selectedGame && this.selectedGame.finalTeams) {
+        const username = this.getUsernameByUuid(uuid);
+        const teamName = this.selectedGame.finalTeams[username];
+        return this.getTeamByName(teamName) ?? { name: 'Inconnue', colors: [255, 255, 255] };
+      }
+    },
+    getTeamByName (name) {
+      if (this.selectedGame && this.selectedGame.teams) {
+        return this.selectedGame.teams.find(t => t.name === name);
       }
     },
     getUuidByUsername (name) {
