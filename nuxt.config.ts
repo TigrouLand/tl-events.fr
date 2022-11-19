@@ -1,9 +1,8 @@
-import { defineNuxtConfig } from 'nuxt';
 import eslintPlugin from 'vite-plugin-eslint';
 import { metaTags } from './site.config';
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
-export default defineNuxtConfig({
+export default {
   app: {
     head: {
       meta: metaTags,
@@ -22,4 +21,4 @@ export default defineNuxtConfig({
       eslintPlugin()
     ]
   }
-});
+};

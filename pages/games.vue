@@ -211,7 +211,7 @@ export default defineComponent({
     this.archivedGames = this.gamesData.archivedGames;
     this.interval = setInterval(this.refreshGames, 10000);
   },
-  destroyed () {
+  unmounted () {
     clearInterval(this.interval);
   },
   methods: {

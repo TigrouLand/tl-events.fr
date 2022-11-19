@@ -13,7 +13,7 @@
               <font-awesome-icon icon="fa-solid fa-user" class="text-tigrouland" />
             </div>
             <p class="ml-16 text-2xl font-semibold text-white">
-              {{ stats.games || '--' }}
+              {{ stats.members || '--' }}
             </p>
           </div>
           <div class="ml-16 pb-6 flex items-baseline sm:pb-7">
