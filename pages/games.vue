@@ -154,7 +154,7 @@
                     <div class="flex-row items-center text-gray-400">
                       {{ getUsernameByUuid(player) }}<font-awesome-icon class="ml-2" icon="fa-solid fa-skull" />
                     </div>
-                    <div v-if="selectedGame.type === 'LGUHC'" class="text-gray-200">
+                    <div v-if="selectedGame.type === 'LGUHC'" class="text-gray-400">
                       {{ getRoleForPlayer(player) }}
                     </div>
                   </div>
