@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="relative pb-8">
+    <div class="relative pb-4">
       <span v-if="!last" class="absolute top-5 left-6 -ml-px h-full w-0.5 bg-gray-400" />
       <div class="relative flex items-start space-x-3 items-center">
         <div>

@@ -169,9 +169,14 @@
               <div class="flex font-bold text-lg justify-center mb-2">
                 Événements de la partie
               </div>
-              <div v-for="(log, i) in selectedGame.logs" :key="log">
-                <GameLog :log="log" :last="i === selectedGame.logs.length - 1" />
-              </div>
+              <ol class="relative border-l border-gray-200 dark:border-gray-700 mt-4">
+                <div v-for="(log, i) in selectedGame.logs" :key="log">
+                  <li :class="`ml-4 ${i != selectedGame.logs.length - 1 ? 'mb-8': ''}`">
+                    <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
+                    <p class="mb-4 text-base font-normal text-gray-300">{{ log }}</p>
+                  </li>
+                </div>
+              </ol>
             </div>
           </div>
         </div>
