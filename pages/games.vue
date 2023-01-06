@@ -64,11 +64,11 @@
                 <font-awesome-icon icon="fa-solid fa-calendar" class="text-white mr-1" />
                 <span class="font-medium">Date de début :</span> {{ formatDate(selectedGame.startDate) }}
               </div>
-              <div class="mb-1">
+              <div class="mb-1" v-if="selectedGame.modifiers && selectedGame.modifiers.length > 0">
                 <font-awesome-icon icon="fa-solid fa-plug" class="text-white mr-1" />
                 <span class="font-medium">Scénarios :</span> {{ selectedGame.modifiers ? selectedGame.modifiers.join(', '): '' }}
               </div>
-              <div v-if="selectedGame.events" class="mb-1">
+              <div v-if="selectedGame.events && selectedGame.events.length > 0" class="mb-1">
                 <font-awesome-icon icon="fa-solid fa-bolt" class="text-white mr-1" />
                 <span class="font-medium">Événements aléatoires :</span> {{ selectedGame.events.join(', ') }}
               </div>
