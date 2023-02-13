@@ -19,7 +19,7 @@ import Levenshtein from 'levenshtein';
 export default defineComponent({
   async setup () {
     useHead({
-      title: 'Membres - TL Events'
+      title: '[TL] Events - Membres'
     });
     const { data: members } = await useFetch('https://api.tl-events.fr/members');
     return { members };
