@@ -82,7 +82,7 @@
 export default defineComponent({
   async setup () {
     useHead({
-      title: 'Accueil - TL Events'
+      title: '[TL] Events - Accueil'
     });
     const { data: stats } = await useFetch('https://api.tl-events.fr/stats');
     return { stats };
