@@ -191,7 +191,7 @@ import { defineComponent } from 'vue';
 export default defineComponent({
   async setup () {
     useHead({
-      title: 'Parties - TL Events'
+      title: '[TL] Events - Parties'
     });
     const [{ data: gamesData }, { data: members }] = await Promise.all([
       useFetch('https://api.tl-events.fr/games'),
