@@ -110,7 +110,7 @@
               <div v-else-if="selectedGame.teams">
                 <div v-for="team in selectedGame.teams.filter(t => t.name !== '')" :key="team.name">
                   <div :key="team.name" class="text-lg font-semibold mt-3" :style="getStyleForTeam(team)">
-                    {{ selectedGame.type === 'SkyDefender' ? (team.name === 'Rouge' ? 'Attaquants' : 'Défenseurs'): `Équipe ${team.name}` }}
+                    {{ selectedGame.type === 'SkyDefender' ? (team.name === 'Bleue' ? 'Attaquants' : 'Défenseurs'): `Équipe ${team.name}` }}
                   </div>
                   <tr v-for="{ username, uuid } in getPlayersInTeam(team.name)" :key="uuid" class="flex items-center">
                     <td>
