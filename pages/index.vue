@@ -78,16 +78,13 @@
   </div>
 </template>
 
-<script>
-export default defineComponent({
-  async setup () {
-    useHead({
-      title: '[TL] Events - Accueil'
-    });
-    const { data: stats } = await useFetch('https://api.tl-events.fr/stats');
-    return { stats };
-  }
-});
+<script setup lang="ts">
+import { useFetch } from '#app';
+import { Ref } from 'vue';
+import { Stats } from '~/typings/api';
+
+const response = await useFetch('https://api.tl-events.fr/stats');
+const stats = response.data as Ref<Stats>;
 </script>
 
 <style scoped>

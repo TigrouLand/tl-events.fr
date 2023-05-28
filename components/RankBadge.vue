@@ -1,11 +1,11 @@
 <template>
-  <div v-if="rank === 'Admin'">
+  <div v-if="props.rank === 'Admin'">
     <span class="flex-shrink-0 inline-block px-2 py-0.5 text-gray-800 text-xs font-medium bg-red-400 rounded-full">Admin</span>
   </div>
-  <div v-else-if="rank === 'Builder'">
+  <div v-else-if="props.rank === 'Builder'">
     <span class="flex-shrink-0 inline-block px-2 py-0.5 text-gray-800 text-xs font-medium bg-blue-400 rounded-full">Builder</span>
   </div>
-  <div v-else-if="rank === 'Graphist'">
+  <div v-else-if="props.rank === 'Graphist'">
     <span class="flex-shrink-0 inline-block px-2 py-0.5 text-gray-800 text-xs font-medium bg-yellow-400 rounded-full">Graphiste</span>
   </div>
   <div v-else>
@@ -13,10 +13,12 @@
   </div>
 </template>
 
-<script>
-export default defineComponent({
-  name: 'RankBadge',
-  props: ['rank']
+<script setup lang="ts">
+const props = defineProps({
+  rank: {
+    type: String,
+    required: true
+  }
 });
 </script>
 

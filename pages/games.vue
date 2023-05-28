@@ -8,10 +8,10 @@
               Liste des parties
             </h2>
           </div>
-          <div v-for="game in games" :key="game._id" class="px-4 py-3 bg-gray-900">
+          <div v-for="game in games" :key="game.id" class="px-4 py-3 bg-gray-900">
             <GameCard :game="gameWithUsernames(game)" :selected="selected(game)" />
           </div>
-          <div v-for="game in archivedGames" :key="game._id" class="px-4 py-3 bg-gray-900" @click="selectedGame = game;">
+          <div v-for="game in archivedGames" :key="game.id" class="px-4 py-3 bg-gray-900" @click="selectedGame = game;">
             <GameCard :game="gameWithUsernames(game)" :selected="selected(game)" />
           </div>
           <div class="flex-1 flex flex-col overflow-y-auto">
@@ -22,10 +22,10 @@
     </div>
     <main class="flex-1 relative overflow-y-auto focus:outline-none bg-gray-800">
       <div class="md:hidden items-center flex bg-gray-900 overflow-x-auto">
-        <div v-for="game in games" :key="game._id" class="flex flex-shrink-0 px-4 py-3 bg-gray-900">
+        <div v-for="game in games" :key="game.id" class="flex flex-shrink-0 px-4 py-3 bg-gray-900">
           <GameCard :game="gameWithUsernames(game)" :selected="selected(game)" />
         </div>
-        <div v-for="game in archivedGames" :key="game._id" class="flex flex-shrink-0 px-4 py-3 bg-gray-900" @click="selectedGame = game;">
+        <div v-for="game in archivedGames" :key="game.id" class="flex flex-shrink-0 px-4 py-3 bg-gray-900" @click="selectedGame = game;">
           <GameCard :game="gameWithUsernames(game)" :selected="selected(game)" />
         </div>
       </div>
@@ -64,13 +64,13 @@
                 <font-awesome-icon icon="fa-solid fa-calendar" class="text-white mr-1" />
                 <span class="font-medium">Date de début :</span> {{ formatDate(selectedGame.startDate) }}
               </div>
-              <div class="mb-1" v-if="selectedGame.modifiers && selectedGame.modifiers.length > 0">
+              <div v-if="selectedGame.modifiers && selectedGame.modifiers.length > 0" class="mb-1">
                 <font-awesome-icon icon="fa-solid fa-plug" class="text-white mr-1" />
-                <span class="font-medium">Scénarios :</span> {{ selectedGame.modifiers ? selectedGame.modifiers.join(', '): '' }}
+                <span class="font-medium">Scénarios :</span> {{ selectedGame?.modifiers ? selectedGame?.modifiers.join(', '): '' }}
               </div>
-              <div v-if="selectedGame.events && selectedGame.events.length > 0" class="mb-1">
+              <div v-if="selectedGame?.events && selectedGame.events.length > 0" class="mb-1">
                 <font-awesome-icon icon="fa-solid fa-bolt" class="text-white mr-1" />
-                <span class="font-medium">Événements aléatoires :</span> {{ selectedGame.events.join(', ') }}
+                <span class="font-medium">Événements aléatoires :</span> {{ selectedGame?.events.join(', ') }}
               </div>
             </div>
           </div>
@@ -79,8 +79,8 @@
               Joueurs
             </div>
             <div class="table-auto">
-              <div v-if="selectedGame.playerTeams && selectedGame.finalTeams">
-                <tr v-for="player in selectedGame.players" :key="player" class="flex items-center">
+              <div v-if="selectedGame?.playerTeams && selectedGame.finalTeams">
+                <tr v-for="player in selectedGame?.players" :key="player" class="flex items-center">
                   <td>
                     <img class="m-4 h-10 w-10 rounded-full" :src="'https://avatars.tl-events.fr/helms/' + getUsernameByUuid(player) + '.png'" alt="">
                   </td>
@@ -107,7 +107,7 @@
                   </td>
                 </tr>
               </div>
-              <div v-else-if="selectedGame.teams">
+              <div v-else-if="selectedGame?.teams">
                 <div v-for="team in selectedGame.teams.filter(t => t.name !== '')" :key="team.name">
                   <div :key="team.name" class="text-lg font-semibold mt-3" :style="getStyleForTeam(team)">
                     {{ selectedGame.type === 'SkyDefender' ? (team.name === 'Bleue' ? 'Attaquants' : 'Défenseurs'): `Équipe ${team.name}` }}
@@ -125,7 +125,7 @@
                           Taupe <font-awesome-icon class="ml-2" icon="fa-solid fa-handshake-slash" />
                         </div>
                       </div>
-                      <div v-else class="flex flex-col">
+                      <div v-else-if="selectedGame" class="flex flex-col">
                         <div class="flex-row items-center text-gray-400">
                           {{ username }}<font-awesome-icon class="ml-2" icon="fa-solid fa-skull" />
                         </div>
@@ -137,7 +137,7 @@
                   </tr>
                 </div>
               </div>
-              <tr v-for="player in selectedGame.players" v-else :key="player" class="flex items-center">
+              <tr v-for="player in selectedGame.players" v-else-if="selectedGame" :key="player" class="flex items-center">
                 <td>
                   <img class="m-4 h-10 w-10 rounded-full" :src="'https://avatars.tl-events.fr/helms/' + getUsernameByUuid(player) + '.png'" alt="">
                 </td>
@@ -154,7 +154,7 @@
                     <div class="flex-row items-center text-gray-400">
                       {{ getUsernameByUuid(player) }}<font-awesome-icon class="ml-2" icon="fa-solid fa-skull" />
                     </div>
-                    <div v-if="selectedGame.type === 'LGUHC'" class="text-gray-400">
+                    <div v-if="selectedGame?.type === 'LGUHC'" class="text-gray-400">
                       {{ getRoleForPlayer(player) }}
                     </div>
                   </div>
@@ -169,11 +169,11 @@
               <div class="flex font-bold text-lg justify-center mb-2">
                 Événements de la partie
               </div>
-              <ol class="relative border-l border-gray-200 dark:border-gray-700 mt-4">
+              <ol v-if="selectedGame" class="relative border-l border-gray-200 dark:border-gray-700 mt-4">
                 <div v-for="(log, i) in selectedGame.logs" :key="log">
-                  <li :class="`ml-4 ${i != selectedGame.logs.length - 1 ? 'mb-8': ''}`">
-                    <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
-                    <p class="mb-4 text-base font-normal text-gray-300">{{ log }}</p>
+                  <li :class="`ml-4 ${i !== selectedGame.logs.length - 1 ? 'mb-8': ''}`">
+                    <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700" />
+                    <p class="mb-4 text-base font-normal text-gray-300" v-text="log" />
                   </li>
                 </div>
               </ol>
@@ -185,144 +185,160 @@
   </div>
 </template>
 
-<script>
+<script setup lang="ts">
+import { useFetch } from '#app';
 import dayjs from 'dayjs';
-import { defineComponent } from 'vue';
-export default defineComponent({
-  async setup () {
-    useHead({
-      title: '[TL] Events - Parties'
-    });
-    const [{ data: gamesData }, { data: members }] = await Promise.all([
-      useFetch('https://api.tl-events.fr/games'),
-      useFetch('https://api.tl-events.fr/members')
-    ]);
+import { Ref } from 'vue';
+import { Game, GameResponse, Member, Team } from '~/typings/api';
 
-    return {
-      gamesData,
-      members
-    };
-  },
-  data () {
-    return {
-      games: [],
-      archivedGames: [],
-      selectedGame: null,
-      interval: null
-    };
-  },
-  mounted () {
-    this.games = this.gamesData.games;
-    this.archivedGames = this.gamesData.archivedGames;
-    this.interval = setInterval(this.refreshGames, 10000);
-  },
-  unmounted () {
-    clearInterval(this.interval);
-  },
-  methods: {
-    getStyleForTeam (team) {
-      return `color: rgba(${team.colors.join(', ')});`;
-    },
-    gameWithUsernames (game) {
-      if (!game.players) {
-        return game;
-      }
-      return {
-        ...game,
-        players: game.players.map((player) => {
-          const member = this.members.find(m => m.uuid === player);
-          return member ? member.name : player;
-        })
-      };
-    },
-    selected (game) {
-      if (!this.selectedGame) { return false; }
-      return this.selectedGame.id === game.id;
-    },
-    isMole (uuid) {
-      if (!this.selectedGame && this.selectedGame.moles) { return Boolean(this.selectedGame.moles.includes(uuid)); }
-      return false;
-    },
-    getRoleForPlayer (uuid) {
-      if (!this.selectedGame && this.selectedGame.playerRoles) { return; }
-      const username = this.getUsernameByUuid(uuid);
-      return this.selectedGame.playerRoles[username];
-    },
-    getPlayersInTeam (name) {
-      if (this.selectedGame && this.selectedGame.playerTeams) {
-        return Object.entries(this.selectedGame.playerTeams)
-          .filter(([_, v]) => v === name)
-          .map(([k, _]) => {
-            return {
-              username: k,
-              uuid: this.getUuidByUsername(k)
-            };
-          });
-      }
-    },
-    getTeamOfPlayer (uuid) {
-      if (this.selectedGame && this.selectedGame.playerTeams) {
-        const username = this.getUsernameByUuid(uuid);
-        const teamName = this.selectedGame.playerTeams[username];
-        return this.getTeamByName(teamName) ?? { name: 'Inconnue', colors: [255, 255, 255] };
-      }
-    },
-    getFinalTeamOfPlayer (uuid) {
-      if (this.selectedGame && this.selectedGame.finalTeams) {
-        const username = this.getUsernameByUuid(uuid);
-        const teamName = this.selectedGame.finalTeams[username];
-        return this.getTeamByName(teamName) ?? { name: 'Inconnue', colors: [255, 255, 255] };
-      }
-    },
-    getTeamByName (name) {
-      if (this.selectedGame && this.selectedGame.teams) {
-        return this.selectedGame.teams.find(t => t.name === name);
-      }
-    },
-    getUuidByUsername (name) {
-      return this.members.find(p => p.name === name)?.uuid;
-    },
-    getUsernameByUuid (uuid) {
-      return this.members.find(p => p.uuid === uuid)?.name;
-    },
-    async refreshGames () {
-      const data = await $fetch('https://api.tl-events.fr/games');
-      this.games = data.games;
-      this.archivedGames = data.archivedGames;
-    },
-    isAlive (player) {
-      if (this.selectedGame && this.selectedGame.alive) { return this.selectedGame.alive.includes(player); }
-      return false;
-    },
-    isArchived (game) {
-      return game.archiveDate !== -1;
-    },
-    isScheduled (game) {
-      return game.startDate === -1 && game.scheduleDate !== -1;
-    },
-    formatDate (date) {
-      return dayjs(date).format('DD/MM/YYYY à HH:mm');
-    },
-    formatTime () {
-      let { minutes, seconds } = this.selectedGame;
-      const hours = this.selectedGame.hours;
-
-      if (minutes < 10) { minutes = `0${minutes}`; }
-      if (seconds < 10) { seconds = `0${seconds}`; }
-      return `${hours}:${minutes}:${seconds}`;
-    },
-    formatEventType (type) {
-      switch (type) {
-      case 'LGUHC':
-        return 'LG-UHC';
-      case 'UHCRun':
-        return 'UHC-Run';
-      default:
-        return type || 'Inconnu';
-      }
-    }
-  }
+useHead({
+  title: '[TL] Events - Parties'
 });
+const [gamesResponse, membersResponse] = await Promise.all([
+  useFetch('https://api.tl-events.fr/games'),
+  useFetch('https://api.tl-events.fr/members')
+]);
+
+const gamesData = gamesResponse.data as Ref<GameResponse>;
+const members = membersResponse.data as Ref<Member[]>;
+
+const archivedGames: Ref<Game[]> = ref<Game[]>([]);
+const games: Ref<Game[]> = ref<Game[]>([]);
+const selectedGame: Ref<Game | null> = ref<Game | null>(null);
+
+const interval = ref<NodeJS.Timeout | null>(null);
+
+onMounted?.(() => {
+  games.value = gamesData.value.games;
+  archivedGames.value = gamesData.value.archivedGames;
+  interval.value = setInterval(refreshGames, 10000);
+});
+
+onUnmounted?.(() => {
+  clearInterval(interval.value);
+});
+
+const getStyleForTeam = (team: Team) => {
+  return `color: rgba(${team.colors.join(', ')});`;
+};
+
+const gameWithUsernames = (game: Game) => {
+  if (!game.players) {
+    return game;
+  }
+  return {
+    ...game,
+    players: game.players.map((player) => {
+      const member = members.value.find(m => m.uuid === player);
+      return member ? member.name : player;
+    })
+  };
+};
+
+const selected = (game: Game) => {
+  if (!selectedGame.value) {
+    return false;
+  }
+  return selectedGame.value?.id === game.id;
+};
+
+const getRoleForPlayer = (uuid: string) => {
+  const username = getUsernameByUuid(uuid);
+  return selectedGame.value?.playerRoles?.[username];
+};
+
+const getPlayersInTeam = (name: string) => {
+  if (selectedGame.value && selectedGame.value?.playerTeams) {
+    return Object.entries(selectedGame.value?.playerTeams)
+      .filter(([_, v]) => v === name)
+      .map(([k, _]) => {
+        return {
+          username: k,
+          uuid: getUuidByUsername(k)
+        };
+      });
+  }
+};
+
+const getTeamOfPlayer = (uuid: string) => {
+  if (selectedGame.value && selectedGame.value?.playerTeams) {
+    const username = getUsernameByUuid(uuid);
+    const teamName = selectedGame.value?.playerTeams[username];
+    if (!teamName) {
+      return { name: 'Inconnue', colors: [255, 255, 255] };
+    }
+    return getTeamByName(teamName);
+  }
+};
+
+const getFinalTeamOfPlayer = (uuid: string) => {
+  if (selectedGame.value && selectedGame.value?.finalTeams) {
+    const username = getUsernameByUuid(uuid);
+    const teamName = selectedGame.value?.finalTeams[username];
+    if (!teamName) {
+      return { name: 'Inconnue', colors: [255, 255, 255] };
+    }
+    return getTeamByName(teamName);
+  }
+};
+
+const getTeamByName = (name: string) => {
+  if (selectedGame.value && selectedGame.value?.teams) {
+    return selectedGame.value?.teams.find(t => t.name === name);
+  }
+};
+
+const getUuidByUsername = (name: string) => {
+  return members.value.find(p => p.name === name)?.uuid;
+};
+
+const getUsernameByUuid = (uuid: string) => {
+  return members.value.find(p => p.uuid === uuid)?.name;
+};
+const refreshGames = async () => {
+  const data = await $fetch('https://api.tl-events.fr/games');
+  games.value = data.games;
+  archivedGames.value = data.archivedGames;
+};
+
+const isAlive = (name: string) => {
+  if (selectedGame.value && selectedGame.value?.alive) {
+    return selectedGame.value?.alive.includes(name);
+  }
+  return false;
+};
+
+const isArchived = (game: Game) => {
+  return game.archiveDate !== -1;
+};
+
+const isScheduled = (game: Game) => {
+  return game.startDate === -1 && game.scheduleDate !== -1;
+};
+
+const formatDate = (timestamp: number) => {
+  return dayjs(timestamp).format('DD/MM/YYYY à HH:mm');
+};
+
+const formatTime = () => {
+  let { minutes, seconds } = selectedGame.value;
+  const hours = selectedGame.value?.hours;
+
+  if (minutes < 10) { minutes = `0${minutes}`; }
+  if (seconds < 10) { seconds = `0${seconds}`; }
+  return `${hours}:${minutes}:${seconds}`;
+};
+
+const formatEventType = (type: string) => {
+  switch (type) {
+  case 'LGUHC':
+    return 'LG-UHC';
+  case 'UHCRun':
+    return 'UHC-Run';
+  default:
+    return type || 'Inconnu';
+  }
+};
 </script>
 
 <style scoped>

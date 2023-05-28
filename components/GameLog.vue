@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="relative pb-4">
-      <span v-if="!last" class="absolute top-5 left-6 -ml-px h-full w-0.5 bg-gray-400" />
+      <span v-if="!props.last" class="absolute top-5 left-6 -ml-px h-full w-0.5 bg-gray-400" />
       <div class="relative flex items-start space-x-3 items-center">
         <div>
           <div class="relative px-1">
@@ -12,7 +12,7 @@
         </div>
         <div class="min-w-0 flex-1 py-0">
           <div class="text-sm leading-8 text-white">
-            {{ log }}
+            {{ props.log }}
           </div>
         </div>
       </div>
@@ -20,10 +20,17 @@
   </div>
 </template>
 
-<script>
-export default defineComponent({
-  name: 'GameLog',
-  props: ['log', 'last']
+<script setup lang="ts">
+const props = defineProps({
+  log: {
+    type: String,
+    required: true
+  },
+  last: {
+    type: Boolean,
+    required: false,
+    default: false
+  }
 });
 </script>
 
