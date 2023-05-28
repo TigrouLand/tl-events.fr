@@ -2,7 +2,13 @@ import eslintPlugin from 'vite-plugin-eslint';
 import { metaTags } from './site.config';
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
-export default {
+export default defineNuxtConfig({
+  modules: [
+    '@nuxtjs/tailwindcss'
+  ],
+  css: [
+    '@fortawesome/fontawesome-svg-core/styles.css'
+  ],
   app: {
     head: {
       meta: metaTags,
@@ -17,15 +23,12 @@ export default {
       ]
     }
   },
-  css: [
-    '@fortawesome/fontawesome-svg-core/styles.css'
-  ],
-  modules: [
-    '@nuxtjs/tailwindcss'
-  ],
+  nitro: {
+    preset: 'cloudflare-pages'
+  },
   vite: {
     plugins: [
       eslintPlugin()
     ]
   }
-};
+});
