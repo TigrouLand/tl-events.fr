@@ -26,9 +26,6 @@
             <a href="https://github.com/TigrouLand/EventsStats" target="_blank" rel="noopener noreferrer" type="button" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-gray-900 hover:bg-gray-800 focus:outline-none">
               <font-awesome-icon icon="fa-brands fa-github" class="mr-2 fa-lg" /> GitHub
             </a>
-            <a href="https://twitter.com/EventsTLV2" target="_blank" rel="noopener noreferrer" type="button" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-twitter hover:bg-blue-400 focus:outline-none">
-              <font-awesome-icon icon="fa-brands fa-twitter" class="mr-2 fa-lg" /> Twitter
-            </a>
             <a href="https://discord.gg/qV5TYGx" target="_blank" rel="noopener noreferrer" type="button" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blurple hover:bg-indigo-500 focus:outline-none">
               <font-awesome-icon icon="fa-brands fa-discord" class="mr-2 fa-lg" /> Nous rejoindre sur Discord
             </a>
