@@ -83,11 +83,6 @@
               <font-awesome-icon icon="fa-brands fa-github" class="mr-2 fa-lg" /> GitHub
             </a>
           </div>
-          <div class="flex-1 p-4">
-            <a href="https://twitter.com/EventsTLV2" target="_blank" rel="noopener noreferrer" type="button" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-twitter hover:bg-blue-400 focus:outline-none w-full">
-              <font-awesome-icon icon="fa-brands fa-twitter" class="mr-2 fa-lg" /> Twitter
-            </a>
-          </div>
           <div class="flex-1 px-4 pb-4">
             <a href="https://discord.gg/qV5TYGx" target="_blank" rel="noopener noreferrer" type="button" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blurple hover:bg-indigo-500 focus:outline-none w-full">
               <font-awesome-icon icon="fa-brands fa-discord" class="mr-2 fa-lg" /> Nous rejoindre sur Discord
