@@ -1,111 +1,127 @@
 <template>
-  <div class="flex flex-col h-screen bg-gray-800">
-    <nav class="bg-tigrouland sticky top-0 z-50">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between">
-          <div class="flex">
-            <div class="flex-shrink-0 flex items-center">
-              <img class="block h-16 w-auto" src="/icon.png" alt="Workflow">
-            </div>
-            <div class="hidden sm:-my-px sm:ml-6 sm:flex sm:space-x-8">
-              <NuxtLink to="/" :class="getDeskNavClass($route.name === 'index')" aria-current="page">
-                Accueil
-              </NuxtLink>
-              <NuxtLink to="/members" :class="getDeskNavClass($route.name === 'members')">
-                Membres
-              </NuxtLink>
-              <NuxtLink to="/modifiers" :class="getDeskNavClass($route.name === 'modifiers')">
-                Scénarios
-              </NuxtLink>
-              <NuxtLink to="/games" :class="getDeskNavClass($route.name === 'games')">
-                Parties
-              </NuxtLink>
+  <div class="flex flex-col h-screen w-full">
+    <Disclosure v-slot="{ open }" as="nav" class="bg-red-500">
+      <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+        <div class="relative flex h-16 items-center justify-between">
+          <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+            <DisclosureButton class="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+              <Bars3Icon v-if="!open" class="block h-6 w-6" aria-hidden="true" />
+              <XMarkIcon v-else class="block h-6 w-6" aria-hidden="true" />
+            </DisclosureButton>
+          </div>
+          <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+            <img class="h-16 w-auto" src="~/assets/logo.png" alt="">
+            <div class="hidden sm:ml-6 sm:block sm:flex sm:items-center">
+              <div class="flex space-x-4 items-center">
+                <NuxtLink v-for="item in navigation" :key="item.name" :to="item.href" :class="[item.current ? 'bg-red-700 text-white' : 'text-gray-300 hover:bg-red-700 hover:text-white', 'rounded-md px-3 py-2 text-sm font-medium']" :aria-current="item.current ? 'page' : undefined">
+                  {{ item.name }}
+                </NuxtLink>
+              </div>
             </div>
           </div>
-          <div class="hidden sticky sm:ml-6 sm:flex sm:items-center space-x-4">
-            <a href="https://github.com/TigrouLand/EventsStats" target="_blank" rel="noopener noreferrer" type="button" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-gray-900 hover:bg-gray-800 focus:outline-none">
-              <font-awesome-icon icon="fa-brands fa-github" class="mr-2 fa-lg" /> GitHub
-            </a>
-            <a href="https://discord.gg/qV5TYGx" target="_blank" rel="noopener noreferrer" type="button" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blurple hover:bg-indigo-500 focus:outline-none">
-              <font-awesome-icon icon="fa-brands fa-discord" class="mr-2 fa-lg" /> Nous rejoindre sur Discord
-            </a>
+          <div v-if="status === 'authenticated'" class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+            <Menu as="div" class="relative ml-3">
+              <div>
+                <MenuButton class="flex rounded-full bg-red-700 text-sm text-gray-100 items-center sm:pl-3 focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-offset-2 focus:ring-offset-red-800">
+                  <div class="hidden sm:block mr-2">
+                    {{ data.user.name }}
+                  </div>
+                  <img class="h-8 w-8 rounded-full" src="https://avatars.tl-events.fr/helms/Romitou.png" alt="">
+                </MenuButton>
+              </div>
+            </Menu>
           </div>
-          <div class="flex items-center sm:hidden">
-            <button type="button" class="bg-gray-100 inline-flex items-center justify-center p-2 rounded-md text-tigrouland hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-700" aria-controls="mobile-menu" aria-expanded="false" @click="dropdown = !dropdown">
-              <span class="sr-only">Open main menu</span>
-              <svg
-                v-if="!dropdown"
-                class="h-6 w-6"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                aria-hidden="true"
-              >
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-              <svg
-                v-if="dropdown"
-                class="h-6 w-6"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                aria-hidden="true"
-              >
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
-          </div>
+          <button v-else class="font-medium text-white flex" @click="signIn('discord')">
+            Se connecter <ArrowRightOnRectangleIcon class="h-6 w-auto ml-2" />
+          </button>
         </div>
       </div>
-      <div v-if="dropdown" id="mobile-menu" class="sm:hidden">
-        <div class="pt-2 pb-3 space-y-1">
-          <NuxtLink to="/" :class="getMobileNavClass($route.name === 'index')">
-            Accueil
-          </NuxtLink>
-          <NuxtLink to="/members" :class="getMobileNavClass($route.name === 'members')">
-            Membres
-          </NuxtLink>
-          <NuxtLink to="/modifiers" :class="getMobileNavClass($route.name === 'modifiers')">
-            Scénarios
-          </NuxtLink>
-          <NuxtLink to="/games" :class="getMobileNavClass($route.name === 'games')">
-            Parties
+      <DisclosurePanel class="sm:hidden">
+        <div class="space-y-1 px-2 pb-3 pt-2">
+          <NuxtLink
+            v-for="item in navigation"
+            :key="item.name"
+            :to="item.href"
+            class="my-1 mx-1"
+          >
+            <DisclosureButton
+              as="div"
+              :class="[item.current ? 'bg-red-700 text-white' : 'text-gray-300 hover:bg-red-700 hover:text-white', 'block rounded-md px-3 py-2 text-base font-medium']"
+              :aria-current="item.current ? 'page' : undefined"
+            >
+              {{ item.name }}
+            </DisclosureButton>
           </NuxtLink>
         </div>
-        <div class="flex flex-wrap">
-          <div class="flex-1 p-4">
-            <a href="https://github.com/TigrouLand/EventsStats" target="_blank" rel="noopener noreferrer" type="button" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-gray-900 hover:bg-gray-800 focus:outline-none w-full">
-              <font-awesome-icon icon="fa-brands fa-github" class="mr-2 fa-lg" /> GitHub
-            </a>
-          </div>
-          <div class="flex-1 px-4 pb-4">
-            <a href="https://discord.gg/qV5TYGx" target="_blank" rel="noopener noreferrer" type="button" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blurple hover:bg-indigo-500 focus:outline-none w-full">
-              <font-awesome-icon icon="fa-brands fa-discord" class="mr-2 fa-lg" /> Nous rejoindre sur Discord
-            </a>
-          </div>
-        </div>
-      </div>
-    </nav>
-    <main class="flex-1 overflow-y-auto">
-      <slot />
-    </main>
+      </DisclosurePanel>
+    </Disclosure>
+    <slot />
   </div>
 </template>
 
 <script setup>
+import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton } from '@headlessui/vue';
+import { Bars3Icon, XMarkIcon, ArrowRightOnRectangleIcon } from '@heroicons/vue/24/outline';
 
-const dropdown = ref(false);
+const { status, data, signIn } = useAuth();
 
-const getDeskNavClass = (active) => {
-  return active
-    ? 'border-white text-white inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium'
-    : 'border-transparent text-white hover:border-white inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium';
-};
-const getMobileNavClass = (active) => {
-  return active
-    ? 'bg-gray-100 border-tigrouland text-tigrouland block pl-3 pr-4 py-2 border-l-4 text-base font-medium'
-    : 'border-transparent text-gray-100 bg-tigrouland hover:bg-gray-100 hover:border-tigrouland hover:text-tigrouland block pl-3 pr-4 py-2 border-l-4 text-base font-medium';
-};
+const navigation = [
+  { name: 'Accueil', href: '/', current: true },
+  { name: 'Jeux', href: '#', current: false },
+  { name: 'Membres', href: '#', current: false },
+  { name: 'Parties', href: '#', current: false }
+];
 </script>
+<!--<template>-->
+<!--  <div class="flex flex-col h-screen w-full">-->
+<!--    <header class="flex justify-center bg-red-500 h-20 shadow-lg">-->
+<!--      <nav class="flex w-full max-w-7xl justify-between px-4 sm:px-6 lg:px-8" aria-label="Top">-->
+<!--        <div class="w-full flex items-center justify-between border-b border-indigo-500 lg:border-none">-->
+<!--          <div class="flex items-center">-->
+<!--            <NuxtLink to="/">-->
+<!--              <img class="h-20 w-auto" src="~/assets/logo.png" alt="" />-->
+<!--            </NuxtLink>-->
+<!--            <div class="hidden ml-10 space-x-8 lg:block">-->
+<!--              <NuxtLink v-for="link in navigation" :key="link.name" :to="link.to" class="text-base font-medium text-white hover:text-indigo-50">-->
+<!--                {{ link.name }}-->
+<!--              </NuxtLink>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div>-->
+<!--            <a class="text-base font-medium text-white hover:text-indigo-50 flex">-->
+<!--              Se connecter <ArrowRightOnRectangleIcon class="h-6 w-auto ml-2" />-->
+<!--            </a>-->
+<!--            <div class="-mr-2 flex items-center sm:hidden">-->
+<!--              &lt;!&ndash; Mobile menu button &ndash;&gt;-->
+<!--              <DisclosureButton class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">-->
+<!--                <span class="sr-only">Open main menu</span>-->
+<!--                <MenuIcon v-if="!open" class="block h-6 w-6" aria-hidden="true" />-->
+<!--                <XIcon v-else class="block h-6 w-6" aria-hidden="true" />-->
+<!--              </DisclosureButton>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="py-4 flex flex-wrap justify-center space-x-6 lg:hidden">-->
+<!--          <NuxtLink v-for="link in navigation" :key="link.name" :to="link.to" class="text-base font-medium text-white hover:text-indigo-50">-->
+<!--            {{ link.name }}-->
+<!--          </NuxtLink>-->
+<!--        </div>-->
+<!--      </nav>-->
+<!--    </header>-->
+<!--    <div class="flex">-->
+<!--      <slot />-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</template>-->
+
+<!--<script setup>-->
+<!--import { ArrowRightOnRectangleIcon } from '@heroicons/vue/24/outline';-->
+<!--import { DisclosureButton } from '@headlessui/vue';-->
+
+<!--const navigation = [-->
+<!--  { name: 'Accueil', to: '/' },-->
+<!--  { name: 'Jeux', to: '#' },-->
+<!--  { name: 'Membres', to: '#' },-->
+<!--  { name: 'Parties', to: '#' }-->
+<!--];-->
+<!--</script>-->

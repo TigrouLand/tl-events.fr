@@ -4,7 +4,9 @@ import { metaTags } from './site.config';
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
   modules: [
-    '@nuxtjs/tailwindcss'
+    '@nuxtjs/tailwindcss',
+    '@sidebase/nuxt-auth',
+    '@pinia/nuxt'
   ],
   css: [
     '@fortawesome/fontawesome-svg-core/styles.css'
@@ -21,6 +23,12 @@ export default defineNuxtConfig({
           href: '/favicon.ico'
         }
       ]
+    }
+  },
+  runtimeConfig: {
+    discordClientId: '',
+    discordClientSecret: '',
+    public: {
     }
   },
   nitro: {

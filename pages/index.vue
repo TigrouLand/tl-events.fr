@@ -1,75 +1,75 @@
 <template>
-  <div class="h-full w-full background">
-    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 py-10">
-      <div class="flex justify-center items-center py-10">
-        <h1 class="text-white text-4xl lg:text-7xl font-bold drop-shadow" style="text-shadow: 6px 6px 0 rgba(178, 55, 52, 0.8);">
-          tl-events.fr
-        </h1>
+  <div class="w-full bg-zinc-800">
+    <div class="flex justify-between flex-col w-full background" :style="{height:'60rem'}">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <div class="flex flex-col justify-center items-center py-10 space-y-4">
+          <h1 class="text-white text-4xl lg:text-7xl font-bold drop-shadow text-shadow-red">
+            [TL] Events - UHC
+          </h1>
+          <h2 class="text-white text-xl lg:text-4xl font-bold drop-shadow text-shadow-zinc max-w-2xl text-center">
+            Rejoignez notre communauté et participez à nos événements
+          </h2>
+        </div>
       </div>
-      <div class="p-5 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        <div class="relative bg-tigrouland pt-5 px-4 pb-12 sm:pt-6 sm:px-6 shadow rounded-lg overflow-hidden">
-          <div>
-            <div class="absolute bg-gray-700 rounded-md h-12 w-12 px-4 py-3">
-              <font-awesome-icon icon="fa-solid fa-user" class="text-tigrouland" />
-            </div>
-            <p class="ml-16 text-2xl font-semibold text-white">
-              {{ stats.members || '--' }}
-            </p>
-          </div>
-          <div class="ml-16 pb-6 flex items-baseline sm:pb-7">
-            <p class="text-sm font-medium text-white">
-              Membres uniques
-            </p>
-            <div class="absolute bottom-0 inset-x-0 bg-gray-700 px-4 py-4 sm:px-6">
-              <div class="text-sm">
-                <nuxt-link to="/members" class="font-medium text-white hover:text-gray-200">
-                  Voir leurs statistiques <font-awesome-icon icon="fa-solid fa-arrow-right" />
-                </nuxt-link>
-              </div>
+      <div>
+        <div class="flex w-full justify-center -translate-y-8">
+          <ArrowDownIcon class="h-16 w-auto animate-bounce text-white" />
+        </div>
+        <img class="w-full rotate-180 text-red-600 h-32 flex flex-shrink-0 flex-grow-0" src="~/assets/divider-zinc.svg">
+      </div>
+    </div>
+    <div class="bg-zinc-800">
+      <div class="flex flex-col sm:flex-row justify-center sm:space-x-10 space-y-10 sm:space-y-0">
+        <div class="flex sm:justify-end justify-center w-full">
+          <div class="max-w-xl px-4">
+            <h1 class="text-white sm:text-end text-center text-3xl lg:text-4xl font-bold">
+              Rejoignez le Discord
+            </h1>
+            <div class="text-white sm:text-end text-center text-lg lg:text-xl mt-4 space-y-2">
+              <p>Notre Discord est le centre de notre communauté : vous y retrouverez toutes les annonces, toutes les mises à jour et informations utiles concernant nos événements.</p>
+              <p>
+                Si vous souhaitez participer à nos événements, passez sur notre Discord en cliquant sur le lien ci-contre : <a target="_blank" href="https://discord.gg/c5HsKq2fCt" class="text-zinc-400 inline-flex items-center">
+                  https://discord.gg/c5HsKq2fCt
+                  <ArrowTopRightOnSquareIcon class="h-5 w-5 ml-1.5" />
+                </a>.
+              </p>
+              <p>Notre serveur Minecraft étant sous whitelist, n'hésitez pas à vous présenter et demander à rejoindre cette whitelist !</p>
             </div>
           </div>
         </div>
-        <div class="relative bg-tigrouland pt-5 px-4 pb-12 sm:pt-6 sm:px-6 shadow rounded-lg overflow-hidden">
-          <div>
-            <div class="absolute bg-gray-700 rounded-md h-12 w-12 px-4 py-3">
-              <font-awesome-icon icon="fa-solid fa-dice" class="text-tigrouland" />
-            </div>
-            <p class="ml-16 text-2xl font-semibold text-white">
-              {{ stats.modifiers || '--' }}
-            </p>
-          </div>
-          <div class="ml-16 pb-6 flex items-baseline sm:pb-7">
-            <p class="text-sm font-medium text-white">
-              Scénarios disponibles
-            </p>
-            <div class="absolute bottom-0 inset-x-0 bg-gray-700 px-4 py-4 sm:px-6">
-              <div class="text-sm">
-                <nuxt-link to="/modifiers" class="font-medium text-white hover:text-gray-200">
-                  Voir la liste complète <font-awesome-icon icon="fa-solid fa-arrow-right" />
-                </nuxt-link>
-              </div>
-            </div>
+        <div class="flex w-full justify-start px-4">
+          <div class="max-w-xl">
+            <img class="h-80 rounded-xl object-cover" src="~/assets/discord-invite.png" alt="">
           </div>
         </div>
-        <div class="relative bg-tigrouland pt-5 px-4 pb-12 sm:pt-6 sm:px-6 shadow rounded-lg overflow-hidden">
-          <div>
-            <div class="absolute bg-gray-700 rounded-md h-12 w-12 px-4 py-3">
-              <font-awesome-icon icon="fa-solid fa-gamepad" class="text-tigrouland" />
-            </div>
-            <p class="ml-16 text-2xl font-semibold text-white">
-              {{ stats.games || '--' }}
-            </p>
+      </div>
+      <div class="bg-red-800">
+        <img class="w-full h-32 -scale-y-100 -rotate-180" src="~/assets/divider-zinc.svg">
+      </div>
+    </div>
+    <div class="bg-red-800 py-5">
+      <div class="flex flex-col-reverse sm:flex-row justify-center sm:space-x-10">
+        <div class="flex w-full justify-center sm:justify-end px-4 sm:mt-0 mt-10">
+          <div class="max-w-xl">
+            <img class="h-80 rounded-xl object-cover" src="~/assets/address.png" alt="">
           </div>
-          <div class="ml-16 pb-6 flex items-baseline sm:pb-7">
-            <p class="text-sm font-medium text-white">
-              Parties jouées
-            </p>
-            <div class="absolute bottom-0 inset-x-0 bg-gray-700 px-4 py-4 sm:px-6">
-              <div class="text-sm">
-                <nuxt-link to="/games" class="font-medium text-white hover:text-gray-200">
-                  Voir les résumés détaillés <font-awesome-icon icon="fa-solid fa-arrow-right" />
-                </nuxt-link>
-              </div>
+        </div>
+        <div class="w-full">
+          <div class="max-w-xl">
+            <h1 class="text-white text-center sm:text-start text-3xl lg:text-4xl font-bold">
+              Ajoutez le serveur
+            </h1>
+            <div class="text-white text-center sm:text-start text-lg lg:text-xl mt-4 space-y-2">
+              <p>Afin de pouvoir vous connecter rapidement lors de nos prochains événements, nous vous conseillons d'ajouter l'adresse à votre liste de serveurs.</p>
+              <p>
+                Démarrez votre jeu, accédez au menu multijoueurs puis cliquez sur Ajouter un serveur. Cliquez sur l'adresse ci-contre pour la copier :
+                <button class="text-zinc-400 inline-flex items-center" @click="copy()">
+                  tl-events.fr
+                  <ClipboardIcon v-if="!copied" class="h-5 w-5 ml-1.5" />
+                  <ClipboardDocumentCheckIcon v-else class="h-5 w-5 ml-1.5" />
+                </button>.
+              </p>
+              <p>Notez qu'une whitelist est actuellement mise en place, n'hésitez pas à demander votre ajout à cette whitelist sur notre serveur Discord !</p>
             </div>
           </div>
         </div>
@@ -79,16 +79,29 @@
 </template>
 
 <script setup lang="ts">
-import { useFetch } from '#app';
-import { Ref } from 'vue';
-import { Stats } from '~/typings/api';
+import { ArrowDownIcon, ClipboardIcon, ClipboardDocumentCheckIcon, ArrowTopRightOnSquareIcon } from '@heroicons/vue/24/outline';
 
-const response = await useFetch('https://api.tl-events.fr/stats');
-const stats = response.data as Ref<Stats>;
+const copied = ref(false);
+
+const copy = () => {
+  navigator.clipboard.writeText('tl-events.fr');
+  copied.value = true;
+  setTimeout(() => {
+    copied.value = false;
+  }, 2000);
+};
+
 </script>
 
 <style scoped>
 .background {
-  background: url("/background.png") center no-repeat;
+  background: url("~/assets/background.png") center no-repeat;
+}
+
+.text-shadow-red {
+  text-shadow: rgba(178, 55, 52, 0.8) 3px 3px 0;
+}
+.text-shadow-zinc {
+  text-shadow: rgba(39, 39, 42, 0.8) 3px 3px 0;
 }
 </style>

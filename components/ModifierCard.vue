@@ -8,7 +8,7 @@
             {{ props.modifier.name }}
           </h1>
         </div>
-        <p class="mt-1 text-white text-sm" v-html="getDescription(props.modifier)" />
+        <p class="mt-1 text-white text-sm" v-text="getDescription(props.modifier)" />
       </div>
     </div>
   </li>
