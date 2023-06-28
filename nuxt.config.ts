@@ -28,6 +28,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     discordClientId: '',
     discordClientSecret: '',
+    origin: '',
     public: {
     }
   },
