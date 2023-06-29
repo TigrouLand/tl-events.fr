@@ -23,7 +23,7 @@ import { Modifier } from '~/typings/api';
 useHead({
   title: '[TL] Events - Scénarios'
 });
-const response = await useFetch('https://api.tl-events.fr/modifiers');
+const response = await useFetch('https://api.tl-events.fr/v1/modifiers');
 const modifiers = response.data as Ref<Modifier[]>;
 
 const displayedModifiers: Ref<Modifier[]> = ref<Modifier[]>([]);

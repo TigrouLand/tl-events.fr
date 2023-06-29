@@ -195,8 +195,8 @@ useHead({
   title: '[TL] Events - Parties'
 });
 const [gamesResponse, membersResponse] = await Promise.all([
-  useFetch('https://api.tl-events.fr/games'),
-  useFetch('https://api.tl-events.fr/members')
+  useFetch('https://api.tl-events.fr/v1/games'),
+  useFetch('https://api.tl-events.fr/v1/members')
 ]);
 
 const gamesData = gamesResponse.data as Ref<GameResponse>;
@@ -296,7 +296,7 @@ const getUsernameByUuid = (uuid: string) => {
   return members.value.find(p => p.uuid === uuid)?.name;
 };
 const refreshGames = async () => {
-  const data = await $fetch('https://api.tl-events.fr/games');
+  const data = await $fetch('https://api.tl-events.fr/v1/games');
   games.value = data.games;
   archivedGames.value = data.archivedGames;
 };

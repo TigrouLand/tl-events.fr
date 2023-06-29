@@ -20,7 +20,7 @@ import { useFetch } from '#app';
 import { Ref } from 'vue';
 import { Member } from '~/typings/api';
 
-const response = await useFetch('https://api.tl-events.fr/members');
+const response = await useFetch('https://api.tl-events.fr/v1/members');
 const members = response.data as Ref<Member[]>;
 
 const displayedMembers: Ref<Member[]> = ref<Member[]>([]);
