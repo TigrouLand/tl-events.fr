@@ -5,7 +5,6 @@ import { metaTags } from './site.config';
 export default defineNuxtConfig({
   modules: [
     '@nuxtjs/tailwindcss',
-    '@sidebase/nuxt-auth',
     '@pinia/nuxt'
   ],
   css: [
@@ -33,7 +32,7 @@ export default defineNuxtConfig({
     }
   },
   nitro: {
-    preset: 'cloudflare-pages'
+    preset: 'cloudflare-module'
   },
   vite: {
     plugins: [

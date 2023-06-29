@@ -19,7 +19,7 @@
               </div>
             </div>
           </div>
-          <div v-if="status === 'authenticated'" class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+          <div v-if="false" class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
             <Menu as="div" class="relative ml-3">
               <div>
                 <MenuButton class="flex rounded-full bg-red-700 text-sm text-gray-100 items-center sm:pl-3 focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-offset-2 focus:ring-offset-red-800">
@@ -62,8 +62,6 @@
 <script setup>
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton } from '@headlessui/vue';
 import { Bars3Icon, XMarkIcon, ArrowRightOnRectangleIcon } from '@heroicons/vue/24/outline';
-
-const { status, data, signIn } = useAuth();
 
 const navigation = [
   { name: 'Accueil', href: '/', current: true },

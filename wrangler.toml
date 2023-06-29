@@ -1,4 +1,4 @@
-name = "tl-events"
+name = "tl-events-v2"
 account_id = "74c084e1f74e7f2ad7dc2687d3ada85b"
 workers_dev = true
 compatibility_date = "2022-04-07"
