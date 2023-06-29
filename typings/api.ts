@@ -53,3 +53,18 @@ export interface Stats {
     members: number;
     modifiers: number;
 }
+
+export interface DiscordProfile {
+    id: number;
+    username: string;
+}
+
+export interface MinecraftProfile {
+    uuid: string;
+    username: string;
+}
+
+export interface User {
+    discordProfile: DiscordProfile;
+    minecraftProfile: MinecraftProfile;
+}

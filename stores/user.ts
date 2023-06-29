@@ -1,0 +1,39 @@
+import { defineStore } from 'pinia';
+import axios, { AxiosResponse } from 'axios';
+import { User } from '~/typings/api';
+
+export interface UserState {
+    user: User | undefined;
+}
+
+export const useUserStore = defineStore('user', {
+  state: (): UserState => ({
+    user: undefined
+  }),
+  getters: {
+    isLoggedIn: (state: UserState) => !!state.user,
+    displayName: (state: UserState) => {
+      if (state.user?.minecraftProfile) {
+        return state.user.minecraftProfile.username;
+      } else if (state.user?.discordProfile) {
+        return state.user.discordProfile.username;
+      }
+      return undefined;
+    }
+  },
+  actions: {
+    async fetchUser () {
+      this.user = await axios.get('https://api.tl-events.fr/v2/auth/self', {
+        withCredentials: true
+      }).catch(() => {
+        this.user = undefined;
+      }).then((response: AxiosResponse<User>) => response.data);
+    },
+    async getLoginUrl () {
+      const response = await axios.get('https://api.tl-events.fr/v2/auth/login', {
+        withCredentials: true
+      });
+      return response.data.loginUrl;
+    }
+  }
+});

@@ -7,9 +7,6 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     '@pinia/nuxt'
   ],
-  css: [
-    '@fortawesome/fontawesome-svg-core/styles.css'
-  ],
   app: {
     head: {
       meta: metaTags,
@@ -32,7 +29,7 @@ export default defineNuxtConfig({
     }
   },
   nitro: {
-    preset: 'cloudflare-module'
+    preset: 'cloudflare-pages'
   },
   vite: {
     plugins: [

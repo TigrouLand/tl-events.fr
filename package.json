@@ -8,15 +8,16 @@
     "lint": "nuxt prepare && eslint --ext \".js,.vue\" --fix ."
   },
   "dependencies": {
+    "@headlessui/vue": "^1.7.14",
     "@heroicons/vue": "^2.0.18",
     "@nuxtjs/tailwindcss": "^6.7.0",
     "@pinia/nuxt": "^0.4.11",
+    "axios": "^1.4.0",
     "dayjs": "^1.11.5",
     "levenshtein": "^1.0.5",
     "nitropack": "^2.4.1",
     "nuxt": "^3.5.1",
-    "pinia": "^2.1.4",
-    "@headlessui/vue": "^1.7.14"
+    "pinia": "^2.1.4"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config-typescript": "^12.0.0",

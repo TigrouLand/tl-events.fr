@@ -19,19 +19,19 @@
               </div>
             </div>
           </div>
-          <div v-if="false" class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+          <div v-if="user" class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
             <Menu as="div" class="relative ml-3">
               <div>
                 <MenuButton class="flex rounded-full bg-red-700 text-sm text-gray-100 items-center sm:pl-3 focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-offset-2 focus:ring-offset-red-800">
                   <div class="hidden sm:block mr-2">
-                    {{ data.user.name }}
+                    {{ user.displayName }}
                   </div>
                   <img class="h-8 w-8 rounded-full" src="https://avatars.tl-events.fr/helms/Romitou.png" alt="">
                 </MenuButton>
               </div>
             </Menu>
           </div>
-          <button v-else class="font-medium text-white flex" @click="signIn('discord')">
+          <button v-else class="font-medium text-white flex" @click="login()">
             Se connecter <ArrowRightOnRectangleIcon class="h-6 w-auto ml-2" />
           </button>
         </div>
@@ -62,6 +62,18 @@
 <script setup>
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton } from '@headlessui/vue';
 import { Bars3Icon, XMarkIcon, ArrowRightOnRectangleIcon } from '@heroicons/vue/24/outline';
+import { useUserStore } from '~/stores/user';
+
+const user = useUserStore().user;
+
+onMounted(() => {
+  useUserStore().fetchUser();
+});
+
+const login = () => {
+  const url = useUserStore().getLoginUrl();
+  this.$router.push(url);
+};
 
 const navigation = [
   { name: 'Accueil', href: '/', current: true },
