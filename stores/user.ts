@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia';
 import axios, { AxiosResponse } from 'axios';
+import { useNuxtApp } from '#app';
 import { User } from '~/typings/api';
 
 export interface UserState {
@@ -27,13 +28,15 @@ export const useUserStore = defineStore('user', {
         withCredentials: true
       }).catch(() => {
         this.user = undefined;
-      }).then((response: AxiosResponse<User>) => response.data);
+      }).then((response: AxiosResponse<User>) => response?.data);
     },
     async getLoginUrl () {
       const response = await axios.get('https://api.tl-events.fr/v2/auth/login', {
         withCredentials: true
-      });
-      return response.data.loginUrl;
+      }).catch(() => {
+        useNuxtApp().$toast.error('Une erreur est survenue lors de la connexion.');
+      }).then((response: AxiosResponse<{ loginUrl: string }>) => response?.data);
+      return response?.loginUrl;
     }
   }
 });
