@@ -1,5 +1,6 @@
 <template>
   <div class="flex flex-col h-screen w-full">
+    <UpcomingGame />
     <Disclosure v-slot="{ open }" as="nav" class="bg-red-500">
       <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
         <div class="relative flex h-16 items-center justify-between">
@@ -64,6 +65,7 @@ import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton } from 
 import { Bars3Icon, XMarkIcon, ArrowRightOnRectangleIcon } from '@heroicons/vue/24/outline';
 import { storeToRefs } from 'pinia';
 import { useUserStore } from '~/stores/user';
+import UpcomingGame from '~/components/UpcomingGame.vue';
 
 const userStore = useUserStore();
 const { user, displayAvatar, displayName } = storeToRefs(userStore);
