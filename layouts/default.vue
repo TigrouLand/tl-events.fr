@@ -31,8 +31,8 @@
               </div>
             </Menu>
           </div>
-          <button v-else class="font-medium text-white flex" @click="login()">
-            Se connecter <ArrowRightOnRectangleIcon class="h-6 w-auto ml-2" />
+          <button v-else class="text-gray-300 hover:bg-red-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium flex" @click="login()">
+            Se connecter <ArrowRightOnRectangleIcon class="h-5 w-auto ml-2" />
           </button>
         </div>
       </div>
@@ -62,9 +62,11 @@
 <script setup>
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton } from '@headlessui/vue';
 import { Bars3Icon, XMarkIcon, ArrowRightOnRectangleIcon } from '@heroicons/vue/24/outline';
+import { storeToRefs } from 'pinia';
 import { useUserStore } from '~/stores/user';
 
-const user = useUserStore().user;
+const userStore = useUserStore();
+const { user } = storeToRefs(userStore);
 
 onMounted(() => {
   useUserStore().fetchUser();
