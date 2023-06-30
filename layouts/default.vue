@@ -22,11 +22,11 @@
           <div v-if="user" class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
             <Menu as="div" class="relative ml-3">
               <div>
-                <MenuButton class="flex rounded-full bg-red-700 text-sm text-gray-100 items-center sm:pl-3 focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-offset-2 focus:ring-offset-red-800">
-                  <div class="hidden sm:block mr-2">
-                    {{ user.displayName }}
+                <MenuButton class="flex rounded-full h-8 bg-red-700 text-sm text-gray-100 items-center sm:pl-3 focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-offset-2 focus:ring-offset-red-800">
+                  <div class="hidden sm:block">
+                    {{ displayName }}
                   </div>
-                  <img class="h-8 w-8 rounded-full" src="https://avatars.tl-events.fr/helms/Romitou.png" alt="">
+                  <img class="ml-2 h-8 w-8 rounded-full" :src="displayAvatar" alt="">
                 </MenuButton>
               </div>
             </Menu>
@@ -66,7 +66,7 @@ import { storeToRefs } from 'pinia';
 import { useUserStore } from '~/stores/user';
 
 const userStore = useUserStore();
-const { user } = storeToRefs(userStore);
+const { user, displayAvatar, displayName } = storeToRefs(userStore);
 
 onMounted(() => {
   useUserStore().fetchUser();

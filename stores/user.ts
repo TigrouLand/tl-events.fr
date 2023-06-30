@@ -20,6 +20,13 @@ export const useUserStore = defineStore('user', {
         return state.user.discordProfile.username;
       }
       return undefined;
+    },
+    displayAvatar: (state: UserState) => {
+      if (state.user?.minecraftProfile) {
+        return `https://avatars.tl-events.fr/helms/${state.user.minecraftProfile.uuid}.png`;
+      } else {
+        return 'https://cdn.discordapp.com/embed/avatars/0.png';
+      }
     }
   },
   actions: {
