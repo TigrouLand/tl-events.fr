@@ -70,9 +70,12 @@ onMounted(() => {
   useUserStore().fetchUser();
 });
 
-const login = () => {
-  const url = useUserStore().getLoginUrl();
-  this.$router.push(url);
+const login = async () => {
+  const url = await useUserStore().getLoginUrl();
+  if (!url) {
+    return;
+  }
+  window.location = url;
 };
 
 const navigation = [
