@@ -14,16 +14,18 @@
   </div>
 </template>
 
-<script async>
+<script setup>
 import { useUserStore } from '~/stores/user';
 
 definePageMeta({
   layout: 'standalone'
 });
 
-setTimeout(() => {
-  login();
-}, 1000);
+onMounted(() => {
+  setTimeout(() => {
+    login();
+  }, 1000);
+});
 
 const login = async () => {
   const url = await useUserStore().getLoginUrl();
