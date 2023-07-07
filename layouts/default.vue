@@ -57,6 +57,25 @@
       </DisclosurePanel>
     </Disclosure>
     <slot />
+    <footer class="bg-zinc-900" aria-labelledby="footer-heading">
+      <h2 id="footer-heading" class="sr-only">Footer</h2>
+      <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
+        <div class="xl:grid xl:grid-cols-3 xl:gap-8">
+          <div>
+            <div class="h-10 text-gray-200 text-3xl">[TL] Events</div>
+            <p class="text-gray-300 text-base">Des événements Minecraft UHC 1.8 en tout genre, spécifiquement développés pour la communauté !</p>
+            <div class="flex">
+              <a href="/" class="text-gray-400 hover:text-gray-500">
+                <span class="sr-only">test</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="mt-12 border-t border-gray-500 pt-8">
+          <p class="text-base text-gray-400 xl:text-center">[TL] Events {{ new Date().getFullYear() }} - Développé par Romain</p>
+        </div>
+      </div>
+    </footer>
   </div>
 </template>
 
@@ -89,56 +108,3 @@ const navigation = [
   { name: 'Parties', href: '#', current: false }
 ];
 </script>
-<!--<template>-->
-<!--  <div class="flex flex-col h-screen w-full">-->
-<!--    <header class="flex justify-center bg-red-500 h-20 shadow-lg">-->
-<!--      <nav class="flex w-full max-w-7xl justify-between px-4 sm:px-6 lg:px-8" aria-label="Top">-->
-<!--        <div class="w-full flex items-center justify-between border-b border-indigo-500 lg:border-none">-->
-<!--          <div class="flex items-center">-->
-<!--            <NuxtLink to="/">-->
-<!--              <img class="h-20 w-auto" src="~/assets/logo.png" alt="" />-->
-<!--            </NuxtLink>-->
-<!--            <div class="hidden ml-10 space-x-8 lg:block">-->
-<!--              <NuxtLink v-for="link in navigation" :key="link.name" :to="link.to" class="text-base font-medium text-white hover:text-indigo-50">-->
-<!--                {{ link.name }}-->
-<!--              </NuxtLink>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--          <div>-->
-<!--            <a class="text-base font-medium text-white hover:text-indigo-50 flex">-->
-<!--              Se connecter <ArrowRightOnRectangleIcon class="h-6 w-auto ml-2" />-->
-<!--            </a>-->
-<!--            <div class="-mr-2 flex items-center sm:hidden">-->
-<!--              &lt;!&ndash; Mobile menu button &ndash;&gt;-->
-<!--              <DisclosureButton class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">-->
-<!--                <span class="sr-only">Open main menu</span>-->
-<!--                <MenuIcon v-if="!open" class="block h-6 w-6" aria-hidden="true" />-->
-<!--                <XIcon v-else class="block h-6 w-6" aria-hidden="true" />-->
-<!--              </DisclosureButton>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--        <div class="py-4 flex flex-wrap justify-center space-x-6 lg:hidden">-->
-<!--          <NuxtLink v-for="link in navigation" :key="link.name" :to="link.to" class="text-base font-medium text-white hover:text-indigo-50">-->
-<!--            {{ link.name }}-->
-<!--          </NuxtLink>-->
-<!--        </div>-->
-<!--      </nav>-->
-<!--    </header>-->
-<!--    <div class="flex">-->
-<!--      <slot />-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</template>-->
-
-<!--<script setup>-->
-<!--import { ArrowRightOnRectangleIcon } from '@heroicons/vue/24/outline';-->
-<!--import { DisclosureButton } from '@headlessui/vue';-->
-
-<!--const navigation = [-->
-<!--  { name: 'Accueil', to: '/' },-->
-<!--  { name: 'Jeux', to: '#' },-->
-<!--  { name: 'Membres', to: '#' },-->
-<!--  { name: 'Parties', to: '#' }-->
-<!--];-->
-<!--</script>-->

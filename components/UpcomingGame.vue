@@ -31,12 +31,12 @@
 <script setup>
 import { SpeakerWaveIcon, XMarkIcon } from '@heroicons/vue/24/outline';
 import { useFetch } from '#app';
-import dayjs from 'dayjs';
+import dayjs, { extend, locale } from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import 'dayjs/locale/fr';
 
-dayjs.extend(relativeTime);
-dayjs.locale('fr');
+extend(relativeTime);
+locale('fr');
 
 const upcomingGame = await useFetch('https://api.tl-events.fr/v2/games/upcoming');
 

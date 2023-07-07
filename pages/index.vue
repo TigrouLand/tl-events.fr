@@ -18,7 +18,7 @@
         <img class="w-full rotate-180 text-red-600 h-32 flex flex-shrink-0 flex-grow-0" src="~/assets/divider-zinc.svg">
       </div>
     </div>
-    <div class="bg-zinc-800">
+    <div class="bg-zinc-800 py-10 px-5">
       <div class="flex flex-col sm:flex-row justify-center sm:space-x-10 space-y-10 sm:space-y-0">
         <div class="flex sm:justify-end justify-center w-full">
           <div class="max-w-xl px-4">
@@ -39,19 +39,20 @@
         </div>
         <div class="flex w-full justify-start px-4">
           <div class="max-w-xl">
-            <img class="h-80 rounded-xl object-cover" src="~/assets/discord-invite.png" alt="">
+            <img class="w-full rounded-xl object-cover" src="~/assets/discord-invite.png" alt="">
           </div>
         </div>
       </div>
-      <div class="bg-red-800">
-        <img class="w-full h-32 -scale-y-100 -rotate-180" src="~/assets/divider-zinc.svg">
-      </div>
     </div>
-    <div class="bg-red-800 py-5">
+    <div class="bg-red-800">
+      <img class="w-full h-32 -scale-y-100 -rotate-180" src="~/assets/divider-zinc.svg">
+    </div>
+
+    <div class="bg-red-800 py-10 px-5">
       <div class="flex flex-col-reverse sm:flex-row justify-center sm:space-x-10">
         <div class="flex w-full justify-center sm:justify-end px-4 sm:mt-0 mt-10">
           <div class="max-w-xl">
-            <img class="h-80 rounded-xl object-cover" src="~/assets/address.png" alt="">
+            <img class="w-full rounded-xl object-cover" src="~/assets/address.png" alt="">
           </div>
         </div>
         <div class="w-full">
@@ -62,7 +63,7 @@
             <div class="text-white text-center sm:text-start text-lg lg:text-xl mt-4 space-y-2">
               <p>Afin de pouvoir vous connecter rapidement lors de nos prochains événements, nous vous conseillons d'ajouter l'adresse à votre liste de serveurs.</p>
               <p>
-                Démarrez votre jeu, accédez au menu multijoueurs puis cliquez sur Ajouter un serveur. Cliquez sur l'adresse ci-contre pour la copier :
+                Démarrez votre jeu, accédez au menu Multijoueur puis cliquez sur Ajouter un serveur. Cliquez sur l'adresse ci-contre pour la copier :
                 <button class="text-zinc-400 inline-flex items-center" @click="copy()">
                   tl-events.fr
                   <ClipboardIcon v-if="!copied" class="h-5 w-5 ml-1.5" />
@@ -74,6 +75,34 @@
           </div>
         </div>
       </div>
+    </div>
+    <div class="bg-red-800">
+      <img class="w-full h-32 rotate-180" src="~/assets/divider-zinc.svg">
+    </div>
+
+    <div class="bg-zinc-800 py-10 px-5">
+      <div class="flex flex-col sm:flex-row justify-center sm:space-x-10 space-y-10 sm:space-y-0">
+        <div class="flex sm:justify-end justify-center w-full">
+          <div class="max-w-xl px-4">
+            <h1 class="text-white sm:text-end text-center text-3xl lg:text-4xl font-bold">
+              Jouez avec nous
+            </h1>
+            <div class="text-white sm:text-end text-center text-lg lg:text-xl mt-4 space-y-2">
+              <p>Différents événements seront organisés à différentes dates. Il ne vous reste plus qu'à vous inscrire à un de nos événements et donner le meilleur de vous-même le moment venu !</p>
+              <p>Notre communauté est bienveillante et les parties se déroulent dans une bonne entente. Vous n'avez pas besoin d'être un pro du PvP, seulement d'être respectueux et fair-play avec les autres joueurs.</p>
+              <p>Alors, si vous souhaitez participer à un de nos événements, nous nous ferons un plaisir de vous accueillir parmi nous ! :)</p>
+            </div>
+          </div>
+        </div>
+        <div class="flex w-full justify-start px-4">
+          <div class="max-w-xl">
+            <img class="w-full rounded-xl object-cover" src="~/assets/fighting.png" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="bg-zinc-900">
+      <img class="w-full h-32 -scale-y-100 -rotate-180" src="~/assets/divider-zinc.svg">
     </div>
   </div>
 </template>
