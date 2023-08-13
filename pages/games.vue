@@ -11,7 +11,7 @@
           <div v-for="game in games" :key="game.id" class="px-4 py-3 bg-gray-900">
             <GameCard :game="gameWithUsernames(game)" :selected="selected(game)" />
           </div>
-          <div v-for="game in archivedGames" :key="game.id" class="px-4 py-3 bg-gray-900" @click="selectedGame = game;">
+          <div v-for="game in archivedGames" :key="game.id" class="px-4 py-3 bg-gray-900" @click="selectGame(game)">
             <GameCard :game="gameWithUsernames(game)" :selected="selected(game)" />
           </div>
           <div class="flex-1 flex flex-col overflow-y-auto">
@@ -25,7 +25,7 @@
         <div v-for="game in games" :key="game.id" class="flex flex-shrink-0 px-4 py-3 bg-gray-900">
           <GameCard :game="gameWithUsernames(game)" :selected="selected(game)" />
         </div>
-        <div v-for="game in archivedGames" :key="game.id" class="flex flex-shrink-0 px-4 py-3 bg-gray-900" @click="selectedGame = game;">
+        <div v-for="game in archivedGames" :key="game.id" class="flex flex-shrink-0 px-4 py-3 bg-gray-900" @click="selectGame(game)">
           <GameCard :game="gameWithUsernames(game)" :selected="selected(game)" />
         </div>
       </div>
@@ -173,7 +173,7 @@
                 <div v-for="(log, i) in selectedGame.logs" :key="log">
                   <li :class="`ml-4 ${i !== selectedGame.logs.length - 1 ? 'mb-8': ''}`">
                     <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700" />
-                    <p class="mb-4 text-base font-normal text-gray-300" v-text="replaceUuids(log)" />
+                    <p class="mb-4 text-base font-normal text-gray-300" v-text="log" />
                   </li>
                 </div>
               </ol>
@@ -220,6 +220,10 @@ onUnmounted?.(() => {
 
 const getStyleForTeam = (team: Team) => {
   return `color: rgba(${team.colors.join(', ')});`;
+};
+
+const selectGame = (game) => {
+  selectedGame.value = fixGameUuids(game);
 };
 
 const gameWithUsernames = (game: Game) => {
@@ -340,25 +344,44 @@ const formatEventType = (type: string) => {
   }
 };
 
-const replaceUuids = (log: string): string => {
+const fixGameUuids = (game: Game): Game => {
+  game.logs = game.logs.map(replaceUuids);
+
+  const fixKeys = ['playerRoles', 'playerTeams', 'finalTeams'];
+  fixKeys.forEach((key) => {
+    if (game[key]) {
+      const newObject = {};
+      Object.entries(game[key]).forEach(([uuid, value]) => {
+        const username = replaceUuids(uuid);
+        if (username) {
+          newObject[username] = value;
+        }
+      });
+      game[key] = newObject;
+    }
+  });
+  return game;
+};
+
+const replaceUuids = (value: string): string => {
   // Each log can contain a uuid, we need to replace it by the username
   // The uuid is stored like this: <@uuid>
 
   const uuidRegex = /<@([a-zA-Z0-9-]+)>/g;
-  const matches = log.match(uuidRegex);
+  const matches = value.match(uuidRegex);
   if (!matches) {
-    return log;
+    return value;
   }
 
   matches.forEach((match) => {
     const uuid = match.replace('<@', '').replace('>', '');
     const username = getUsernameByUuid(uuid);
     if (username) {
-      log = log.replace(match, username);
+      value = value.replace(match, username);
     }
   });
 
-  return log;
+  return value;
 };
 
 </script>
