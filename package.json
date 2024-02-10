@@ -8,25 +8,26 @@
     "lint": "nuxt prepare && eslint --ext \".js,.vue\" --fix ."
   },
   "dependencies": {
-    "@headlessui/vue": "^1.7.14",
-    "@heroicons/vue": "^2.0.18",
-    "@nuxtjs/tailwindcss": "^6.7.0",
-    "@pinia/nuxt": "^0.4.11",
-    "axios": "^1.4.0",
-    "dayjs": "^1.11.5",
+    "@headlessui/vue": "^1.7.19",
+    "@heroicons/vue": "^2.1.1",
+    "@nuxtjs/tailwindcss": "^6.11.3",
+    "@pinia/nuxt": "^0.5.1",
+    "axios": "^1.6.7",
+    "dayjs": "^1.11.10",
     "levenshtein": "^1.0.5",
-    "nitropack": "^2.4.1",
-    "nuxt": "^3.5.1",
-    "pinia": "^2.1.4",
-    "vue3-toastify": "^0.1.11"
+    "nitropack": "^2.8.1",
+    "nuxt": "^3.10.1",
+    "pinia": "^2.1.7",
+    "vue": "^3.4.18",
+    "vue3-toastify": "^0.2.1"
   },
   "devDependencies": {
-    "@nuxtjs/eslint-config-typescript": "^12.0.0",
-    "@typescript-eslint/eslint-plugin": "^5.59.7",
-    "@typescript-eslint/parser": "^5.59.7",
-    "eslint": "^8.41.0",
-    "eslint-plugin-vue": "^9.14.1",
-    "typescript": "^5.0.4",
+    "@nuxtjs/eslint-config-typescript": "^12.1.0",
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "@typescript-eslint/parser": "^6.21.0",
+    "eslint": "^8.56.0",
+    "eslint-plugin-vue": "^9.21.1",
+    "typescript": "^5.3.3",
     "vite-plugin-eslint": "^1.8.1"
   }
 }
