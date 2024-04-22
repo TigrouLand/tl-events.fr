@@ -17,8 +17,9 @@
 <script setup lang="ts">
 import Levenshtein from 'levenshtein';
 import { useFetch } from '#app';
-import { Ref } from 'vue';
-import { Modifier } from '~/typings/api';
+import { ref } from 'vue';
+import type { Ref } from 'vue';
+import type { Modifier } from '~/typings/api';
 
 useHead({
   title: '[TL] Events - Scénarios'

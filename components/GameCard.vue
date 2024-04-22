@@ -29,8 +29,8 @@
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime.js';
 import 'dayjs/locale/fr.js';
-import { PropType } from 'vue/dist/vue';
-import { Game } from '~/typings/api';
+import type { PropType } from 'vue';
+import type { Game } from '~/typings/api';
 
 // eslint-disable-next-line import/no-named-as-default-member
 dayjs.locale('fr');

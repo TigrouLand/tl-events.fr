@@ -188,8 +188,9 @@
 <script setup lang="ts">
 import { useFetch } from '#app';
 import dayjs from 'dayjs';
-import { Ref } from 'vue';
-import { Game, GameResponse, Member, Team } from '~/typings/api';
+import { ref } from 'vue';
+import type { Ref } from 'vue';
+import type { Game, GameResponse, Member, Team } from '~/typings/api';
 
 useHead({
   title: '[TL] Events - Parties'

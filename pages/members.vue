@@ -17,8 +17,9 @@
 <script setup lang="ts">
 import Levenshtein from 'levenshtein';
 import { useFetch } from '#app';
-import { Ref } from 'vue';
-import { Member } from '~/typings/api';
+import { ref } from 'vue';
+import type { Ref } from 'vue';
+import type { Member } from '~/typings/api';
 
 const response = await useFetch('https://api.tl-events.fr/v1/members');
 const members = response.data as Ref<Member[]>;

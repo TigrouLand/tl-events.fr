@@ -80,8 +80,8 @@
 
 <script setup lang="ts">
 import { useFetch } from '#app';
-import { Ref } from 'vue';
-import { Stats } from '~/typings/api';
+import type { Ref } from 'vue';
+import type { Stats } from '~/typings/api';
 
 const response = await useFetch('https://api.tl-events.fr/v1/stats');
 const stats = response.data as Ref<Stats>;

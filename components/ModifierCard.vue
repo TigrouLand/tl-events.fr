@@ -15,8 +15,8 @@
 </template>
 
 <script setup lang="ts">
-import { PropType } from 'vue/dist/vue';
-import { Modifier } from '~/typings/api';
+import type { PropType } from 'vue';
+import type { Modifier } from '~/typings/api';
 
 const props = defineProps({
   modifier: {
