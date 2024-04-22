@@ -35,6 +35,7 @@ export interface Game {
     playerRoles: Record<string, string> | undefined;
     playerTeams: Record<string, string> | undefined;
     finalTeams: Record<string, string> | undefined;
+    hiddenRoles: boolean;
     hours: number;
     minutes: number;
     seconds: number;

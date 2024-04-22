@@ -72,6 +72,10 @@
                 <font-awesome-icon icon="fa-solid fa-bolt" class="text-white mr-1" />
                 <span class="font-medium">Événements aléatoires :</span> {{ selectedGame?.events.join(', ') }}
               </div>
+              <div v-if="selectedGame?.hiddenRoles" class="mb-1">
+                <font-awesome-icon icon="fa-solid fa-eye-slash" class="text-white mr-1" />
+                <span class="font-medium">Composition cachée</span>
+              </div>
             </div>
           </div>
           <div class="bg-gray-900 border border-gray-500 rounded shadow text-white w-full my-4 p-7">
