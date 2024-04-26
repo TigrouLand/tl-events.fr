@@ -23,7 +23,7 @@
             </div>
           </div>
           <div class="hidden sticky sm:ml-6 sm:flex sm:items-center space-x-4">
-            <a href="https://github.com/TigrouLand/EventsStats" target="_blank" rel="noopener noreferrer" type="button" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-gray-900 hover:bg-gray-800 focus:outline-none">
+            <a href="https://github.com/TigrouLand/tl-events.fr" target="_blank" rel="noopener noreferrer" type="button" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-gray-900 hover:bg-gray-800 focus:outline-none">
               <font-awesome-icon icon="fa-brands fa-github" class="mr-2 fa-lg" /> GitHub
             </a>
             <a href="mumble://mumble.tl-events.fr" target="_blank" rel="noopener noreferrer" type="button" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-900 hover:bg-blue-800 focus:outline-none">
@@ -79,7 +79,7 @@
         </div>
         <div class="flex flex-wrap">
           <div class="flex-1 p-4">
-            <a href="https://github.com/TigrouLand/EventsStats" target="_blank" rel="noopener noreferrer" type="button" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-gray-900 hover:bg-gray-800 focus:outline-none w-full">
+            <a href="https://github.com/TigrouLand/tl-events.fr" target="_blank" rel="noopener noreferrer" type="button" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-gray-900 hover:bg-gray-800 focus:outline-none w-full">
               <font-awesome-icon icon="fa-brands fa-github" class="mr-2 fa-lg" /> GitHub
             </a>
           </div>
