@@ -1,26 +1,27 @@
-export interface Member {
+export namespace API {
+  export interface Member {
     name: string;
     rank: string;
     uuid: string;
     kills: number;
     deaths: number;
     wins: number;
-}
+  }
 
-export interface Modifier {
+  export interface Modifier {
     name: string;
     enabled: boolean;
     material: string;
     description: string[];
     web: string[];
-}
+  }
 
-export interface Team {
+  export interface Team {
     name: string;
     colors: number[];
-}
+  }
 
-export interface Game {
+  export interface Game {
     id: number;
     name: string;
     type: string;
@@ -42,15 +43,16 @@ export interface Game {
     startDate: number;
     scheduleDate: number;
     archiveDate: number;
-}
+  }
 
-export interface GameResponse {
+  export interface GameResponse {
     games: Game[];
     archivedGames: Game[];
-}
+  }
 
-export interface Stats {
+  export interface Stats {
     games: number;
     members: number;
     modifiers: number;
+  }
 }
