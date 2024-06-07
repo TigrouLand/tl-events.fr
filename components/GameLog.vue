@@ -1,11 +1,11 @@
 <template>
   <div>
     <div class="relative pb-4">
-      <span v-if="!props.last" class="absolute top-5 left-6 -ml-px h-full w-0.5 bg-gray-400" />
-      <div class="relative flex items-start space-x-3 items-center">
+      <span v-if="!props.last" class="absolute left-6 top-5 -ml-px h-full w-0.5 bg-gray-400" />
+      <div class="relative flex items-start items-center space-x-3">
         <div>
           <div class="relative px-1">
-            <div class="h-10 w-10 bg-gray-700 rounded-full flex items-center justify-center">
+            <div class="flex h-10 w-10 items-center justify-center rounded-full bg-gray-700">
               <font-awesome-icon icon="fa-solid fa-comment" class="text-white" />
             </div>
           </div>
@@ -24,16 +24,14 @@
 const props = defineProps({
   log: {
     type: String,
-    required: true
+    required: true,
   },
   last: {
     type: Boolean,
     required: false,
-    default: false
-  }
+    default: false,
+  },
 });
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

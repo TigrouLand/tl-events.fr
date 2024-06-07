@@ -1,34 +1,40 @@
 <template>
-  <li class="col-span-1 bg-gray-700 border border-gray-500 rounded shadow divide-y divide-gray-200">
-    <div class="w-full flex items-center justify-between">
-      <img class="h-24 p-2 m-4 w-auto" :src="`/${props.modifier.material.toLowerCase()}.png`" :alt="props.modifier.material">
-      <div class="flex-1 truncate py-6">
-        <div class="flex items-center space-x-1">
-          <h1 class="text-white font-medium mr-2">
-            {{ props.modifier.name }}
-          </h1>
-        </div>
-        <p class="mt-1 text-white text-sm" v-html="getDescription(props.modifier)" />
-      </div>
+  <li class="col-span-1 flex rounded border border-gray-500 bg-gray-700 py-2 shadow">
+    <img
+      class="custom-image m-4 h-24 w-auto p-2"
+      :src="`/${props.modifier.material.toLowerCase()}.webp`"
+      :alt="props.modifier.material"
+      draggable="false">
+
+    <div class="mr-2 flex flex-col justify-center text-white">
+      <h1 class="mr-2 font-medium">{{ props.modifier.name }}</h1>
+      <p class="mr-2 mt-1 text-sm">{{ getDescription(props.modifier) }}</p>
     </div>
   </li>
 </template>
 
 <script setup lang="ts">
 import type { PropType } from 'vue';
-import type { Modifier } from '~/typings/api';
+import type { API } from '~/tools/types';
 
 const props = defineProps({
   modifier: {
-    type: Object as PropType<Modifier>,
-    required: true
-  }
+    type: Object as PropType<API.Modifier>,
+    required: true,
+  },
 });
 
-const getDescription = (modifier: Modifier) => {
+const getDescription = (modifier: API.Modifier): string => {
   const desc = modifier.web || modifier.description;
-  let computed = desc.join('<br>');
+  let computed = desc.join(' ');
   computed = computed.replace(/§./g, '');
   return computed.replace(/\(.+\)/g, '');
 };
 </script>
+
+<style scoped>
+.custom-image {
+  user-select: none;
+  image-rendering: pixelated;
+}
+</style>
