@@ -24,13 +24,13 @@
 const props = defineProps({
   log: {
     type: String,
-    required: true
+    required: true,
   },
   last: {
     type: Boolean,
     required: false,
-    default: false
-  }
+    default: false,
+  },
 });
 </script>
 

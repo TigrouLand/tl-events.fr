@@ -15,14 +15,14 @@
 </template>
 
 <script setup lang="ts">
-import { PropType } from 'vue/dist/vue';
-import { Modifier } from '~/typings/api';
+import type { PropType } from 'vue/dist/vue';
+import type { Modifier } from '~/typings/api';
 
 const props = defineProps({
   modifier: {
     type: Object as PropType<Modifier>,
-    required: true
-  }
+    required: true,
+  },
 });
 
 const getDescription = (modifier: Modifier) => {

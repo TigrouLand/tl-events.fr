@@ -23,14 +23,14 @@
 </template>
 
 <script setup lang="ts">
-import { PropType } from 'vue';
-import { Member } from '~/typings/api';
+import type { PropType } from 'vue';
+import type { Member } from '~/typings/api';
 
 const props = defineProps({
   player: {
     type: Object as PropType<Member>,
-    required: true
-  }
+    required: true,
+  },
 });
 </script>
 

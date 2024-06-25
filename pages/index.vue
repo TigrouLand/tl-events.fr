@@ -108,7 +108,12 @@
 </template>
 
 <script setup lang="ts">
-import { ArrowDownIcon, ClipboardIcon, ClipboardDocumentCheckIcon, ArrowTopRightOnSquareIcon } from '@heroicons/vue/24/outline';
+import {
+  ArrowDownIcon,
+  ArrowTopRightOnSquareIcon,
+  ClipboardDocumentCheckIcon,
+  ClipboardIcon,
+} from '@heroicons/vue/24/outline';
 
 const copied = ref(false);
 
@@ -119,7 +124,6 @@ const copy = () => {
     copied.value = false;
   }, 2000);
 };
-
 </script>
 
 <style scoped>

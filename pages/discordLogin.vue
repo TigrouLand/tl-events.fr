@@ -18,7 +18,7 @@
 import { useUserStore } from '~/stores/user';
 
 definePageMeta({
-  layout: 'standalone'
+  layout: 'standalone',
 });
 
 onMounted(() => {

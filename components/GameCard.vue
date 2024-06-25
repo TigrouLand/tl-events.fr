@@ -29,8 +29,8 @@
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime.js';
 import 'dayjs/locale/fr.js';
-import { PropType } from 'vue/dist/vue';
-import { Game } from '~/typings/api';
+import type { PropType } from 'vue/dist/vue';
+import type { Game } from '~/typings/api';
 
 // eslint-disable-next-line import/no-named-as-default-member
 dayjs.locale('fr');
@@ -40,13 +40,13 @@ dayjs.extend(relativeTime);
 const props = defineProps({
   game: {
     type: Object as PropType<Game>,
-    required: true
+    required: true,
   },
   selected: {
     type: Boolean,
     required: false,
-    default: false
-  }
+    default: false,
+  },
 });
 
 const isArchived = (game: Game) => {
@@ -54,7 +54,9 @@ const isArchived = (game: Game) => {
 };
 
 const format = (timestamp: number) => {
-  if (!timestamp || timestamp === -1) { return 'À venir'; }
+  if (!timestamp || timestamp === -1) {
+    return 'À venir';
+  }
   const formatted = dayjs(timestamp).fromNow();
   return formatted.charAt(0).toUpperCase() + formatted.slice(1);
 };

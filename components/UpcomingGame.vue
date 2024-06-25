@@ -30,7 +30,6 @@
 
 <script setup>
 import { SpeakerWaveIcon, XMarkIcon } from '@heroicons/vue/24/outline';
-import { useFetch } from '#app';
 import dayjs, { extend, locale } from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import 'dayjs/locale/fr';

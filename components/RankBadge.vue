@@ -20,8 +20,8 @@
 const props = defineProps({
   rank: {
     type: String,
-    required: true
-  }
+    required: true,
+  },
 });
 </script>
 
