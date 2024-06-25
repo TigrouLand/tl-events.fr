@@ -1,0 +1,35 @@
+name: Code quality
+on: [push]
+jobs:
+  biome:
+    name: Biome
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Cache node modules
+        uses: actions/cache@v3
+        id: cache
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: ./node_modules/
+          key: ${{ runner.os }}-build-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-
+
+      - name: Install Node 20
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      - name: Install modules
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Run Biome checks
+        run: npm run ci

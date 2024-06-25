@@ -5,11 +5,13 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "lint": "nuxt prepare && eslint --ext \".js,.vue\" --fix ."
+    "lint": "biome lint .",
+    "format": "biome format .",
+    "ci": "biome ci ."
   },
   "dependencies": {
-    "@headlessui/vue": "^1.7.20",
-    "@heroicons/vue": "^2.1.3",
+    "@headlessui/vue": "^1.7.22",
+    "@heroicons/vue": "^2.1.4",
     "@nuxtjs/tailwindcss": "^6.12.0",
     "@pinia/nuxt": "^0.5.1",
     "axios": "^1.6.8",
@@ -22,12 +24,8 @@
     "vue3-toastify": "^0.2.1"
   },
   "devDependencies": {
+    "@biomejs/biome": "1.8.2",
     "@nuxtjs/eslint-config-typescript": "^12.1.0",
-    "@typescript-eslint/eslint-plugin": "^6.21.0",
-    "@typescript-eslint/parser": "^6.21.0",
-    "eslint": "^8.56.0",
-    "eslint-plugin-vue": "^9.21.1",
-    "typescript": "^5.3.3",
-    "vite-plugin-eslint": "^1.8.1"
+    "typescript": "^5.3.3"
   }
 }

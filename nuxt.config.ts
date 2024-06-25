@@ -1,4 +1,3 @@
-import eslintPlugin from 'vite-plugin-eslint';
 import { metaTags } from './site.config';
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
@@ -30,10 +29,5 @@ export default defineNuxtConfig({
   },
   nitro: {
     preset: 'cloudflare-pages'
-  },
-  vite: {
-    plugins: [
-      eslintPlugin()
-    ]
   }
 });

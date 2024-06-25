@@ -1,0 +1,22 @@
+{
+  "$schema": "https://biomejs.dev/schemas/1.8.2/schema.json",
+  "organizeImports": {
+    "enabled": true,
+    "include": ["components/**/*.vue", "pages/**/*.vue", "plugins/**/*.ts", "store/**/*.ts", "typings/**/*.ts"]
+  },
+  "formatter": {
+    "enabled": true,
+    "include": ["components/**/*.vue", "pages/**/*.vue", "plugins/**/*.ts", "store/**/*.ts", "typings/**/*.ts"],
+    "indentStyle": "space",
+    "indentWidth": 2,
+    "lineEnding": "lf",
+    "lineWidth": 120
+  },
+  "linter": {
+    "enabled": true,
+    "include": ["components/**/*.vue", "pages/**/*.vue", "plugins/**/*.ts", "store/**/*.ts", "typings/**/*.ts"],
+    "rules": {
+      "recommended": true
+    }
+  }
+}

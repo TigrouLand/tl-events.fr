@@ -1,4 +1,4 @@
-import { Meta } from '@unhead/schema';
+import type { Meta } from '@unhead/schema';
 
 export const metaTags: Meta[] = [
   {
