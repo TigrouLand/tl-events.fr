@@ -3,7 +3,7 @@
     :class="(props.type === 'flat' ? 'h-24 w-auto' : 'h-10 w-10 rounded-full') + ` ${props.class}`"
     :src="`https://avatars.tl-events.fr/${props.type === 'flat' ? 'busts' : 'helms'}/` + props.player + '.png'"
     :alt="'Skin de ' + props.player"
-    draggable="false">
+    draggable="false" />
 </template>
 
 <script setup lang="ts">

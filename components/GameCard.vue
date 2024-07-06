@@ -1,7 +1,7 @@
 <template>
   <component
     :is="isUpcoming(props.game) ? 'div' : 'button'"
-    :class="'group min-w-56 !ml-0 rounded border bg-gray-800 p-3 shadow ' + (selected ? 'border-primary' : 'border-gray-500')">
+    :class="'group !ml-0 min-w-56 rounded border bg-gray-800 p-3 shadow ' + (selected ? 'border-primary' : 'border-gray-500')">
     <h1 class="w-fit whitespace-nowrap font-medium text-white">
       <Icon v-if="isUpcoming(props.game)" name="carbon:time-filled" class="text-gray-400" />
       <Icon v-else-if="isArchived(props.game)" name="fa6-solid:box-archive" class="text-gray-400" />

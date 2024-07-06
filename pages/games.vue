@@ -1,7 +1,7 @@
 <template>
   <main class="flex h-full flex-col overflow-y-hidden md:flex-row">
     <aside
-      class="flex w-full flex-nowrap items-center gap-4 overflow-x-auto overflow-y-hidden bg-gray-900 px-4 md:py-6 py-10 md:h-full md:max-w-[260px] md:flex-wrap md:overflow-y-auto md:overflow-x-hidden">
+      class="flex w-full flex-nowrap items-center gap-4 overflow-x-auto overflow-y-hidden bg-gray-900 px-4 py-10 md:h-full md:max-w-[260px] md:flex-wrap md:overflow-y-auto md:overflow-x-hidden md:py-6">
       <GameCard
         v-for="game in [...games, ...archivedGames]"
         :key="game.id"

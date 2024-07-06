@@ -1,6 +1,6 @@
 <template>
   <li class="overflow-hidden rounded-lg bg-primary shadow">
-    <div class="flex gap-x-4 p-6 h-4/6">
+    <div class="flex h-4/6 gap-x-4 p-6">
       <div class="grid h-12 w-12 place-items-center rounded-md bg-gray-700">
         <Icon :name="props.icon" class="text-primary" size="24" />
       </div>
@@ -12,7 +12,7 @@
 
     <nuxt-link
       to="/members"
-      class="group flex w-full h-2/6 items-center gap-x-2 bg-gray-700 px-6 py-3 text-sm font-medium text-white transition-colors duration-75 hover:bg-gray-600">
+      class="group flex h-2/6 w-full items-center gap-x-2 bg-gray-700 px-6 py-3 text-sm font-medium text-white transition-colors duration-75 hover:bg-gray-600">
       {{ props.description }} <Icon name="ion:ios-arrow-round-forward" class="transition-all group-hover:translate-x-2" size="20" />
     </nuxt-link>
   </li>

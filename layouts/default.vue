@@ -2,7 +2,7 @@
   <div class="flex h-screen flex-col bg-gray-800">
     <nav class="sticky top-0 z-50 overflow-hidden bg-primary" :style="{ height: dropdown ? '300px' : 'auto' }">
       <div class="mx-auto flex max-w-7xl justify-between px-4 sm:px-4 md:px-6 lg:px-8">
-        <img src="/logo.webp" alt="Logo" draggable="false" class="h-16 select-none">
+        <img src="/logo.webp" alt="Logo" draggable="false" class="h-16 select-none" />
 
         <ul
           class="absolute left-0 top-20 mr-auto flex flex-col sm:relative sm:top-[initial] sm:-my-px sm:ml-4 sm:flex-row sm:space-x-4 md:ml-6 md:space-x-8">
@@ -26,7 +26,7 @@
             target="_blank"
             rel="noopener noreferrer"
             class="social-link bg-blue-900 hover:bg-blue-800">
-            <img src="/mumble.webp" class="h-5 w-5 select-none" draggable="false"> <span class="ml-2 max-[900px]:hidden">Mumble</span>
+            <img src="/mumble.webp" class="h-5 w-5 select-none" draggable="false" /> <span class="ml-2 max-[900px]:hidden">Mumble</span>
           </a>
           <a href="https://discord.gg/qV5TYGx" target="_blank" rel="noopener noreferrer" class="social-link bg-discord hover:bg-indigo-500">
             <Icon name="ic:baseline-discord" size="20" /> <span class="ml-2 max-[900px]:hidden">Discord</span>
@@ -85,6 +85,6 @@ const dropdown = ref(false);
 
 <style>
 .container {
-  @apply mx-auto max-w-7xl space-y-10 py-10 px-4 sm:px-6 lg:px-8;
+  @apply mx-auto max-w-7xl space-y-10 px-4 py-10 sm:px-6 lg:px-8;
 }
 </style>

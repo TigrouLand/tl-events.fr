@@ -7,6 +7,7 @@ export default withNuxt([
     rules: {
       '@typescript-eslint/no-namespace': 'off',
       'vue/multi-word-component-names': 'off',
+      'vue/html-self-closing': ['off', { html: { void: 'never' } }],
     },
   },
 ]);

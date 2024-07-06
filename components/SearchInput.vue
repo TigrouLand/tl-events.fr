@@ -4,7 +4,7 @@
     :placeholder="props.placeholder"
     class="h-10 w-full rounded-lg border border-gray-400 bg-gray-600 pl-4 text-sm text-white focus:outline-none"
     @input="onInput"
-    @keyup="onKeyUp">
+    @keyup="onKeyUp" />
 </template>
 
 <script setup lang="ts">

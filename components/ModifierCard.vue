@@ -4,7 +4,7 @@
       class="custom-image m-4 h-24 w-auto p-2"
       :src="`/${props.modifier.material.toLowerCase()}.webp`"
       :alt="props.modifier.material"
-      draggable="false">
+      draggable="false" />
 
     <div class="mr-2 flex flex-col justify-center text-white">
       <h1 class="mr-2 font-medium">{{ props.modifier.name }}</h1>
