@@ -28,7 +28,6 @@ const props = defineProps({
   },
   stats: {
     type: Number as PropType<API.Stats[keyof API.Stats]>,
-    required: true,
   },
   description: {
     type: String,

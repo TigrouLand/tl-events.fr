@@ -12,6 +12,7 @@ export default defineNuxtConfig({
   telemetry: false,
   modules: ['@nuxtjs/tailwindcss', '@nuxt/eslint', 'nuxt-icon'],
   app: {
+    nuxtIcon: {},
     head: {
       meta: metaTags,
       charset: 'utf-8',
