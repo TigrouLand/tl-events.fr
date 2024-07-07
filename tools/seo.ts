@@ -1,6 +1,4 @@
-import type { Meta } from '@unhead/schema';
-
-export const metaTags: Meta[] = [
+export const metaTags = [
   {
     charset: 'utf-8',
   },
