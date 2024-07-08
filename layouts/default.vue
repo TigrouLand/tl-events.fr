@@ -19,7 +19,7 @@
             target="_blank"
             rel="noopener noreferrer"
             class="social-link bg-gray-900 hover:bg-gray-800">
-            <Icon name="mdi:github" size="20" /> <span class="ml-2 max-[900px]:hidden">Github</span>
+            <Icon name="mdi:github" size="20" /> <span class="ml-2 max-[900px]:hidden">GitHub</span>
           </a>
           <a
             href="mumble://mumble.tl-events.fr"
