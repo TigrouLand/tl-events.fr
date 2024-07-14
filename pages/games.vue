@@ -291,12 +291,14 @@ const getFinalTeamOfPlayer = (uuid: string): API.Team => {
   return getTeamByName(teamName);
 };
 
+
 const getTeamByName = (name: string): API.Team => {
   return selectedGame.value!.teams!.find((t): boolean => t.name === name)!;
 };
 
 const getUuidByUsername = (name: string): string => {
-  return members.value.find((p): boolean => p.name === name)!.uuid;
+  return members.value.find((p): boolean => p.name === name
+      || p.name === `~${name}`)?.uuid!;
 };
 
 const refreshGames = async (): Promise<void> => {
