@@ -147,7 +147,8 @@ const [gamesResponse, membersResponse] = await Promise.all([
 ]);
 
 const getUsernameByUuid = (uuid: string): string => {
-  return members.value.find((p): boolean => p.uuid === uuid)!.name;
+  const memberName = members.value.find((p): boolean => p.uuid === uuid)!.name;
+  return memberName.startsWith('~') ? memberName.slice(1) : memberName;
 };
 
 const replaceUuids = (value: string): string => {
