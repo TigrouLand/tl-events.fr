@@ -19,6 +19,10 @@
 <script setup lang="ts">
 import type { API } from '~/tools/types';
 
+useHead({
+  title: '[TL] Events - Accueil',
+});
+
 const response = await useFetch('https://api.tl-events.fr/v1/stats');
 const stats = response.data as Ref<API.Stats | undefined>;
 </script>

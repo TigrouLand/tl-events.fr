@@ -12,6 +12,10 @@
 import type { API } from '~/tools/types';
 import { findQuery } from '~/tools/utils';
 
+useHead({
+  title: '[TL] Events - Membres',
+});
+
 const response = await useFetch('https://api.tl-events.fr/v1/members');
 const members = response.data as Ref<API.Member[]>;
 
