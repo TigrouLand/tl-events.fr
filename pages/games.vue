@@ -252,10 +252,10 @@ const selectGame = (game: API.Game): void => {
 const gameWithUsernames = (game: API.Game): API.Game => {
   return {
     ...game,
-    players: game.players.map((player): string => {
+    players: game.players ? game.players.map((player): string => {
       const member = members.value.find((m): boolean => m.uuid === player);
       return member ? member.name : player;
-    }),
+    }) : [],
   };
 };
 
