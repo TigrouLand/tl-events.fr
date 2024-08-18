@@ -25,7 +25,7 @@ const props = defineProps({
 });
 
 const getDescription = (modifier: API.Modifier): string => {
-  const desc = modifier.web || modifier.description;
+  const desc = modifier.copy || modifier.description;
   let computed = desc.join(' ');
   computed = computed.replace(/§./g, '');
   return computed.replace(/\(.+\)/g, '');

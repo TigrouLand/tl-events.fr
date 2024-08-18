@@ -13,7 +13,7 @@ export namespace API {
     enabled: boolean;
     material: string;
     description: string[];
-    web: string[];
+    copy: string[];
   }
 
   export interface Team {
