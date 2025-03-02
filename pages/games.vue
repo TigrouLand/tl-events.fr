@@ -252,10 +252,12 @@ const selectGame = (game: API.Game): void => {
 const gameWithUsernames = (game: API.Game): API.Game => {
   return {
     ...game,
-    players: game.players ? game.players.map((player): string => {
-      const member = members.value.find((m): boolean => m.uuid === player);
-      return member ? member.name : player;
-    }) : [],
+    players: game.players
+      ? game.players.map((player): string => {
+          const member = members.value.find((m): boolean => m.uuid === player);
+          return member ? member.name : player;
+        })
+      : [],
   };
 };
 
@@ -291,14 +293,12 @@ const getFinalTeamOfPlayer = (uuid: string): API.Team => {
   return getTeamByName(teamName);
 };
 
-
 const getTeamByName = (name: string): API.Team => {
   return selectedGame.value!.teams!.find((t): boolean => t.name === name)!;
 };
 
 const getUuidByUsername = (name: string): string => {
-  return members.value.find((p): boolean => p.name === name
-      || p.name === `~${name}`)?.uuid!;
+  return members.value.find((p): boolean => p.name === name || p.name === `~${name}`)?.uuid || '';
 };
 
 const refreshGames = async (): Promise<void> => {
