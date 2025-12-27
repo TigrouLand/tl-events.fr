@@ -15,8 +15,6 @@
 import type { API } from '~/tools/types';
 import { findQuery } from '~/tools/utils';
 
-console.log(findQuery);
-
 useHead({
   title: '[TL] Events - Membres',
 });
