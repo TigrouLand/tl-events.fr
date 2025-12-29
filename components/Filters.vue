@@ -31,28 +31,28 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts" generic="T extends PropertyKey">
 import { onMounted } from 'vue';
 
-interface FilterOption {
-  value: string;
+interface FilterOption<T> {
+  value: T;
   label: string;
 }
 
-const props = defineProps<{
+const { label, options, currentValue } = defineProps<{
   label: string;
-  options: FilterOption[];
-  currentValue: string | null;
+  options: FilterOption<T>[];
+  currentValue: T | null;
 }>();
 
 const emit = defineEmits<{
-  select: [value: string];
+  select: [value: T];
   clear: [];
 }>();
 
 const isDropdownOpen = ref(false);
 
-const selectOption = (value: string): void => {
+const selectOption = (value: T): void => {
   emit('select', value);
   isDropdownOpen.value = false;
 };

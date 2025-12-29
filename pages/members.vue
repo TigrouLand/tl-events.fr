@@ -24,11 +24,14 @@ const members = response.data as Ref<API.Member[]>;
 
 const searchQuery = ref('');
 const currentSort = ref<'kills' | 'deaths' | 'wins' | null>(null);
-const filterOptions = ref([
+
+type Filters = Array<{ value: NonNullable<typeof currentSort.value>; label: string }>;
+const filterOptions = ref<Filters>([
   { value: 'kills', label: 'Plus de kills' },
   { value: 'deaths', label: 'Plus de morts' },
   { value: 'wins', label: 'Plus de victoires' },
 ]);
+
 const displayedMembers: Ref<API.Member[]> = ref(members.value);
 
 const searchPlayers = (): void => {
@@ -41,7 +44,7 @@ const searchPlayers = (): void => {
   displayedMembers.value = filtered;
 };
 
-const sortBy = (type: string): void => {
+const sortBy = (type: PropertyKey): void => {
   if (type === 'kills' || type === 'deaths' || type === 'wins') {
     currentSort.value = type;
     searchPlayers();
