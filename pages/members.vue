@@ -1,6 +1,9 @@
 <template>
   <div class="container">
-    <SearchInput v-model="searchQuery" placeholder="Rechercher par pseudonyme ..." @keyup="searchPlayers" />
+    <div class="mb-4 flex gap-2">
+      <SearchInput v-model="searchQuery" placeholder="Rechercher par pseudonyme ..." class="flex-1" @keyup="searchPlayers" />
+      <Filters label="Filtrer" :options="filterOptions" :current-value="currentSort" @select="sortBy" @clear="clearSort" />
+    </div>
 
     <ul class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:mx-0 lg:grid-cols-3">
       <PlayerCard v-for="member in displayedMembers" :key="member.uuid" :player="member" />
@@ -20,8 +23,33 @@ const response = await useFetch('https://api.tl-events.fr/v1/members');
 const members = response.data as Ref<API.Member[]>;
 
 const searchQuery = ref('');
+const currentSort = ref<'kills' | 'deaths' | 'wins' | null>(null);
+const filterOptions = ref([
+  { value: 'kills', label: 'Plus de kills' },
+  { value: 'deaths', label: 'Plus de morts' },
+  { value: 'wins', label: 'Plus de victoires' },
+]);
 const displayedMembers: Ref<API.Member[]> = ref(members.value);
+
 const searchPlayers = (): void => {
-  displayedMembers.value = findQuery(members, searchQuery);
+  let filtered = findQuery(members, searchQuery);
+
+  if (currentSort.value) {
+    filtered = [...filtered].sort((a, b) => b[currentSort.value!] - a[currentSort.value!]);
+  }
+
+  displayedMembers.value = filtered;
+};
+
+const sortBy = (type: string): void => {
+  if (type === 'kills' || type === 'deaths' || type === 'wins') {
+    currentSort.value = type;
+    searchPlayers();
+  }
+};
+
+const clearSort = (): void => {
+  currentSort.value = null;
+  searchPlayers();
 };
 </script>

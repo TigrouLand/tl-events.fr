@@ -2,7 +2,7 @@
   <input
     :value="props.modelValue"
     :placeholder="props.placeholder"
-    class="h-10 w-full rounded-lg border border-gray-400 bg-gray-600 pl-4 text-sm text-white focus:outline-none"
+    :class="['h-10 rounded-lg border border-gray-400 bg-gray-600 pl-4 text-sm text-white focus:outline-none', props.class]"
     @input="onInput"
     @keyup="onKeyUp" />
 </template>
@@ -16,6 +16,10 @@ const props = defineProps({
   modelValue: {
     type: String,
     required: true,
+  },
+  class: {
+    type: String,
+    default: '',
   },
 });
 

@@ -5,11 +5,11 @@
 
       <ul class="grid grid-cols-1 gap-5 p-5 sm:grid-cols-2 lg:grid-cols-3">
         <InfoCard
-            title="Membres uniques"
-            :stats="stats?.members"
-            description="Voir leurs statistiques"
-            icon="ion:person-sharp"
-            to="/members" />
+          title="Membres uniques"
+          :stats="stats?.members"
+          description="Voir leurs statistiques"
+          icon="ion:person-sharp"
+          to="/members" />
         <InfoCard
           title="Scénarios disponibles"
           :stats="stats?.modifiers"
@@ -17,11 +17,11 @@
           icon="ion:erlenmeyer-flask"
           to="/modifiers" />
         <InfoCard
-            title="Parties jouées"
-            :stats="stats?.games"
-            description="Voir les résumés détaillés"
-            icon="ion:game-controller"
-            to="/games" />
+          title="Parties jouées"
+          :stats="stats?.games"
+          description="Voir les résumés détaillés"
+          icon="ion:game-controller"
+          to="/games" />
       </ul>
     </div>
   </div>
