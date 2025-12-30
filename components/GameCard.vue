@@ -36,36 +36,36 @@
 </template>
 
 <script setup lang="ts">
-import dayjs from 'dayjs';
-import relativeTime from 'dayjs/plugin/relativeTime.js';
-import 'dayjs/locale/fr.js';
-import type { API } from '~/tools/types';
+import dayjs from 'dayjs'
+import relativeTime from 'dayjs/plugin/relativeTime.js'
+import 'dayjs/locale/fr.js'
+import type { API } from '~/tools/types'
 
-dayjs.locale('fr');
-dayjs.extend(relativeTime);
+dayjs.locale('fr')
+dayjs.extend(relativeTime)
 
 const props = defineProps({
   game: {
     type: Object as PropType<API.Game>,
-    required: true,
+    required: true
   },
   selected: {
     type: Boolean,
-    default: false,
-  },
-});
+    default: false
+  }
+})
 
 const isArchived = (game: API.Game): boolean => {
-  return game.archiveDate !== -1;
-};
+  return game.archiveDate !== -1
+}
 
 const format = (timestamp: number): string => {
-  if (!timestamp || timestamp === -1) return 'À venir';
-  const formatted = dayjs(timestamp).fromNow();
-  return formatted.charAt(0).toUpperCase() + formatted.slice(1);
-};
+  if (!timestamp || timestamp === -1) return 'À venir'
+  const formatted = dayjs(timestamp).fromNow()
+  return formatted.charAt(0).toUpperCase() + formatted.slice(1)
+}
 
 const isUpcoming = (game: API.Game): boolean => {
-  return game.status === 'CREATED';
-};
+  return game.status === 'CREATED'
+}
 </script>

@@ -14,22 +14,22 @@
 </template>
 
 <script setup lang="ts">
-import type { PropType } from 'vue';
-import type { API } from '~/tools/types';
+import type { PropType } from 'vue'
+import type { API } from '~/tools/types'
 
 const props = defineProps({
   modifier: {
     type: Object as PropType<API.Modifier>,
-    required: true,
-  },
-});
+    required: true
+  }
+})
 
 const getDescription = (modifier: API.Modifier): string => {
-  const desc = modifier.copy || modifier.description;
-  let computed = desc.join(' ');
-  computed = computed.replace(/§./g, '');
-  return computed.replace(/\(.+\)/g, '');
-};
+  const desc = modifier.copy || modifier.description
+  let computed = desc.join(' ')
+  computed = computed.replace(/§./g, '')
+  return computed.replace(/\(.+\)/g, '')
+}
 </script>
 
 <style scoped>

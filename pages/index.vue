@@ -1,7 +1,9 @@
 <template>
   <div class="custom-background min-h-full w-full">
     <div class="container">
-      <h1 class="custom-shadow pt-10 text-center text-4xl font-bold text-white lg:text-7xl">tl-events.fr</h1>
+      <h1 class="custom-shadow pt-10 text-center text-4xl font-bold text-white lg:text-7xl">
+        tl-events.fr
+      </h1>
 
       <ul class="grid grid-cols-1 gap-5 p-5 sm:grid-cols-2 lg:grid-cols-3">
         <InfoCard
@@ -15,32 +17,35 @@
           :stats="stats?.modifiers"
           description="Voir la liste complète"
           icon="ion:erlenmeyer-flask"
-          to="/modifiers" />
+          to="/modifiers"
+        />
         <InfoCard
           title="Parties jouées"
           :stats="stats?.games"
           description="Voir les résumés détaillés"
           icon="ion:game-controller"
-          to="/games" />
+          to="/games"
+        />
       </ul>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import type { API } from '~/tools/types';
+import type { API } from '~/tools/types'
+import { API_ENDPOINT } from '~/tools/api'
 
 useHead({
-  title: '[TL] Events - Accueil',
-});
+  title: 'Accueil'
+})
 
-const response = await useFetch('https://api.tl-events.fr/v1/stats');
-const stats = response.data as Ref<API.Stats | undefined>;
+const response = await useFetch(API_ENDPOINT('stats'))
+const stats = response.data as Ref<API.Stats | undefined>
 </script>
 
 <style scoped>
 .custom-background {
-  background: url('/background.webp') center no-repeat;
+  background: url("/background.webp") center no-repeat;
   background-size: cover;
 }
 

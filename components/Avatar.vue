@@ -10,17 +10,17 @@
 const props = defineProps({
   player: {
     type: String,
-    required: true,
+    required: true
   },
   class: {
     type: String,
-    default: '',
+    default: ''
   },
   type: {
     type: String as PropType<'flat' | 'rounded'>,
-    default: 'flat',
-  },
-});
+    default: 'flat'
+  }
+})
 </script>
 
 <style scoped>

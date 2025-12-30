@@ -11,8 +11,8 @@ To deploy this serverless application, we use [Cloudflare Workers](https://worke
 ## Contributing
 
 To facilitate development, maintainability and thus use the same code standards.
-We use [ESLint](https://eslint.org/) for linting and [Prettier](https://prettier.io/) for formatting.
-Please check that no rules are violated before committing a change with the `pnpm lint` command.
+We use [Biome](https://biomejs.dev/) toolchain for both formatting and linting.
+Please check that no rules are violated before committing a change with the `npm lint` command.
 If you need or have any questions about the contribution, don't hesitate to open an issue.
 
 ## Run locally

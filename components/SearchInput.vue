@@ -11,26 +11,26 @@
 const props = defineProps({
   placeholder: {
     type: String,
-    required: true,
+    required: true
   },
   modelValue: {
     type: String,
-    required: true,
+    required: true
   },
   class: {
     type: String,
-    default: '',
-  },
-});
+    default: ''
+  }
+})
 
-const emit = defineEmits(['update:modelValue', 'keyup']);
+const emit = defineEmits(['update:modelValue', 'keyup'])
 
 const onInput = (event: Event): void => {
-  const input = event.target as HTMLInputElement;
-  return emit('update:modelValue', input.value);
-};
+  const input = event.target as HTMLInputElement
+  emit('update:modelValue', input.value)
+}
 
 const onKeyUp = (event: KeyboardEvent): void => {
-  return emit('keyup', event);
-};
+  emit('keyup', event)
+}
 </script>

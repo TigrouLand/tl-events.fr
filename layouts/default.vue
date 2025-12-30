@@ -66,7 +66,7 @@
 </template>
 
 <script setup>
-const dropdown = ref(false);
+const dropdown = ref(false)
 </script>
 
 <style scoped>

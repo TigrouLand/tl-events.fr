@@ -17,14 +17,14 @@
 </template>
 
 <script setup lang="ts">
-import type { API } from '~/tools/types';
+import type { API } from '~/tools/types'
 
 const props = defineProps({
   player: {
     type: Object as PropType<API.Member>,
-    required: true,
-  },
-});
+    required: true
+  }
+})
 
-const blacklisted = props.player.name.startsWith('~');
+const blacklisted = props.player.name.startsWith('~')
 </script>

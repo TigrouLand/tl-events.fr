@@ -134,200 +134,198 @@
 </template>
 
 <script setup lang="ts">
-import dayjs from 'dayjs';
-import type { API } from '~/tools/types';
+import type { API } from '~/tools/types'
+import dayjs from 'dayjs'
+import { API_ENDPOINT } from '~/tools/api'
 
 useHead({
-  title: '[TL] Events - Parties',
-});
+  title: 'Parties'
+})
 
-const [gamesResponse, membersResponse] = await Promise.all([
-  useFetch('https://api.tl-events.fr/v1/games'),
-  useFetch('https://api.tl-events.fr/v1/members'),
-]);
+const [gamesResponse, membersResponse] = await Promise.all([useFetch(API_ENDPOINT('games')), useFetch(API_ENDPOINT('members'))])
 
 const getUsernameByUuid = (uuid: string): string => {
-  const memberName = members.value.find((p): boolean => p.uuid === uuid)!.name;
-  return memberName.startsWith('~') ? memberName.slice(1) : memberName;
-};
+  const memberName = members.value.find((p): boolean => p.uuid === uuid)?.name ?? ''
+  return memberName.startsWith('~') ? memberName.slice(1) : memberName
+}
 
 const replaceUuids = (value: string): string => {
   // Each log can contain a uuid, we need to replace it by the username
   // The uuid is stored like this: <@uuid>
 
-  const uuidRegex = /<@([a-zA-Z0-9-]+)>/g;
-  const matches = value.match(uuidRegex);
+  const uuidRegex = /<@([a-zA-Z0-9-]+)>/g
+  const matches = value.match(uuidRegex)
 
   if (!matches) {
-    return value;
+    return value
   }
 
   matches.forEach((match): void => {
-    const uuid = match.replace('<@', '').replace('>', '');
-    const username = getUsernameByUuid(uuid);
+    const uuid = match.replace('<@', '').replace('>', '')
+    const username = getUsernameByUuid(uuid)
 
     if (username) {
-      value = value.replace(match, username);
+      value = value.replace(match, username)
     }
-  });
+  })
 
-  return value;
-};
+  return value
+}
 
 const fixGameUuids = (game: API.Game): API.Game => {
-  game.logs = game.logs.map(replaceUuids);
+  game.logs = game.logs.map(replaceUuids)
 
-  const fixKeys = ['playerRoles', 'playerTeams', 'finalTeams'] as Array<keyof typeof game>;
+  const fixKeys: Array<keyof typeof game> = ['playerRoles', 'playerTeams', 'finalTeams']
 
   fixKeys.forEach((key): void => {
     if (game[key]) {
-      const nodes = {} as Record<string, unknown>;
+      const nodes = {} as Record<string, unknown>
 
       Object.entries(game[key] as object).forEach(([uuid, value]): void => {
-        const username = replaceUuids(uuid);
-        nodes[username] = value;
-      });
+        const username = replaceUuids(uuid)
+        nodes[username] = value
+      })
 
-      game[key] = nodes as never;
+      game[key] = nodes as never
     }
-  });
+  })
 
-  return game;
-};
+  return game
+}
 
 const defineGameInfo = (game: API.Game): { type: string; icon: string } => {
-  const info = { type: 'en cours', icon: 'ion:game-controller' };
+  const info = { type: 'en cours', icon: 'ion:game-controller' }
 
   if (isScheduled(game)) {
-    info.type = 'programmée';
-    info.icon = 'fa6-solid:clock';
+    info.type = 'programmée'
+    info.icon = 'fa6-solid:clock'
   } else if (isArchived(game)) {
-    info.type = 'archivée';
-    info.icon = 'fa6-solid:box-archive';
+    info.type = 'archivée'
+    info.icon = 'fa6-solid:box-archive'
   }
 
-  return info;
-};
+  return info
+}
 
 const isArchived = (game: API.Game): boolean => {
-  return game.archiveDate !== -1;
-};
+  return game.archiveDate !== -1
+}
 
 const isScheduled = (game: API.Game): boolean => {
-  return game.startDate === -1 && game.scheduleDate !== -1;
-};
+  return game.startDate === -1 && game.scheduleDate !== -1
+}
 
 const formatDate = (timestamp: number): string => {
-  return dayjs(timestamp).format('DD/MM/YYYY à HH:mm');
-};
+  return dayjs(timestamp).format('DD/MM/YYYY à HH:mm')
+}
 
-const gamesData = gamesResponse.data as Ref<API.GameResponse>;
-const members = membersResponse.data as Ref<API.Member[]>;
+const gamesData = gamesResponse.data as Ref<API.GameResponse>
+const members = membersResponse.data as Ref<API.Member[]>
 
-const archivedGames: Ref<API.Game[]> = ref(gamesData.value.archivedGames);
-const games: Ref<API.Game[]> = ref(gamesData.value.games);
-const selectedGame: Ref<API.Game> = ref(fixGameUuids([...archivedGames.value, ...games.value][0]));
-const gameInfo = defineGameInfo(selectedGame.value);
+const archivedGames = ref<API.Game[]>(gamesData.value.archivedGames)
+const games = ref<API.Game[]>(gamesData.value.games)
+const selectedGame = ref<API.Game>(fixGameUuids([...archivedGames.value, ...games.value][0]))
+const gameInfo = defineGameInfo(selectedGame.value)
 
-const interval = ref<NodeJS.Timeout | null>(null);
+const interval = ref<NodeJS.Timeout | null>(null)
 
 onMounted((): void => {
-  interval.value = setInterval(refreshGames, 10000);
-});
+  interval.value = setInterval(refreshGames, 10000)
+})
 
 onUnmounted((): void => {
-  clearInterval(interval.value as NodeJS.Timeout);
-});
+  clearInterval(interval.value as NodeJS.Timeout)
+})
 
 const getStyleForTeam = (team: API.Team): string => {
-  return `color: rgba(${team.colors.join(', ')});`;
-};
+  return `color: rgba(${team.colors.join(', ')});`
+}
 
 const selectGame = (game: API.Game): void => {
   if (archivedGames.value.includes(game)) {
-    selectedGame.value = fixGameUuids(game);
+    selectedGame.value = fixGameUuids(game)
   }
-};
+}
 
 const gameWithUsernames = (game: API.Game): API.Game => {
   return {
     ...game,
     players: game.players
       ? game.players.map((player): string => {
-          const member = members.value.find((m): boolean => m.uuid === player);
-          return member ? member.name : player;
+          const member = members.value.find((m): boolean => m.uuid === player)
+          return member ? member.name : player
         })
-      : [],
-  };
-};
+      : []
+  }
+}
 
 const selected = (game: API.Game): boolean => {
-  return selectedGame.value!.id === game.id;
-};
+  return selectedGame.value.id === game.id
+}
 
-const getRoleForPlayer = (uuid: string): string => {
-  const username = getUsernameByUuid(uuid);
-  return selectedGame.value!.playerRoles![username];
-};
+const getRoleForPlayer = (uuid: string): string | undefined => {
+  const username = getUsernameByUuid(uuid)
+  return selectedGame.value.playerRoles?.[username]
+}
 
 const getPlayersInTeam = (name: string) => {
-  return Object.entries(selectedGame.value!.playerTeams!)
+  return Object.entries(selectedGame.value.playerTeams || {})
     .filter(([_, v]): boolean => v === name)
     .map(([k, _]) => {
       return {
         username: k,
-        uuid: getUuidByUsername(k),
-      };
-    });
-};
+        uuid: getUuidByUsername(k)
+      }
+    })
+}
 
-const getTeamOfPlayer = (uuid: string): API.Team => {
-  const username = getUsernameByUuid(uuid);
-  const teamName = selectedGame.value!.playerTeams![username];
-  return getTeamByName(teamName);
-};
+const getTeamOfPlayer = (uuid: string): API.Team | undefined => {
+  const username = getUsernameByUuid(uuid)
+  const teamName = selectedGame.value.playerTeams?.[username]
+  return getTeamByName(teamName)
+}
 
-const getFinalTeamOfPlayer = (uuid: string): API.Team => {
-  const username = getUsernameByUuid(uuid);
-  const teamName = selectedGame.value!.finalTeams![username];
-  return getTeamByName(teamName);
-};
+const getFinalTeamOfPlayer = (uuid: string): API.Team | undefined => {
+  const username = getUsernameByUuid(uuid)
+  const teamName = selectedGame.value.finalTeams?.[username]
+  return getTeamByName(teamName)
+}
 
-const getTeamByName = (name: string): API.Team => {
-  return selectedGame.value!.teams!.find((t): boolean => t.name === name)!;
-};
+const getTeamByName = (name: string | undefined): API.Team | undefined => {
+  return selectedGame.value.teams?.find((t): boolean => t.name === name)
+}
 
 const getUuidByUsername = (name: string): string => {
-  return members.value.find((p): boolean => p.name === name || p.name === `~${name}`)?.uuid || '';
-};
+  return members.value.find((p): boolean => p.name === name || p.name === `~${name}`)?.uuid || ''
+}
 
 const refreshGames = async (): Promise<void> => {
-  const data = await $fetch<API.GameResponse>('https://api.tl-events.fr/v1/games');
-  games.value = data.games;
-  archivedGames.value = data.archivedGames;
-};
+  const data = await $fetch<API.GameResponse>(API_ENDPOINT('games'))
+  games.value = data.games
+  archivedGames.value = data.archivedGames
+}
 
 const isAlive = (name: string): boolean => {
-  return selectedGame.value.alive.includes(name);
-};
+  return selectedGame.value.alive.includes(name)
+}
 
 const formatTime = (): string => {
-  const { minutes, seconds, hours } = selectedGame.value!;
-  const format = (value: number): string => value.toString().padStart(2, '0');
+  const { minutes, seconds, hours } = selectedGame.value
+  const format = (value: number): string => value.toString().padStart(2, '0')
 
-  return `${format(hours)}:${format(minutes)}:${format(seconds)}`;
-};
+  return `${format(hours)}:${format(minutes)}:${format(seconds)}`
+}
 
 const formatEventType = (type: string): string => {
   switch (type) {
     case 'LGUHC':
-      return 'LG-UHC';
+      return 'LG-UHC'
     case 'UHCRun':
-      return 'UHC-Run';
+      return 'UHC-Run'
     default:
-      return type || 'Inconnu';
+      return type || 'Inconnu'
   }
-};
+}
 </script>
 
 <style scoped>

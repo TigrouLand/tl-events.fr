@@ -1,79 +1,79 @@
-export const metaTags = [
-  {
-    charset: 'utf-8',
-  },
-  {
-    name: 'viewport',
-    content: 'width=device-width, initial-scale=1',
-  },
-  {
-    hid: 'description',
-    name: 'description',
-    content: 'Des parties privées de type UHC sur Minecraft !\n' + 'Modes de jeu : LG-UHC, Switch, TaupeGun...',
-  },
-  {
-    hid: 'twitter:card',
-    name: 'twitter:card',
-    content: 'summary',
-  },
-  {
-    hid: 'twitter:site',
-    name: 'twitter:site',
-    content: '@EventsTLV2',
-  },
-  {
-    hid: 'twitter:url',
-    name: 'twitter:url',
-    content: 'https://tl-events.fr',
-  },
-  {
-    hid: 'twitter:title',
-    name: 'twitter:title',
-    content: 'TL - Events',
-  },
-  {
-    hid: 'twitter:description',
-    name: 'twitter:description',
-    content: 'Des parties privées de type UHC sur Minecraft !\n' + 'Modes de jeu : LG-UHC, Switch, TaupeGun...',
-  },
-  {
-    hid: 'twitter:image',
-    name: 'twitter:image',
-    content: 'https://tl-events.fr/icon.webp',
-  },
-  {
-    hid: 'og:site_name',
-    property: 'og:site_name',
-    content: 'TL - Events',
-  },
-  {
-    hid: 'og:type',
-    property: 'og:type',
-    content: 'website',
-  },
-  {
-    hid: 'og:url',
-    property: 'og:url',
-    content: 'https://tl-events.fr',
-  },
-  {
-    hid: 'og:title',
-    property: 'og:title',
-    content: 'TL - Events',
-  },
-  {
-    hid: 'og:description',
-    property: 'og:description',
-    content: 'Des parties privées de type UHC sur Minecraft !\n' + 'Modes de jeu : LG-UHC, Switch, TaupeGun...',
-  },
-  {
-    hid: 'og:image',
-    property: 'og:image',
-    content: 'https://tl-events.fr/icon.webp',
-  },
-  {
-    hid: 'og:image:secure_url',
-    property: 'og:image:secure_url',
-    content: 'https://tl-events.fr/icon.webp',
-  },
-];
+import type { NuxtAppConfig } from 'nuxt/schema'
+
+export const seo: NuxtAppConfig['head'] = {
+  charset: 'utf-8',
+  titleTemplate: '[TL] Events - %s',
+  viewport: 'width=device-width, initial-scale=1',
+  link: [
+    {
+      rel: 'icon',
+      type: 'image/x-icon',
+      href: '/favicon.ico'
+    }
+  ],
+  meta: [
+    {
+      charset: 'utf-8'
+    },
+    {
+      name: 'viewport',
+      content: 'width=device-width, initial-scale=1'
+    },
+    {
+      name: 'description',
+      content: 'Des parties privées de type UHC sur Minecraft !\n' + 'Modes de jeu : LG-UHC, Switch, TaupeGun...'
+    },
+    {
+      name: 'twitter:card',
+      content: 'summary'
+    },
+    {
+      name: 'twitter:site',
+      content: '@EventsTLV2'
+    },
+    {
+      name: 'twitter:url',
+      content: 'https://tl-events.fr'
+    },
+    {
+      name: 'twitter:title',
+      content: 'TL - Events'
+    },
+    {
+      name: 'twitter:description',
+      content: 'Des parties privées de type UHC sur Minecraft !\n' + 'Modes de jeu : LG-UHC, Switch, TaupeGun...'
+    },
+    {
+      name: 'twitter:image',
+      content: 'https://tl-events.fr/icon.webp'
+    },
+    {
+      property: 'og:site_name',
+      content: 'TL - Events'
+    },
+    {
+      property: 'og:type',
+      content: 'website'
+    },
+    {
+      property: 'og:url',
+      content: 'https://tl-events.fr'
+    },
+    {
+      property: 'og:title',
+      content: 'TL - Events'
+    },
+    {
+      property: 'og:description',
+      content: 'Des parties privées de type UHC sur Minecraft !\n' + 'Modes de jeu : LG-UHC, Switch, TaupeGun...'
+    },
+    {
+      property: 'og:image',
+      content: 'https://tl-events.fr/icon.webp'
+    },
+    {
+      property: 'og:image:secure_url',
+      content: 'https://tl-events.fr/icon.webp'
+    }
+  ]
+}

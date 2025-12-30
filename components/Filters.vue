@@ -32,46 +32,46 @@
 </template>
 
 <script setup lang="ts" generic="T extends PropertyKey">
-import { onMounted } from 'vue';
+import { onMounted } from 'vue'
 
 interface FilterOption<T> {
-  value: T;
-  label: string;
+  value: T
+  label: string
 }
 
 const { label, options, currentValue } = defineProps<{
-  label: string;
-  options: FilterOption<T>[];
-  currentValue: T | null;
-}>();
+  label: string
+  options: FilterOption<T>[]
+  currentValue: T | null
+}>()
 
 const emit = defineEmits<{
-  select: [value: T];
-  clear: [];
-}>();
+  select: [value: T]
+  clear: []
+}>()
 
-const isDropdownOpen = ref(false);
+const isDropdownOpen = ref(false)
 
 const selectOption = (value: T): void => {
-  emit('select', value);
-  isDropdownOpen.value = false;
-};
+  emit('select', value)
+  isDropdownOpen.value = false
+}
 
 const clearSelection = (): void => {
-  emit('clear');
-  isDropdownOpen.value = false;
-};
+  emit('clear')
+  isDropdownOpen.value = false
+}
 
 const toggleDropdown = (): void => {
-  isDropdownOpen.value = !isDropdownOpen.value;
-};
+  isDropdownOpen.value = !isDropdownOpen.value
+}
 
 onMounted(() => {
   document.addEventListener('click', (e) => {
-    const target = e.target as HTMLElement;
+    const target = e.target as HTMLElement
     if (!target.closest('.relative')) {
-      isDropdownOpen.value = false;
+      isDropdownOpen.value = false
     }
-  });
-});
+  })
+})
 </script>

@@ -12,47 +12,49 @@
 </template>
 
 <script setup lang="ts">
-import type { API } from '~/tools/types';
-import { findQuery } from '~/tools/utils';
+import type { API } from '~/tools/types'
+import { API_ENDPOINT } from '~/tools/api'
+import { findQuery } from '~/tools/utils'
 
 useHead({
-  title: '[TL] Events - Membres',
-});
+  title: 'Membres'
+})
 
-const response = await useFetch('https://api.tl-events.fr/v1/members');
-const members = response.data as Ref<API.Member[]>;
+const response = await useFetch(API_ENDPOINT('members'))
+const members = response.data as Ref<API.Member[]>
 
-const searchQuery = ref('');
-const currentSort = ref<'kills' | 'deaths' | 'wins' | null>(null);
+const searchQuery = ref('')
+const currentSort = ref<'kills' | 'deaths' | 'wins' | null>(null)
 
-type Filters = Array<{ value: NonNullable<typeof currentSort.value>; label: string }>;
+type Filters = Array<{ value: NonNullable<typeof currentSort.value>; label: string }>
 const filterOptions = ref<Filters>([
   { value: 'kills', label: 'Plus de kills' },
   { value: 'deaths', label: 'Plus de morts' },
-  { value: 'wins', label: 'Plus de victoires' },
-]);
+  { value: 'wins', label: 'Plus de victoires' }
+])
 
-const displayedMembers: Ref<API.Member[]> = ref(members.value);
+const displayedMembers: Ref<API.Member[]> = ref(members.value)
 
 const searchPlayers = (): void => {
-  let filtered = findQuery(members, searchQuery);
+  let filtered = findQuery(members, searchQuery)
 
   if (currentSort.value) {
-    filtered = [...filtered].sort((a, b) => b[currentSort.value!] - a[currentSort.value!]);
+    const sortKey = currentSort.value
+    filtered = [...filtered].sort((a, b) => b[sortKey] - a[sortKey])
   }
 
-  displayedMembers.value = filtered;
-};
+  displayedMembers.value = filtered
+}
 
 const sortBy = (type: PropertyKey): void => {
   if (type === 'kills' || type === 'deaths' || type === 'wins') {
-    currentSort.value = type;
-    searchPlayers();
+    currentSort.value = type
+    searchPlayers()
   }
-};
+}
 
 const clearSort = (): void => {
-  currentSort.value = null;
-  searchPlayers();
-};
+  currentSort.value = null
+  searchPlayers()
+}
 </script>

@@ -19,28 +19,28 @@
 </template>
 
 <script setup lang="ts">
-import type { API } from '~/tools/types';
+import type { API } from '~/tools/types'
 
 const props = defineProps({
   title: {
     type: String,
-    required: true,
+    required: true
   },
   stats: {
     type: Number as PropType<API.Stats[keyof API.Stats]>,
-    default: undefined,
+    default: undefined
   },
   description: {
     type: String,
-    required: true,
+    required: true
   },
   icon: {
     type: String,
-    required: true,
+    required: true
   },
   to: {
     type: String,
-    required: true,
-  },
-});
+    required: true
+  }
+})
 </script>

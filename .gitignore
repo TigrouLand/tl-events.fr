@@ -6,4 +6,8 @@ node_modules
 .output
 .env
 dist
+
+# IDE
 .idea
+.zed
+.vscode

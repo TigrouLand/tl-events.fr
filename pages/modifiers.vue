@@ -9,19 +9,20 @@
 </template>
 
 <script setup lang="ts">
-import type { API } from '~/tools/types';
-import { findQuery } from '~/tools/utils';
+import type { API } from '~/tools/types'
+import { API_ENDPOINT } from '~/tools/api'
+import { findQuery } from '~/tools/utils'
 
 useHead({
-  title: '[TL] Events - Scénarios',
-});
+  title: 'Scénarios'
+})
 
-const response = await useFetch('https://api.tl-events.fr/v1/modifiers');
-const modifiers = response.data as Ref<API.Modifier[]>;
+const response = await useFetch(API_ENDPOINT('modifiers'))
+const modifiers = response.data as Ref<API.Modifier[]>
 
-const searchQuery = ref('');
-const displayedModifiers: Ref<API.Modifier[]> = ref(modifiers.value);
+const searchQuery = ref('')
+const displayedModifiers: Ref<API.Modifier[]> = ref(modifiers.value)
 const searchModifiers = (): void => {
-  displayedModifiers.value = findQuery(modifiers, searchQuery);
-};
+  displayedModifiers.value = findQuery(modifiers, searchQuery)
+}
 </script>
