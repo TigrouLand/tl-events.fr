@@ -7,21 +7,21 @@
 
       <ul class="grid grid-cols-1 gap-5 p-5 sm:grid-cols-2 lg:grid-cols-3">
         <InfoCard
-          title="Membres uniques"
+          :title="t('cards.members.title')"
           :stats="stats?.members"
-          description="Voir leurs statistiques"
+          :description="t('cards.members.description')"
           icon="ion:person-sharp"
           to="/members" />
         <InfoCard
-          title="Scénarios disponibles"
+          :title="t('cards.modifiers.title')"
           :stats="stats?.modifiers"
-          description="Voir la liste complète"
+          :description="t('cards.modifiers.description')"
           icon="ion:erlenmeyer-flask"
           to="/modifiers" />
         <InfoCard
-          title="Parties jouées"
+          :title="t('cards.games.title')"
           :stats="stats?.games"
-          description="Voir les résumés détaillés"
+          :description="t('cards.games.description')"
           icon="ion:game-controller"
           to="/games" />
       </ul>
@@ -33,8 +33,10 @@
 import type { API } from '~/tools/types'
 import { API_ENDPOINT } from '~/tools/api'
 
+const { t } = useI18n()
+
 useHead({
-  title: 'Accueil'
+  title: t('home')
 })
 
 const response = await useFetch(API_ENDPOINT('stats'))

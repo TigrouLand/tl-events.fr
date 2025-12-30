@@ -12,25 +12,29 @@
         </ul>
 
         <ul class="absolute left-1/2 top-[250px] mx-auto flex -translate-x-1/2 items-center space-x-4 sm:relative sm:left-[initial] sm:top-[initial] sm:mx-0 sm:-translate-x-[0]">
-          <a
+          <nuxt-link
             href="https://github.com/TigrouLand/tl-events.fr"
             target="_blank"
             rel="noopener noreferrer"
             class="social-link bg-gray-900 hover:bg-gray-800">
             <Icon name="mdi:github" size="20" /> <span class="ml-2 max-[900px]:hidden">GitHub</span>
-          </a>
+          </nuxt-link>
 
-          <a
+          <nuxt-link
             href="mumble://mumble.tl-events.fr"
             target="_blank"
             rel="noopener noreferrer"
             class="social-link bg-blue-900 hover:bg-blue-800">
             <img src="/mumble.webp" class="h-5 w-5 select-none" draggable="false" /> <span class="ml-2 max-[900px]:hidden">Mumble</span>
-          </a>
+          </nuxt-link>
 
-          <a href="https://discord.gg/qV5TYGx" target="_blank" rel="noopener noreferrer" class="social-link bg-discord hover:bg-indigo-500">
+          <nuxt-link
+            href="https://discord.gg/qV5TYGx"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="social-link bg-discord hover:bg-indigo-500">
             <Icon name="ic:baseline-discord" size="20" /> <span class="ml-2 max-[900px]:hidden">Discord</span>
-          </a>
+          </nuxt-link>
 
           <LangSelector class="ml-4" />
         </ul>

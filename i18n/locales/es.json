@@ -1,0 +1,33 @@
+{
+  "home": "Inicio",
+  "members": "Miembros",
+  "modifiers": "Scenarios",
+  "games": "Partidas",
+  "cards": {
+    "members": {
+      "title": "Miembros únicos",
+      "description": "Ver sus estadísticas"
+    },
+    "modifiers": {
+      "title": "Scenarios disponibles",
+      "description": "Ver la lista completa de los escenarios disponibles"
+    },
+    "games": {
+      "title": "Partidas jugadas",
+      "description": "Ver los resúmenes detallados de las partidas jugadas"
+    }
+  },
+  "ranks": {
+    "admin": "Admin",
+    "builder": "Builder",
+    "graphist": "Graphiste",
+    "streamer": "Streamer",
+    "member": "Miembro"
+  },
+  "filters": {
+    "clear": "Limpiar",
+    "kills": "Más kills",
+    "deaths": "Más muertes",
+    "wins": "Más victorias"
+  }
+}

@@ -3,6 +3,20 @@
   "members": "Members",
   "modifiers": "Scenarios",
   "games": "Games",
+  "cards": {
+    "members": {
+      "title": "Unique Members",
+      "description": "View their statistics"
+    },
+    "modifiers": {
+      "title": "Available Scenarios",
+      "description": "View the full list of available scenarios"
+    },
+    "games": {
+      "title": "Played Games",
+      "description": "View detailed summaries of played games"
+    }
+  },
   "ranks": {
     "admin": "Admin",
     "builder": "Builder",
@@ -11,6 +25,9 @@
     "member": "Member"
   },
   "filters": {
-    "clear": "Clear"
+    "clear": "Clear",
+    "kills": "Most Kills",
+    "deaths": "Most Deaths",
+    "wins": "Most Wins"
   }
 }

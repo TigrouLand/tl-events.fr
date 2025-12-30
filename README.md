@@ -37,7 +37,7 @@ To deploy this project on a Cloudflare worker, please follow [their documentatio
 
 ```bash
   # Then build the application with the Cloudflare preset:
-  NITRO_PRESET=cloudflare npm build
+  NITRO_PRESET=cloudflare npm run build
 
   # And finally, publish to Cloudflare Workers:
   wrangler publish

@@ -13,8 +13,10 @@ import type { API } from '~/tools/types'
 import { API_ENDPOINT } from '~/tools/api'
 import { findQuery } from '~/tools/utils'
 
+const { t } = useI18n()
+
 useHead({
-  title: 'Scénarios'
+  title: t('modifiers')
 })
 
 const response = await useFetch(API_ENDPOINT('modifiers'))

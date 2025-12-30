@@ -49,12 +49,13 @@ const getFlagIcon = (localeCode: string) => {
       return 'twemoji:flag-france'
     case 'en':
       return 'twemoji:flag-united-kingdom'
+    case 'es':
+      return 'twemoji:flag-spain'
     default:
       return 'twemoji:flag-united-states'
   }
 }
 
-// Close dropdown when clicking outside
 onMounted(() => {
   const handleClickOutside = (event: MouseEvent) => {
     const target = event.target as HTMLElement

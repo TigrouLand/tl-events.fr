@@ -16,8 +16,10 @@ import type { API } from '~/tools/types'
 import { API_ENDPOINT } from '~/tools/api'
 import { findQuery } from '~/tools/utils'
 
+const { t } = useI18n()
+
 useHead({
-  title: 'Membres'
+  title: t('members')
 })
 
 const response = await useFetch(API_ENDPOINT('members'))
@@ -28,9 +30,9 @@ const currentSort = ref<'kills' | 'deaths' | 'wins' | null>(null)
 
 type Filters = Array<{ value: NonNullable<typeof currentSort.value>; label: string }>
 const filterOptions = ref<Filters>([
-  { value: 'kills', label: 'Plus de kills' },
-  { value: 'deaths', label: 'Plus de morts' },
-  { value: 'wins', label: 'Plus de victoires' }
+  { value: 'kills', label: t('filters.kills') },
+  { value: 'deaths', label: t('filters.deaths') },
+  { value: 'wins', label: t('filters.wins') }
 ])
 
 const displayedMembers: Ref<API.Member[]> = ref(members.value)

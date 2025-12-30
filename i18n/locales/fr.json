@@ -3,6 +3,20 @@
   "members": "Membres",
   "modifiers": "Scénarios",
   "games": "Parties",
+  "cards": {
+    "members": {
+      "title": "Membres uniques",
+      "description": "Voir leurs statistiques"
+    },
+    "modifiers": {
+      "title": "Scénarios disponibles",
+      "description": "Voir la liste complète des scénarios disponibles"
+    },
+    "games": {
+      "title": "Parties jouées",
+      "description": "Voir les résumés détaillés des parties jouées"
+    }
+  },
   "ranks": {
     "admin": "Admin",
     "builder": "Builder",
@@ -11,6 +25,9 @@
     "member": "Membre"
   },
   "filters": {
-    "clear": "Réinitialiser"
+    "clear": "Réinitialiser",
+    "kills": "Plus de kills",
+    "deaths": "Plus de morts",
+    "wins": "Plus de victoires"
   }
 }

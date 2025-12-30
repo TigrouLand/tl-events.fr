@@ -138,8 +138,10 @@ import type { API } from '~/tools/types'
 import dayjs from 'dayjs'
 import { API_ENDPOINT } from '~/tools/api'
 
+const { t } = useI18n()
+
 useHead({
-  title: 'Parties'
+  title: t('games')
 })
 
 const [gamesResponse, membersResponse] = await Promise.all([useFetch(API_ENDPOINT('games')), useFetch(API_ENDPOINT('members'))])
