@@ -18,12 +18,10 @@ import type { PropType } from 'vue'
 import type { API } from '~/tools/types'
 
 const props = defineProps({
-  modifier: {
-    type: Object as PropType<API.Modifier>,
-    required: true
-  }
+  modifier: { type: Object as PropType<API.Modifier>, required: true }
 })
 
+// TODO: translate modifiers' descriptions dynamically
 const getDescription = (modifier: API.Modifier): string => {
   const desc = modifier.copy || modifier.description
   let computed = desc.join(' ')

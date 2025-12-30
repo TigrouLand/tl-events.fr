@@ -6,11 +6,11 @@
         currentValue ? 'bg-blue-600 text-white' : 'bg-gray-600 text-gray-300 hover:bg-gray-500',
       ]"
       @click="toggleDropdown">
-      <span>{{ label }}</span>
+      {{ label }}
       <Icon name="heroicons:chevron-down" class="h-4 w-4" />
     </button>
 
-    <div v-if="isDropdownOpen" class="absolute right-0 z-10 mt-2 w-48 overflow-hidden rounded-lg bg-gray-700 shadow-lg">
+    <div v-if="isDropdownOpen" class="absolute right-0 mt-2 w-48 overflow-hidden rounded-lg bg-gray-700 shadow-lg">
       <button
         v-for="option in options"
         :key="option.value"
@@ -25,7 +25,7 @@
         v-if="currentValue"
         class="w-full border-t border-gray-600 px-4 py-2 text-left text-sm text-gray-300 transition-colors hover:bg-gray-600"
         @click="clearSelection">
-        Réinitialiser
+        {{ $t('filters.clear') }}
       </button>
     </div>
   </div>

@@ -22,25 +22,10 @@
 import type { API } from '~/tools/types'
 
 const props = defineProps({
-  title: {
-    type: String,
-    required: true
-  },
-  stats: {
-    type: Number as PropType<API.Stats[keyof API.Stats]>,
-    default: undefined
-  },
-  description: {
-    type: String,
-    required: true
-  },
-  icon: {
-    type: String,
-    required: true
-  },
-  to: {
-    type: String,
-    required: true
-  }
+  title: { type: String, required: true },
+  stats: { type: Number as PropType<API.Stats[keyof API.Stats]>, default: undefined },
+  description: { type: String, required: true },
+  icon: { type: String, required: true },
+  to: { type: String, required: true }
 })
 </script>

@@ -65,9 +65,9 @@
             </div>
 
             <div class="col-span-2 col-start-2 row-start-2 flex items-center space-x-2">
-              <span :style="getStyleForTeam(getTeamOfPlayer(player))">{{ getTeamOfPlayer(player).name }}</span>
+              <span :style="getStyleForTeam(getTeamOfPlayer(player))">{{ getTeamOfPlayer(player)?.name }}</span>
               <Icon name="fa6-solid:caret-right" class="text-gray-300" />
-              <span :style="getStyleForTeam(getFinalTeamOfPlayer(player))">{{ getFinalTeamOfPlayer(player).name }}</span>
+              <span :style="getStyleForTeam(getFinalTeamOfPlayer(player))">{{ getFinalTeamOfPlayer(player)?.name }}</span>
             </div>
           </li>
         </ul>
@@ -237,8 +237,8 @@ onUnmounted((): void => {
   clearInterval(interval.value as NodeJS.Timeout)
 })
 
-const getStyleForTeam = (team: API.Team): string => {
-  return `color: rgba(${team.colors.join(', ')});`
+const getStyleForTeam = (team: API.Team | undefined): string => {
+  return `color: rgba(${team?.colors.join(', ')});`
 }
 
 const selectGame = (game: API.Game): void => {

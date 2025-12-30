@@ -17,14 +17,14 @@
         type="rounded"
         class="inline-block !h-6 !w-6 ring-2 ring-gray-800" />
 
-      <div v-if="props.game.players.length > 8" class="inline-block h-6 w-6 rounded-full bg-gray-700 ring-2 ring-gray-800">
-        <span class="grid h-full place-items-center text-[12px] font-bold text-gray-300">+{{ props.game.players.length - 8 }}</span>
+      <div v-if="props.game.players.length > 8" class="inline-grid place-items-center text-[12px] font-bold select-none h-6 w-6 text-gray-300 rounded-full bg-gray-700 ring-2 ring-gray-800">
+        +{{ props.game.players.length - 8 }}
       </div>
     </div>
 
     <div class="flex w-fit flex-col gap-y-1 text-sm font-light text-gray-300">
       <span class="w-fit">
-        <Icon name="fa6-solid:clock" />
+        <Icon name="fa6-solid:clock" class="mr-1.5" />
         {{ format(isArchived(props.game) ? props.game.scheduleDate : props.game.archiveDate) }}
       </span>
       <span v-if="isArchived(props.game)">
@@ -45,14 +45,8 @@ dayjs.locale('fr')
 dayjs.extend(relativeTime)
 
 const props = defineProps({
-  game: {
-    type: Object as PropType<API.Game>,
-    required: true
-  },
-  selected: {
-    type: Boolean,
-    default: false
-  }
+  game: { type: Object as PropType<API.Game>, required: true },
+  selected: { type: Boolean, default: false }
 })
 
 const isArchived = (game: API.Game): boolean => {

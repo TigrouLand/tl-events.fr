@@ -3,7 +3,7 @@
     <Avatar :player="props.player.name" class="pt-3" />
 
     <div class="ml-8 flex w-full flex-col justify-center truncate text-white">
-      <div class="flex w-full">
+      <div class="flex w-full items-center">
         <RankBadge :rank="props.player.rank" />
         <h1 class="!ml-3 truncate font-medium">{{ props.player.name }}</h1>
       </div>

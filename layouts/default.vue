@@ -1,19 +1,17 @@
 <template>
   <div class="flex h-screen flex-col bg-gray-800">
-    <nav class="sticky top-0 z-50 overflow-hidden bg-primary" :style="{ height: dropdown ? '300px' : 'auto' }">
+    <nav class="sticky top-0 z-[99] bg-primary" :style="{ height: dropdown ? '300px' : 'auto' }">
       <div class="mx-auto flex max-w-7xl justify-between px-4 sm:px-4 md:px-6 lg:px-8">
         <img src="/logo.webp" alt="Logo" draggable="false" class="h-16 select-none" />
 
-        <ul
-          class="absolute left-0 top-20 mr-auto flex flex-col sm:relative sm:top-[initial] sm:-my-px sm:ml-4 sm:flex-row sm:space-x-4 md:ml-6 md:space-x-8">
-          <NuxtLink to="/" class="nav-link">Accueil</NuxtLink>
-          <NuxtLink to="/members" class="nav-link">Membres</NuxtLink>
-          <NuxtLink to="/modifiers" class="nav-link">Scénarios</NuxtLink>
-          <NuxtLink to="/games" class="nav-link">Parties</NuxtLink>
+        <ul class="absolute left-0 top-20 mr-auto flex flex-col sm:relative sm:top-[initial] sm:-my-px sm:ml-4 sm:flex-row sm:space-x-4 md:ml-6 md:space-x-8">
+          <NuxtLink to="/" class="nav-link">{{ $t('home') }}</NuxtLink>
+          <NuxtLink to="/members" class="nav-link">{{ $t('members') }}</NuxtLink>
+          <NuxtLink to="/modifiers" class="nav-link">{{ $t('modifiers') }}</NuxtLink>
+          <NuxtLink to="/games" class="nav-link">{{ $t('games') }}</NuxtLink>
         </ul>
 
-        <ul
-          class="absolute left-1/2 top-[250px] mx-auto flex -translate-x-1/2 items-center space-x-4 sm:relative sm:left-[initial] sm:top-[initial] sm:mx-0 sm:-translate-x-[0]">
+        <ul class="absolute left-1/2 top-[250px] mx-auto flex -translate-x-1/2 items-center space-x-4 sm:relative sm:left-[initial] sm:top-[initial] sm:mx-0 sm:-translate-x-[0]">
           <a
             href="https://github.com/TigrouLand/tl-events.fr"
             target="_blank"
@@ -21,6 +19,7 @@
             class="social-link bg-gray-900 hover:bg-gray-800">
             <Icon name="mdi:github" size="20" /> <span class="ml-2 max-[900px]:hidden">GitHub</span>
           </a>
+
           <a
             href="mumble://mumble.tl-events.fr"
             target="_blank"
@@ -28,9 +27,12 @@
             class="social-link bg-blue-900 hover:bg-blue-800">
             <img src="/mumble.webp" class="h-5 w-5 select-none" draggable="false" /> <span class="ml-2 max-[900px]:hidden">Mumble</span>
           </a>
+
           <a href="https://discord.gg/qV5TYGx" target="_blank" rel="noopener noreferrer" class="social-link bg-discord hover:bg-indigo-500">
             <Icon name="ic:baseline-discord" size="20" /> <span class="ml-2 max-[900px]:hidden">Discord</span>
           </a>
+
+          <LangSelector class="ml-4" />
         </ul>
 
         <div class="flex items-center sm:hidden">

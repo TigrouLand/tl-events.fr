@@ -1,0 +1,16 @@
+{
+  "home": "Home",
+  "members": "Members",
+  "modifiers": "Scenarios",
+  "games": "Games",
+  "ranks": {
+    "admin": "Admin",
+    "builder": "Builder",
+    "graphist": "Graphist",
+    "streamer": "Streamer",
+    "member": "Member"
+  },
+  "filters": {
+    "clear": "Clear"
+  }
+}

@@ -12,7 +12,15 @@ export default defineNuxtConfig({
   },
 
   telemetry: false,
-  modules: ['@nuxtjs/tailwindcss', 'nuxt-icon'],
+  modules: ['@nuxtjs/tailwindcss', 'nuxt-icon', '@nuxtjs/i18n'],
+
+  i18n: {
+    defaultLocale: 'fr',
+    locales: [
+      { code: 'fr', name: 'Français', file: 'fr.json' },
+      { code: 'en', name: 'English', file: 'en.json' }
+    ]
+  },
 
   app: {
     head: seo

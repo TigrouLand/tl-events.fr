@@ -9,18 +9,9 @@
 
 <script setup lang="ts">
 const props = defineProps({
-  placeholder: {
-    type: String,
-    required: true
-  },
-  modelValue: {
-    type: String,
-    required: true
-  },
-  class: {
-    type: String,
-    default: ''
-  }
+  placeholder: { type: String, required: true },
+  modelValue: { type: String, required: true },
+  class: { type: String, default: '' }
 })
 
 const emit = defineEmits(['update:modelValue', 'keyup'])

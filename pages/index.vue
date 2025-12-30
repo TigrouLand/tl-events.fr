@@ -17,15 +17,13 @@
           :stats="stats?.modifiers"
           description="Voir la liste complète"
           icon="ion:erlenmeyer-flask"
-          to="/modifiers"
-        />
+          to="/modifiers" />
         <InfoCard
           title="Parties jouées"
           :stats="stats?.games"
           description="Voir les résumés détaillés"
           icon="ion:game-controller"
-          to="/games"
-        />
+          to="/games" />
       </ul>
     </div>
   </div>

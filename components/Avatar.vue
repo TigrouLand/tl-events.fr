@@ -8,18 +8,9 @@
 
 <script setup lang="ts">
 const props = defineProps({
-  player: {
-    type: String,
-    required: true
-  },
-  class: {
-    type: String,
-    default: ''
-  },
-  type: {
-    type: String as PropType<'flat' | 'rounded'>,
-    default: 'flat'
-  }
+  player: { type: String, required: true },
+  class: { type: String, default: '' },
+  type: { type: String as PropType<'flat' | 'rounded'>, default: 'flat' }
 })
 </script>
 

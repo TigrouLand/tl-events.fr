@@ -10,6 +10,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^2.3.10",
+    "@nuxtjs/i18n": "^10.2.1",
     "@nuxtjs/tailwindcss": "^6.13.1",
     "@types/levenshtein": "^1.0.4",
     "@types/node": "^25.0.3",
