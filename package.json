@@ -17,7 +17,6 @@
     "@unhead/schema": "^1.11.20",
     "dayjs": "^1.11.13",
     "levenshtein": "^1.0.5",
-    "moment": "^2.30.1",
     "nitropack": "^2.10.4",
     "nuxt": "^3.15.4",
     "nuxt-icon": "^0.6.10",
