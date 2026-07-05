@@ -1,29 +1,35 @@
-import { seo } from './tools/seo'
+import { DEFAULT_LANG, locales } from './tools/i18n';
+import { APP_DESC, FULL_APP_NAME, PROD_URL, seo } from './tools/seo';
 
-// https://v3.nuxtjs.org/api/configuration/nuxt.config
+/** https://v3.nuxtjs.org/api/configuration/nuxt.config */
 export default defineNuxtConfig({
-  typescript: {
-    strict: true,
-    typeCheck: true
-  },
-
-  nitro: {
-    preset: 'cloudflare-pages'
-  },
-
+  compatibilityDate: '2026-06-06',
   telemetry: false,
-  modules: ['@nuxtjs/tailwindcss', 'nuxt-icon', '@nuxtjs/i18n'],
-
-  i18n: {
-    defaultLocale: 'fr',
-    locales: [
-      { code: 'fr', name: 'Français', file: 'fr.json' },
-      { code: 'en', name: 'English', file: 'en.json' },
-      { code: 'es', name: 'Español', file: 'es.json' }
-    ]
+  css: ['~/styles/global.css'],
+  typescript: { tsConfig: { compilerOptions: { strictNullChecks: true } } },
+  nitro: { preset: 'cloudflare-pages' },
+  modules: [
+    '@nuxtjs/tailwindcss',
+    '@nuxtjs/color-mode',
+    '@nuxt/content',
+    'nuxt-llms',
+    'shadcn-nuxt',
+    'nuxt-icon',
+    '@nuxtjs/i18n',
+    '@nuxt/image',
+    '@nuxt/fonts',
+  ],
+  colorMode: {
+    classSuffix: '',
   },
-
-  app: {
-    head: seo
-  }
-})
+  icon: { serverBundle: { collections: ['simple-icons'] } },
+  i18n: { defaultLocale: DEFAULT_LANG.code, locales },
+  app: { head: seo },
+  imports: { imports: [{ name: 'cn', from: '~/tools/utils' }] },
+  experimental: { viteEnvironmentApi: true },
+  llms: {
+    domain: PROD_URL,
+    title: FULL_APP_NAME,
+    description: APP_DESC,
+  },
+});
