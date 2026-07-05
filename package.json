@@ -1,6 +1,6 @@
 {
   "name": "tl-events.fr",
-  "description": "Des parties privées de type UHC sur Minecraft !\nModes de jeu : LG-UHC, Switch, TaupeGun...",
+  "description": "Des mini-jeux et événements divers et variés sur Minecraft !",
   "version": "v1",
   "private": true,
   "type": "module",

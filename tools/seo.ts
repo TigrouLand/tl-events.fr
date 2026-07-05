@@ -40,11 +40,7 @@ export const seo: NuxtAppConfig['head'] = {
   titleTemplate: `${APP_NAME} | %s`,
   viewport: 'width=device-width, initial-scale=1',
   link: [
-    {
-      rel: 'icon',
-      type: 'image/x-icon',
-      href: '/favicon.ico',
-    }
+    { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
   ],
   meta: [
     { charset: 'utf-8' },
@@ -54,8 +50,9 @@ export const seo: NuxtAppConfig['head'] = {
     { property: 'og:type', content: 'website' },
     { property: 'og:url', content: PROD_URL },
     { property: 'og:title', content: APP_NAME },
+    {property: 'theme-color', content: '#B23734' },
     { property: 'og:description', content: pkg.description },
-    { property: 'og:image', content: `${PROD_URL}/icon.webp` },
-    { property: 'og:image:secure_url', content: `${PROD_URL}/icon.webp` },
-  ],
+    { property: 'og:image', content: `${PROD_URL}/logo.webp` },
+    { property: 'og:image:secure_url', content: `${PROD_URL}/logo.webp` },
+  ]
 }
