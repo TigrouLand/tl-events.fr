@@ -4,6 +4,8 @@ node_modules
 .nitro
 .cache
 .output
+.data
+.wrangler
 .env
 dist
 

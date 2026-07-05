@@ -5,6 +5,12 @@
     "includes": ["**", "!**/.nuxt"]
   },
 
+  "css": {
+    "parser": {
+      "tailwindDirectives": true
+    }
+  },
+
   "assist": {
     "enabled": true,
     "actions": {
@@ -45,15 +51,6 @@
       "includes": ["**/*.vue"],
       "linter": {
         "rules": {
-          "nursery": {
-            "useSortedClasses": {
-              "level": "info",
-              "options": {
-                "attributes": ["class"],
-                "functions": ["clsx"]
-              }
-            }
-          },
           "style": {
             "useConst": "off",
             "useImportType": "off"
