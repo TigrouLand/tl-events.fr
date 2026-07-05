@@ -1,7 +1,7 @@
 <template>
   <div class="custom-background min-h-full w-full">
     <div class="container">
-      <h1 class="custom-shadow uppercase pt-10 text-center text-4xl font-bold text-white lg:text-7xl">
+      <h1 class="custom-shadow uppercase pt-10 text-center text-4xl font-bold text-foreground lg:text-7xl">
           {{ APP_NAME }}
       </h1>
 

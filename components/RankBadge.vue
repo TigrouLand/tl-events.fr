@@ -1,5 +1,5 @@
 <template>
-  <Badge :class="cn(RANK_COLORS[props.rank] ?? 'bg-gray-400', 'text-[10px] uppercase text-white select-none')">
+  <Badge :class="cn(RANK_COLORS[props.rank] ?? 'bg-gray-400', 'text-[10px] uppercase text-foreground select-none')">
     {{ $t(`ranks.${props.rank.toLowerCase()}`) }}
   </Badge>
 </template>

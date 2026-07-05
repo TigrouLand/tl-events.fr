@@ -3,6 +3,7 @@
   "members": "Membres",
   "news": {
     "title": "Actuatités",
+    "publishedOn": "Publié le",
     "tags": {
       "announcement": "Annonces"
     }

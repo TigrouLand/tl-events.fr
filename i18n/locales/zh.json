@@ -4,6 +4,7 @@
   "games": "游戏",
   "news": {
     "title": "新闻",
+    "publishedOn": "发布于",
     "tags": {
       "announcement": "公告"
     }

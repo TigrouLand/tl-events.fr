@@ -73,7 +73,7 @@
             <li v-for="player in selectedGame.players" :key="player" class="my-2 grid grid-cols-[auto_1fr] grid-rows-2">
                 <PlayerAvatar :player="getUsernameByUuid(player)" type="rounded" class="row-span-2 my-auto mr-4" />
 
-                <div :class="cn('col-span-2 text-gray-400', { 'font-bold text-white!': isAlive(player) })">
+                <div :class="cn('col-span-2 text-gray-400', { 'font-bold text-foreground!': isAlive(player) })">
                     <Icon :name="isAlive(player) ? 'fa-solid:trophy' : 'fa-solid:skull'" class="mb-1.5" />
                     {{ getUsernameByUuid(player) }}
                 </div>
@@ -98,7 +98,7 @@
                 class="my-4 grid grid-cols-[auto_1fr] grid-rows-[1fr_auto]">
                     <PlayerAvatar :player="player" type="rounded" class="row-span-2 my-auto mr-4" />
 
-                    <div :class="cn('my-auto text-gray-400', { 'font-bold text-white!': isAlive(uuid) })">
+                    <div :class="cn('my-auto text-gray-400', { 'font-bold text-foreground!': isAlive(uuid) })">
                         <Icon :name="isAlive(uuid) ? 'fa-solid:trophy' : 'fa-solid:skull'" class="mb-1.5" />
                         {{ player }}
                     </div>

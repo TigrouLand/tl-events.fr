@@ -1,6 +1,6 @@
 <template>
   <li class="overflow-hidden rounded-lg bg-linear-to-tr from-primary to-[#f75854] shadow">
-    <div class="h-4/6 p-6 text-white grid grid-cols-[auto_1fr] items-center grid-rows-[1fr_auto]">
+    <div class="h-4/6 p-6 text-foreground grid grid-cols-[auto_1fr] items-center grid-rows-[1fr_auto]">
       <Icon :name="props.icon" class="mr-6 row-span-2 h-12 w-12 p-3 rounded-md bg-gray-700" size="24" />
       <span class="text-2xl leading-none h-fit font-semibold">{{ props.stats ?? '--' }}</span>
       <span class="text-sm font-medium">{{ props.title }}</span>

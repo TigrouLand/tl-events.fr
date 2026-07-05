@@ -2,7 +2,6 @@
 title: Migration 1.21+
 date: 2026-06-30
 tags: ["Saison 5", "Màj", "Patch"]
-image: /news/banner.webp
 description: Le nouveau serveur en version 26.1.2 est prêt pour vous accueillir !
 ---
 
@@ -27,13 +26,13 @@ Voici déjà un résumé de ce qui a été fait en plus de la modernisation du c
 
 ### Modifications spécifiques à certains jeux
 
-- [Arena] La bordure se met maintenant correctement à jour pour les joueurs qui rejoignent/quittent une partie en cours
-- [Arena] Retrait des bonus jugés peu équilibrés (sur la modification de perte de points notamment)
-- [FastBow] Les distances de tir ignorent désormais la hauteur
-- [Jump] Hauteur de retour abaissée pour le checkpoint M pour éviter les téléportations non voulues
-- [Jump] Le checkpoint ne se mettait pas à jour sur le scoreboard lors de la reprise d'une progression
-- [TigrouBrain] Les nametags sont désormais de la couleur de l'équipe
-- [UHC] Retrait de tous les scénarios obsolètes, retour du scénario CutClean
+- Arena > La bordure se met maintenant correctement à jour pour les joueurs qui rejoignent/quittent une partie en cours
+- Arena > Retrait des bonus jugés peu équilibrés (sur la modification de perte de points notamment)
+- FastBow > Les distances de tir ignorent désormais la hauteur
+- Jump > Hauteur de retour abaissée pour le checkpoint M pour éviter les téléportations non voulues
+- Jump > Le checkpoint ne se mettait pas à jour sur le scoreboard lors de la reprise d'une progression
+- TigrouBrain > Les nametags sont désormais de la couleur de l'équipe
+- UHC > Retrait de tous les scénarios obsolètes, retour du scénario CutClean
 
 ## Patch du 1er juillet 2026
 

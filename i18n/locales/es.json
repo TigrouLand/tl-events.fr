@@ -4,6 +4,7 @@
   "games": "Partidas",
   "news": {
     "title": "Noticias",
+    "publishedOn": "Publicado el",
     "tags": {
       "announcement": "Anuncios"
     }

@@ -7,9 +7,17 @@ const { data: posts } = await useAsyncData('news', () => {
   return queryCollection('docs').order('date', 'DESC').all()
 })
 
+function getImage(post: { path: string }) {
+  return `/news${post.path}.webp`
+}
+
 const loadedImages = ref<Set<string>>(new Set())
 
-const { t } = useI18n()
+const { t, locale } = useI18n()
+
+const formatDate = (date: Date) => {
+  return new Intl.DateTimeFormat(locale.value, { dateStyle: 'long' }).format(new Date(date))
+}
 
 useHead({ title: t('news.title') })
 </script>
@@ -19,17 +27,17 @@ useHead({ title: t('news.title') })
     <NuxtLink v-for="post in posts" :key="post.path" :to="'/news'.concat(post.path)">
       <Card class="h-full py-0 pb-6 transition-opacity hover:opacity-80">
         <div class="relative aspect-video w-full overflow-hidden rounded-t-xl">
-          <Skeleton v-if="!loadedImages.has(post.image)" class="absolute inset-0" />
+          <Skeleton v-if="!loadedImages.has(getImage(post))" class="absolute inset-0" />
           <img
-            :src="post.image"
+            :src="getImage(post)"
             :alt="post.title"
             class="w-full h-full object-cover"
-            @load="loadedImages.add(post.image)"
+            @load="loadedImages.add(getImage(post))"
           />
         </div>
         <CardHeader>
             <span class="text-accent-foreground/70">
-                <Icon name='ic:outline-calendar-today' class='mb-1 mr-1' size='16' /> {{ post.date }}
+                <Icon name='ic:outline-calendar-today' class='mb-1 mr-1' size='16' /> {{ formatDate(post.date) }}
             </span>
           <CardTitle class="text-2xl">{{ post.title }}</CardTitle>
           <CardDescription>{{ post.description }}</CardDescription>

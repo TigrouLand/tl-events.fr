@@ -4,6 +4,7 @@
   "games": "Games",
   "news": {
     "title": "News",
+    "publishedOn": "Published on",
     "tags": {
       "announcement": "Announcements"
     }
