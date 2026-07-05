@@ -16,7 +16,7 @@
     "@biomejs/biome": "^2.3.10",
     "@iconify-json/circle-flags": "^1.2.10",
     "@nuxt/content": "^3.14.0",
-    "@nuxt/fonts": "^0.12.1",
+    "@nuxt/fonts": "^0.13.0",
     "@nuxt/image": "^2.0.0",
     "@nuxtjs/color-mode": "^4.0.1",
     "@nuxtjs/i18n": "^10.2.1",
@@ -24,26 +24,31 @@
     "@tailwindcss/typography": "^0.5.20",
     "@types/levenshtein": "^1.0.4",
     "@types/node": "^25.0.3",
-    "@unhead/schema": "^1.11.20",
     "class-variance-authority": "^0.7.1",
     "dayjs": "^1.11.13",
     "levenshtein": "^1.0.5",
     "nitropack": "^2.10.4",
     "nuxt": "^3.15.4",
     "nuxt-icon": "^0.6.10",
+    "nuxt-og-image": "^6.7.2",
     "shadcn-nuxt": "^2.7.4",
     "tailwind-merge": "^3.6.0",
     "tailwindcss": "^4.3.0",
     "tailwindcss-animate": "^1.0.7",
     "typescript": "^5.7.3",
+    "unstorage": "^1.17.5",
     "vue-tsc": "^2.2.8"
   },
   "dependencies": {
     "@iconify-json/simple-icons": "^1.2.85",
     "@lucide/vue": "^1.23.0",
+    "@takumi-rs/wasm": "^1.8.7",
     "@vueuse/core": "^14.3.0",
     "better-sqlite3": "^12.10.0",
     "nuxt-llms": "^0.2.0",
     "reka-ui": "^2.10.1"
+  },
+  "overrides": {
+    "unhead": "2.1.15"
   }
 }

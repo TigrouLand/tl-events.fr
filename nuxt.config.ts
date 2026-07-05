@@ -1,5 +1,5 @@
-import { DEFAULT_LANG, locales } from './tools/i18n';
-import { APP_DESC, FULL_APP_NAME, PROD_URL, seo } from './tools/seo';
+import { DEFAULT_LANG, locales } from './tools/i18n'
+import { APP_DESC, FULL_APP_NAME, PROD_URL, seo } from './tools/seo'
 
 /** https://v3.nuxtjs.org/api/configuration/nuxt.config */
 export default defineNuxtConfig({
@@ -18,10 +18,12 @@ export default defineNuxtConfig({
     '@nuxtjs/i18n',
     '@nuxt/image',
     '@nuxt/fonts',
+    'nuxt-og-image'
   ],
   colorMode: {
     classSuffix: '',
   },
+  content: { type: 'd1', bindingName: 'DB' }, // default @next/content config values
   icon: { serverBundle: { collections: ['simple-icons'] } },
   i18n: { defaultLocale: DEFAULT_LANG.code, locales },
   app: { head: seo },
@@ -31,5 +33,5 @@ export default defineNuxtConfig({
     domain: PROD_URL,
     title: FULL_APP_NAME,
     description: APP_DESC,
-  },
-});
+  }
+})

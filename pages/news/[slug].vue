@@ -48,6 +48,13 @@ if (!page.value) throw createError({ statusCode: 404 })
 
 const image = computed(() => `/news/${slug}.webp`)
 
+useHead({ title: page.value.title })
+defineOgImage('BlogPost.takumi', {
+  title: page.value.title,
+  description: page.value.description,
+  image: image.value
+})
+
 const { locale } = useI18n()
 const formattedDate = computed(() => {
   if (!page.value?.date) return ''
