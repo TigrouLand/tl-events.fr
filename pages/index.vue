@@ -1,50 +1,66 @@
 <template>
   <div class="custom-background min-h-full w-full">
     <div class="container">
-      <h1 class="custom-shadow pt-10 text-center text-4xl font-bold text-white lg:text-7xl">tl-events.fr</h1>
+      <h1 class="custom-shadow uppercase pt-10 text-center text-4xl font-bold text-foreground lg:text-7xl">
+          {{ APP_NAME }}
+      </h1>
 
       <ul class="grid grid-cols-1 gap-5 p-5 sm:grid-cols-2 lg:grid-cols-3">
         <InfoCard
-          title="Membres uniques"
+          :title="t('cards.members.title')"
           :stats="stats?.members"
-          description="Voir leurs statistiques"
+          :description="t('cards.members.description')"
           icon="ion:person-sharp"
-          to="/members" />
+          to="/members"
+        />
         <InfoCard
-          title="Scénarios disponibles"
-          :stats="stats?.modifiers"
-          description="Voir la liste complète"
-          icon="ion:erlenmeyer-flask"
-          to="/modifiers" />
-        <InfoCard
-          title="Parties jouées"
+          :title="t('cards.games.title')"
           :stats="stats?.games"
-          description="Voir les résumés détaillés"
+          :description="t('cards.games.description')"
           icon="ion:game-controller"
-          to="/games" />
+          to="/games"
+        />
+        <InfoCard
+          title="Modes de jeux"
+          :stats="7"
+          description="Voir les différents modes de jeux"
+          icon="ion:game-controller"
+          to="/gamemodes"
+        />
       </ul>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import type { API } from '~/tools/types';
+import { fetchAPI, type API } from '~/tools/api'
+import { APP_NAME } from '~/tools/seo'
+
+const { t } = useI18n()
 
 useHead({
-  title: '[TL] Events - Accueil',
-});
+  title: t('home')
+})
 
-const response = await useFetch('https://api.tl-events.fr/v1/stats');
-const stats = response.data as Ref<API.Stats | undefined>;
+const response = await useFetch(fetchAPI('stats'))
+const stats = response.data as Ref<API.Stats | undefined>
 </script>
 
 <style scoped>
 .custom-background {
-  background: url('/background.webp') center no-repeat;
+  background: url("/background.webp") center no-repeat;
   background-size: cover;
 }
 
 .custom-shadow {
   text-shadow: 6px 6px 0 rgba(178, 55, 52, 0.8);
+}
+</style>
+
+<style>
+@reference "tailwindcss";
+
+.container {
+  @apply mx-auto max-w-7xl space-y-10 px-4 py-10 sm:px-6 lg:px-8;
 }
 </style>

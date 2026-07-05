@@ -1,0 +1,66 @@
+{
+  "home": "Home",
+  "members": "Members",
+  "games": "Games",
+  "news": {
+    "title": "News",
+    "publishedOn": "Published on",
+    "tags": {
+      "announcement": "Announcements"
+    }
+  },
+  "buttons": {
+    "joinServer": "Join Server ({count} online)"
+  },
+  "cards": {
+    "members": {
+      "title": "Unique Members",
+      "description": "View their statistics"
+    },
+    "games": {
+      "title": "Played Games",
+      "description": "View detailed summaries of played games"
+    }
+  },
+  "ranks": {
+    "admin": "Admin",
+    "builder": "Builder",
+    "graphist": "Graphist",
+    "streamer": "Streamer",
+    "member": "Member"
+  },
+  "filters": {
+    "clear": "Clear",
+    "kills": "Most Kills",
+    "deaths": "Most Deaths",
+    "wins": "Most Wins"
+  },
+  "gamesPage": {
+    "search": "Search a game...",
+    "gamePrefix": "Game",
+    "status": {
+      "live": "live",
+      "scheduled": "scheduled",
+      "archived": "archived"
+    },
+    "type": "Game type",
+    "players": "Players",
+    "duration": "Duration",
+    "startDate": "Start date",
+    "scenarios": "Scenarios",
+    "randomEvents": "Random events",
+    "hiddenRoles": "Hidden composition",
+    "team": "Team {name}",
+    "attackers": "Attackers",
+    "defenders": "Defenders",
+    "mole": "Mole",
+    "unknown": "Unknown",
+    "sectionPlayers": "Players",
+    "sectionLogs": "Game events"
+  },
+  "gameCard": {
+    "upcoming": "Upcoming",
+    "viewDetails": "View details",
+    "dateFormat": "{relative} - {date}"
+  }
+}

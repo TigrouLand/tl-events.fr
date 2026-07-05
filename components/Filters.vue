@@ -1,77 +1,53 @@
 <template>
-  <div class="relative">
-    <button
-      :class="[
-        'flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium transition-colors',
-        currentValue ? 'bg-blue-600 text-white' : 'bg-gray-600 text-gray-300 hover:bg-gray-500',
-      ]"
-      @click="toggleDropdown">
-      <span>{{ label }}</span>
-      <Icon name="heroicons:chevron-down" class="h-4 w-4" />
-    </button>
-
-    <div v-if="isDropdownOpen" class="absolute right-0 z-10 mt-2 w-48 overflow-hidden rounded-lg bg-gray-700 shadow-lg">
-      <button
+  <Select
+    :model-value="currentValue !== null ? String(currentValue) : undefined"
+    @update:model-value="handleSelect">
+    <SelectTrigger>
+      <Icon name="heroicons:funnel" class="size-4 shrink-0" />
+      <SelectValue :placeholder="label" />
+    </SelectTrigger>
+    <SelectContent>
+      <SelectItem
         v-for="option in options"
-        :key="option.value"
-        :class="[
-          'w-full px-4 py-2 text-left text-sm transition-colors',
-          currentValue === option.value ? 'bg-blue-600 text-white' : 'text-gray-300 hover:bg-gray-600',
-        ]"
-        @click="selectOption(option.value)">
+        :key="String(option.value)"
+        :value="String(option.value)">
+        <Icon v-if="option.icon" :name="option.icon" class="size-4" />
         {{ option.label }}
-      </button>
-      <button
-        v-if="currentValue"
-        class="w-full border-t border-gray-600 px-4 py-2 text-left text-sm text-gray-300 transition-colors hover:bg-gray-600"
-        @click="clearSelection">
-        Réinitialiser
-      </button>
-    </div>
-  </div>
+      </SelectItem>
+      <SelectSeparator v-if="currentValue !== null" />
+      <SelectItem v-if="currentValue !== null" value="__clear__">
+        {{ $t('filters.clear') }}
+      </SelectItem>
+    </SelectContent>
+  </Select>
 </template>
 
-<script setup lang="ts">
-import { onMounted } from 'vue';
+<script setup lang="ts" generic="T extends PropertyKey">
+import { Select, SelectContent, SelectItem, SelectSeparator, SelectTrigger, SelectValue } from '~/components/ui/select'
 
-interface FilterOption {
-  value: string;
-  label: string;
+interface FilterOption<T> {
+  value: T
+  label: string
+  icon?: string
 }
 
-const props = defineProps<{
-  label: string;
-  options: FilterOption[];
-  currentValue: string | null;
-}>();
+const { label, options, currentValue } = defineProps<{
+  label: string
+  options: FilterOption<T>[]
+  currentValue: T | null
+}>()
 
 const emit = defineEmits<{
-  select: [value: string];
-  clear: [];
-}>();
+  select: [value: T]
+  clear: []
+}>()
 
-const isDropdownOpen = ref(false);
-
-const selectOption = (value: string): void => {
-  emit('select', value);
-  isDropdownOpen.value = false;
-};
-
-const clearSelection = (): void => {
-  emit('clear');
-  isDropdownOpen.value = false;
-};
-
-const toggleDropdown = (): void => {
-  isDropdownOpen.value = !isDropdownOpen.value;
-};
-
-onMounted(() => {
-  document.addEventListener('click', (e) => {
-    const target = e.target as HTMLElement;
-    if (!target.closest('.relative')) {
-      isDropdownOpen.value = false;
-    }
-  });
-});
+const handleSelect = (value: string): void => {
+  if (value === '__clear__') {
+    emit('clear')
+    return
+  }
+  const option = options.find(o => String(o.value) === value)
+  if (option) emit('select', option.value)
+}
 </script>

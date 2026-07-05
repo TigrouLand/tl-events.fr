@@ -11,24 +11,24 @@ To deploy this serverless application, we use [Cloudflare Workers](https://worke
 ## Contributing
 
 To facilitate development, maintainability and thus use the same code standards.
-We use [ESLint](https://eslint.org/) for linting and [Prettier](https://prettier.io/) for formatting.
-Please check that no rules are violated before committing a change with the `pnpm lint` command.
+We use [Biome](https://biomejs.dev/) toolchain for both formatting and linting.
+Please check that no rules are violated before committing a change with the `npm lint` command.
 If you need or have any questions about the contribution, don't hesitate to open an issue.
 
 ## Run locally
 
 ```bash
   # First, clone this repository on your machine:
-  git clone https://github.com/TigrouLand/tl-events.fr.git --depth=1
+  git clone --depth=1 https://github.com/TigrouLand/tl-events.fr.git
 
   # Go to the project directory:
   cd tl-events.fr
 
   # Install dependencies:
-  pnpm i
+  npm i
 
-  # Start the development server on http://127.0.0.1:3000:
-  pnpm dev
+  # Start the development server on http://localhost:3000:
+  npm run dev
 ```
 
 ## Deployment
@@ -37,7 +37,7 @@ To deploy this project on a Cloudflare worker, please follow [their documentatio
 
 ```bash
   # Then build the application with the Cloudflare preset:
-  NITRO_PRESET=cloudflare pnpm build
+  NITRO_PRESET=cloudflare npm run build
 
   # And finally, publish to Cloudflare Workers:
   wrangler publish

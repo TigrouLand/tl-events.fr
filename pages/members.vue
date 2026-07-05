@@ -1,55 +1,65 @@
 <template>
-  <div class="container">
+  <div class="container mt-26">
     <div class="mb-4 flex gap-2">
-      <SearchInput v-model="searchQuery" placeholder="Rechercher par pseudonyme ..." class="flex-1" @keyup="searchPlayers" />
+      <Input v-model="searchQuery" placeholder="Rechercher par pseudonyme ..." class="flex-1" @keyup="searchPlayers" />
       <Filters label="Filtrer" :options="filterOptions" :current-value="currentSort" @select="sortBy" @clear="clearSort" />
     </div>
 
-    <ul class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:mx-0 lg:grid-cols-3">
-      <PlayerCard v-for="member in displayedMembers" :key="member.uuid" :player="member" />
+    <ul class="grid grid-cols-1 gap-6 xs:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4">
+      <PlayerCard
+        v-for="(member, index) in displayedMembers"
+        :key="member.uuid"
+        :player="member"
+        :podium="currentSort && index < 3 ? ((index + 1) as 1 | 2 | 3) : undefined" />
     </ul>
   </div>
 </template>
 
 <script setup lang="ts">
-import type { API } from '~/tools/types';
-import { findQuery } from '~/tools/utils';
+import type { API } from '~/tools/api'
+import { Input } from '~/components/ui/input'
+import { fetchAPI } from '~/tools/api'
+import { findQuery, PLAYER_STATS, type StatKey } from '~/tools/utils'
 
-useHead({
-  title: '[TL] Events - Membres',
-});
+const { t } = useI18n()
 
-const response = await useFetch('https://api.tl-events.fr/v1/members');
-const members = response.data as Ref<API.Member[]>;
+useHead({ title: t('members') })
 
-const searchQuery = ref('');
-const currentSort = ref<'kills' | 'deaths' | 'wins' | null>(null);
-const filterOptions = ref([
-  { value: 'kills', label: 'Plus de kills' },
-  { value: 'deaths', label: 'Plus de morts' },
-  { value: 'wins', label: 'Plus de victoires' },
-]);
-const displayedMembers: Ref<API.Member[]> = ref(members.value);
+const response = await useFetch(fetchAPI('members'))
+const members = response.data as Ref<API.Member[]>
+
+const searchQuery = ref('')
+const currentSort = ref<StatKey | null>(null)
+
+const filterOptions = PLAYER_STATS.map(({ key, icon }) => ({
+  value: key,
+  label: t(`filters.${key}`),
+  icon
+}))
+
+const displayedMembers: Ref<API.Member[]> = ref(members.value)
 
 const searchPlayers = (): void => {
-  let filtered = findQuery(members, searchQuery);
+  let filtered = findQuery(members, searchQuery)
 
   if (currentSort.value) {
-    filtered = [...filtered].sort((a, b) => b[currentSort.value!] - a[currentSort.value!]);
+    const sortKey = currentSort.value
+    filtered = [...filtered].sort((a, b) => b[sortKey] - a[sortKey])
   }
 
-  displayedMembers.value = filtered;
-};
+  displayedMembers.value = filtered
+}
 
-const sortBy = (type: string): void => {
-  if (type === 'kills' || type === 'deaths' || type === 'wins') {
-    currentSort.value = type;
-    searchPlayers();
+const sortBy = (type: PropertyKey): void => {
+  const stat = PLAYER_STATS.find((s) => s.key === type)
+  if (stat) {
+    currentSort.value = stat.key
+    searchPlayers()
   }
-};
+}
 
 const clearSort = (): void => {
-  currentSort.value = null;
-  searchPlayers();
-};
+  currentSort.value = null
+  searchPlayers()
+}
 </script>

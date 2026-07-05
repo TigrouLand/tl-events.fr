@@ -1,0 +1,16 @@
+{
+  "$schema": "https://shadcn-vue.com/schema.json",
+  "style": "reka-vega",
+  "tailwind": {
+    "baseColor": "zinc",
+    "config": "tailwind.config.ts",
+    "css": "styles/global.css",
+    "cssVariables": true
+  },
+  "aliases": {
+    "utils": "~/tools/utils",
+    "lib": "~/tools",
+    "ui": "~/components/ui",
+    "components": "~/components"
+  }
+}

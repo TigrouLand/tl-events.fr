@@ -1,0 +1,66 @@
+{
+  "home": "Inicio",
+  "members": "Miembros",
+  "games": "Partidas",
+  "news": {
+    "title": "Noticias",
+    "publishedOn": "Publicado el",
+    "tags": {
+      "announcement": "Anuncios"
+    }
+  },
+  "buttons": {
+    "joinServer": "Unirse al servidor ({count} en línea)"
+  },
+  "cards": {
+    "members": {
+      "title": "Miembros únicos",
+      "description": "Ver sus estadísticas"
+    },
+    "games": {
+      "title": "Partidas jugadas",
+      "description": "Ver los resúmenes detallados de las partidas jugadas"
+    }
+  },
+  "ranks": {
+    "admin": "Admin",
+    "builder": "Builder",
+    "graphist": "Graphiste",
+    "streamer": "Streamer",
+    "member": "Miembro"
+  },
+  "filters": {
+    "clear": "Limpiar",
+    "kills": "Más kills",
+    "deaths": "Más muertes",
+    "wins": "Más victorias"
+  },
+  "gamesPage": {
+    "search": "Buscar una partida...",
+    "gamePrefix": "Partida",
+    "status": {
+      "live": "en curso",
+      "scheduled": "programada",
+      "archived": "archivada"
+    },
+    "type": "Tipo de juego",
+    "players": "Participantes",
+    "duration": "Tiempo de juego",
+    "startDate": "Fecha de inicio",
+    "scenarios": "Escenarios",
+    "randomEvents": "Eventos aleatorios",
+    "hiddenRoles": "Composición oculta",
+    "team": "Equipo {name}",
+    "attackers": "Atacantes",
+    "defenders": "Defensores",
+    "mole": "Topo",
+    "unknown": "Desconocido",
+    "sectionPlayers": "Jugadores",
+    "sectionLogs": "Eventos de la partida"
+  },
+  "gameCard": {
+    "upcoming": "Próximamente",
+    "viewDetails": "Ver detalles",
+    "dateFormat": "{relative} - {date}"
+  }
+}
