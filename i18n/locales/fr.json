@@ -1,16 +1,20 @@
 {
   "home": "Accueil",
   "members": "Membres",
-  "modifiers": "Scénarios",
+  "news": {
+    "title": "Actuatités",
+    "tags": {
+      "announcement": "Annonces"
+    }
+  },
+  "buttons": {
+    "joinServer": "Rejoindre les {count} connectés"
+  },
   "games": "Parties",
   "cards": {
     "members": {
       "title": "Membres uniques",
       "description": "Voir leurs statistiques"
-    },
-    "modifiers": {
-      "title": "Scénarios disponibles",
-      "description": "Voir la liste complète des scénarios disponibles"
     },
     "games": {
       "title": "Parties jouées",
@@ -29,5 +33,33 @@
     "kills": "Plus de kills",
     "deaths": "Plus de morts",
     "wins": "Plus de victoires"
+  },
+  "gamesPage": {
+    "search": "Rechercher une partie...",
+    "gamePrefix": "Partie",
+    "status": {
+      "live": "en cours",
+      "scheduled": "programmée",
+      "archived": "archivée"
+    },
+    "type": "Type de jeu",
+    "players": "Participants",
+    "duration": "Temps de jeu",
+    "startDate": "Date de début",
+    "scenarios": "Scénarios",
+    "randomEvents": "Événements aléatoires",
+    "hiddenRoles": "Composition cachée",
+    "team": "Équipe {name}",
+    "attackers": "Attaquants",
+    "defenders": "Défenseurs",
+    "mole": "Taupe",
+    "unknown": "Inconnu",
+    "sectionPlayers": "Joueurs",
+    "sectionLogs": "Événements de la partie"
+  },
+  "gameCard": {
+    "upcoming": "À venir",
+    "viewDetails": "Voir les détails",
+    "dateFormat": "{relative} - {date}"
   }
 }

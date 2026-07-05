@@ -1,0 +1,65 @@
+{
+  "home": "首页",
+  "members": "成员",
+  "games": "游戏",
+  "news": {
+    "title": "新闻",
+    "tags": {
+      "announcement": "公告"
+    }
+  },
+  "buttons": {
+    "joinServer": "加入服务器 (在线 {count} 人)"
+  },
+  "cards": {
+    "members": {
+      "title": "独立成员",
+      "description": "查看他们的统计数据"
+    },
+    "games": {
+      "title": "已游玩局数",
+      "description": "查看已游玩局数的详细摘要"
+    }
+  },
+  "ranks": {
+    "admin": "管理员",
+    "builder": "建造者",
+    "graphist": "美工",
+    "streamer": "主播",
+    "member": "成员"
+  },
+  "filters": {
+    "clear": "重置",
+    "kills": "最多击杀",
+    "deaths": "最多死亡",
+    "wins": "最多胜利"
+  },
+  "gamesPage": {
+    "search": "搜索游戏...",
+    "gamePrefix": "游戏",
+    "status": {
+      "live": "进行中",
+      "scheduled": "已计划",
+      "archived": "已归档"
+    },
+    "type": "游戏类型",
+    "players": "参与者",
+    "duration": "游戏时长",
+    "startDate": "开始日期",
+    "scenarios": "场景",
+    "randomEvents": "随机事件",
+    "hiddenRoles": "隐藏阵容",
+    "team": "{name} 队",
+    "attackers": "进攻方",
+    "defenders": "防守方",
+    "mole": "内鬼",
+    "unknown": "未知",
+    "sectionPlayers": "玩家",
+    "sectionLogs": "游戏事件"
+  },
+  "gameCard": {
+    "upcoming": "即将到来",
+    "viewDetails": "查看详情",
+    "dateFormat": "{relative} - {date}"
+  }
+}
