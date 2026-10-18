@@ -8,39 +8,46 @@ export const AVATAR_URL = `https://avatars.${pkg.name}`
 export const APP_DESC = pkg.description
 export const APP_VERSION = pkg.version
 export const FULL_APP_NAME = 'TigrouLand'
-export const APP_NAME = `${FULL_APP_NAME.match(/[A-Z]/g)?.join((''))} - Events`
+export const APP_NAME = `${FULL_APP_NAME.match(/[A-Z]/g)?.join('')} - Events` // regex for uppercase chars only
 
+type Link = Record<'to' | 'label' | 'icon', string>
+
+// label prop is a i18n local key
+// icons can be found under: https://icones.js.org
 export const navLinks = [
   { to: '/', label: 'home', icon: 'mynaui:home' },
   { to: '/members', label: 'members', icon: 'mynaui:users' },
-  { to: '/news', label: 'news.title', icon: 'famicons:newspaper-outline' },
-  { to: '/games', label: 'games', icon: 'ion:game-controller' }
-]
+  { to: '/gamemodes', label: 'gamemodes', icon: 'material-symbols:chess-pawn-outline' },
+  { to: '/games', label: 'games', icon: 'ion:game-controller' },
+  { to: '/news', label: 'news.title', icon: 'famicons:newspaper-outline' }
+] satisfies Link[]
 
 export const socialLinks = [
   {
-    href: `https://github.com/${FULL_APP_NAME}/${pkg.name}`,
+    to: `https://github.com/${FULL_APP_NAME}/${pkg.name}`,
     icon: 'simple-icons:github',
-    label: 'Github',
+    label: 'Github'
   },
   {
-    href: `mumble://mumble.${pkg.name}`,
+    to: `mumble://mumble.${pkg.name}`,
     icon: 'simple-icons:mumble',
-    label: 'Mumble',
+    label: 'Mumble'
   },
   {
-    href: 'https://discord.gg/qV5TYGx',
+    to: 'https://discord.gg/qV5TYGx',
     icon: 'simple-icons:discord',
-    label: 'Discord',
+    label: 'Discord'
   }
-]
+] satisfies Link[]
 
-export const seo: NuxtAppConfig['head'] = {
+export const seo = (themeColor: string): NuxtAppConfig['head'] => ({
   charset: 'utf-8',
   titleTemplate: `${APP_NAME} | %s`,
   viewport: 'width=device-width, initial-scale=1',
   link: [
-    { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+    { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
+    { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+    { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' }
   ],
   meta: [
     { charset: 'utf-8' },
@@ -50,9 +57,8 @@ export const seo: NuxtAppConfig['head'] = {
     { property: 'og:type', content: 'website' },
     { property: 'og:url', content: PROD_URL },
     { property: 'og:title', content: APP_NAME },
-    {property: 'theme-color', content: '#B23734' },
+    { name: 'theme-color', content: themeColor },
     { property: 'og:description', content: pkg.description },
-    { property: 'og:image', content: `${PROD_URL}/logo.webp` },
-    { property: 'og:image:secure_url', content: `${PROD_URL}/logo.webp` },
+    { property: 'og:image', content: `${PROD_URL}/logo.webp` }
   ]
-}
+})

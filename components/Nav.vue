@@ -13,7 +13,7 @@
         </ul>
 
         <div class="absolute left-1/2 top-62.5 mx-auto flex -translate-x-1/2 items-center space-x-4 sm:relative sm:left-[initial] sm:top-[initial] sm:mx-0 sm:-translate-x-0">
-            <NuxtLink v-for="socialLink in socialLinks" :key="socialLink.label" :href="socialLink.href" target="_blank" rel="noopener noreferrer">
+            <NuxtLink v-for="socialLink in socialLinks" :key="socialLink.label" :href="socialLink.to" target="_blank" rel="noopener noreferrer">
                 <Icon :name="socialLink.icon" size="20" class="text-white" />
             </NuxtLink>
             <LangSelector />

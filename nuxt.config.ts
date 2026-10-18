@@ -1,5 +1,6 @@
 import { DEFAULT_LANG, locales } from './tools/i18n'
-import { APP_DESC, FULL_APP_NAME, PROD_URL, seo } from './tools/seo'
+import { APP_DESC, APP_NAME, FULL_APP_NAME, PROD_URL, seo } from './tools/seo'
+import { THEME_BACKGROUND, THEME_COLOR } from './tools/theme'
 
 /** https://v3.nuxtjs.org/api/configuration/nuxt.config */
 export default defineNuxtConfig({
@@ -18,20 +19,52 @@ export default defineNuxtConfig({
     '@nuxtjs/i18n',
     '@nuxt/image',
     '@nuxt/fonts',
-    'nuxt-og-image'
+    'nuxt-og-image',
+    '@nuxtjs/robots',
+    '@vite-pwa/nuxt'
   ],
   colorMode: {
-    classSuffix: '',
+    classSuffix: ''
   },
-  content: { type: 'd1', bindingName: 'DB' }, // default @next/content config values
+  content: { type: 'd1', bindingName: 'DB' }, // those are default @next/content config values
   icon: { serverBundle: { collections: ['simple-icons'] } },
   i18n: { defaultLocale: DEFAULT_LANG.code, locales },
-  app: { head: seo },
+  site: { url: PROD_URL },
+  pwa: {
+    registerType: 'autoUpdate',
+    registerWebManifestInRouteRules: true,
+    devOptions: { enabled: true },
+    manifest: {
+      name: APP_NAME,
+      short_name: APP_NAME.split(' - ').join(' '),
+      description: APP_DESC,
+      lang: DEFAULT_LANG.code,
+      dir: 'ltr',
+      id: '/',
+      start_url: '/',
+      scope: '/',
+      display: 'standalone',
+      background_color: THEME_BACKGROUND,
+      theme_color: THEME_COLOR,
+      categories: ['games'],
+      icons: [
+        { src: '/icon-192.png', sizes: '192x192', type: 'image/png', purpose: 'any' },
+        { src: '/icon-512.png', sizes: '512x512', type: 'image/png', purpose: 'any' },
+        { src: '/icon-maskable-512.png', sizes: '512x512', type: 'image/png', purpose: 'maskable' }
+      ]
+    },
+    workbox: {
+      // an SSR app has no index.html: a navigation fallback would serve a dead precached page
+      navigateFallback: undefined,
+      globPatterns: ['**/*.{css,js,ico,png,svg,webp,webmanifest}']
+    }
+  },
+  app: { head: seo(THEME_COLOR) },
   imports: { imports: [{ name: 'cn', from: '~/tools/utils' }] },
   experimental: { viteEnvironmentApi: true },
   llms: {
     domain: PROD_URL,
     title: FULL_APP_NAME,
-    description: APP_DESC,
+    description: APP_DESC
   }
 })

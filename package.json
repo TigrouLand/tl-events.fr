@@ -20,17 +20,22 @@
     "@nuxt/image": "^2.0.0",
     "@nuxtjs/color-mode": "^4.0.1",
     "@nuxtjs/i18n": "^10.2.1",
+    "@nuxtjs/robots": "^6.2.4",
     "@nuxtjs/tailwindcss": "^7.0.0-beta.1",
     "@tailwindcss/typography": "^0.5.20",
+    "@types/culori": "^4.0.1",
     "@types/levenshtein": "^1.0.4",
     "@types/node": "^25.0.3",
+    "@vite-pwa/nuxt": "^1.1.1",
     "class-variance-authority": "^0.7.1",
+    "culori": "^4.0.2",
     "dayjs": "^1.11.13",
     "levenshtein": "^1.0.5",
     "nitropack": "^2.10.4",
     "nuxt": "^3.15.4",
     "nuxt-icon": "^0.6.10",
     "nuxt-og-image": "^6.7.2",
+    "postcss": "^8.5.30",
     "shadcn-nuxt": "^2.7.4",
     "tailwind-merge": "^3.6.0",
     "tailwindcss": "^4.3.0",
@@ -53,6 +58,7 @@
     "unhead": "2.1.15"
   },
   "allowScripts": {
-    "better-sqlite3": true
+    "better-sqlite3": true,
+    "sharp": false
   }
 }
