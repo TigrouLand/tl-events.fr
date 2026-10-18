@@ -12,3 +12,10 @@ export const DEFAULT_LANG = { name: SUPPORTED_LANGS.fr, code: localeKeys[0] }
 export const locales = localeKeys.map((code) => ({ code, name: SUPPORTED_LANGS[code], file: `${code}.json` }))
 
 export const getFlagIcon = (code: Lang): string => `circle-flags:${code}`
+
+export const OG_LOCALES: Record<Lang, string> = {
+  fr: 'fr_FR',
+  en: 'en_US',
+  es: 'es_ES',
+  zh: 'zh_CN'
+}
