@@ -1,7 +1,7 @@
 <template>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 
 // TODO: fetch server gamemodes as soon as API exposes an GET endpoint
 // this data already exists as YML config for the MC server {icon.toUpperCase() -> material}
