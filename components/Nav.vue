@@ -1,5 +1,9 @@
 <template>
-  <nav v-if="route.name.includes('games') !== props.floating" :class="cn('custom-borders items-center flex p-2 mx-auto justify-between max-w-5xl z-100 bg-black/20 backdrop-blur-2xl rounded-4xl shadow-2xl', { 'fixed! left-0 right-0 top-8': floating, 'relative mt-4': !floating })" :style="{ height: dropdown ? '300px' : 'auto' }">
+  <!-- the layout nav in games route is not mounted since we explicitly declare a non-floating one -->
+  <nav v-if="route.name.includes('games') !== props.floating" :class="cn('custom-borders items-center flex p-2 mx-auto justify-between max-w-5xl z-100 rounded-4xl shadow-2xl', { 'fixed! left-0 right-0 top-8': floating, 'relative mt-4': !floating })" :style="{ height: dropdown ? '300px' : 'auto' }">
+        <!-- own blur layer, so descendants can have a working backdrop-filter of their own -->
+        <div class="absolute inset-0 -z-10 rounded-4xl bg-black/30 backdrop-blur-lg" />
+
         <NuxtImg src="/logo.webp" alt="Logo" draggable="false" class="h-12 rounded-full select-none" />
 
         <ul class="absolute left-0 top-20 mr-auto flex flex-col sm:relative sm:top-[initial] sm:-my-px sm:ml-4 sm:flex-row sm:space-x-4 md:ml-6 md:space-x-4">
@@ -12,33 +16,21 @@
             <NuxtLink v-for="socialLink in socialLinks" :key="socialLink.label" :href="socialLink.href" target="_blank" rel="noopener noreferrer">
                 <Icon :name="socialLink.icon" size="20" class="text-white" />
             </NuxtLink>
-            <Button class="cursor-pointer">
-                <PlayersCount />
-            </Button>
             <LangSelector />
         </div>
 
+        <PlayersCount />
+
         <div class="flex items-center sm:hidden">
-            <button
-                type="button"
-                class="inline-flex items-center justify-center rounded-md bg-gray-100 p-2 text-primary hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-red-700 focus:ring-offset-2"
-                aria-controls="mobile-menu"
-                aria-expanded="false"
-                @click="dropdown = !dropdown">
+            <button type="button" class="inline-flex items-center justify-center rounded-md bg-gray-100 p-2 text-primary hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-red-700 focus:ring-offset-2" aria-controls="mobile-menu" aria-expanded="false" @click="dropdown = !dropdown">
                 <span class="sr-only">Open main menu</span>
-                <svg
-                class="h-6 w-6"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                aria-hidden="true">
-                <template v-if="!dropdown">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                </template>
-                <template v-else>
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                </template>
+                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                    <template v-if="!dropdown">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </template>
+                    <template v-else>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </template>
                 </svg>
             </button>
         </div>
@@ -48,7 +40,7 @@
 <script setup>
 import { navLinks, socialLinks } from '~/tools/seo'
 import PlayersCount from './PlayersCount.vue'
-import Button from './ui/button/Button.vue';
+
 import { useRoute } from 'vue-router'
 
 const route = useRoute()
