@@ -42,6 +42,7 @@
   "dependencies": {
     "@iconify-json/simple-icons": "^1.2.85",
     "@lucide/vue": "^1.23.0",
+    "@takumi-rs/core": "^2.0.0-rc.16",
     "@takumi-rs/wasm": "^1.8.7",
     "@vueuse/core": "^14.3.0",
     "better-sqlite3": "^12.10.0",
@@ -50,5 +51,8 @@
   },
   "overrides": {
     "unhead": "2.1.15"
+  },
+  "allowScripts": {
+    "better-sqlite3": true
   }
 }
