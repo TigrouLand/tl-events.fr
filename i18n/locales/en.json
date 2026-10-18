@@ -1,6 +1,7 @@
 {
   "home": "Home",
   "members": "Members",
+  "gamemodes": "Gamemodes",
   "games": "Games",
   "news": {
     "title": "News",
@@ -10,7 +11,9 @@
     }
   },
   "buttons": {
-    "joinServer": "Join Server ({count} online)"
+    "joinConnectedPlayers": "Join the {count} online",
+    "joinServer": "Join Server",
+    "ipCopied": "IP copied to clipboard"
   },
   "cards": {
     "members": {

@@ -1,6 +1,7 @@
 {
   "home": "首页",
   "members": "成员",
+  "gamemodes": "游戏模式",
   "games": "游戏",
   "news": {
     "title": "新闻",
@@ -10,7 +11,9 @@
     }
   },
   "buttons": {
-    "joinServer": "加入服务器 (在线 {count} 人)"
+    "joinConnectedPlayers": "与 {count} 名在线玩家一起玩",
+    "joinServer": "加入服务器",
+    "ipCopied": "IP 已复制到剪贴板"
   },
   "cards": {
     "members": {

@@ -1,6 +1,7 @@
 {
   "home": "Inicio",
   "members": "Miembros",
+  "gamemodes": "Modos de juego",
   "games": "Partidas",
   "news": {
     "title": "Noticias",
@@ -10,7 +11,9 @@
     }
   },
   "buttons": {
-    "joinServer": "Unirse al servidor ({count} en línea)"
+    "joinConnectedPlayers": "Unirse a los {count} en línea",
+    "joinServer": "Unirse al servidor",
+    "ipCopied": "IP copiada al portapapeles"
   },
   "cards": {
     "members": {

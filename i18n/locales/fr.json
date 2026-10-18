@@ -1,6 +1,7 @@
 {
   "home": "Accueil",
   "members": "Membres",
+  "gamemodes": "Jeux",
   "news": {
     "title": "Actuatités",
     "publishedOn": "Publié le",
@@ -9,7 +10,9 @@
     }
   },
   "buttons": {
-    "joinServer": "Rejoindre les {count} connectés"
+    "joinConnectedPlayers": "Rejoindre les {count} connectés",
+    "joinServer": "Rejoindre le serveur",
+    "ipCopied": "IP copié au presse papier"
   },
   "games": "Parties",
   "cards": {
