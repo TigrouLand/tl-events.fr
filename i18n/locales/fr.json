@@ -15,7 +15,10 @@
   "buttons": {
     "joinConnectedPlayers": "Rejoindre les {count} connectés",
     "joinServer": "Rejoindre le serveur",
-    "ipCopied": "IP copié au presse papier"
+    "ipCopied": "IP copié au presse papier",
+    "backHome": "Retour à l'accueil",
+    "retry": "Réessayer",
+    "discord": "Contacter un administrateur"
   },
   "games": "Parties",
   "cards": {
@@ -68,5 +71,19 @@
     "upcoming": "À venir",
     "viewDetails": "Voir les détails",
     "dateFormat": "{relative} - {date}"
+  },
+  "errorPage": {
+    "notFound": {
+      "title": "Cette page n'existe pas",
+      "description": "Le lien est peut-être cassé ou la page a été déplacée."
+    },
+    "unavailable": {
+      "title": "Service momentanément indisponible",
+      "description": "Le serveur ne répond pas pour l'instant. Si cette erreur persiste, merci de contacter un administrateur sur Discord"
+    },
+    "generic": {
+      "title": "Une erreur est survenue",
+      "description": "Quelque chose s'est mal passé. Réessaie plus tard."
+    }
   }
 }

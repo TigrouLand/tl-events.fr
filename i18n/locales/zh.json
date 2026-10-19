@@ -16,7 +16,10 @@
   "buttons": {
     "joinConnectedPlayers": "与 {count} 名在线玩家一起玩",
     "joinServer": "加入服务器",
-    "ipCopied": "IP 已复制到剪贴板"
+    "ipCopied": "IP 已复制到剪贴板",
+    "backHome": "返回首页",
+    "retry": "重试",
+    "discord": "联系管理员"
   },
   "cards": {
     "members": {
@@ -68,5 +71,19 @@
     "upcoming": "即将到来",
     "viewDetails": "查看详情",
     "dateFormat": "{relative} - {date}"
+  },
+  "errorPage": {
+    "notFound": {
+      "title": "此页面不存在",
+      "description": "链接可能已失效，或页面已被移动。"
+    },
+    "unavailable": {
+      "title": "服务暂时不可用",
+      "description": "服务器当前没有响应。如果此错误持续出现，请在 Discord 上联系管理员"
+    },
+    "generic": {
+      "title": "出错了",
+      "description": "发生未知错误，请稍后再试。"
+    }
   }
 }

@@ -16,7 +16,10 @@
   "buttons": {
     "joinConnectedPlayers": "Join the {count} online",
     "joinServer": "Join Server",
-    "ipCopied": "IP copied to clipboard"
+    "ipCopied": "IP copied to clipboard",
+    "backHome": "Back to home",
+    "retry": "Try again",
+    "discord": "Contact us on Discord"
   },
   "cards": {
     "members": {
@@ -68,5 +71,19 @@
     "upcoming": "Upcoming",
     "viewDetails": "View details",
     "dateFormat": "{relative} - {date}"
+  },
+  "errorPage": {
+    "notFound": {
+      "title": "This page doesn't exist",
+      "description": "The link may be broken, or the page may have been moved."
+    },
+    "unavailable": {
+      "title": "Temporarily unavailable",
+      "description": "The server isn't responding right now. If this error persists, please contact an administrator on Discord"
+    },
+    "generic": {
+      "title": "Something went wrong",
+      "description": "An unexpected error occurred. Please try again later."
+    }
   }
 }

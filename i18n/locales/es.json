@@ -16,7 +16,10 @@
   "buttons": {
     "joinConnectedPlayers": "Unirse a los {count} en línea",
     "joinServer": "Unirse al servidor",
-    "ipCopied": "IP copiada al portapapeles"
+    "ipCopied": "IP copiada al portapapeles",
+    "backHome": "Volver al inicio",
+    "retry": "Reintentar",
+    "discord": "Contactar con un administrador"
   },
   "cards": {
     "members": {
@@ -68,5 +71,19 @@
     "upcoming": "Próximamente",
     "viewDetails": "Ver detalles",
     "dateFormat": "{relative} - {date}"
+  },
+  "errorPage": {
+    "notFound": {
+      "title": "Esta página no existe",
+      "description": "Es posible que el enlace esté roto o que la página se haya movido."
+    },
+    "unavailable": {
+      "title": "Servicio temporalmente no disponible",
+      "description": "El servidor no responde en este momento. Si este error persiste, contacta con un administrador en Discord"
+    },
+    "generic": {
+      "title": "Se ha producido un error",
+      "description": "Algo ha ido mal. Vuelve a intentarlo más tarde."
+    }
   }
 }
