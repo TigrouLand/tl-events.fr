@@ -1,0 +1,12 @@
+# cloudflare pages serves static assets before nitro worker runs
+# registerWebManifestInRouteRules never fire for these files
+/manifest.webmanifest
+  Content-Type: application/manifest+json
+  Cache-Control: public, max-age=0, must-revalidate
+
+/sw.js
+  Cache-Control: public, max-age=0, must-revalidate
+
+# unhashed filenames: a re-subset would stay stale for a year if these were immutable
+/fonts/*
+  Cache-Control: public, max-age=604800

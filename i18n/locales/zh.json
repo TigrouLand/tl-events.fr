@@ -1,0 +1,89 @@
+{
+  "home": "首页",
+  "members": "成员",
+  "gamemodes": "游戏模式",
+  "games": "游戏",
+  "news": {
+    "title": "新闻",
+    "publishedOn": "发布于",
+    "updatedOn": "更新于",
+    "filterTags": "按标签筛选",
+    "noPosts": "暂无相关标签的文章",
+    "tags": {
+      "announcement": "公告"
+    }
+  },
+  "buttons": {
+    "joinConnectedPlayers": "与 {count} 名在线玩家一起玩",
+    "joinServer": "加入服务器",
+    "ipCopied": "IP 已复制到剪贴板",
+    "backHome": "返回首页",
+    "retry": "重试",
+    "discord": "联系管理员"
+  },
+  "cards": {
+    "members": {
+      "title": "独立成员",
+      "description": "查看他们的统计数据"
+    },
+    "games": {
+      "title": "已游玩局数",
+      "description": "查看已游玩局数的详细摘要"
+    }
+  },
+  "ranks": {
+    "admin": "管理员",
+    "builder": "建造者",
+    "graphist": "美工",
+    "streamer": "主播",
+    "member": "成员"
+  },
+  "filters": {
+    "clear": "重置",
+    "kills": "最多击杀",
+    "deaths": "最多死亡",
+    "wins": "最多胜利"
+  },
+  "gamesPage": {
+    "search": "搜索游戏...",
+    "gamePrefix": "游戏",
+    "status": {
+      "live": "进行中",
+      "scheduled": "已计划",
+      "archived": "已归档"
+    },
+    "type": "游戏类型",
+    "players": "参与者",
+    "duration": "游戏时长",
+    "startDate": "开始日期",
+    "scenarios": "场景",
+    "randomEvents": "随机事件",
+    "hiddenRoles": "隐藏阵容",
+    "team": "{name} 队",
+    "attackers": "进攻方",
+    "defenders": "防守方",
+    "mole": "内鬼",
+    "unknown": "未知",
+    "sectionPlayers": "玩家",
+    "sectionLogs": "游戏事件"
+  },
+  "gameCard": {
+    "upcoming": "即将到来",
+    "viewDetails": "查看详情",
+    "dateFormat": "{relative} - {date}"
+  },
+  "errorPage": {
+    "notFound": {
+      "title": "此页面不存在",
+      "description": "链接可能已失效，或页面已被移动。"
+    },
+    "unavailable": {
+      "title": "服务暂时不可用",
+      "description": "服务器当前没有响应。如果此错误持续出现，请在 Discord 上联系管理员"
+    },
+    "generic": {
+      "title": "出错了",
+      "description": "发生未知错误，请稍后再试。"
+    }
+  }
+}

@@ -1,13 +1,9 @@
 <template>
-  <li class="overflow-hidden rounded-lg bg-primary shadow">
-    <div class="flex h-4/6 gap-x-4 p-6">
-      <div class="grid h-12 w-12 place-items-center rounded-md bg-gray-700">
-        <Icon :name="props.icon" class="text-primary" size="24" />
-      </div>
-      <div class="text-white">
-        <span class="text-2xl font-semibold">{{ props.stats ?? '--' }}</span>
-        <p class="text-sm font-medium">{{ props.title }}</p>
-      </div>
+  <li class="overflow-hidden rounded-lg bg-linear-to-tr from-primary to-[#f75854] shadow">
+    <div class="h-4/6 p-6 text-foreground grid grid-cols-[auto_1fr] items-center grid-rows-[1fr_auto]">
+      <Icon :name="props.icon" class="mr-6 row-span-2 h-12 w-12 p-3 rounded-md bg-gray-700" size="24" />
+      <span class="text-2xl leading-none h-fit font-semibold">{{ props.stats ?? '--' }}</span>
+      <span class="text-sm font-medium">{{ props.title }}</span>
     </div>
 
     <nuxt-link
@@ -19,28 +15,13 @@
 </template>
 
 <script setup lang="ts">
-import type { API } from '~/tools/types';
+import type { API } from '~/tools/api'
 
 const props = defineProps({
-  title: {
-    type: String,
-    required: true,
-  },
-  stats: {
-    type: Number as PropType<API.Stats[keyof API.Stats]>,
-    default: undefined,
-  },
-  description: {
-    type: String,
-    required: true,
-  },
-  icon: {
-    type: String,
-    required: true,
-  },
-  to: {
-    type: String,
-    required: true,
-  },
-});
+  title: { type: String, required: true },
+  stats: { type: Number as PropType<API.Stats[keyof API.Stats]>, default: undefined },
+  description: { type: String, required: true },
+  icon: { type: String, required: true },
+  to: { type: String, required: true }
+})
 </script>

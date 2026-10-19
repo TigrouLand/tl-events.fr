@@ -1,0 +1,59 @@
+{
+  "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+
+  "vcs": {
+    "enabled": true,
+    "clientKind": "git",
+    "useIgnoreFile": true
+  },
+
+  "css": {
+    "parser": {
+      "tailwindDirectives": true
+    }
+  },
+
+  "assist": {
+    "actions": {
+      "source": {
+        "organizeImports": {
+          "level": "on",
+          "options": { "groups": [{ "type": true }] }
+        },
+        "useSortedProperties": "on"
+      }
+    }
+  },
+
+  "formatter": {
+    "includes": ["**/*.vue", "**/*.ts"],
+    "indentStyle": "space",
+    "lineWidth": 140
+  },
+
+  "javascript": {
+    "formatter": {
+      "quoteStyle": "single",
+      "semicolons": "asNeeded",
+      "trailingCommas": "none"
+    }
+  },
+
+  "overrides": [
+    {
+      "includes": ["**/*.vue"],
+      "linter": {
+        "rules": {
+          "style": {
+            "useConst": "off",
+            "useImportType": "off"
+          },
+          "correctness": {
+            "noUnusedVariables": "off",
+            "noUnusedImports": "off"
+          }
+        }
+      }
+    }
+  ]
+}

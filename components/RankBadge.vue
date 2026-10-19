@@ -1,32 +1,20 @@
 <template>
-  <div v-if="props.rank === 'ADMIN'">
-    <span class="custom-item bg-red-400">Admin</span>
-  </div>
-  <div v-else-if="props.rank === 'BUILDER'">
-    <span class="custom-item bg-blue-400">Builder</span>
-  </div>
-  <div v-else-if="props.rank === 'GRAPHIST'">
-    <span class="custom-item bg-yellow-400">Graphiste</span>
-  </div>
-  <div v-else-if="props.rank === 'STREAMER'">
-    <span class="custom-item bg-purple-400">Streamer</span>
-  </div>
-  <div v-else>
-    <span class="custom-item bg-gray-400">Joueur</span>
-  </div>
+  <Badge :class="cn(RANK_COLORS[props.rank] ?? 'bg-gray-400', 'text-[10px] uppercase text-foreground select-none')">
+    {{ $t(`ranks.${props.rank.toLowerCase()}`) }}
+  </Badge>
 </template>
 
 <script setup lang="ts">
-const props = defineProps({
-  rank: {
-    type: String,
-    required: true,
-  },
-});
-</script>
+import { Badge } from '~/components/ui/badge'
 
-<style scoped>
-.custom-item {
-  @apply inline-block flex-shrink-0 rounded-full px-2 py-0.5 text-xs font-medium text-gray-800;
+const props = defineProps({
+  rank: { type: String, required: true }
+})
+
+const RANK_COLORS: Record<string, string> = {
+  ADMIN: 'bg-red-400',
+  BUILDER: 'bg-blue-400',
+  GRAPHIST: 'bg-yellow-400',
+  STREAMER: 'bg-purple-400'
 }
-</style>
+</script>

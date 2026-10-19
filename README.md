@@ -1,48 +1,61 @@
 # tl-events.fr
 
-An application created with Vue through NuxtJS with the goal of building a site to view various information and statistics of TL events.
+An application created to view various information and statistics of Tigrouland events.
 
 ## Used technologies
 
-The application is developed with [Vue](https://vuejs.org/), a powerful Javascript framework for building user interfaces through the [NuxtJS 3](https://v3.nuxtjs.org/) framework which facilitates development by providing many powerful tools. We thus take advantage of the use of NuxtJS to integrate [Nitropack](https://nitro.unjs.io/) allowing to build serverless applications.
-The advantages of creating a serverless application and thus server-side rendered are mainly to improve the performance on the user side and SEO.
-To deploy this serverless application, we use [Cloudflare Workers](https://workers.cloudflare.com/), an excellent platform to deliver and serve content anywhere in the world with low latency.
+| 🛠️ Technologies | 📝 Descriptions |
+| --------------- | --------------- |
+| [![NuxtJS](https://img.shields.io/badge/Nuxt-002E3B?style=flat-square&logo=nuxt&logoColor=%2300DC82)](https://nuxt.com) | Vue framework, file-based routing |
+| [![Nitro](https://img.shields.io/badge/Nitro-090F2C?style=flat-square&logo=unjs&logoColor=%23ECDC5A)](https://nitro.unjs.io/) | Serverless engine, SSR for perf & SEO |
+| [![Nuxt Content](https://img.shields.io/badge/Nuxt%20Content-002E3B?style=flat-square&logo=nuxt&logoColor=%2300DC82)](https://content.nuxt.com/) | `docs` collection over `news/*.md` |
+| [![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=flat-square&logo=tailwind-css&logoColor=white)](https://tailwindcss.com) | CSS Framework |
+| [![shadcn/ui](https://img.shields.io/badge/shadcn%2Fui-000000?style=flat-square&logo=shadcnui&logoColor=white)](https://ui.shadcn.com) | Accessible UI primitives on reka-ui |
+| [![Lucide](https://img.shields.io/badge/Lucide-F56565?style=flat-square&logo=lucide&logoColor=white)](https://lucide.dev/) | UI icons |
+| [![VueUse](https://img.shields.io/badge/VueUse-41B883?style=flat-square&logo=vueuse&logoColor=white)](https://vueuse.org/) | Vue composables |
+| [![Cloudflare Pages](https://img.shields.io/badge/Cloudflare%20Pages-F6821F?style=flat-square&logo=Cloudflare-Pages&logoColor=white)](https://pages.cloudflare.com/) | Hosting & edge runtime |
+| [![Biome](https://img.shields.io/badge/Biome-60A5FA?style=flat-square&logo=biome&logoColor=white)](https://biomejs.dev/) | Formatting & linting |
 
 ## Contributing
 
 To facilitate development, maintainability and thus use the same code standards.
-We use [ESLint](https://eslint.org/) for linting and [Prettier](https://prettier.io/) for formatting.
-Please check that no rules are violated before committing a change with the `pnpm lint` command.
+We use [Biome](https://biomejs.dev/) toolchain for both formatting and linting.
+Please check that no rules are violated before committing a change with the `npm lint` command.
 If you need or have any questions about the contribution, don't hesitate to open an issue.
 
 ## Run locally
 
 ```bash
-  # First, clone this repository on your machine:
-  git clone https://github.com/TigrouLand/tl-events.fr.git --depth=1
-
-  # Go to the project directory:
-  cd tl-events.fr
-
-  # Install dependencies:
-  pnpm i
-
-  # Start the development server on http://127.0.0.1:3000:
-  pnpm dev
+  # Clone this repository on your machine — keep the full history, article dates are read from it
+  git clone https://gitlab.com/tigrouland/web/tl-events.fr
+  # Go to project directory and install deps
+  cd tl-events.fr && npm i
+  # Start the development server on http://localhost:3000
+  npm run dev
 ```
 
 ## Deployment
 
-To deploy this project on a Cloudflare worker, please follow [their documentation](https://developers.cloudflare.com/workers/wrangler/get-started/) to get started and install Wrangler.
+Production runs on a Cloudflare Pages project connected to this repository: pushing to `main` builds the app and publishes it, other branches get preview deployments. The build command, output directory, D1 `DB` binding and environment variables all live in the Pages dashboard rather than in this repository.
+
+`.node-version` pins the build to the Node release that bundles the npm writing `package-lock.json`. Pages otherwise defaults to an older npm, which resolves optional peer dependencies differently and refuses the lock as out of sync, failing `npm ci` before the build even starts.
+
+News article publish and update dates are read from git history at build time, and Pages checks the repository out shallow. Set the build command to deepen it first:
 
 ```bash
-  # Then build the application with the Cloudflare preset:
-  NITRO_PRESET=cloudflare pnpm build
+  # Pages build command
+  git fetch --unshallow || git fetch --deepen=1000 || true; npm run build
+```
 
-  # And finally, publish to Cloudflare Workers:
-  wrangler publish
+Without that, the build logs `[news-git] ... no git history` and every article falls back to its checkout date.
+
+```bash
+  # Build the application for Cloudflare Pages (nitro.preset in nuxt.config.ts)
+  npm run build
+  # Serve that build locally, public/_headers rules included
+  npx wrangler pages dev dist
 ```
 
 ## License
 
-This project is licensed under the [GNU GPL 3](https://github.com/TigrouLand/tl-events.fr/blob/main/LICENCE).
+This project is licensed under the [GNU GPL 3](https://gitlab.com/tigrouland/web/tl-events.fr/blob/main/LICENCE).

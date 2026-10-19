@@ -1,0 +1,89 @@
+{
+  "home": "Accueil",
+  "members": "Membres",
+  "gamemodes": "Jeux",
+  "news": {
+    "title": "Actualités",
+    "publishedOn": "Publié le",
+    "updatedOn": "Mis à jour le",
+    "filterTags": "Filtrer par étiquette",
+    "noPosts": "Aucun article avec cette étiquette",
+    "tags": {
+      "announcement": "Annonces"
+    }
+  },
+  "buttons": {
+    "joinConnectedPlayers": "Rejoindre les {count} connectés",
+    "joinServer": "Rejoindre le serveur",
+    "ipCopied": "IP copié au presse papier",
+    "backHome": "Retour à l'accueil",
+    "retry": "Réessayer",
+    "discord": "Contacter un administrateur"
+  },
+  "games": "Parties",
+  "cards": {
+    "members": {
+      "title": "Membres uniques",
+      "description": "Voir leurs statistiques"
+    },
+    "games": {
+      "title": "Parties jouées",
+      "description": "Voir les résumés détaillés des parties jouées"
+    }
+  },
+  "ranks": {
+    "admin": "Admin",
+    "builder": "Builder",
+    "graphist": "Graphiste",
+    "streamer": "Streamer",
+    "member": "Membre"
+  },
+  "filters": {
+    "clear": "Réinitialiser",
+    "kills": "Plus de kills",
+    "deaths": "Plus de morts",
+    "wins": "Plus de victoires"
+  },
+  "gamesPage": {
+    "search": "Rechercher une partie...",
+    "gamePrefix": "Partie",
+    "status": {
+      "live": "en cours",
+      "scheduled": "programmée",
+      "archived": "archivée"
+    },
+    "type": "Type de jeu",
+    "players": "Participants",
+    "duration": "Temps de jeu",
+    "startDate": "Date de début",
+    "scenarios": "Scénarios",
+    "randomEvents": "Événements aléatoires",
+    "hiddenRoles": "Composition cachée",
+    "team": "Équipe {name}",
+    "attackers": "Attaquants",
+    "defenders": "Défenseurs",
+    "mole": "Taupe",
+    "unknown": "Inconnu",
+    "sectionPlayers": "Joueurs",
+    "sectionLogs": "Événements de la partie"
+  },
+  "gameCard": {
+    "upcoming": "À venir",
+    "viewDetails": "Voir les détails",
+    "dateFormat": "{relative} - {date}"
+  },
+  "errorPage": {
+    "notFound": {
+      "title": "Cette page n'existe pas",
+      "description": "Le lien est peut-être cassé ou la page a été déplacée."
+    },
+    "unavailable": {
+      "title": "Service momentanément indisponible",
+      "description": "Le serveur ne répond pas pour l'instant. Si cette erreur persiste, merci de contacter un administrateur sur Discord"
+    },
+    "generic": {
+      "title": "Une erreur est survenue",
+      "description": "Quelque chose s'est mal passé. Réessaie plus tard."
+    }
+  }
+}

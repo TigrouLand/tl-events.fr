@@ -1,0 +1,89 @@
+{
+  "home": "Home",
+  "members": "Members",
+  "gamemodes": "Gamemodes",
+  "games": "Games",
+  "news": {
+    "title": "News",
+    "publishedOn": "Published on",
+    "updatedOn": "Updated on",
+    "filterTags": "Filter by tag",
+    "noPosts": "No articles with this tag",
+    "tags": {
+      "announcement": "Announcements"
+    }
+  },
+  "buttons": {
+    "joinConnectedPlayers": "Join the {count} online",
+    "joinServer": "Join Server",
+    "ipCopied": "IP copied to clipboard",
+    "backHome": "Back to home",
+    "retry": "Try again",
+    "discord": "Contact us on Discord"
+  },
+  "cards": {
+    "members": {
+      "title": "Unique Members",
+      "description": "View their statistics"
+    },
+    "games": {
+      "title": "Played Games",
+      "description": "View detailed summaries of played games"
+    }
+  },
+  "ranks": {
+    "admin": "Admin",
+    "builder": "Builder",
+    "graphist": "Graphist",
+    "streamer": "Streamer",
+    "member": "Member"
+  },
+  "filters": {
+    "clear": "Clear",
+    "kills": "Most Kills",
+    "deaths": "Most Deaths",
+    "wins": "Most Wins"
+  },
+  "gamesPage": {
+    "search": "Search a game...",
+    "gamePrefix": "Game",
+    "status": {
+      "live": "live",
+      "scheduled": "scheduled",
+      "archived": "archived"
+    },
+    "type": "Game type",
+    "players": "Players",
+    "duration": "Duration",
+    "startDate": "Start date",
+    "scenarios": "Scenarios",
+    "randomEvents": "Random events",
+    "hiddenRoles": "Hidden composition",
+    "team": "Team {name}",
+    "attackers": "Attackers",
+    "defenders": "Defenders",
+    "mole": "Mole",
+    "unknown": "Unknown",
+    "sectionPlayers": "Players",
+    "sectionLogs": "Game events"
+  },
+  "gameCard": {
+    "upcoming": "Upcoming",
+    "viewDetails": "View details",
+    "dateFormat": "{relative} - {date}"
+  },
+  "errorPage": {
+    "notFound": {
+      "title": "This page doesn't exist",
+      "description": "The link may be broken, or the page may have been moved."
+    },
+    "unavailable": {
+      "title": "Temporarily unavailable",
+      "description": "The server isn't responding right now. If this error persists, please contact an administrator on Discord"
+    },
+    "generic": {
+      "title": "Something went wrong",
+      "description": "An unexpected error occurred. Please try again later."
+    }
+  }
+}
