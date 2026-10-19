@@ -45,6 +45,9 @@ export const seo = (themeColor: string): NuxtAppConfig['head'] => ({
   titleTemplate: `${APP_NAME} | %s`,
   viewport: 'width=device-width, initial-scale=1',
   link: [
+    // fonts are fetched in CORS mode: preloading them without crossorigin would download twice
+    { rel: 'preload', as: 'font', type: 'font/woff2', href: '/fonts/monocraft-regular.woff2', crossorigin: 'anonymous' },
+    { rel: 'preload', as: 'font', type: 'font/woff2', href: '/fonts/monocraft-bold.woff2', crossorigin: 'anonymous' },
     { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
     { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
     { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' }

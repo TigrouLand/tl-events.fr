@@ -6,3 +6,7 @@
 
 /sw.js
   Cache-Control: public, max-age=0, must-revalidate
+
+# unhashed filenames: a re-subset would stay stale for a year if these were immutable
+/fonts/*
+  Cache-Control: public, max-age=604800

@@ -57,7 +57,7 @@ export default defineNuxtConfig({
     workbox: {
       // an SSR app has no index.html: a navigation fallback would serve a dead precached page
       navigateFallback: undefined,
-      globPatterns: ['**/*.{css,js,ico,png,svg,webp,webmanifest}']
+      globPatterns: ['**/*.{css,js,ico,png,svg,woff2,webp,webmanifest}']
     }
   },
   app: { head: seo(THEME_COLOR) },

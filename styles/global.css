@@ -1,8 +1,10 @@
 @import "./theme.css";
+@import "./fonts.css";
 @import "tailwindcss";
 @plugin "tailwindcss-animate";
 @plugin "@tailwindcss/typography";
 
+/* dedicated to /news/[slug] */
 .prose :is(h1, h2, h3, h4, h5, h6) a {
   text-decoration: none;
 }
@@ -11,6 +13,7 @@ body {
     @apply bg-background;
 }
 
+/* bring back cursor pointer style on non-disabled buttons */
 @layer base {
   button:not(:disabled),
   [role="button"]:not(:disabled) {

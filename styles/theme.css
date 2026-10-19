@@ -48,7 +48,7 @@
 }
 
 @theme inline {
-  --font-inter: 'Inter';
+  --font-sans: "Monocraft", monospace;
 
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
