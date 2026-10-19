@@ -1,5 +1,6 @@
 import { DEFAULT_LANG, locales } from './tools/i18n'
-import { APP_DESC, APP_NAME, FULL_APP_NAME, PROD_URL, seo } from './tools/seo'
+import { llms } from './tools/llms'
+import { APP_DESC, APP_NAME, PROD_URL, seo } from './tools/seo'
 import { THEME_BACKGROUND, THEME_COLOR } from './tools/theme'
 
 /** https://v3.nuxtjs.org/api/configuration/nuxt.config */
@@ -62,9 +63,5 @@ export default defineNuxtConfig({
   app: { head: seo(THEME_COLOR) },
   imports: { imports: [{ name: 'cn', from: '~/tools/utils' }] },
   experimental: { viteEnvironmentApi: true },
-  llms: {
-    domain: PROD_URL,
-    title: FULL_APP_NAME,
-    description: APP_DESC
-  }
+  llms
 })
