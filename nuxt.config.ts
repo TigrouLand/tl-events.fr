@@ -27,7 +27,7 @@ export default defineNuxtConfig({
   colorMode: {
     classSuffix: ''
   },
-  content: { type: 'd1', bindingName: 'DB' }, // those are default @next/content config values
+  content: { database: { type: 'd1', bindingName: 'DB' } },
   icon: { serverBundle: { collections: ['simple-icons'] } },
   i18n: { defaultLocale: DEFAULT_LANG.code, locales },
   site: { url: PROD_URL },
