@@ -16,9 +16,8 @@
 </template>
 
 <script setup lang="ts">
-import type { API } from '~/tools/api'
 import { Input } from '~/components/ui/input'
-import { fetchAPI } from '~/tools/api'
+import { type API, fetchAPI } from '~/tools/api'
 import { findQuery, PLAYER_STATS, type StatKey } from '~/tools/utils'
 
 const { t } = useI18n()

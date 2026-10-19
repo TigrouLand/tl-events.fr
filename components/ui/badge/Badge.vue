@@ -1,9 +1,7 @@
 <script setup lang="ts">
-import type { PrimitiveProps } from 'reka-ui'
-import type { HTMLAttributes } from 'vue'
 import type { BadgeVariants } from '.'
 import { reactiveOmit } from '@vueuse/core'
-import { Primitive } from 'reka-ui'
+import { Primitive, type PrimitiveProps } from 'reka-ui'
 import { badgeVariants } from '.'
 
 const props = defineProps<

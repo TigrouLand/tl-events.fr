@@ -18,7 +18,6 @@
 </template>
 
 <script setup lang="ts">
-import type { HTMLAttributes } from 'vue'
 import { Avatar, AvatarFallback, AvatarImage } from '~/components/ui/avatar'
 import { Skeleton } from '~/components/ui/skeleton'
 import { AVATAR_URL } from '~/tools/seo'

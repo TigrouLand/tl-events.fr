@@ -1,8 +1,10 @@
 {
   "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
 
-  "files": {
-    "includes": ["**", "!**/.nuxt"]
+  "vcs": {
+    "enabled": true,
+    "clientKind": "git",
+    "useIgnoreFile": true
   },
 
   "css": {
@@ -12,14 +14,12 @@
   },
 
   "assist": {
-    "enabled": true,
     "actions": {
       "source": {
         "organizeImports": {
           "level": "on",
           "options": { "groups": [{ "type": true }] }
         },
-        "useSortedAttributes": "on",
         "useSortedProperties": "on"
       }
     }
@@ -28,19 +28,12 @@
   "formatter": {
     "includes": ["**/*.vue", "**/*.ts"],
     "indentStyle": "space",
-    "indentWidth": 2,
-    "bracketSameLine": true,
-    "lineEnding": "lf",
     "lineWidth": 140
   },
 
   "javascript": {
     "formatter": {
-      "arrowParentheses": "always",
-      "bracketSameLine": true,
-      "bracketSpacing": true,
       "quoteStyle": "single",
-      "quoteProperties": "asNeeded",
       "semicolons": "asNeeded",
       "trailingCommas": "none"
     }

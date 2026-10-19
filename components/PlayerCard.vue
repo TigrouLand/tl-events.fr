@@ -10,11 +10,14 @@ const props = defineProps({
 
 const blacklisted = props.player.name.startsWith('~')
 
-const podiumClass = computed(() => ({
-  1: 'border-yellow-400/50 bg-yellow-400/25',
-  2: 'border-slate-300/50 bg-slate-300/25',
-  3: 'border-orange-400/50 bg-orange-400/25',
-}[props.podium!]))
+const podiumClass = computed(
+  () =>
+    ({
+      1: 'border-yellow-400/50 bg-yellow-400/25',
+      2: 'border-slate-300/50 bg-slate-300/25',
+      3: 'border-orange-400/50 bg-orange-400/25'
+    })[props.podium as NonNullable<typeof props.podium>]
+)
 </script>
 
 <template>

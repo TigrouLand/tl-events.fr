@@ -33,7 +33,7 @@
 </template>
 
 <script setup lang="ts">
-import { fetchAPI, type API } from '~/tools/api'
+import { type API, fetchAPI } from '~/tools/api'
 import { APP_NAME } from '~/tools/seo'
 
 const { t } = useI18n()
