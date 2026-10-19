@@ -24,9 +24,9 @@ export const navLinks = [
 
 export const socialLinks = [
   {
-    to: `https://github.com/${FULL_APP_NAME}/${pkg.name}`,
-    icon: 'simple-icons:github',
-    label: 'Github'
+    to: `https://gitlab.com/${FULL_APP_NAME.toLowerCase()}/web/${pkg.name}`,
+    icon: 'vscode-icons:file-type-gitlab',
+    label: 'Gitlab'
   },
   {
     to: `mumble://mumble.${pkg.name}`,
@@ -35,7 +35,7 @@ export const socialLinks = [
   },
   {
     to: 'https://discord.gg/qV5TYGx',
-    icon: 'simple-icons:discord',
+    icon: 'selfhst:discord',
     label: 'Discord'
   }
 ] satisfies Link[]

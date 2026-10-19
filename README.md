@@ -27,7 +27,7 @@ If you need or have any questions about the contribution, don't hesitate to open
 
 ```bash
   # Clone this repository on your machine — keep the full history, article dates are read from it
-  git clone https://github.com/TigrouLand/tl-events.fr.git
+  git clone https://gitlab.com/tigrouland/web/tl-events.fr
   # Go to project directory and install deps
   cd tl-events.fr && npm i
   # Start the development server on http://localhost:3000
@@ -58,4 +58,4 @@ Without that, the build logs `[news-git] ... no git history` and every article f
 
 ## License
 
-This project is licensed under the [GNU GPL 3](https://github.com/TigrouLand/tl-events.fr/blob/main/LICENCE).
+This project is licensed under the [GNU GPL 3](https://gitlab.com/tigrouland/web/tl-events.fr/blob/main/LICENCE).
