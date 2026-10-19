@@ -10,17 +10,17 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "npx nuxt prepare",
-    "lint": "tsc --noEmit && biome check"
+    "lint": "vue-tsc --noEmit && biome check"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.3.10",
     "@iconify-json/circle-flags": "^1.2.10",
     "@nuxt/content": "^3.14.0",
-    "@nuxt/fonts": "^0.13.0",
     "@nuxt/image": "^2.0.0",
     "@nuxtjs/color-mode": "^4.0.1",
     "@nuxtjs/i18n": "^10.2.1",
     "@nuxtjs/robots": "^6.2.4",
+    "@nuxtjs/sitemap": "^8.6.2",
     "@nuxtjs/tailwindcss": "^7.0.0-beta.1",
     "@tailwindcss/typography": "^0.5.20",
     "@types/culori": "^4.0.1",
@@ -47,8 +47,8 @@
   "dependencies": {
     "@iconify-json/simple-icons": "^1.2.85",
     "@lucide/vue": "^1.23.0",
-    "@takumi-rs/core": "^2.0.0-rc.16",
-    "@takumi-rs/wasm": "^1.8.7",
+    "@takumi-rs/core": "^2.16.3",
+    "@takumi-rs/wasm": "^2.16.3",
     "@vueuse/core": "^14.3.0",
     "better-sqlite3": "^12.10.0",
     "nuxt-llms": "^0.2.0",
