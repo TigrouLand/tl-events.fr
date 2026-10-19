@@ -6,14 +6,11 @@
 </template>
 
 <script setup>
-import { useClipboard } from '@vueuse/core'
+import { useClipboard, useIntervalFn } from '@vueuse/core'
 import { SERVER_IP } from '~/tools/seo'
 
 const { t } = useI18n()
-const { data, refresh } = useFetch(
-  `https://api.mcsrvstat.us/3/${SERVER_IP}`,
-  { server: false, lazy: true }
-)
+const { data, refresh } = useFetch(`https://api.mcsrvstat.us/3/${SERVER_IP}`, { server: false, lazy: true })
 
 const onlinePlayers = computed(() => data.value?.players?.online ?? 0)
 const { copy, copied } = useClipboard({ source: SERVER_IP, copiedDuring: 2000 })
@@ -23,13 +20,5 @@ const label = computed(() => {
   return onlinePlayers.value > 0 ? t('buttons.joinConnectedPlayers', { count: onlinePlayers.value }) : t('buttons.joinServer')
 })
 
-let intervalId = null
-
-onMounted(() => {
-  intervalId = setInterval(refresh, 15_000)
-})
-
-onBeforeUnmount(() => {
-  clearInterval(intervalId)
-})
+useIntervalFn(refresh, 15_000)
 </script>

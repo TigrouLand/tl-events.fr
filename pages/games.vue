@@ -153,12 +153,13 @@
 </template>
 
 <script setup lang="ts">
+import { useIntervalFn } from '@vueuse/core'
 import dayjs from 'dayjs'
 import Nav from '~/components/Nav.vue'
 import { Input } from '~/components/ui/input'
 import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from '~/components/ui/resizable'
 import { ScrollArea } from '~/components/ui/scroll-area'
-import { fetchAPI, type API } from '~/tools/api'
+import { type API, fetchAPI } from '~/tools/api'
 import { findQuery } from '~/tools/utils'
 
 const { t } = useI18n()
@@ -246,16 +247,6 @@ const allGames = computed(() => [...games.value, ...archivedGames.value])
 const filteredGames = computed(() => (query.value ? findQuery(allGames, query) : allGames.value))
 const selectedGame = ref<API.Game>(fixGameUuids([...archivedGames.value, ...games.value][0]))
 const gameInfo = defineGameInfo(selectedGame.value)
-
-const interval = ref<NodeJS.Timeout | null>(null)
-
-onMounted((): void => {
-  interval.value = setInterval(refreshGames, 10000)
-})
-
-onUnmounted((): void => {
-  clearInterval(interval.value as NodeJS.Timeout)
-})
 
 const getStyleForTeam = (team: API.Team | undefined): string => {
   return `color: rgba(${team?.colors.join(', ')});`
@@ -353,6 +344,8 @@ const refreshGames = async (): Promise<void> => {
   games.value = data.games
   archivedGames.value = data.archivedGames
 }
+
+useIntervalFn(refreshGames, 10_000)
 
 const isAlive = (name: string): boolean => {
   return selectedGame.value.alive.includes(name)
