@@ -1,6 +1,5 @@
 ---
 title: Migration 1.21+
-date: 2026-06-30
 tags: ["Saison 5", "Màj", "Patch"]
 description: Le nouveau serveur en version 26.1.2 est prêt pour vous accueillir !
 ---

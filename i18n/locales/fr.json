@@ -5,6 +5,9 @@
   "news": {
     "title": "Actualités",
     "publishedOn": "Publié le",
+    "updatedOn": "Mis à jour le",
+    "filterTags": "Filtrer par étiquette",
+    "noPosts": "Aucun article avec cette étiquette",
     "tags": {
       "announcement": "Annonces"
     }

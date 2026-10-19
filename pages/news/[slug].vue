@@ -20,15 +20,24 @@
           </BreadcrumbList>
         </Breadcrumb>
 
-        <NuxtImg :src='image' :alt='page?.title' width='1920' height='1080' draggable='false' class='select-none w-full aspect-video object-cover rounded-xl shadow-xl' />
+        <div class='relative w-full aspect-video overflow-hidden rounded-xl shadow-xl'>
+          <Skeleton v-if='!heroLoaded' class='absolute inset-0 rounded-none' />
+          <NuxtImg ref='hero' :src='image' :alt='page?.title' width='1920' height='1080' draggable='false' class='select-none absolute inset-0 w-full h-full object-cover' @load='heroLoaded = true' />
+        </div>
         <div class='flex items-center justify-between my-3'>
             <ul class='flex items-center gap-x-3'>
                 <Badge v-for='tag in page?.tags'>#{{ tag.toUpperCase() }}</Badge>
             </ul>
-            <span class='text-accent-foreground/75'>
-                <Icon name='ic:outline-calendar-today' class='mb-1 mr-1' size='16' />
-                {{ $t('news.publishedOn') }} {{ formattedDate }}
-            </span>
+            <div class='flex items-center gap-x-3'>
+                <span class='text-accent-foreground/75'>
+                    <Icon name='ic:outline-calendar-today' class='mb-1 mr-1' size='16' />
+                    {{ $t('news.publishedOn') }} {{ formattedDate }}
+                </span>
+                <span v-if='updatedAt' class='text-accent-foreground/75'>
+                    <Icon name='ic:outline-update' class='mb-1 mr-1' size='16' />
+                    {{ $t('news.updatedOn') }} {{ updatedDate }}
+                </span>
+            </div>
         </div>
         <ContentRenderer :value='page!' class='text-justify prose max-w-full dark:prose-invert' />
     </main>
@@ -37,6 +46,8 @@
 <script setup lang='ts'>
 import { Badge } from '~/components/ui/badge'
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from '~/components/ui/breadcrumb'
+import { Skeleton } from '~/components/ui/skeleton'
+import { formatDateLocalized } from '~/tools/news'
 import { APP_NAME, FULL_APP_NAME, PROD_URL } from '~/tools/seo'
 
 const route = useRoute()
@@ -49,6 +60,15 @@ if (!page.value) throw createError({ statusCode: 404 })
 
 const image = computed(() => `/news/${slug}.webp`)
 
+const hero = ref<ComponentPublicInstance | null>(null)
+const heroLoaded = ref(false)
+
+onMounted(() => {
+  // an SSR-rendered img can finish loading before hydration, so @load never fires
+  const el = hero.value?.$el as HTMLImageElement | undefined
+  if (el?.complete) heroLoaded.value = true
+})
+
 const { locale, t } = useI18n()
 const localePath = useLocalePath()
 
@@ -57,6 +77,8 @@ useHead({ title: page.value.title })
 const absolute = (path: string) => new URL(localePath(path), PROD_URL).href
 const articleURL = new URL(route.path, PROD_URL).href
 const publishedAt = new Date(page.value.date).toISOString()
+// only present when a later commit touched the file, so an unchanged article never claims an update
+const updatedAt = page.value.updatedAt ? new Date(page.value.updatedAt).toISOString() : null
 
 useSeoMeta({
   description: page.value.description,
@@ -66,7 +88,7 @@ useSeoMeta({
   ogUrl: articleURL,
   ogType: 'article',
   articlePublishedTime: publishedAt,
-  articleModifiedTime: publishedAt,
+  articleModifiedTime: updatedAt ?? publishedAt,
   articleAuthor: [FULL_APP_NAME],
   articleSection: t('news.title'),
   articleTag: page.value.tags
@@ -91,7 +113,7 @@ useHead({
             description: page.value.description,
             image: [new URL(image.value, PROD_URL).href],
             datePublished: publishedAt,
-            dateModified: publishedAt,
+            dateModified: updatedAt ?? publishedAt,
             inLanguage: locale.value,
             articleSection: page.value.tags,
             keywords: page.value.tags.join(', '),
@@ -119,8 +141,6 @@ useHead({
   ]
 })
 
-const formattedDate = computed(() => {
-  if (!page.value?.date) return ''
-  return new Intl.DateTimeFormat(locale.value, { dateStyle: 'long' }).format(new Date(page.value.date))
-})
+const formattedDate = computed(() => formatDateLocalized(page.value?.date, locale.value))
+const updatedDate = computed(() => formatDateLocalized(page.value?.updatedAt, locale.value))
 </script>

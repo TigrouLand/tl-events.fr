@@ -13,13 +13,16 @@ export default defineNuxtConfig({
   modules: [
     '@nuxtjs/tailwindcss',
     '@nuxtjs/color-mode',
+    // both must load before @nuxt/content: the git module feeds it frontmatter, and the sitemap
+    // module skips its content integration when Content is already installed
+    './tools/content-git-dates',
+    '@nuxtjs/sitemap',
     '@nuxt/content',
     'nuxt-llms',
     'shadcn-nuxt',
     'nuxt-icon',
     '@nuxtjs/i18n',
     '@nuxt/image',
-    '@nuxt/fonts',
     'nuxt-og-image',
     '@nuxtjs/robots',
     '@vite-pwa/nuxt'

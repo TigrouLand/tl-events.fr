@@ -6,6 +6,9 @@
   "news": {
     "title": "新闻",
     "publishedOn": "发布于",
+    "updatedOn": "更新于",
+    "filterTags": "按标签筛选",
+    "noPosts": "暂无相关标签的文章",
     "tags": {
       "announcement": "公告"
     }
