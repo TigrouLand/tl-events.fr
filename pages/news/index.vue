@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { Card, CardDescription, CardHeader, CardTitle } from '~/components/ui/card'
 import { Skeleton } from '~/components/ui/skeleton'
+import { collectTags, formatDateLocalized, slugifyTag } from '~/tools/news'
 import { APP_NAME, PROD_URL } from '~/tools/seo'
 
 const { data: posts } = await useAsyncData('news', () => {
@@ -15,15 +16,32 @@ const loadedImages = ref<Set<string>>(new Set())
 
 const { t, locale } = useI18n()
 const localePath = useLocalePath()
+const route = useRoute()
+const router = useRouter()
 
-const formatDate = (date: Date) => {
-  return new Intl.DateTimeFormat(locale.value, { dateStyle: 'long' }).format(new Date(date))
+const formatDate = (date: Date | string) => formatDateLocalized(date, locale.value)
+
+const news = computed(() => posts.value ?? [])
+const tags = computed(() => collectTags(news.value))
+const tagOptions = computed(() => tags.value.map((tag) => ({ value: tag.slug, label: `#${tag.label} (${tag.count})` })))
+const activeTag = ref<string | null>(typeof route.query.tag === 'string' ? route.query.tag : null)
+const filteredPosts = computed(() =>
+  activeTag.value ? news.value.filter((post) => (post.tags ?? []).some((tag) => slugifyTag(tag) === activeTag.value)) : news.value
+)
+
+const selectTag = (tag: string): void => {
+  activeTag.value = tag
+  router.replace({ query: { tag } })
+}
+
+const clearTag = (): void => {
+  activeTag.value = null
+  router.replace({ query: {} })
 }
 
 useHead({ title: t('news.title') })
 useSeoMeta({ ogTitle: `${APP_NAME} > ${t('news.title')}` })
 
-const route = useRoute()
 const absolute = (path: string) => new URL(localePath(path), PROD_URL).href
 const homeURL = absolute('/')
 // the server redirects /news -> /news/, so take the canonical from the route that actually matched
@@ -70,26 +88,33 @@ useHead({
 </script>
 
 <template>
-  <div v-if="posts?.length" class="grid place-items-center mt-32 max-w-5xl mx-auto gap-4 sm:grid-cols-2 lg:grid-cols-3">
-    <NuxtLink v-for="post in posts" :key="post.path" :to="'/news'.concat(post.path)">
-      <Card class="h-full py-0 pb-6 transition-opacity hover:opacity-80">
-        <div class="relative aspect-video w-full overflow-hidden rounded-t-xl">
-          <Skeleton v-if="!loadedImages.has(getImage(post))" class="absolute inset-0 rounded-none" />
-          <img
-            :src="getImage(post)"
-            :alt="post.title"
-            class="w-full h-full object-cover"
-            @load="loadedImages.add(getImage(post))"
-          />
-        </div>
-        <CardHeader>
+  <div class="mx-auto max-w-5xl mt-32">
+    <div v-if="tags.length > 1" class="flex justify-end mb-4">
+      <Filters :label="t('news.filterTags')" :options="tagOptions" :current-value="activeTag" @select="selectTag" @clear="clearTag" />
+    </div>
+
+    <div v-if="filteredPosts.length" class="grid place-items-center gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <NuxtLink v-for="post in filteredPosts" :key="post.path" :to="'/news'.concat(post.path)">
+        <Card class="h-full py-0 pb-6 transition-opacity hover:opacity-80">
+          <div class="relative aspect-video w-full overflow-hidden rounded-t-xl">
+            <Skeleton v-if="!loadedImages.has(getImage(post))" class="absolute inset-0 rounded-none" />
+            <img
+              :src="getImage(post)"
+              :alt="post.title"
+              class="w-full h-full object-cover"
+              @load="loadedImages.add(getImage(post))"
+            />
+          </div>
+          <CardHeader>
             <span class="text-accent-foreground/70">
-                <Icon name='ic:outline-calendar-today' class='mb-1 mr-1' size='16' /> {{ formatDate(post.date) }}
+              <Icon name='ic:outline-calendar-today' class='mb-1 mr-1' size='16' /> {{ formatDate(post.date) }}
             </span>
-          <CardTitle class="text-2xl">{{ post.title }}</CardTitle>
-          <CardDescription>{{ post.description }}</CardDescription>
-        </CardHeader>
-      </Card>
-    </NuxtLink>
+            <CardTitle class="text-2xl">{{ post.title }}</CardTitle>
+            <CardDescription>{{ post.description }}</CardDescription>
+          </CardHeader>
+        </Card>
+      </NuxtLink>
+    </div>
+    <p v-else class="py-12 text-center text-accent-foreground/70">{{ t('news.noPosts') }}</p>
   </div>
 </template>

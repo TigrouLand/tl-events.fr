@@ -42,12 +42,13 @@ const emit = defineEmits<{
   clear: []
 }>()
 
-const handleSelect = (value: string): void => {
-  if (value === '__clear__') {
+const handleSelect = (value: unknown): void => {
+  const selected = String(value)
+  if (selected === '__clear__') {
     emit('clear')
     return
   }
-  const option = options.find(o => String(o.value) === value)
+  const option = options.find((o) => String(o.value) === selected)
   if (option) emit('select', option.value)
 }
 </script>
