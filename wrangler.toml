@@ -1,9 +1,0 @@
-name = "tl-events"
-account_id = "74c084e1f74e7f2ad7dc2687d3ada85b"
-workers_dev = true
-compatibility_date = "2022-04-07"
-main = ".output/server/index.mjs"
-[site]
-bucket = ".output/public"
-[build]
-command = ""
