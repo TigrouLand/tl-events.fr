@@ -38,6 +38,8 @@ If you need or have any questions about the contribution, don't hesitate to open
 
 Production runs on a Cloudflare Pages project connected to this repository: pushing to `main` builds the app and publishes it, other branches get preview deployments. The build command, output directory, D1 `DB` binding and environment variables all live in the Pages dashboard rather than in this repository.
 
+`.node-version` pins the build to the Node release that bundles the npm writing `package-lock.json`. Pages otherwise defaults to an older npm, which resolves optional peer dependencies differently and refuses the lock as out of sync, failing `npm ci` before the build even starts.
+
 News article publish and update dates are read from git history at build time, and Pages checks the repository out shallow. Set the build command to deepen it first:
 
 ```bash
