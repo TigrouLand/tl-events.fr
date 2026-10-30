@@ -96,6 +96,34 @@
   }
 }
 
+/* page transitions: Nuxt hands `name: 'page'` to Vue's <Transition>, which puts these classes on the
+   page's own root element. Only the entering page moves — a page that slides out as well would read as
+   a carousel, and the nav is fixed above it rather than carried along with it */
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.page-enter-from {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.page-leave-to {
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-enter-active,
+  .page-leave-active {
+    transition: none;
+  }
+
+  .page-enter-from {
+    transform: none;
+  }
+}
+
 .nav-link {
   @apply items-center h-fit border border-transparent p-2 px-3 sm:text-sm inline-flex font-medium text-white transition-colors rounded-full;
 }

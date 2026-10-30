@@ -64,7 +64,10 @@ export default defineNuxtConfig({
       globPatterns: ['**/*.{css,js,ico,png,svg,woff2,webp,webmanifest}']
     }
   },
-  app: { head: seo(THEME_COLOR) },
+  app: {
+    pageTransition: { name: 'page', mode: 'out-in' },
+    head: seo(THEME_COLOR)
+  },
   imports: { imports: [{ name: 'cn', from: '~/tools/utils' }] },
   experimental: { viteEnvironmentApi: true },
   llms
