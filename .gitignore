@@ -8,6 +8,10 @@ node_modules
 .wrangler
 .env
 dist
+sitespeed-results
+# tools/icons installs block-model-renderer's native stack on its own so the app install never sees
+# it; node_modules and .cache are already covered by the patterns above
+tools/icons/package-lock.json
 
 # IDE
 .idea

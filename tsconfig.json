@@ -1,6 +1,10 @@
 {
   "extends": "./.nuxt/tsconfig.json",
   "compilerOptions": {
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    // tools/icons/render.mts runs under plain Node, which only resolves an import that names the extension
+    "allowImportingTsExtensions": true,
+    // without this, dependencies with a browser entry hand their web types to a script that runs on Node
+    "customConditions": ["node"]
   }
 }

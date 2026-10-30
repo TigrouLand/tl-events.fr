@@ -38,16 +38,7 @@ If you need or have any questions about the contribution, don't hesitate to open
 
 Production runs on a Cloudflare Pages project connected to this repository: pushing to `main` builds the app and publishes it, other branches get preview deployments. The build command, output directory, D1 `DB` binding and environment variables all live in the Pages dashboard rather than in this repository.
 
-`.node-version` pins the build to the Node release that bundles the npm writing `package-lock.json`. Pages otherwise defaults to an older npm, which resolves optional peer dependencies differently and refuses the lock as out of sync, failing `npm ci` before the build even starts.
-
-News article publish and update dates are read from git history at build time, and Pages checks the repository out shallow. Set the build command to deepen it first:
-
-```bash
-  # Pages build command
-  git fetch --unshallow || git fetch --deepen=1000 || true; npm run build
-```
-
-Without that, the build logs `[news-git] ... no git history` and every article falls back to its checkout date.
+News article publish and update dates are read from git history at build time, and Pages checks the repository out shallow. Otherwise, the build logs and every article falls back to its checkout date.
 
 ```bash
   # Build the application for Cloudflare Pages (nitro.preset in nuxt.config.ts)
