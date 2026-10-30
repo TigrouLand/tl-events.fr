@@ -11,5 +11,5 @@
     "verbatimModuleSyntax": true,
     "skipLibCheck": true
   },
-  "include": ["render.mts", "patch-gl.mts"]
+  "include": ["render.mts"]
 }

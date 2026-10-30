@@ -2,8 +2,9 @@
   "name": "@tl-events/icons",
   "private": true,
   "type": "module",
-  "description": "Offline icon renderer. Deliberately not a workspace of the app: its native dependencies must never reach the Cloudflare Pages install.",
+  "description": "Fetches the sprites MCicon tags point at. Deliberately not a workspace of the app: its image encoder must never reach the Cloudflare Pages install.",
   "dependencies": {
-    "block-model-renderer": "^2.20.0"
+    "fflate": "^0.8.3",
+    "sharp": "^0.34.5"
   }
 }

@@ -21,6 +21,12 @@ const SAFE_ID = /^[a-z0-9_.:-]+$/
 /** one picture per id: the foil rides on top of this file as a mask, so nothing renders a second copy */
 export const iconUrl = (type: IconType, id: string): string => `/icons/${type}/${id.replace(/^minecraft:/, '')}.webp`
 
+/**
+ * An item icon is the flat texture the game already ships, so it can be fetched and scaled. A block icon is
+ * a model seen in three dimensions, which is a GL render rather than a file: those stay committed art.
+ */
+export const isGenerated = ({ type }: Icon): boolean => type === 'item'
+
 /** a bare markdown attribute arrives as an empty string, and presence alone is the ask */
 export const isEnchanted = (value: unknown): boolean =>
   value === '' || value === true || (typeof value === 'string' && !['false', '0'].includes(value.toLowerCase()))

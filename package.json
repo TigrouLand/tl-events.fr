@@ -14,7 +14,6 @@
     "generate": "nuxt generate",
     "icons": "node tools/icons/render.mts",
     "icons:check": "node tools/icons/render.mts --check",
-    "icons:setup": "npm --prefix tools/icons install --ignore-scripts && node tools/icons/patch-gl.mts && CC=clang CXX=clang++ npm --prefix tools/icons rebuild skia-canvas gl",
     "preview": "nuxt preview",
     "postinstall": "npx nuxt prepare",
     "lint": "vue-tsc --noEmit && biome check"

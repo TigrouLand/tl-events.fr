@@ -9,8 +9,8 @@ node_modules
 .env
 dist
 sitespeed-results
-# tools/icons installs block-model-renderer's native stack on its own so the app install never sees
-# it; node_modules and .cache are already covered by the patterns above
+# tools/icons installs its image encoder on its own so the Pages install never sees it; node_modules
+# and .cache (the client jar and the textures pulled from it) are already covered by the patterns above
 tools/icons/package-lock.json
 
 # IDE
