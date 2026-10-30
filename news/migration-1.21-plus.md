@@ -13,10 +13,10 @@ Voici déjà un résumé de ce qui a été fait en plus de la modernisation du c
 ### Premières corrections et divers ajustements
 
 - Affichage de l'objet actuellement sélectionné dans le menu des cosmétiques
-- Correction des multiplicateurs de dégâts pour l'Arena, et tous les UHC (notamment le RFTD)
-- Exclusion du LG-UHC et du SkyDefender pour le moment, et retrait du mode meetup
+- Correction des multiplicateurs de dégâts pour l'**Arena**, et tous les **UHC** (notamment le RFTD)
+- Exclusion du **LG-UHC** et du **SkyDefender** pour le moment, et retrait du mode **meetup**
 - Implémentation (minimaliste) des mécaniques de combat 1.8 pour le FastBow et le TigrouBrain
-- Implémentation du RFTD avec les fonctionnalités essentielles
+- Implémentation du **RFTD** avec les fonctionnalités essentielles
 - Modification de l'icône du serveur Minecraft, c'est désormais celle du serveur Discord
 - Nouveau paramètre pour restaurer l'ancienne animation de dégâts de la caméra (avant la 1.19)
 - Nouveau système pour la tablist, le scoreboard, les menus, les nametags, les phases de jeu en UHC...
@@ -25,13 +25,13 @@ Voici déjà un résumé de ce qui a été fait en plus de la modernisation du c
 
 ### Modifications spécifiques à certains jeux
 
-- Arena > La bordure se met maintenant correctement à jour pour les joueurs qui rejoignent/quittent une partie en cours
-- Arena > Retrait des bonus jugés peu équilibrés (sur la modification de perte de points notamment)
-- FastBow > Les distances de tir ignorent désormais la hauteur
-- Jump > Hauteur de retour abaissée pour le checkpoint M pour éviter les téléportations non voulues
-- Jump > Le checkpoint ne se mettait pas à jour sur le scoreboard lors de la reprise d'une progression
-- TigrouBrain > Les nametags sont désormais de la couleur de l'équipe
-- UHC > Retrait de tous les scénarios obsolètes, retour du scénario CutClean
+- <MCicon type="item" id="blaze_powder" /> Arena > La bordure se met maintenant correctement à jour pour les joueurs qui rejoignent/quittent une partie en cours
+- <MCicon type="item" id="blaze_powder" /> Arena > Retrait des bonus jugés peu équilibrés (sur la modification de perte de points notamment)
+- <MCicon type="item" id="bow" /> FastBow > Les distances de tir ignorent désormais la hauteur
+- <MCicon type="item" id="feather" /> Jump > Hauteur de retour abaissée pour le checkpoint **M** pour éviter les téléportations non voulues
+- <MCicon type="item" id="feather" /> Jump > Le checkpoint ne se mettait pas à jour sur le scoreboard lors de la reprise d'une progression
+- <MCicon type="block" id="cut_sandstone" /> TigrouBrain > Les nametags sont désormais de la couleur de l'équipe
+- <MCicon type="item" id="golden_apple" /> UHC > Retrait de tous les scénarios obsolètes, retour du scénario CutClean
 
 ## Patch du 1er juillet 2026
 
@@ -40,15 +40,15 @@ Voici déjà un résumé de ce qui a été fait en plus de la modernisation du c
 - Les portails de l'End étaient accessibles
 - Rejoindre un mini-jeu en cours ne vous y téléportait pas
 
-## Arena
+## <MCicon type="item" id="blaze_powder" size="40" /> Arena
 
 Une erreur survenait lorsqu'un joueur mourait et n'avait pas sélectionné de Derniers mots
 
-## Cosmétiques
+## <MCicon type="block" id="enchanting_table" size="40" /> Cosmétiques
 
 - Les effets de victoire Pluie de cochons, Pluie de toutous et Clones dansants faisaient apparaître les entités aux mauvais endroits
 - Les objets déjà possédés dans les coffres au trésor ne donnaient plus de poussière
 
-## TigrouBrain
+## <MCicon type="block" id="cut_sandstone" size="40" /> TigrouBrain
 
 L'historique des points marqués s'envoyait deux fois lorsque la partie se terminait par épuisement du chronomètre

@@ -9,6 +9,36 @@
   text-decoration: none;
 }
 
+/* the enchantment foil: vanilla's own pattern stretched over the sprite and clipped to its alpha, so a
+   glinted icon costs one shared texture rather than a second render of every id */
+.mcicon {
+  isolation: isolate;
+}
+
+.mcicon-foil {
+  position: absolute;
+  inset: 0;
+  background: url('/glint.webp') 0 0 / 100% 100% repeat;
+  mix-blend-mode: screen;
+  opacity: 0.45;
+  mask-image: var(--mcicon-foil);
+  mask-size: 100% 100%;
+  animation: mcicon-foil 2s linear infinite;
+}
+
+/* sliding by the sprite's own box lands the pattern back on its first pixel, which keeps the loop seamless */
+@keyframes mcicon-foil {
+  to {
+    background-position: calc(-1 * var(--mcicon-size)) var(--mcicon-size);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mcicon-foil {
+    animation: none;
+  }
+}
+
 body {
     @apply bg-background;
 }

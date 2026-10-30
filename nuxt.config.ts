@@ -17,6 +17,7 @@ export default defineNuxtConfig({
     // module skips its content integration when Content is already installed
     './tools/content-git-dates',
     '@nuxtjs/sitemap',
+    './tools/content-icon-check',
     '@nuxt/content',
     'nuxt-llms',
     'shadcn-nuxt',
