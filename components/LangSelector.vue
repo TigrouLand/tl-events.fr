@@ -1,6 +1,7 @@
 <template>
   <Select class="bg-none outline-none" :model-value="currentLocale" @update:model-value="(v) => setLocale(v as Lang)">
-    <SelectTrigger :class="cn('border-none bg-transparent!', props.class)">
+    <!-- the trigger holds a flag only, so the name it stands for has to travel in the label -->
+    <SelectTrigger :aria-label="t('buttons.language', { name: currentLocaleName })" :class="cn('border-none bg-transparent!', props.class)">
       <Icon :name="getFlagIcon(currentLocale)" />
     </SelectTrigger>
     <SelectContent class="z-100 bg-background/50 backdrop-blur-lg">
@@ -18,13 +19,14 @@
 
 <script setup lang="ts">
 import { Select, SelectContent, SelectItem, SelectTrigger } from '~/components/ui/select'
-import { getFlagIcon, type Lang } from '~/tools/i18n'
+import { getFlagIcon, type Lang, SUPPORTED_LANGS } from '~/tools/i18n'
 
 const props = defineProps({
   class: { type: String, default: '' }
 })
 
-const { locale, locales, setLocale } = useI18n()
+const { locale, locales, setLocale, t } = useI18n()
 
 const currentLocale = computed(() => locale.value)
+const currentLocaleName = computed(() => SUPPORTED_LANGS[currentLocale.value as Lang])
 </script>

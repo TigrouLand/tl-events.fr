@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { type Lang, OG_LOCALES } from '~/tools/i18n'
+import { getOgLocale, type Lang } from '~/tools/i18n'
 import { APP_NAME, FULL_APP_NAME, PROD_URL } from '~/tools/seo'
 
 const { locale } = useI18n()
@@ -7,7 +7,7 @@ const route = useRoute()
 const canonicalURL = computed(() => `${PROD_URL}${route.path}`)
 
 useSeoMeta({
-  ogLocale: () => OG_LOCALES[locale.value as Lang],
+  ogLocale: () => getOgLocale(locale.value as Lang),
   ogUrl: canonicalURL,
   ogImage: () => `${PROD_URL}/logo.webp`,
   ogImageAlt: `${APP_NAME} logo`

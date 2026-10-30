@@ -13,9 +13,7 @@ export const locales = localeKeys.map((code) => ({ code, name: SUPPORTED_LANGS[c
 
 export const getFlagIcon = (code: Lang): string => `circle-flags:${code}`
 
-export const OG_LOCALES: Record<Lang, string> = {
-  fr: 'fr_FR',
-  en: 'en_US',
-  es: 'es_ES',
-  zh: 'zh_CN'
+export const getOgLocale = (code: Lang): string => {
+  const { language, region } = new Intl.Locale(code).maximize()
+  return `${language}_${region}`
 }
