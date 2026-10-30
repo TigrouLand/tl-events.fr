@@ -2,29 +2,34 @@
   <!-- the layout nav in games route is not mounted since we explicitly declare a non-floating one -->
   <nav
     v-if="route.name.includes('games') !== props.floating"
-    :class="cn('custom-borders z-100 mx-auto flex max-w-5xl flex-wrap items-center justify-between rounded-4xl p-2 shadow-2xl', { 'fixed! left-0 right-0 top-8': floating, 'relative mt-4': !floating })"
-  >
+    :class="cn('custom-borders z-100 mx-auto flex max-w-5xl flex-wrap items-center justify-between rounded-4xl p-2 shadow-2xl', { 'fixed! inset-x-4 top-8 sm:inset-x-6': floating, 'relative mt-4': !floating })">
         <!-- own blur layer so descendants can have working backdrop blur filters -->
         <div class="absolute inset-0 -z-10 rounded-4xl bg-black/30 backdrop-blur-lg" />
 
-        <NuxtImg src="/logo.webp" alt="Logo" draggable="false" class="h-12 rounded-full select-none" />
+        <NuxtImg src="/logo.webp" alt="Logo" draggable="false" height="48" width="48" class="rounded-full select-none" />
 
-        <ul
-          id="mobile-menu"
-          :class="cn('order-3 w-full flex-col gap-1 sm:order-none sm:w-auto sm:flex-row sm:items-center sm:space-x-4 md:ml-6', dropdown ? 'flex' : 'hidden sm:flex')"
-        >
-          <NuxtLink v-for="navLink in navLinks" :key="navLink.label" :to="navLink.to" class="nav-link">
-            <Icon :name="navLink.icon" size="20" /> <span class="ml-2 hidden max-sm:inline lg:inline">{{ $t(navLink.label) }}</span>
-          </NuxtLink>
+        <ul id="mobile-menu" :class="cn('order-3 w-full flex-col gap-1 sm:order-none sm:w-auto sm:flex-row sm:items-center sm:space-x-4 md:ml-6', dropdown ? 'flex' : 'hidden sm:flex')">
+          <template v-for="navLink in navLinks" :key="navLink.label">
+            <NuxtLink :alt="navLink.label" v-if="!navLink.disabled" :to="localePath(navLink.to)" class="nav-link">
+              <Icon :name="navLink.icon" size="20" /> <span class="ml-2 hidden max-sm:inline lg:inline">{{ $t(navLink.label) }}</span>
+            </NuxtLink>
+            <span v-else class="nav-link cursor-not-allowed">
+              <Icon :name="navLink.icon" size="20" /> <span class="ml-2 hidden max-sm:inline lg:inline">{{ $t(navLink.label) }}</span>
+            </span>
+          </template>
         </ul>
 
         <div
           id="mobile-social"
-          :class="cn('order-4 w-full items-center justify-center gap-4 pb-1 sm:order-none sm:w-auto sm:justify-start sm:gap-0 sm:space-x-4 sm:pb-0', dropdown ? 'flex' : 'hidden sm:flex')"
-        >
-          <NuxtLink v-for="socialLink in socialLinks" :key="socialLink.label" :href="socialLink.to" target="_blank" rel="noopener noreferrer">
-            <Icon :name="socialLink.icon" size="20" class="text-white" />
-          </NuxtLink>
+          :class="cn('order-4 w-full items-center justify-center gap-4 pb-1 sm:order-none sm:w-auto sm:justify-start sm:gap-0 sm:space-x-4 sm:pb-0', dropdown ? 'flex' : 'hidden sm:flex')">
+          <template v-for="socialLink in socialLinks" :key="socialLink.label">
+            <NuxtLink :alt="socialLink.label" v-if="!socialLink.disabled" :href="socialLink.to" target="_blank" rel="noopener noreferrer">
+              <Icon :name="socialLink.icon" size="20" class="text-white" />
+            </NuxtLink>
+            <span v-else class="cursor-not-allowed">
+              <Icon :name="socialLink.icon" size="20" class="text-white" />
+            </span>
+          </template>
           <LangSelector />
         </div>
 
@@ -53,6 +58,7 @@ import { navLinks, socialLinks } from '~/tools/seo'
 import PlayersCount from './PlayersCount.vue'
 
 const route = useRoute()
+const localePath = useLocalePath()
 
 const props = defineProps({
   floating: { type: Boolean, default: true }
@@ -68,31 +74,3 @@ watch(
   }
 )
 </script>
-
-<style scoped>
-@reference "tailwindcss";
-
-.custom-borders::before {
-  @apply pointer-events-none absolute inset-0 rounded-4xl border border-transparent content-[''];
-
-  background: linear-gradient(30deg, #ffffff00, #ffffff30, #00000000) border-box;
-  -webkit-mask:
-    linear-gradient(#fff 0 0) padding-box,
-    linear-gradient(#fff 0 0);
-  -webkit-mask-composite: destination-out;
-  mask-composite: exclude;
-}
-
-
-.nav-link {
-  @apply items-center h-fit border border-transparent p-2 px-3 sm:text-sm inline-flex font-medium text-white transition-colors rounded-full;
-}
-
-.nav-link[aria-current='page'] {
-  @apply bg-white/15;
-}
-
-.nav-link:hover:not([aria-current='page']) {
-    @apply border-white/30;
-}
-</style>

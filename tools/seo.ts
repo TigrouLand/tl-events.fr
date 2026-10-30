@@ -10,7 +10,9 @@ export const APP_VERSION = pkg.version
 export const FULL_APP_NAME = 'TigrouLand'
 export const APP_NAME = `${FULL_APP_NAME.match(/[A-Z]/g)?.join('')} - Events` // regex for uppercase chars only
 
-type Link = Record<'to' | 'label' | 'icon', string>
+type Link = Record<'to' | 'label' | 'icon', string> & {
+  disabled?: boolean
+}
 
 // label prop is a i18n local key
 // icons can be found under: https://icones.js.org
@@ -26,7 +28,8 @@ export const socialLinks = [
   {
     to: `https://gitlab.com/${FULL_APP_NAME.toLowerCase()}/web/${pkg.name}`,
     icon: 'vscode-icons:file-type-gitlab',
-    label: 'Gitlab'
+    label: 'Gitlab',
+    disabled: true
   },
   {
     to: `mumble://mumble.${pkg.name}`,

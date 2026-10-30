@@ -7,7 +7,7 @@
     </div>
 
     <nuxt-link
-      :to="to"
+      :to="localePath(to)"
       class="group flex h-2/6 w-full items-center gap-x-2 bg-gray-700 px-6 py-3 text-sm font-medium text-white transition-colors duration-75 hover:bg-gray-600">
       {{ props.description }} <Icon name="ion:ios-arrow-round-forward" class="transition-all group-hover:translate-x-2" size="20" />
     </nuxt-link>
@@ -24,4 +24,6 @@ const props = defineProps({
   icon: { type: String, required: true },
   to: { type: String, required: true }
 })
+
+const localePath = useLocalePath()
 </script>

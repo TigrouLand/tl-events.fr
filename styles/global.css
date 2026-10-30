@@ -9,6 +9,18 @@
   text-decoration: none;
 }
 
+/* kept out of Nav.vue: a component style block is emitted as its own chunk, and the layout
+   would then link it ahead of the first paint of every route */
+.custom-borders::before {
+  background: linear-gradient(30deg, #ffffff00, #ffffff30, #00000000) border-box;
+  -webkit-mask:
+    linear-gradient(#fff 0 0) padding-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
+  @apply pointer-events-none absolute inset-0 rounded-4xl border border-transparent content-[''];
+}
+
 /* the brand's display treatment: a hard offset copy of the glyphs rather than a blur, because a
    pixel font wants a second block of itself and a soft shadow would fight its aliasing */
 .custom-shadow {
@@ -82,6 +94,19 @@
   .mc-enter {
     animation: none;
   }
+}
+
+.nav-link {
+  @apply items-center h-fit border border-transparent p-2 px-3 sm:text-sm inline-flex font-medium text-white transition-colors rounded-full;
+}
+
+.nav-link[aria-current='page'] {
+  @apply bg-white/15;
+}
+
+/* a disabled entry is a span, so hovering it must not light the border */
+a.nav-link:hover:not([aria-current='page']) {
+  @apply border-white/30;
 }
 
 /* the enchantment foil: vanilla's own pattern stretched over the sprite and clipped to its alpha, so a
