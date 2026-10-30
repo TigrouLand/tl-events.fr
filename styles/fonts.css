@@ -1,5 +1,3 @@
-/* Monocraft v4.2.1 (OFL-1.1, see public/fonts/LICENSE-Monocraft.txt) — split from the upstream .ttc and subsetted to latin/latin-ext/punctuation/arrows.
-   No CJK coverage: the zh locale falls through to the generic family of the --font-sans stack in theme.css. */
 @font-face {
   font-family: "Monocraft";
   src: url("/fonts/monocraft-regular.woff2") format("woff2");
