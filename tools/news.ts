@@ -4,22 +4,14 @@ export interface NewsTag {
   count: number
 }
 
-const hashKey = (value: string): string => {
-  let hash = 0
-  for (const char of value) hash = (hash * 31 + char.charCodeAt(0)) >>> 0
-  return hash.toString(36)
-}
-
-/** Tags are free-form author text ("Màj", "Saison 5"), so the URL form is derived, not stored. */
 export const slugifyTag = (tag: string): string => {
-  const slug = tag
+  return tag
     .normalize('NFKD')
     .replace(/[\u0300-\u036f]/g, '')
     .trim()
     .toLowerCase()
     .replace(/[^\p{L}\p{N}]+/gu, '-')
     .replace(/^-+|-+$/g, '')
-  return slug || `tag-${hashKey(tag)}`
 }
 
 export const collectTags = (posts: readonly { tags?: string[] | null }[]): NewsTag[] => {
@@ -29,6 +21,7 @@ export const collectTags = (posts: readonly { tags?: string[] | null }[]): NewsT
     for (const tag of post.tags ?? []) {
       const slug = slugifyTag(tag)
       const group = grouped.get(slug) ?? { labels: new Map<string, number>(), count: 0 }
+
       group.labels.set(tag, (group.labels.get(tag) ?? 0) + 1)
       group.count += 1
       grouped.set(slug, group)
