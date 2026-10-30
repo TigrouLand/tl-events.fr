@@ -2,6 +2,63 @@
   "home": "Inicio",
   "members": "Miembros",
   "gamemodes": "Modos de juego",
+  "gamemodesPage": {
+    "count": "{count} modos de juego",
+    "explore": "Ver las reglas",
+    "close": "Cerrar",
+    "meta": {
+      "slot": "Ranura",
+      "item": "Objeto",
+      "type": "Tipo"
+    },
+    "modes": {
+      "jump": {
+        "name": "Jump",
+        "short": "Parkour en apesanteur: esquiva los obstáculos y termina el recorrido lo más rápido posible.",
+        "rules": "¡Esquiva los obstáculos y termina el recorrido lo más rápido posible!"
+      },
+      "fastbow": {
+        "name": "FastBow",
+        "short": "Una flecha, una espada. Encadena bajas y recoge los bonus del mapa.",
+        "rules": "Una flecha, una espada. Encadena bajas y recoge los bonus que aparecen por el mapa."
+      },
+      "arena": {
+        "name": "Arena",
+        "short": "Elige bonus y compra tu equipo entre ronda y ronda.",
+        "rules": "¡Elige distintos bonus y compra objetos entre las rondas de combate para ser el último en pie!"
+      },
+      "tigroubrain": {
+        "name": "TigrouBrain",
+        "short": "Dos equipos, dos carriles. Marca en la base contraria.",
+        "rules": "¡Dos equipos, dos carriles. Marca puntos en la base contraria para ganar!"
+      },
+      "bingo": {
+        "name": "Bingo",
+        "short": "Una cuadrícula de objetos que completar antes que los demás.",
+        "rules": "¡Encuentra todos los objetos de tu cuadrícula!"
+      },
+      "rftd": {
+        "name": "RFTD",
+        "short": "Fabrica tus ojos de ender y enfréntate al dragón del End.",
+        "rules": "¡Este modo de juego se centra en luchar contra el dragón del End! Tendrás que fabricar varios ojos de ender durante la fase de preparación. Los equipos serán teletransportados al End, y el que más daño le haga al dragón ganará la partida!"
+      },
+      "switch": {
+        "name": "Switch",
+        "short": "Un UHC clásico, pero con equipos que rotan sin parar.",
+        "rules": "¡Un UHC clásico... pero marcado por cambios de equipo constantes! ¡Al menos un jugador de cada equipo cambiará de equipo y de posición en el mapa con alguien más!"
+      },
+      "taupegun": {
+        "name": "TaupeGun",
+        "short": "Hay topos escondidos en los equipos: desenmascáralos.",
+        "rules": "En este modo de juego se esconde un equipo extra: el de los topos. Tendrán que disimular su juego e imponerse entre ellos. Pueden hablar en un chat privado y cuentan con su propio kit."
+      },
+      "uhc": {
+        "name": "UHC",
+        "short": "Ultra Hardcore, con escenarios para aliñar la partida.",
+        "rules": "¡El modo Ultra Hardcore de siempre, a menudo con escenarios que aliñan la partida de las más variadas formas!"
+      }
+    }
+  },
   "games": "Partidas",
   "news": {
     "title": "Noticias",
@@ -19,7 +76,8 @@
     "ipCopied": "IP copiada al portapapeles",
     "backHome": "Volver al inicio",
     "retry": "Reintentar",
-    "discord": "Contactar con un administrador"
+    "discord": "Contactar con un administrador",
+    "language": "Idioma: {name}"
   },
   "cards": {
     "members": {
@@ -29,6 +87,10 @@
     "games": {
       "title": "Partidas jugadas",
       "description": "Ver los resúmenes detallados de las partidas jugadas"
+    },
+    "gamemodes": {
+      "title": "Modos de juego",
+      "description": "Descubre los distintos modos de juego"
     }
   },
   "ranks": {

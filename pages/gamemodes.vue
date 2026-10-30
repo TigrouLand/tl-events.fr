@@ -1,49 +1,50 @@
-<template>
-</template>
-
 <script setup lang="ts">
-// TODO: fetch server gamemodes as soon as API exposes an GET endpoint
-// this data already exists as YML config for the MC server {icon.toUpperCase() -> material}
-const modes = [
-  { type: 'Jump', icon: 'feather', description: 'Contournez les obstacles et terminez le parcours le plus rapidement possible !' },
-  {
-    type: 'FastBow',
-    icon: 'bow',
-    description: 'Une flêche , une épée. Enchaînez les kills et récupérer les bonus qui apparaissent sur la carte.'
-  },
-  {
-    type: 'Arena',
-    icon: 'iron_sword',
-    description: "Choisissez divers bonus et achetez des objets entre les manches de combat afin d'être le dernier survivant !"
-  },
-  {
-    type: 'TigrouBrain',
-    icon: 'sandstone',
-    description: 'Deux équipes, deux voies. Marquez des points dans la base adverse pour gagner !'
-  },
-  { type: 'Bingo', icon: 'decorated_pot', description: 'Trouvez tous les objets présents sur votre grille !' },
-  {
-    type: 'RFTD',
-    icon: 'dragon_egg',
-    description:
-      "Ce mode de jeu est focalisé sur le combat contre le dragon de l'End. Vous devrez fabriquer un certain nombre d'yeux durant la phase de préparation. Les équipes seront ensuite téléportées dans l'End, et celle qui inflige le plus de dégâts au dragon remportera la partie !"
-  },
-  {
-    type: 'Switch',
-    icon: 'chest_minecart',
-    description:
-      "Un UHC classique... mais rythmé par des changements d'équipe réguliers ! Au moins un joueur de chaque équipe échangera d'équipe et de position sur la carte avec quelqu'un d'autre !"
-  },
-  {
-    type: 'TaupeGun',
-    icon: 'tnt',
-    description:
-      "Dans ce mode de jeu, une équipe 'supplémentaire se cache : celle' des taupes. Elles devront rouler leur équipe et gagner entre elles. Elles peuvent communiquer dans un chat privé, et disposent d'un kit."
-  },
-  {
-    type: 'UHC',
-    icon: 'golden_apple',
-    description: 'Le mode de jeu Ultra Hardcore standard, souvent accompagné de scénarios pour pimenter la partie de diverses manières !'
-  }
-]
+import type { Gamemode } from '~/tools/gamemodes'
+import GamemodeCard from '~/components/GamemodeCard.vue'
+import GamemodeDetail from '~/components/GamemodeDetail.vue'
+import { GAMEMODES } from '~/tools/gamemodes'
+import { APP_NAME } from '~/tools/seo'
+
+const { t } = useI18n()
+
+useHead({ title: t('gamemodes') })
+useSeoMeta({
+  ogTitle: `${APP_NAME} > ${t('gamemodes')}`,
+  description: () => t('gamemodesPage.subtitle')
+})
+
+const SPANS = ['sm:row-span-2 sm:col-span-2', 'sm:col-span-2', '', '', 'sm:col-span-2', 'sm:col-span-2', 'sm:col-span-2', '', '']
+
+const detail = ref<{ mode: Gamemode; index: number }>({ mode: GAMEMODES[0], index: 0 })
+const detailOpen = ref(false)
+
+const openDetail = (mode: Gamemode, index: number): void => {
+  detail.value = { mode, index }
+  detailOpen.value = true
+}
 </script>
+
+<template>
+  <div class="min-h-full pb-20 pt-6">
+    <div class="mx-auto max-w-7xl px-4 pt-28 sm:px-6 lg:px-8">
+      <header class="mb-6">
+        <p class="text-muted-foreground flex items-center gap-x-4 text-[11px] font-bold uppercase tracking-[0.3em]">
+          <Icon name="ion:game-controller" size="16" />
+          {{ t('gamemodesPage.count', { count: GAMEMODES.length }) }}
+        </p>
+      </header>
+
+      <ul class="auto-rows-[13rem] grid grid-cols-1 gap-4 sm:auto-rows-[14rem] sm:grid-cols-2 lg:auto-rows-[13.5rem] lg:grid-cols-4">
+        <li v-for="(mode, index) in GAMEMODES" :key="mode.key" :class="SPANS[index]">
+          <GamemodeCard
+            :mode="mode"
+            :index="index"
+            :variant="index === 0 ? 'hero' : 'tile'"
+            @open="openDetail(mode, index)" />
+        </li>
+      </ul>
+    </div>
+
+    <GamemodeDetail :mode="detail.mode" :index="detail.index" :open="detailOpen" @close="detailOpen = false" />
+  </div>
+</template>

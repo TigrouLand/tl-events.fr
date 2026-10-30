@@ -21,10 +21,10 @@
           to="/games"
         />
         <InfoCard
-          title="Modes de jeux"
-          :stats="7"
-          description="Voir les différents modes de jeux"
-          icon="ion:game-controller"
+          :title="t('cards.gamemodes.title')"
+          :stats="GAMEMODES.length"
+          :description="t('cards.gamemodes.description')"
+          icon="material-symbols:chess-pawn-outline"
           to="/gamemodes"
         />
       </ul>
@@ -34,6 +34,7 @@
 
 <script setup lang="ts">
 import { type API, fetchAPI } from '~/tools/api'
+import { GAMEMODES } from '~/tools/gamemodes'
 import { APP_NAME } from '~/tools/seo'
 
 const { t } = useI18n()
@@ -50,10 +51,6 @@ const stats = response.data as Ref<API.Stats | undefined>
 .custom-background {
   background: url("/background.webp") center no-repeat;
   background-size: cover;
-}
-
-.custom-shadow {
-  text-shadow: 6px 6px 0 rgba(178, 55, 52, 0.8);
 }
 </style>
 

@@ -2,6 +2,63 @@
   "home": "Accueil",
   "members": "Membres",
   "gamemodes": "Jeux",
+  "gamemodesPage": {
+    "count": "{count} modes de jeu",
+    "explore": "Voir les règles",
+    "close": "Fermer",
+    "meta": {
+      "slot": "Place",
+      "item": "Objet",
+      "type": "Type"
+    },
+    "modes": {
+      "jump": {
+        "name": "Jump",
+        "short": "Parkour en apesanteur : contournez les obstacles et finissez le parcours au plus vite.",
+        "rules": "Contournez les obstacles et terminez le parcours le plus rapidement possible !"
+      },
+      "fastbow": {
+        "name": "FastBow",
+        "short": "Une flèche, une épée. Enchaînez les kills et récupérez les bonus de la carte.",
+        "rules": "Une flèche, une épée. Enchaînez les kills et récupérez les bonus qui apparaissent sur la carte."
+      },
+      "arena": {
+        "name": "Arena",
+        "short": "Choisissez vos bonus et achetez votre équipement entre chaque manche.",
+        "rules": "Choisissez divers bonus et achetez des objets entre les manches de combat afin d'être le dernier survivant !"
+      },
+      "tigroubrain": {
+        "name": "TigrouBrain",
+        "short": "Deux équipes, deux voies. Marquez dans la base adverse.",
+        "rules": "Deux équipes, deux voies. Marquez des points dans la base adverse pour gagner !"
+      },
+      "bingo": {
+        "name": "Bingo",
+        "short": "Une grille d'objets à compléter avant les autres.",
+        "rules": "Trouvez tous les objets présents sur votre grille !"
+      },
+      "rftd": {
+        "name": "RFTD",
+        "short": "Fabriquez vos yeux de l'Ender, puis affrontez le dragon de l'End.",
+        "rules": "Ce mode de jeu est focalisé sur le combat contre le dragon de l'End. Vous devrez fabriquer un certain nombre d'yeux durant la phase de préparation. Les équipes seront ensuite téléportées dans l'End, et celle qui inflige le plus de dégâts au dragon remportera la partie !"
+      },
+      "switch": {
+        "name": "Switch",
+        "short": "Un UHC classique, mais dont les équipes tournent régulièrement.",
+        "rules": "Un UHC classique... mais rythmé par des changements d'équipe réguliers ! Au moins un joueur de chaque équipe échangera d'équipe et de position sur la carte avec quelqu'un d'autre !"
+      },
+      "taupegun": {
+        "name": "TaupeGun",
+        "short": "Des taupes se cachent dans les équipes : démasquez-les.",
+        "rules": "Dans ce mode de jeu, une équipe supplémentaire se cache : celle des taupes. Elles devront dissimuler leur jeu et l'emporter entre elles. Elles peuvent communiquer dans un chat privé et disposent d'un kit."
+      },
+      "uhc": {
+        "name": "UHC",
+        "short": "Ultra Hardcore, accompagné de scénarios pour pimenter la partie.",
+        "rules": "Le mode de jeu Ultra Hardcore standard, souvent accompagné de scénarios pour pimenter la partie de diverses manières !"
+      }
+    }
+  },
   "news": {
     "title": "Actualités",
     "publishedOn": "Publié le",
@@ -18,7 +75,8 @@
     "ipCopied": "IP copié au presse papier",
     "backHome": "Retour à l'accueil",
     "retry": "Réessayer",
-    "discord": "Contacter un administrateur"
+    "discord": "Contacter un administrateur",
+    "language": "Langue : {name}"
   },
   "games": "Parties",
   "cards": {
@@ -29,6 +87,10 @@
     "games": {
       "title": "Parties jouées",
       "description": "Voir les résumés détaillés des parties jouées"
+    },
+    "gamemodes": {
+      "title": "Modes de jeu",
+      "description": "Voir les différents modes de jeu"
     }
   },
   "ranks": {

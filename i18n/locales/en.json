@@ -2,6 +2,63 @@
   "home": "Home",
   "members": "Members",
   "gamemodes": "Gamemodes",
+  "gamemodesPage": {
+    "count": "{count} gamemodes",
+    "explore": "Read the rules",
+    "close": "Close",
+    "meta": {
+      "slot": "Slot",
+      "item": "Item",
+      "type": "Type"
+    },
+    "modes": {
+      "jump": {
+        "name": "Jump",
+        "short": "Weightless parkour: round the obstacles and finish the course as fast as you can.",
+        "rules": "Round the obstacles and finish the course as quickly as possible!"
+      },
+      "fastbow": {
+        "name": "FastBow",
+        "short": "One arrow, one sword. Chain kills and grab the bonuses that spawn on the map.",
+        "rules": "One arrow, one sword. Chain your kills and pick up the bonuses that appear across the map."
+      },
+      "arena": {
+        "name": "Arena",
+        "short": "Pick bonuses and buy your gear between rounds.",
+        "rules": "Pick a range of bonuses and buy items between the combat rounds to be the last one standing!"
+      },
+      "tigroubrain": {
+        "name": "TigrouBrain",
+        "short": "Two teams, two lanes. Score in the opposing base.",
+        "rules": "Two teams, two lanes. Score points in the opposing base to win!"
+      },
+      "bingo": {
+        "name": "Bingo",
+        "short": "A grid of items to complete before anyone else.",
+        "rules": "Find every item on your grid!"
+      },
+      "rftd": {
+        "name": "RFTD",
+        "short": "Craft your eyes of ender, then fight the End dragon.",
+        "rules": "This gamemode is all about fighting the End dragon. You will need to craft a number of eyes of ender during the preparation phase. The teams are then teleported to the End, and the one that deals the most damage to the dragon wins the game!"
+      },
+      "switch": {
+        "name": "Switch",
+        "short": "A classic UHC, but one where the teams keep rotating.",
+        "rules": "A classic UHC... but punctuated by regular team swaps! At least one player from each team will trade teams, and position on the map, with someone else!"
+      },
+      "taupegun": {
+        "name": "TaupeGun",
+        "short": "Moles are hiding inside the teams: unmask them.",
+        "rules": "In this gamemode, one extra team is hiding: the moles. They will have to conceal their play and win among themselves. They can talk in a private chat and have their own kit."
+      },
+      "uhc": {
+        "name": "UHC",
+        "short": "Ultra Hardcore, usually paired with scenarios that spice the game up.",
+        "rules": "The standard Ultra Hardcore gamemode, often accompanied by scenarios that spice the game up in all sorts of ways!"
+      }
+    }
+  },
   "games": "Games",
   "news": {
     "title": "News",
@@ -19,7 +76,8 @@
     "ipCopied": "IP copied to clipboard",
     "backHome": "Back to home",
     "retry": "Try again",
-    "discord": "Contact us on Discord"
+    "discord": "Contact us on Discord",
+    "language": "Language: {name}"
   },
   "cards": {
     "members": {
@@ -29,6 +87,10 @@
     "games": {
       "title": "Played Games",
       "description": "View detailed summaries of played games"
+    },
+    "gamemodes": {
+      "title": "Gamemodes",
+      "description": "See everything we run"
     }
   },
   "ranks": {

@@ -2,6 +2,63 @@
   "home": "首页",
   "members": "成员",
   "gamemodes": "游戏模式",
+  "gamemodesPage": {
+    "count": "{count} 种玩法",
+    "explore": "查看规则",
+    "close": "关闭",
+    "meta": {
+      "slot": "槽位",
+      "item": "物品",
+      "type": "类型"
+    },
+    "modes": {
+      "jump": {
+        "name": "Jump",
+        "short": "失重跑酷:绕过障碍,以最快的速度完成赛道。",
+        "rules": "绕过障碍,以最快的速度完成赛道!"
+      },
+      "fastbow": {
+        "name": "FastBow",
+        "short": "一箭一剑。连续击杀,并拾取地图上的奖励。",
+        "rules": "一箭,一剑。连续击杀,并拾取地图上出现的奖励道具。"
+      },
+      "arena": {
+        "name": "Arena",
+        "short": "在回合之间挑选奖励、购买装备。",
+        "rules": "在战斗回合之间选择各种奖励并购买物品,成为最后的幸存者!"
+      },
+      "tigroubrain": {
+        "name": "TigrouBrain",
+        "short": "两队两条路,攻入对方基地得分。",
+        "rules": "两队,两条路线。在对方基地得分即可获胜!"
+      },
+      "bingo": {
+        "name": "Bingo",
+        "short": "抢先找齐你格子上的所有物品。",
+        "rules": "找齐你格子上的所有物品!"
+      },
+      "rftd": {
+        "name": "RFTD",
+        "short": "合成末影之眼,然后挑战末地巨龙。",
+        "rules": "这个玩法专注于与末地巨龙的战斗。你需要在准备阶段合成一定数量的末影之眼。随后各队会被传送到末地,对巨龙造成最多伤害的队伍获胜!"
+      },
+      "switch": {
+        "name": "Switch",
+        "short": "经典 UHC,但队伍会不断轮换。",
+        "rules": "经典的 UHC……但节奏由频繁的队伍调换推动!每队至少有一名玩家会与其他人交换队伍和地图位置!"
+      },
+      "taupegun": {
+        "name": "TaupeGun",
+        "short": "队伍中潜伏着内鬼:把他们揪出来。",
+        "rules": "在这个玩法中,隐藏着一支额外的队伍:内鬼队。他们必须掩饰自己的身份并击败同伴。他们可以在私密频道中交流,并拥有专属套装。"
+      },
+      "uhc": {
+        "name": "UHC",
+        "short": "极限硬核,搭配各种增加变数的剧本。",
+        "rules": "标准的极限硬核(Ultra Hardcore)玩法,通常还会搭配各种剧本,让对局以不同的方式更加精彩!"
+      }
+    }
+  },
   "games": "游戏",
   "news": {
     "title": "新闻",
@@ -19,7 +76,8 @@
     "ipCopied": "IP 已复制到剪贴板",
     "backHome": "返回首页",
     "retry": "重试",
-    "discord": "联系管理员"
+    "discord": "联系管理员",
+    "language": "语言：{name}"
   },
   "cards": {
     "members": {
@@ -29,6 +87,10 @@
     "games": {
       "title": "已游玩局数",
       "description": "查看已游玩局数的详细摘要"
+    },
+    "gamemodes": {
+      "title": "游戏模式",
+      "description": "查看我们举办的各种玩法"
     }
   },
   "ranks": {
