@@ -2,6 +2,9 @@ import type { LLMsSection, ModuleOptions } from 'nuxt-llms'
 import { DEFAULT_LANG, type Lang, SUPPORTED_LANGS } from './i18n'
 import { API_URL, FULL_APP_NAME, PROD_URL, SERVER_IP, socialLinks } from './seo'
 
+/** server/plugins/llms.ts fills it from the status request, so no literal here needs bumping on a Minecraft release */
+export const MC_VERSION_TOKEN = '{{MC_VERSION}}'
+
 export type LlmsSection = LLMsSection & { contentCollection?: string }
 
 type LlmsConfig = Omit<ModuleOptions, 'sections'> & { sections: LlmsSection[] }
@@ -48,7 +51,7 @@ const locales = Object.keys(SUPPORTED_LANGS) as Lang[]
 export const llms: LlmsConfig = {
   domain: PROD_URL,
   title: FULL_APP_NAME,
-  description: 'TigrouLand is a French Minecraft community running mini-games and public events on its own server (Java, version 26.1.2).',
+  description: `TigrouLand is a French Minecraft community running mini-games and public events on its own server (Java Edition${MC_VERSION_TOKEN}).`,
   full: {
     title: 'Complete documentation',
     description: 'The site index, followed by the full Markdown text of every news post.'
