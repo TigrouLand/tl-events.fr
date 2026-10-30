@@ -24,12 +24,13 @@ const git = (rootDir: string, args: string[]): string =>
 const setFrontmatter = (body: string, fields: Record<string, string>): string => {
   const match = /^---\r?\n([\s\S]*?)\r?\n---/.exec(body)
   const lines = match ? match[1].split(/\r?\n/) : []
+
   for (const [key, value] of Object.entries(fields)) {
     const index = lines.findIndex((line) => line.trimStart().startsWith(`${key}:`))
-    // quoted, otherwise YAML reparses the value as a Date at the parser's own midnight
     if (index === -1) lines.push(`${key}: '${value}'`)
     else lines[index] = `${key}: '${value}'`
   }
+
   const block = `---\n${lines.join('\n')}\n---`
   return match ? body.replace(match[0], block) : `${block}\n\n${body}`
 }
@@ -55,10 +56,9 @@ export default defineNuxtModule({
       logger.error('git is unavailable, article dates will fall back to file mtimes')
     }
 
-    // @nuxt/content keys its parse cache on configHash + collectionHash + file body, so a new
-    // commit alone would keep serving previously parsed dates in dev.
     type ContentBuild = { build?: { markdown?: Record<string, unknown> } }
     const options = nuxt.options as unknown as { content?: ContentBuild }
+
     options.content ??= {}
     options.content.build ??= {}
     options.content.build.markdown ??= {}
@@ -68,12 +68,15 @@ export default defineNuxtModule({
       const cached = history.get(relPath)
       if (cached) return cached
       let lines: string[] = []
+
       try {
         lines = git(rootDir, ['log', '--follow', '--format=%cI', '--', relPath]).split('\n').filter(Boolean)
       } catch {
         lines = []
       }
+
       history.set(relPath, lines)
+
       return lines
     }
 
@@ -81,17 +84,17 @@ export default defineNuxtModule({
       const ctx = rawCtx as BeforeParseContext
       if (ctx.collection.name !== COLLECTION) return
 
-      // `source.cwd: './news'` is normalised to a relative path, so the reported id is cwd-anchored
       let path = normalize(ctx.file.path)
       if (isAbsolute(path)) path = relative(rootDir, path)
+
       path = path.split(sep).join('/')
+
       if (!path.startsWith(SOURCE_PREFIX)) return
 
       const commits = commitsFor(path)
       const newest = commits.at(0)
       const oldest = commits.at(-1)
 
-      // a depth-1 checkout (Cloudflare Pages default), a missing git binary, or an untracked draft
       if (!newest || !oldest) {
         const checkedOut = (() => {
           try {
@@ -100,27 +103,31 @@ export default defineNuxtModule({
             return toDay(new Date())
           }
         })()
+
         stats.degraded += 1
         logger.warn(`${path}: no git history (shallow: ${shallow}), publishing as ${checkedOut}. Unshallow the build to get real dates.`)
+
         return apply(ctx, checkedOut, null)
       }
 
-      // a single commit means nothing touched the file since it landed, and a same-day edit is not an update
       const published = toDay(oldest)
       const modified = commits.length > 1 ? toDay(newest) : null
+
       apply(ctx, published, modified && modified !== published ? modified : null)
       stats.resolved += 1
-      // a truncated history exposes the tip commit as the file's first one: a plausible date, not the real one
+
       if (shallow && commits.length === 1) stats.degraded += 1
     })
 
     let reported = false
     nuxt.hook('build:done', () => {
       if (reported || !existsSync(resolve(rootDir, '.git'))) return
+
       reported = true
+
       const truncated = stats.degraded ? `, ${stats.degraded} truncated by shallow history` : ''
       const summary = `resolved ${stats.resolved} article date(s) from git${truncated}`
-      // `.git/shallow` alone proves nothing: a --depth=N clone can still cover an article's whole life
+
       if (stats.degraded) logger.warn(`${summary}. Add \`git fetch --unshallow || git fetch --deepen=1000 || true\` to the build command.`)
       else logger.info(summary)
     })
