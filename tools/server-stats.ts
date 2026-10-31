@@ -26,9 +26,9 @@ export const normalizeServerStats = (raw: Partial<RawStats>): ServerStats | unde
   return { online, playersOnline: players?.online ?? 0, playersMax: players?.max ?? 0, version, software }
 }
 
-export const fetchServerStats = async (timeout = 5_000): Promise<ServerStats | undefined> => {
+export const fetchServerStats = async (): Promise<ServerStats | undefined> => {
   try {
-    const res = await globalThis.fetch(SERVER_STATS_URL, { signal: AbortSignal.timeout(timeout) })
+    const res = await globalThis.fetch(SERVER_STATS_URL, { signal: AbortSignal.timeout(5_000) })
     return normalizeServerStats(await res.json())
   } catch {
     return undefined

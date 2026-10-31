@@ -61,10 +61,7 @@
     "publishedOn": "Published on",
     "updatedOn": "Updated on",
     "filterTags": "Filter by tag",
-    "noPosts": "No articles with this tag",
-    "tags": {
-      "announcement": "Announcements"
-    }
+    "noPosts": "No articles with this tag"
   },
   "buttons": {
     "joinConnectedPlayers": "Join the {count} online",

@@ -20,11 +20,6 @@ export const useServerStats = (options: Options = {}) => {
   return {
     // the payload as soon as the API answers, up or not: a pill that copies the IP must survive a downtime
     stats: data,
-    online: computed(() => data.value?.online === true),
-    playersOnline: computed(() => data.value?.playersOnline ?? 0),
-    playersMax: computed(() => data.value?.playersMax ?? 0),
-    version: computed(() => data.value?.version),
-    software: computed(() => data.value?.software),
-    refresh
+    playersOnline: computed(() => data.value?.playersOnline ?? 0)
   }
 }

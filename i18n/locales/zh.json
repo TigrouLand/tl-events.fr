@@ -61,10 +61,7 @@
     "publishedOn": "发布于",
     "updatedOn": "更新于",
     "filterTags": "按标签筛选",
-    "noPosts": "暂无相关标签的文章",
-    "tags": {
-      "announcement": "公告"
-    }
+    "noPosts": "暂无相关标签的文章"
   },
   "buttons": {
     "joinConnectedPlayers": "与 {count} 名在线玩家一起玩",

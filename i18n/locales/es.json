@@ -61,10 +61,7 @@
     "publishedOn": "Publicado el",
     "updatedOn": "Actualizado el",
     "filterTags": "Filtrar por etiqueta",
-    "noPosts": "Ningún artículo con esta etiqueta",
-    "tags": {
-      "announcement": "Anuncios"
-    }
+    "noPosts": "Ningún artículo con esta etiqueta"
   },
   "buttons": {
     "joinConnectedPlayers": "Unirse a los {count} en línea",

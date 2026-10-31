@@ -6,7 +6,6 @@ export const PROD_URL = `https://${pkg.name}`
 export const API_URL = `https://api.${pkg.name}/${pkg.version}`
 export const AVATAR_URL = `https://avatars.${pkg.name}`
 export const APP_DESC = pkg.description
-export const APP_VERSION = pkg.version
 export const FULL_APP_NAME = 'TigrouLand'
 export const APP_NAME = `${FULL_APP_NAME.match(/[A-Z]/g)?.join('')} - Events` // regex for uppercase chars only
 

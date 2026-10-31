@@ -1,14 +1,10 @@
 import { spawn } from 'node:child_process'
-import { existsSync, readdirSync, readFileSync } from 'node:fs'
+import { existsSync, readFileSync } from 'node:fs'
 import { join } from 'node:path'
 import process from 'node:process'
 import { defineNuxtModule, useLogger } from '@nuxt/kit'
+import { markdownIn } from './markdown'
 import { collectIcons, type Icon, iconUrl, isGenerated } from './mc-icons'
-
-const markdownIn = (dir: string): string[] =>
-  readdirSync(dir, { withFileTypes: true }).flatMap((entry) =>
-    entry.isDirectory() ? markdownIn(join(dir, entry.name)) : entry.name.endsWith('.md') ? [join(dir, entry.name)] : []
-  )
 
 interface BeforeParseContext {
   file: { body: string }

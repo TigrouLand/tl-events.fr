@@ -1,5 +1,5 @@
 import type { LLMsSection, ModuleOptions } from 'nuxt-llms'
-import { DEFAULT_LANG, type Lang, SUPPORTED_LANGS } from './i18n'
+import { DEFAULT_LANG, type Lang, localeKeys, SUPPORTED_LANGS } from './i18n'
 import { API_URL, FULL_APP_NAME, PROD_URL, SERVER_IP, socialLinks } from './seo'
 
 /** server/plugins/llms.ts fills it from the status request, so no literal here needs bumping on a Minecraft release */
@@ -46,8 +46,6 @@ const linkPage = (code: Lang) => (page: (typeof pages)[number]) => ({
   href: pageUrl(code, page.path)
 })
 
-const locales = Object.keys(SUPPORTED_LANGS) as Lang[]
-
 export const llms: LlmsConfig = {
   domain: PROD_URL,
   title: FULL_APP_NAME,
@@ -62,7 +60,7 @@ export const llms: LlmsConfig = {
       description: 'Core application pages, served in the default locale (French). Page names and summaries are in English.',
       links: pages.map(linkPage(DEFAULT_LANG.code))
     },
-    ...locales
+    ...localeKeys
       .filter((code) => code !== DEFAULT_LANG.code)
       .map<LlmsSection>((code) => ({
         title: `${SUPPORTED_LANGS[code]} pages`,
@@ -75,7 +73,7 @@ export const llms: LlmsConfig = {
     }
   ],
   notes: [
-    `Available in ${locales.length} locales: ${locales.map((code) => SUPPORTED_LANGS[code]).join(', ')}. Only Français is unprefixed, the others take their code as a URL prefix (${pageUrl('zh', '/members')}).`,
+    `Available in ${localeKeys.length} locales: ${localeKeys.map((code) => SUPPORTED_LANGS[code]).join(', ')}. Only Français is unprefixed, the others take their code as a URL prefix (${pageUrl('zh', '/members')}).`,
     'News posts are authored in French; the rest of the interface is translated, in-game text follows the client language.',
     `Every content page is also served as raw Markdown at ${PROD_URL}/raw/<path>.md, which is what the news links above point to.`,
     `This index plus the full text of every news post is available at ${PROD_URL}/llms-full.txt.`,

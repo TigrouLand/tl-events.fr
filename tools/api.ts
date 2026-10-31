@@ -12,14 +12,6 @@ export namespace API {
     wins: number
   }
 
-  export interface Modifier {
-    name: string
-    enabled: boolean
-    material: string
-    description: string[]
-    copy: string[]
-  }
-
   export interface Team {
     name: string
     colors: number[]

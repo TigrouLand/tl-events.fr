@@ -4,6 +4,7 @@ import process from 'node:process'
 import { fileURLToPath } from 'node:url'
 import { unzipSync } from 'fflate'
 import sharp from 'sharp'
+import { markdownIn } from '../markdown.ts'
 import { collectIcons, ICON_SIZE, type Icon, type IconType, iconUrl, isGenerated } from '../mc-icons.ts'
 import { fetchServerStats } from '../server-stats.ts'
 
@@ -18,11 +19,6 @@ const check = flag('check')
 // a dev-triggered run must leave orphans alone: a file mid-edit can transiently reference nothing,
 // and the art would be deleted a keystroke before it comes back
 const prune = !flag('no-prune')
-
-const markdownIn = (dir: string): string[] =>
-  readdirSync(dir, { withFileTypes: true }).flatMap((entry) =>
-    entry.isDirectory() ? markdownIn(join(dir, entry.name)) : entry.name.endsWith('.md') ? [join(dir, entry.name)] : []
-  )
 
 const target = ({ type, id }: Icon) => join(publicDir, iconUrl(type, id).slice(1))
 
