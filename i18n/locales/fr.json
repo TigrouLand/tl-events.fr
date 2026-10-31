@@ -6,11 +6,6 @@
     "count": "{count} modes de jeu",
     "explore": "Voir les règles",
     "close": "Fermer",
-    "meta": {
-      "slot": "Place",
-      "item": "Objet",
-      "type": "Type"
-    },
     "modes": {
       "jump": {
         "name": "Jump",

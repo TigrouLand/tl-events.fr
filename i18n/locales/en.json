@@ -6,11 +6,6 @@
     "count": "{count} gamemodes",
     "explore": "Read the rules",
     "close": "Close",
-    "meta": {
-      "slot": "Slot",
-      "item": "Item",
-      "type": "Type"
-    },
     "modes": {
       "jump": {
         "name": "Jump",

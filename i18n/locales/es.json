@@ -6,11 +6,6 @@
     "count": "{count} modos de juego",
     "explore": "Ver las reglas",
     "close": "Cerrar",
-    "meta": {
-      "slot": "Ranura",
-      "item": "Objeto",
-      "type": "Tipo"
-    },
     "modes": {
       "jump": {
         "name": "Jump",

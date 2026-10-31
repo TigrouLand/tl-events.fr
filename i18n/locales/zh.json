@@ -6,11 +6,6 @@
     "count": "{count} 种玩法",
     "explore": "查看规则",
     "close": "关闭",
-    "meta": {
-      "slot": "槽位",
-      "item": "物品",
-      "type": "类型"
-    },
     "modes": {
       "jump": {
         "name": "Jump",
