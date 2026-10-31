@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { Gamemode } from '~/tools/gamemodes'
-import GamemodeCard from '~/components/GamemodeCard.vue'
-import GamemodeDetail from '~/components/GamemodeDetail.vue'
+import GamemodeCard from '~/components/design/gamemodes/card.vue'
+import GamemodeDetail from '~/components/design/gamemodes/detail.vue'
 import { GAMEMODES } from '~/tools/gamemodes'
 import { APP_NAME } from '~/tools/seo'
 

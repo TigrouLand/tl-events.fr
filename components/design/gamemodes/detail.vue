@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import type { Gamemode } from '~/tools/gamemodes'
-import GamemodeArt from '~/components/GamemodeArt.vue'
 import { Dialog, DialogClose, DialogContent, DialogDescription, DialogTitle } from '~/components/ui/dialog'
 import { slotNumber } from '~/tools/gamemodes'
+import GamemodeArt from './art.vue'
 
 const props = defineProps({
   mode: { type: Object as PropType<Gamemode>, required: true },

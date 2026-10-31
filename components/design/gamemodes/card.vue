@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { Gamemode } from '~/tools/gamemodes'
-import GamemodeArt from '~/components/GamemodeArt.vue'
 import { slotNumber } from '~/tools/gamemodes'
+import GamemodeArt from './art.vue'
 
 /**
  * One slot of the hotbar: a bevelled cell that holds the mode's art, its ordinal and its one-line
