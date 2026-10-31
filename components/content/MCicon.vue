@@ -1,13 +1,14 @@
 <template>
   <span v-if="id" class="mcicon my-0! relative -top-[0.12em] inline-block align-middle">
     <img
+      draggable="false"
       :src="url"
       :width="Number(size)"
       :height="Number(size)"
       :alt="alt"
       loading="lazy"
       decoding="async"
-      class="block my-0!"
+      class="block my-0! select-none"
     />
     <span
       v-if="foil"
