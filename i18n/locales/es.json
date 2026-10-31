@@ -3,6 +3,7 @@
   "members": "Miembros",
   "gamemodes": "Modos de juego",
   "gamemodesPage": {
+    "subtitle": "Las reglas de cada minijuego que se juega durante los eventos: Jump, FastBow, Arena, TigrouBrain, Bingo, RFTD, Switch, TaupeGun y UHC.",
     "count": "{count} modos de juego",
     "explore": "Ver las reglas",
     "close": "Cerrar",

@@ -3,6 +3,7 @@
   "members": "成员",
   "gamemodes": "游戏模式",
   "gamemodesPage": {
+    "subtitle": "活动中所玩各类小游戏的规则：Jump、FastBow、Arena、TigrouBrain、Bingo、RFTD、Switch、TaupeGun 和 UHC。",
     "count": "{count} 种玩法",
     "explore": "查看规则",
     "close": "关闭",
