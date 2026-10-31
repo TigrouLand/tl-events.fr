@@ -26,15 +26,11 @@ export default defineNuxtModule({
         (icon) => !existsSync(join(rootDir, 'public', iconUrl(icon.type, icon.id)))
       )
 
-    // the fetcher is a separate npm project so its image encoder never reaches the Pages install: with it
-    // uninstalled there is nothing to spawn, and the warnings below are the only feedback there is
     const canRender = existsSync(join(rootDir, 'tools', 'icons', 'node_modules', 'sharp'))
 
     let running = false
     let pending = false
 
-    // one fetcher at a time, and a burst of saves collapses into a single trailing run: the script re-reads
-    // every file on each pass, so the last run sees all of what the earlier ones would have
     const render = (): void => {
       if (!canRender) return
       if (running) {
@@ -54,16 +50,12 @@ export default defineNuxtModule({
       )
     }
 
-    // in dev, writing the tag is the whole ask: the parse hands us the new body and the sprite lands in
-    // public/ while the author is still looking at the reload
     if (nuxt.options.dev && canRender)
       nuxt.hook('content:file:beforeParse', (rawCtx: unknown) => {
         const { file } = rawCtx as BeforeParseContext
         if (missingFrom(collectIcons(file.body)).some(isGenerated)) render()
       })
 
-    // the content parse cache only re-runs on a body change, so this reads the markdown itself: deleting a
-    // rendered file has to be caught too, and a cold dev start has no parse to hook
     nuxt.hook('modules:done', () => {
       const newsDir = join(rootDir, 'news')
       if (!existsSync(newsDir)) return
@@ -77,8 +69,6 @@ export default defineNuxtModule({
         return
       }
 
-      // an item sprite is a texture away, so dev fetches it; a build never does — Pages has neither the
-      // encoder nor a reason to download a client jar, so there the missing files stay a warning
       const fetchable = absent.filter(isGenerated)
       const committed = absent.filter((icon) => !isGenerated(icon))
 

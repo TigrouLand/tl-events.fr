@@ -28,12 +28,12 @@ const renderIndex = (options: ModuleOptions): string => {
   return blocks.filter((block) => block).join('\n\n')
 }
 
-/** the same request the nav pill answers: nothing else decides what version this document prints */
 const fillVersion = async (options: ModuleOptions): Promise<void> => {
   if (!options.description?.includes(MC_VERSION_TOKEN)) return
+
   const stats = await fetchServerStats()
-  // an unverified number is worse than none: llms.txt is what an agent quotes back to its user
   const clause = stats?.online && stats.version ? `, version ${stats.version}` : ''
+
   options.description = options.description.replace(MC_VERSION_TOKEN, clause)
 }
 

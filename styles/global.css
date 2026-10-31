@@ -9,8 +9,6 @@
   text-decoration: none;
 }
 
-/* kept out of Nav.vue: a component style block is emitted as its own chunk, and the layout
-   would then link it ahead of the first paint of every route */
 .custom-borders::before {
   background: linear-gradient(30deg, #ffffff00, #ffffff30, #00000000) border-box;
   -webkit-mask:
@@ -21,19 +19,14 @@
   @apply pointer-events-none absolute inset-0 rounded-4xl border border-transparent content-[''];
 }
 
-/* the brand's display treatment: a hard offset copy of the glyphs rather than a blur, because a
-   pixel font wants a second block of itself and a soft shadow would fight its aliasing */
 .custom-shadow {
   text-shadow: 6px 6px 0 rgb(178 55 52 / 0.8);
 }
 
-/* hard-edged for the same reason, at the scale a tile caption sits at over photography */
 .mc-hard {
   text-shadow: 2px 2px 0 rgb(0 0 0 / 65%);
 }
 
-/* a Minecraft GUI slot: lit bevel top-left, shaded bottom-right, and a hard outer edge that keeps a
-   panel legible over photography. Zero radius is the point — the game's inventory has none either */
 .mc-bevel {
   box-shadow:
     inset 2px 2px 0 0 rgb(255 255 255 / 12%),
@@ -41,7 +34,6 @@
     0 0 0 2px rgb(0 0 0 / 55%);
 }
 
-/* lifting a slot puts its own accent underneath it, darkened so a gold tile does not glare */
 .mc-tile {
   box-shadow:
     inset 2px 2px 0 0 rgb(255 255 255 / 12%),
@@ -60,7 +52,6 @@
   transform: translate(-2px, -3px);
 }
 
-/* the block grid, on every surface that stands in for a screenshot */
 .mc-grid {
   background-image:
     linear-gradient(to right, rgb(255 255 255 / 5%) 1px, transparent 1px),
@@ -68,7 +59,6 @@
   background-size: 16px 16px;
 }
 
-/* staggered entrance: --mc-i is the tile's index, so the grid assembles corner to corner */
 .mc-enter {
   animation: mc-enter 420ms ease-out backwards;
   animation-delay: calc(var(--mc-i, 0) * 45ms);
@@ -96,9 +86,6 @@
   }
 }
 
-/* page transitions: Nuxt hands `name: 'page'` to Vue's <Transition>, which puts these classes on the
-   page's own root element. Only the entering page moves — a page that slides out as well would read as
-   a carousel, and the nav is fixed above it rather than carried along with it */
 .page-enter-active,
 .page-leave-active {
   transition: opacity 180ms ease, transform 180ms ease;
@@ -132,13 +119,10 @@
   @apply bg-white/15;
 }
 
-/* a disabled entry is a span, so hovering it must not light the border */
 a.nav-link:hover:not([aria-current='page']) {
   @apply border-white/30;
 }
 
-/* the enchantment foil: vanilla's own pattern stretched over the sprite and clipped to its alpha, so a
-   glinted icon costs one shared texture rather than a second render of every id */
 .mcicon {
   isolation: isolate;
 }
@@ -154,7 +138,6 @@ a.nav-link:hover:not([aria-current='page']) {
   animation: mcicon-foil 2s linear infinite;
 }
 
-/* sliding by the sprite's own box lands the pattern back on its first pixel, which keeps the loop seamless */
 @keyframes mcicon-foil {
   to {
     background-position: calc(-1 * var(--mcicon-size)) var(--mcicon-size);

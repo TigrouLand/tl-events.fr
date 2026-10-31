@@ -8,9 +8,6 @@ node_modules
 .wrangler
 .env
 dist
-sitespeed-results
-# tools/icons installs its image encoder on its own so the Pages install never sees it; node_modules
-# and .cache (the client jar and the textures pulled from it) are already covered by the patterns above
 tools/icons/package-lock.json
 
 # IDE

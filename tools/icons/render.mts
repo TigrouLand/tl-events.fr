@@ -50,8 +50,6 @@ const all = [...requested.values()]
 const referenced = new Set(all.map((icon) => iconUrl(icon.type, icon.id)))
 const absent = all.filter((icon) => !existsSync(target(icon)))
 const todo = flag('force') ? all.filter(isGenerated) : absent.filter(isGenerated)
-// an item icon is one flat texture, which is a file to fetch; a block icon is a model seen in three
-// dimensions, which is a GL render — so blocks stay art somebody commits and this can only ask for it
 const unrenderable = absent.filter((icon) => !isGenerated(icon))
 const stale = prune ? renderedIcons().filter((url) => !referenced.has(url)) : []
 
@@ -83,8 +81,6 @@ if (todo.length) {
 
   if (!version) throw new Error('mc-icons: the server reported no version, so there is nothing to fetch')
 
-  // the textures live inside the client jar now — the asset index carries sounds and icons but left the game's
-  // art in the archive — so the official download is the source, cached here and never shipped
   const jar = join(cacheDir, `${version}.jar`)
 
   if (!existsSync(jar)) {
@@ -103,20 +99,16 @@ if (todo.length) {
   }
 
   const wanted = new Map(todo.map((icon) => [`assets/minecraft/textures/item/${icon.id.replace(/^minecraft:/, '')}.png`, icon]))
-  // the filter is the point: reading a 41 MB archive inflates nothing but these few entries
   const textures = unzipSync(readFileSync(jar), { filter: (file) => wanted.has(file.name) })
 
   for (const [name, icon] of wanted) {
     const texture = textures[name]
 
-    // an id with no texture of its own is a typo, a technical item, or one drawn from another file,
-    // and nothing here can tell the three apart, so it answers as the unknown thing it is
     if (!texture) {
       unknown.push(icon)
       continue
     }
 
-    // nearest, because this is pixel art: anything interpolating would soften edges the game draws hard
     const buffer = await sharp(texture).resize(ICON_SIZE, ICON_SIZE, { kernel: 'nearest' }).webp({ lossless: true }).toBuffer()
 
     mkdirSync(dirname(target(icon)), { recursive: true })

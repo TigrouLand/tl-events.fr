@@ -3,16 +3,9 @@ import type { Gamemode } from '~/tools/gamemodes'
 import { slotNumber } from '~/tools/gamemodes'
 import GamemodeArt from './art.vue'
 
-/**
- * One slot of the hotbar: a bevelled cell that holds the mode's art, its ordinal and its one-line
- * pitch, and opens the detail panel when pressed. Grid placement is left to the page, so the card
- * only promises to fill whatever cell it is handed.
- */
 const props = defineProps({
   mode: { type: Object as PropType<Gamemode>, required: true },
-  /** its position in the catalogue, printed the way the game's own hotbar numbers read */
   index: { type: Number, required: true },
-  /** the hero spans two cells and carries the call to action; a tile takes one */
   variant: { type: String as PropType<'hero' | 'tile'>, default: 'tile' }
 })
 

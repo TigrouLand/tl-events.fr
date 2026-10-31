@@ -2,7 +2,6 @@ import { useIntervalFn } from '@vueuse/core'
 import { normalizeServerStats, SERVER_STATS_URL } from '~/tools/server-stats'
 
 type Options = {
-  /** keeps the state warm for whoever shows it; omit it when a view only reads the value */
   poll?: number
 }
 

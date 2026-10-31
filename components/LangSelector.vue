@@ -1,6 +1,5 @@
 <template>
   <Select class="bg-none outline-none" :model-value="currentLocale" @update:model-value="(v) => setLocale(v as Lang)">
-    <!-- the trigger holds a flag only, so the name it stands for has to travel in the label -->
     <SelectTrigger :aria-label="t('buttons.language', { name: currentLocaleName })" :class="cn('border-none bg-transparent!', props.class)">
       <Icon :name="getFlagIcon(currentLocale)" />
     </SelectTrigger>

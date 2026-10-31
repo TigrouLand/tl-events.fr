@@ -49,6 +49,7 @@ export default defineNuxtModule({
 
     let head: string | null = null
     let shallow = false
+
     try {
       head = git(rootDir, ['rev-parse', 'HEAD']) || null
       shallow = git(rootDir, ['rev-parse', '--is-shallow-repository']) === 'true'

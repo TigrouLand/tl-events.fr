@@ -33,7 +33,6 @@
           <LangSelector />
         </div>
 
-        <!-- the pill hangs below the bar, where an opened panel would render -->
         <PlayersCount :class="{ 'max-sm:hidden': dropdown }" />
 
         <div class="order-2 flex items-center sm:order-none sm:hidden">
